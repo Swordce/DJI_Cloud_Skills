@@ -1,0 +1,44 @@
+{
+  "id": "jsbridge-djibridge-wsgetconnectstate",
+  "name": "获取连接状态",
+  "purpose": "获取连接状态",
+  "protocol": "jsbridge",
+  "module": "ws",
+  "operation": {
+    "method": "window.djiBridge.wsGetConnectState",
+    "signature": "window.djiBridge.wsGetConnectState()"
+  },
+  "parameters": [],
+  "authentication": {
+    "type": "license",
+    "location": "initialization",
+    "name": "appId/appKey/license"
+  },
+  "responses": [
+    {
+      "type": "string",
+      "description": "JSON string with code, message, and data; parse with JSON.parse when applicable."
+    }
+  ],
+  "errors": [
+    {
+      "code": "code != 0",
+      "meaning": "Bridge invocation failed; inspect message.",
+      "retry": false
+    }
+  ],
+  "examples": [],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "none",
+    "retry_on": [],
+    "notes": "Verify the license and required component state before invoking again."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "id": "jsbridge-djibridge-platformloadcomponent",
+  "name": "platformLoadComponent",
+  "purpose": "加载功能模块 | name: 功能模块 param: 参数，为json字符 详细的功能模块有： 设备上云模块 直播模块 API模块 WS模块 地图元素模块 态势感知模块 媒体模块 航线模块",
+  "protocol": "jsbridge",
+  "module": "3bc15c8aae3e",
+  "operation": {
+    "method": "window.djiBridge.platformLoadComponent",
+    "signature": "window.djiBridge.platformLoadComponent(String name, String param)"
+  },
+  "parameters": [
+    {
+      "name": "name",
+      "in": "argument",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "加载功能模块 | name: 功能模块 param: 参数，为json字符 详细的功能模块有： 设备上云模块 直播模块 API模块 WS模块 地图元素模块 态势感知模块 媒体模块 航线模块",
+      "constraints": "",
+      "schema": "String"
+    },
+    {
+      "name": "param",
+      "in": "argument",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "加载功能模块 | name: 功能模块 param: 参数，为json字符 详细的功能模块有： 设备上云模块 直播模块 API模块 WS模块 地图元素模块 态势感知模块 媒体模块 航线模块",
+      "constraints": "",
+      "schema": "String"
+    }
+  ],
+  "authentication": {
+    "type": "license",
+    "location": "initialization",
+    "name": "appId/appKey/license"
+  },
+  "responses": [
+    {
+      "type": "string",
+      "description": "JSON string with code, message, and data; parse with JSON.parse when applicable."
+    }
+  ],
+  "errors": [
+    {
+      "code": "code != 0",
+      "meaning": "Bridge invocation failed; inspect message.",
+      "retry": false
+    }
+  ],
+  "examples": [],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "none",
+    "retry_on": [],
+    "notes": "Verify the license and required component state before invoking again."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md"
+  }
+}

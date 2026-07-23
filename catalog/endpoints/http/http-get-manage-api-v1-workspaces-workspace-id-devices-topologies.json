@@ -1,0 +1,202 @@
+{
+  "id": "http-get-manage-api-v1-workspaces-workspace-id-devices-topologies",
+  "name": "获取设备拓扑列表",
+  "purpose": "GET /manage/api/v1/workspaces/{workspace_id}/devices/topologies",
+  "protocol": "http",
+  "module": "situation-awareness",
+  "operation": {
+    "method": "GET",
+    "path": "/manage/api/v1/workspaces/{workspace_id}/devices/topologies",
+    "content_type": "application/json"
+  },
+  "parameters": [
+    {
+      "name": "workspace_id",
+      "in": "path",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "工作空间id（在同一个空间下的所有设备都可以互相共享设备拓扑及遥感信息）",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "x-auth-token",
+      "in": "header",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "访问令牌",
+      "constraints": "",
+      "schema": "string"
+    }
+  ],
+  "authentication": {
+    "type": "token",
+    "location": "header",
+    "name": "X-Auth-Token"
+  },
+  "responses": [
+    {
+      "status": "200",
+      "description": "OK",
+      "schema": "tsa.GetWebPrjDeviceForOpenPlatformRsp",
+      "fields": []
+    }
+  ],
+  "errors": [
+    {
+      "code": "400",
+      "meaning": "invalid_request",
+      "retry": false
+    },
+    {
+      "code": "401",
+      "meaning": "token_expired_or_invalid",
+      "retry": false
+    },
+    {
+      "code": "403",
+      "meaning": "forbidden",
+      "retry": false
+    },
+    {
+      "code": "404",
+      "meaning": "resource_not_found",
+      "retry": false
+    },
+    {
+      "code": "5xx",
+      "meaning": "server_error",
+      "retry": true
+    }
+  ],
+  "examples": [
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "code": 0,
+        "message": "success",
+        "data": {
+          "list": [
+            {
+              "hosts": [
+                {
+                  "sn": "drone01",
+                  "device_model": {
+                    "key": "0-60-0",
+                    "domain": "0",
+                    "type": "60",
+                    "sub_type": "0"
+                  },
+                  "online_status": true,
+                  "device_callsign": "救援飞机",
+                  "user_id": "string",
+                  "user_callsign": "string",
+                  "icon_urls": {
+                    "normal_icon_url": "resource://pilot/drawable/tsa_aircraft_others_normal",
+                    "selected_icon_url": "resource://pilot/drawable/tsa_aircraft_others_pressed"
+                  }
+                }
+              ],
+              "parents": [
+                {
+                  "sn": "rc02",
+                  "online_status": true,
+                  "device_model": {
+                    "key": "2-56-0",
+                    "domain": "2",
+                    "type": "56",
+                    "sub_type": "0"
+                  },
+                  "device_callsign": "遥控器D",
+                  "user_id": "string",
+                  "user_callsign": "string",
+                  "icon_urls": {
+                    "normal_icon_url": "resource://pilot/drawable/tsa_aircraft_others_normal",
+                    "selected_icon_url": "resource://pilot/drawable/tsa_aircraft_others_pressed"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "source": "official"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "code": 0,
+        "message": "success",
+        "data": {
+          "list": [
+            {
+              "hosts": [
+                {
+                  "device_callsign": "string",
+                  "device_model": {
+                    "key": "string",
+                    "domain": "string",
+                    "type": "string",
+                    "sub_type": "string"
+                  },
+                  "icon_urls": {
+                    "normal_icon_url": "string",
+                    "selected_icon_url": "string"
+                  },
+                  "online_status": true,
+                  "sn": "string",
+                  "user_callsign": "string",
+                  "user_id": "string"
+                }
+              ],
+              "parents": [
+                {
+                  "device_callsign": "string",
+                  "device_model": {
+                    "key": "string",
+                    "domain": "string",
+                    "type": "string",
+                    "sub_type": "string"
+                  },
+                  "icon_urls": {
+                    "normal_icon_url": "string",
+                    "selected_icon_url": "string"
+                  },
+                  "online_status": true,
+                  "sn": "string",
+                  "user_callsign": "string",
+                  "user_id": "string"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 3,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "network_error",
+      "408",
+      "429",
+      "502",
+      "503",
+      "504"
+    ],
+    "notes": "POST requires an application idempotency key or explicit confirmation before retry."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/40.situation-awareness/10.obtain-device-topology-list.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/40.situation-awareness/10.obtain-device-topology-list.md"
+  }
+}

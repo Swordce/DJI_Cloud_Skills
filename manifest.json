@@ -1,0 +1,31 @@
+{
+  "source": "https://github.com/dji-sdk/Cloud-API-Doc",
+  "commit": "4ec6b0c7f9472aeb09a0a47949855d19c473ea07",
+  "source_language": "docs/cn",
+  "fallback_language": "docs/en",
+  "generated_at": "2026-07-23T07:52:53+00:00",
+  "generator": "scripts/sync_catalog.py",
+  "entry_count": 755,
+  "protocol_counts": {
+    "http": 16,
+    "jsbridge": 47,
+    "mqtt": 426,
+    "websocket": 8,
+    "wpml": 258
+  },
+  "portable_skill": {
+    "source_path": "skills/dji-cloud-api",
+    "build_path": "build/skills/dji-cloud-api",
+    "standard": "https://agentskills.io/specification",
+    "supported_project_targets": {
+      "cursor": ".cursor/skills",
+      "codex": ".agents/skills",
+      "claude": ".claude/skills",
+      "codebuddy": ".codebuddy/skills",
+      "workbuddy": ".workbuddy/skills",
+      "copilot": ".github/skills",
+      "antigravity": ".agent/skills",
+      "gemini": ".gemini/skills"
+    }
+  }
+}

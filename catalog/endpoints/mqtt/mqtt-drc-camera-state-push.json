@@ -1,0 +1,244 @@
+{
+  "id": "mqtt-drc-camera-state-push",
+  "name": "相机状态上报",
+  "purpose": "MQTT message: drc_camera_state_push",
+  "protocol": "mqtt",
+  "module": "remote-control",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/*{gateway_sn}*/drc/up",
+    "direction": "up",
+    "method": "drc_camera_state_push",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "payload_index",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相机枚举值。非标准的 device_mode_key，格式为 {type-subtype-gimbalindex}，可以参考产品支持",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "camera_state",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相机状态信息",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "camera_mode",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相机状态",
+      "constraints": "{\"0\":\"拍照\",\"1\":\"录像\",\"2\":\"智能低光\",\"3\":\"全景拍照\",\"4\":\"定时拍照\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "interval_photo_interval",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "定时拍照间隔",
+      "constraints": "{\"max\":\"\",\"min\":\"\",\"step\":\"\",\"unit_name\":\"秒 / s\"}",
+      "schema": "int"
+    },
+    {
+      "name": "video_resolution",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "视频分辨率大小",
+      "constraints": "{\"0\":\"1920*1080 \",\"1\":\"3840*2160\"}",
+      "schema": "enum_string"
+    },
+    {
+      "name": "linkage_zoom_state",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "联动变焦状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "photo_size",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "照片大小",
+      "constraints": "{\"0\":\"默认大小\",\"1\":\"特小\",\"2\":\"小\",\"3\":\"中\",\"4\":\"大\",\"5\":\"特大\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "record_time",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "视频录制时长",
+      "constraints": "{\"max\":\"\",\"min\":\"\",\"step\":\"\",\"unit_name\":\"秒 / s\"}",
+      "schema": "int"
+    },
+    {
+      "name": "recording_state",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "录像状态",
+      "constraints": "{\"0\":\"空闲\",\"1\":\"录像中\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "photo_state",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "拍照状态",
+      "constraints": "{\"0\":\"空闲\",\"1\":\"拍照中\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "remain_photo_num",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "剩余拍照张数",
+      "constraints": "",
+      "schema": "int"
+    },
+    {
+      "name": "remain_record_duration",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "剩余录像时间",
+      "constraints": "{\"max\":\"\",\"min\":\"\",\"step\":\"\",\"unit_name\":\"秒 / s\"}",
+      "schema": "int"
+    },
+    {
+      "name": "media_storage",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "媒体存储信息",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "photo_storage_settings",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "拍照存储类型{current, vision, ir}，根据机型可多选",
+      "constraints": "{\"size\": -, \"item_type\": text}",
+      "schema": "array"
+    },
+    {
+      "name": "video_storage_settings",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "视频存储类型{current, vision, ir}，根据机型可多选",
+      "constraints": "{\"size\": -, \"item_type\": text}",
+      "schema": "array"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/*{gateway_sn}*/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "camera_state": {
+            "camera_mode": 0,
+            "interval_photo_interval": 2.5,
+            "linkage_zoom_state": 0,
+            "photo_size": 1,
+            "photo_state": 0,
+            "record_time": 0,
+            "recording_state": 0,
+            "remain_photo_num": 6727,
+            "remain_record_duration": 0,
+            "video_resolution": 0
+          },
+          "media_storage": {
+            "photo_storage_settings": [
+              "current",
+              "ir"
+            ],
+            "video_storage_settings": [
+              "current",
+              "ir"
+            ]
+          },
+          "payload_index": "81-0-0"
+        },
+        "method": "drc_camera_state_push",
+        "seq": 1
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/180.remote-control.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/180.remote-control.md"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "wpml-common-element-orientedshoot-wpml-focusx",
+  "name": "wpml:focusX",
+  "purpose": "orientedShoot",
+  "protocol": "wpml",
+  "module": "common-element",
+  "operation": {
+    "action": "define_element",
+    "element": "wpml:focusX",
+    "document": "40.common-element.md",
+    "context": "orientedShoot"
+  },
+  "parameters": [
+    {
+      "name": "wpml:focusX",
+      "in": "xml_element",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "",
+      "constraints": "",
+      "schema": "整型"
+    }
+  ],
+  "authentication": {
+    "type": "none",
+    "location": "local_document",
+    "name": null
+  },
+  "responses": [
+    {
+      "type": "validated_xml",
+      "description": "A locally validated WPML/KML document."
+    }
+  ],
+  "errors": [
+    {
+      "code": "validation_error",
+      "meaning": "Element violates required type, range, order, or compatibility constraint.",
+      "retry": false
+    }
+  ],
+  "examples": [],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "none",
+    "retry_on": [],
+    "notes": "Validate the WPML document locally; network retry is not applicable."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/00.dji-wpml/40.common-element.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/00.dji-wpml/40.common-element.md"
+  }
+}

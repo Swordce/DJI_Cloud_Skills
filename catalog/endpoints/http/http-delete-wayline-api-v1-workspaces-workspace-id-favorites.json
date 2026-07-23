@@ -1,0 +1,163 @@
+{
+  "id": "http-delete-wayline-api-v1-workspaces-workspace-id-favorites",
+  "name": "批量取消收藏航线文件",
+  "purpose": "DELETE /wayline/api/v1/workspaces/{workspace_id}/favorites",
+  "protocol": "http",
+  "module": "waypoint-management",
+  "operation": {
+    "method": "DELETE",
+    "path": "/wayline/api/v1/workspaces/{workspace_id}/favorites",
+    "content_type": "application/json"
+  },
+  "parameters": [
+    {
+      "name": "workspace_id",
+      "in": "path",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "工作空间id",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "id",
+      "in": "query",
+      "type": "array",
+      "required": false,
+      "required_status": "optional",
+      "description": "航线文件id集合",
+      "constraints": "",
+      "schema": "array[string]"
+    },
+    {
+      "name": "x-auth-token",
+      "in": "header",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "访问令牌",
+      "constraints": "",
+      "schema": "string"
+    }
+  ],
+  "authentication": {
+    "type": "token",
+    "location": "header",
+    "name": "X-Auth-Token"
+  },
+  "responses": [
+    {
+      "status": "200",
+      "description": "OK",
+      "schema": "wayline.BaseResponse",
+      "fields": [
+        {
+          "name": "code",
+          "in": "response",
+          "type": "integer",
+          "required": false,
+          "required_status": "optional",
+          "description": "错误码",
+          "constraints": "none",
+          "schema": "integer"
+        },
+        {
+          "name": "data",
+          "in": "response",
+          "type": "string",
+          "required": false,
+          "required_status": "optional",
+          "description": "none",
+          "constraints": "none",
+          "schema": "any"
+        },
+        {
+          "name": "message",
+          "in": "response",
+          "type": "string",
+          "required": false,
+          "required_status": "optional",
+          "description": "错误描述",
+          "constraints": "none",
+          "schema": "string"
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "400",
+      "meaning": "invalid_request",
+      "retry": false
+    },
+    {
+      "code": "401",
+      "meaning": "token_expired_or_invalid",
+      "retry": false
+    },
+    {
+      "code": "403",
+      "meaning": "forbidden",
+      "retry": false
+    },
+    {
+      "code": "404",
+      "meaning": "resource_not_found",
+      "retry": false
+    },
+    {
+      "code": "5xx",
+      "meaning": "server_error",
+      "retry": true
+    }
+  ],
+  "examples": [
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "code": 0,
+        "data": {},
+        "message": "success"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "code": 0,
+        "data": null,
+        "message": "string"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 3,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "network_error",
+      "408",
+      "429",
+      "502",
+      "503",
+      "504"
+    ],
+    "notes": "POST requires an application idempotency key or explicit confirmation before retry."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/70.cancel-collect.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/70.cancel-collect.md"
+  },
+  "alternate_sources": [
+    {
+      "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/70.cancel-collect.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/70.cancel-collect.md"
+    }
+  ]
+}

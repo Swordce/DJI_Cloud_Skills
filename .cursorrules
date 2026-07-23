@@ -1,0 +1,7 @@
+# DJI Cloud API project rule
+
+For DJI Cloud API, Pilot 2, Dock, MQTT, livestream, wayline, media, firmware,
+WebSocket, JSBridge, or WPML work, apply the installed `dji-cloud-api` Skill,
+or read `skills/dji-cloud-api/SKILL.md` when it is not installed. That file is
+the single source for lookup, authentication, safety, and retry instructions.
+Do not duplicate or override those policies here.

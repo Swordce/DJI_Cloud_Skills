@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/dji-cloud-api-entry.schema.json",
+  "title": "DJI Cloud API catalog entry",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "purpose",
+    "protocol",
+    "module",
+    "operation",
+    "parameters",
+    "authentication",
+    "responses",
+    "errors",
+    "examples",
+    "retry",
+    "source"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "protocol": {
+      "enum": [
+        "http",
+        "mqtt",
+        "websocket",
+        "jsbridge",
+        "wpml"
+      ]
+    },
+    "module": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operation": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "in",
+          "type",
+          "required",
+          "required_status",
+          "description",
+          "constraints",
+          "schema"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "in": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "enum": [
+              "string",
+              "integer",
+              "number",
+              "boolean",
+              "array",
+              "object"
+            ]
+          },
+          "required": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "required_status": {
+            "enum": [
+              "required",
+              "optional",
+              "not_specified_by_source"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "constraints": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "authentication": {
+      "type": "object",
+      "required": [
+        "type",
+        "location",
+        "name"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "token",
+            "broker_credentials",
+            "license",
+            "none"
+          ]
+        },
+        "location": {
+          "type": "string"
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "responses": {
+      "type": "array"
+    },
+    "errors": {
+      "type": "array"
+    },
+    "examples": {
+      "type": "array"
+    },
+    "retry": {
+      "type": "object",
+      "required": [
+        "automatic",
+        "max_attempts",
+        "backoff",
+        "retry_on",
+        "notes"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "file",
+        "url"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

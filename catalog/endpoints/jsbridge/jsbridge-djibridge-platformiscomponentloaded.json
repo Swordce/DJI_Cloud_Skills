@@ -1,0 +1,55 @@
+{
+  "id": "jsbridge-djibridge-platformiscomponentloaded",
+  "name": "platformIsComponentLoaded",
+  "purpose": "判断模块是否加载",
+  "protocol": "jsbridge",
+  "module": "3bc15c8aae3e",
+  "operation": {
+    "method": "window.djiBridge.platformIsComponentLoaded",
+    "signature": "window.djiBridge.platformIsComponentLoaded(String name)"
+  },
+  "parameters": [
+    {
+      "name": "name",
+      "in": "argument",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "判断模块是否加载",
+      "constraints": "",
+      "schema": "String"
+    }
+  ],
+  "authentication": {
+    "type": "license",
+    "location": "initialization",
+    "name": "appId/appKey/license"
+  },
+  "responses": [
+    {
+      "type": "string",
+      "description": "JSON string with code, message, and data; parse with JSON.parse when applicable."
+    }
+  ],
+  "errors": [
+    {
+      "code": "code != 0",
+      "meaning": "Bridge invocation failed; inspect message.",
+      "retry": false
+    }
+  ],
+  "examples": [],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "none",
+    "retry_on": [],
+    "notes": "Verify the license and required component state before invoking again."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md"
+  }
+}

@@ -1,0 +1,271 @@
+{
+  "id": "http-get-wayline-api-v1-workspaces-workspace-id-waylines",
+  "name": "获取航线列表",
+  "purpose": "GET /wayline/api/v1/workspaces/{workspace_id}/waylines",
+  "protocol": "http",
+  "module": "waypoint-management",
+  "operation": {
+    "method": "GET",
+    "path": "/wayline/api/v1/workspaces/{workspace_id}/waylines",
+    "content_type": "application/json"
+  },
+  "parameters": [
+    {
+      "name": "workspace_id",
+      "in": "path",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "工作空间id",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "favorited",
+      "in": "query",
+      "type": "boolean",
+      "required": false,
+      "required_status": "optional",
+      "description": "是否收藏",
+      "constraints": "",
+      "schema": "boolean"
+    },
+    {
+      "name": "order_by",
+      "in": "query",
+      "type": "string",
+      "required": false,
+      "required_status": "optional",
+      "description": "排序（xxx_column desc 或 xxx_column asc, 若不传排序后缀默认为asc，多个字段排序可通过','拼接）",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "page",
+      "in": "query",
+      "type": "integer",
+      "required": false,
+      "required_status": "optional",
+      "description": "页数",
+      "constraints": "",
+      "schema": "integer"
+    },
+    {
+      "name": "page_size",
+      "in": "query",
+      "type": "integer",
+      "required": false,
+      "required_status": "optional",
+      "description": "每页大小",
+      "constraints": "",
+      "schema": "integer"
+    },
+    {
+      "name": "template_type",
+      "in": "query",
+      "type": "integer",
+      "required": false,
+      "required_status": "optional",
+      "description": "航线模版类型",
+      "constraints": "",
+      "schema": "array[integer]"
+    },
+    {
+      "name": "x-auth-token",
+      "in": "header",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "访问令牌",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "action_type",
+      "in": "query",
+      "type": "integer",
+      "required": false,
+      "required_status": "optional",
+      "description": "1：开启精准复拍航线。不填本字段，表示所有航线。",
+      "constraints": "",
+      "schema": "integer"
+    },
+    {
+      "name": "drone_model_keys",
+      "in": "query",
+      "type": "array",
+      "required": false,
+      "required_status": "optional",
+      "description": "机型筛选",
+      "constraints": "",
+      "schema": "array[string]"
+    },
+    {
+      "name": "payload_model_key",
+      "in": "query",
+      "type": "array",
+      "required": false,
+      "required_status": "optional",
+      "description": "负载筛选",
+      "constraints": "",
+      "schema": "array[string]"
+    }
+  ],
+  "authentication": {
+    "type": "token",
+    "location": "header",
+    "name": "X-Auth-Token"
+  },
+  "responses": [
+    {
+      "status": "200",
+      "description": "OK",
+      "schema": "wayline.GetWaylinesOutput",
+      "fields": [
+        {
+          "name": "list",
+          "in": "response",
+          "type": "array",
+          "required": false,
+          "required_status": "optional",
+          "description": "none",
+          "constraints": "none",
+          "schema": "[wayline.AppFileItem]"
+        },
+        {
+          "name": "pagination",
+          "in": "response",
+          "type": "string",
+          "required": false,
+          "required_status": "optional",
+          "description": "none",
+          "constraints": "none",
+          "schema": "api_render.PagyInfo"
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "400",
+      "meaning": "invalid_request",
+      "retry": false
+    },
+    {
+      "code": "401",
+      "meaning": "token_expired_or_invalid",
+      "retry": false
+    },
+    {
+      "code": "403",
+      "meaning": "forbidden",
+      "retry": false
+    },
+    {
+      "code": "404",
+      "meaning": "resource_not_found",
+      "retry": false
+    },
+    {
+      "code": "5xx",
+      "meaning": "server_error",
+      "retry": true
+    }
+  ],
+  "examples": [
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "code": 0,
+        "message": "success",
+        "data": {
+          "list": [
+            {
+              "id": "uuid",
+              "drone_model_key": "0-67-0",
+              "favorited": false,
+              "name": "新建航线1",
+              "payload_model_keys": [
+                "1-53-0"
+              ],
+              "template_types": [
+                0
+              ],
+              "action_type": 0,
+              "update_time": 1637158501230,
+              "user_name": "string",
+              "start_wayline_point": {
+                "start_latitude": 22.5799601837589,
+                "start_lontitude": 113.942744030171
+              }
+            }
+          ],
+          "pagination": {
+            "page": 1,
+            "page_size": 9,
+            "total": 10
+          }
+        }
+      },
+      "source": "official"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "code": 0,
+        "data": {
+          "list": [
+            {
+              "drone_model_key": "string",
+              "favorited": true,
+              "id": "string",
+              "name": "string",
+              "payload_model_keys": [
+                "string"
+              ],
+              "template_types": [
+                0
+              ],
+              "action_type": 0,
+              "update_time": 0,
+              "user_name": "string",
+              "start_wayline_point": {
+                "start_latitude": 22.5799601837589,
+                "start_lontitude": 113.942744030171
+              }
+            }
+          ],
+          "pagination": {
+            "page": 0,
+            "page_size": 0,
+            "total": 0
+          }
+        },
+        "message": "string"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 3,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "network_error",
+      "408",
+      "429",
+      "502",
+      "503",
+      "504"
+    ],
+    "notes": "POST requires an application idempotency key or explicit confirmation before retry."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/10.obtain-waypointfile-list.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/10.obtain-waypointfile-list.md"
+  }
+}

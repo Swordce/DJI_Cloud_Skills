@@ -1,0 +1,125 @@
+{
+  "id": "mqtt-flight-areas-drone-location",
+  "name": "自定义飞行区告警信息推送",
+  "purpose": "MQTT events: flight_areas_drone_location",
+  "protocol": "mqtt",
+  "module": "custom-flight-area",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/*{gateway_sn}*/events",
+    "direction": "up",
+    "method": "flight_areas_drone_location",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "drone_locations",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "飞行器自定义飞行区距离信息",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "area_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "区域唯一 ID",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "area_distance",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "距离飞行边界距离",
+      "constraints": "",
+      "schema": "float"
+    },
+    {
+      "name": "is_in_area",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "是否在自定义飞行区内",
+      "constraints": "",
+      "schema": "bool"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/*{gateway_sn}*/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "drone_locations": [
+            {
+              "area_distance": 100.11,
+              "area_id": "d275c4e1-d864-4736-8b5d-5f5882ee9bdd",
+              "is_in_area": true
+            }
+          ]
+        },
+        "method": "flight_areas_drone_location",
+        "need_reply": 0,
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 16540709686556
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1",
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/130.custom-flight-area.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/130.custom-flight-area.md"
+  },
+  "alternate_sources": [
+    {
+      "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/130.custom-flight-area.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/130.custom-flight-area.md"
+    }
+  ]
+}

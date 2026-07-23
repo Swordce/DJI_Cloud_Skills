@@ -1,0 +1,5287 @@
+[
+  {
+    "id": "http-delete-map-api-v1-workspaces-workspace-id-elements-id",
+    "name": "删除元素",
+    "protocol": "http",
+    "module": "map-elements",
+    "file": "catalog/endpoints/http/http-delete-map-api-v1-workspaces-workspace-id-elements-id.json"
+  },
+  {
+    "id": "http-delete-wayline-api-v1-workspaces-workspace-id-favorites",
+    "name": "批量取消收藏航线文件",
+    "protocol": "http",
+    "module": "waypoint-management",
+    "file": "catalog/endpoints/http/http-delete-wayline-api-v1-workspaces-workspace-id-favorites.json"
+  },
+  {
+    "id": "http-get-manage-api-v1-workspaces-workspace-id-devices-topologies",
+    "name": "获取设备拓扑列表",
+    "protocol": "http",
+    "module": "situation-awareness",
+    "file": "catalog/endpoints/http/http-get-manage-api-v1-workspaces-workspace-id-devices-topologies.json"
+  },
+  {
+    "id": "http-get-map-api-v1-workspaces-workspace-id-element-groups",
+    "name": "获取元素列表",
+    "protocol": "http",
+    "module": "map-elements",
+    "file": "catalog/endpoints/http/http-get-map-api-v1-workspaces-workspace-id-element-groups.json"
+  },
+  {
+    "id": "http-get-wayline-api-v1-workspaces-workspace-id-waylines",
+    "name": "获取航线列表",
+    "protocol": "http",
+    "module": "waypoint-management",
+    "file": "catalog/endpoints/http/http-get-wayline-api-v1-workspaces-workspace-id-waylines.json"
+  },
+  {
+    "id": "http-get-wayline-api-v1-workspaces-workspace-id-waylines-duplicate-names",
+    "name": "获取重复的航线文件名称",
+    "protocol": "http",
+    "module": "waypoint-management",
+    "file": "catalog/endpoints/http/http-get-wayline-api-v1-workspaces-workspace-id-waylines-duplicate-names.json"
+  },
+  {
+    "id": "http-get-wayline-api-v1-workspaces-workspace-id-waylines-id-url",
+    "name": "获取航线文件下载地址",
+    "protocol": "http",
+    "module": "waypoint-management",
+    "file": "catalog/endpoints/http/http-get-wayline-api-v1-workspaces-workspace-id-waylines-id-url.json"
+  },
+  {
+    "id": "http-post-map-api-v1-workspaces-workspace-id-element-groups-group-id-elements",
+    "name": "创建元素",
+    "protocol": "http",
+    "module": "map-elements",
+    "file": "catalog/endpoints/http/http-post-map-api-v1-workspaces-workspace-id-element-groups-group-id-elements.json"
+  },
+  {
+    "id": "http-post-media-api-v1-workspaces-workspace-id-fast-upload",
+    "name": "文件快传",
+    "protocol": "http",
+    "module": "media-management",
+    "file": "catalog/endpoints/http/http-post-media-api-v1-workspaces-workspace-id-fast-upload.json"
+  },
+  {
+    "id": "http-post-media-api-v1-workspaces-workspace-id-files-tiny-fingerprints",
+    "name": "获取已经存在的文件夹精简指纹",
+    "protocol": "http",
+    "module": "media-management",
+    "file": "catalog/endpoints/http/http-post-media-api-v1-workspaces-workspace-id-files-tiny-fingerprints.json"
+  },
+  {
+    "id": "http-post-media-api-v1-workspaces-workspace-id-group-upload-callback",
+    "name": "文件组上传完成后回调",
+    "protocol": "http",
+    "module": "media-management",
+    "file": "catalog/endpoints/http/http-post-media-api-v1-workspaces-workspace-id-group-upload-callback.json"
+  },
+  {
+    "id": "http-post-media-api-v1-workspaces-workspace-id-upload-callback",
+    "name": "上报文件上传结果",
+    "protocol": "http",
+    "module": "media-management",
+    "file": "catalog/endpoints/http/http-post-media-api-v1-workspaces-workspace-id-upload-callback.json"
+  },
+  {
+    "id": "http-post-storage-api-v1-workspaces-workspace-id-sts",
+    "name": "生成上传文件临时凭证",
+    "protocol": "http",
+    "module": "waypoint-management",
+    "file": "catalog/endpoints/http/http-post-storage-api-v1-workspaces-workspace-id-sts.json"
+  },
+  {
+    "id": "http-post-wayline-api-v1-workspaces-workspace-id-favorites",
+    "name": "批量收藏航线文件",
+    "protocol": "http",
+    "module": "waypoint-management",
+    "file": "catalog/endpoints/http/http-post-wayline-api-v1-workspaces-workspace-id-favorites.json"
+  },
+  {
+    "id": "http-post-wayline-api-v1-workspaces-workspace-id-upload-callback",
+    "name": "上报航线文件上传结果",
+    "protocol": "http",
+    "module": "waypoint-management",
+    "file": "catalog/endpoints/http/http-post-wayline-api-v1-workspaces-workspace-id-upload-callback.json"
+  },
+  {
+    "id": "http-put-map-api-v1-workspaces-workspace-id-elements-id",
+    "name": "更新元素",
+    "protocol": "http",
+    "module": "map-elements",
+    "file": "catalog/endpoints/http/http-put-map-api-v1-workspaces-workspace-id-elements-id.json"
+  },
+  {
+    "id": "jsbridge-djibridge-apigethost",
+    "name": "获取设置的host",
+    "protocol": "jsbridge",
+    "module": "api",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-apigethost.json"
+  },
+  {
+    "id": "jsbridge-djibridge-apigettoken",
+    "name": "apiGetToken",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-apigettoken.json"
+  },
+  {
+    "id": "jsbridge-djibridge-apisettoken",
+    "name": "apiSetToken",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-apisettoken.json"
+  },
+  {
+    "id": "jsbridge-djibridge-livesharegetconfig",
+    "name": "获取直播参数",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-livesharegetconfig.json"
+  },
+  {
+    "id": "jsbridge-djibridge-livesharegetstatus",
+    "name": "获取直播状态",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-livesharegetstatus.json"
+  },
+  {
+    "id": "jsbridge-djibridge-livesharesetconfig",
+    "name": "App端手动发起直播",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-livesharesetconfig.json"
+  },
+  {
+    "id": "jsbridge-djibridge-livesharesetstatuscallback",
+    "name": "直播状态监听",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-livesharesetstatuscallback.json"
+  },
+  {
+    "id": "jsbridge-djibridge-livesharesetvideopublishtype",
+    "name": "设置直播模式",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-livesharesetvideopublishtype.json"
+  },
+  {
+    "id": "jsbridge-djibridge-livesharestartlive",
+    "name": "开启App端手动直播",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-livesharestartlive.json"
+  },
+  {
+    "id": "jsbridge-djibridge-livesharestoplive",
+    "name": "结束App端手动直播",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-livesharestoplive.json"
+  },
+  {
+    "id": "jsbridge-djibridge-mapsetelementprename",
+    "name": "设置新增元素序号前缀",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-mapsetelementprename.json"
+  },
+  {
+    "id": "jsbridge-djibridge-mapsetusername",
+    "name": "设置用户名称",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-mapsetusername.json"
+  },
+  {
+    "id": "jsbridge-djibridge-mediagetautouploadphoto",
+    "name": "获取自动上传照片状态",
+    "protocol": "jsbridge",
+    "module": "media",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-mediagetautouploadphoto.json"
+  },
+  {
+    "id": "jsbridge-djibridge-mediagetautouploadvideo",
+    "name": "获取自动上传视频状态",
+    "protocol": "jsbridge",
+    "module": "media",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-mediagetautouploadvideo.json"
+  },
+  {
+    "id": "jsbridge-djibridge-mediagetdownloadowner",
+    "name": "获取后台自动下载的遥控器编号",
+    "protocol": "jsbridge",
+    "module": "media",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-mediagetdownloadowner.json"
+  },
+  {
+    "id": "jsbridge-djibridge-mediagetuploadphototype",
+    "name": "获取自动上传照片类型",
+    "protocol": "jsbridge",
+    "module": "media",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-mediagetuploadphototype.json"
+  },
+  {
+    "id": "jsbridge-djibridge-mediasetautouploadphoto",
+    "name": "设置自动上传照片状态",
+    "protocol": "jsbridge",
+    "module": "media",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-mediasetautouploadphoto.json"
+  },
+  {
+    "id": "jsbridge-djibridge-mediasetautouploadvideo",
+    "name": "设置自动上传视频状态",
+    "protocol": "jsbridge",
+    "module": "media",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-mediasetautouploadvideo.json"
+  },
+  {
+    "id": "jsbridge-djibridge-mediasetdownloadowner",
+    "name": "设置后台自动下载的遥控器",
+    "protocol": "jsbridge",
+    "module": "media",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-mediasetdownloadowner.json"
+  },
+  {
+    "id": "jsbridge-djibridge-mediasetuploadphototype",
+    "name": "设置自动上传照片类型",
+    "protocol": "jsbridge",
+    "module": "media",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-mediasetuploadphototype.json"
+  },
+  {
+    "id": "jsbridge-djibridge-onbackclick",
+    "name": "onBackClick",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-onbackclick.json"
+  },
+  {
+    "id": "jsbridge-djibridge-onstopplatform",
+    "name": "onStopPlatform",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-onstopplatform.json"
+  },
+  {
+    "id": "jsbridge-djibridge-platformclearlogencryptkey",
+    "name": "platformClearLogEncryptKey",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-platformclearlogencryptkey.json"
+  },
+  {
+    "id": "jsbridge-djibridge-platformgetaircraftsn",
+    "name": "platformGetAircraftSN",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-platformgetaircraftsn.json"
+  },
+  {
+    "id": "jsbridge-djibridge-platformgetlogpath",
+    "name": "platformGetLogPath",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-platformgetlogpath.json"
+  },
+  {
+    "id": "jsbridge-djibridge-platformgetremotecontrollersn",
+    "name": "platformGetRemoteControllerSN",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-platformgetremotecontrollersn.json"
+  },
+  {
+    "id": "jsbridge-djibridge-platformgetversion",
+    "name": "platformGetVersion",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-platformgetversion.json"
+  },
+  {
+    "id": "jsbridge-djibridge-platformisappinstalled",
+    "name": "platformIsAppInstalled",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-platformisappinstalled.json"
+  },
+  {
+    "id": "jsbridge-djibridge-platformiscomponentloaded",
+    "name": "platformIsComponentLoaded",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-platformiscomponentloaded.json"
+  },
+  {
+    "id": "jsbridge-djibridge-platformisverified",
+    "name": "platformIsVerified",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-platformisverified.json"
+  },
+  {
+    "id": "jsbridge-djibridge-platformloadcomponent",
+    "name": "platformLoadComponent",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-platformloadcomponent.json"
+  },
+  {
+    "id": "jsbridge-djibridge-platformsetinformation",
+    "name": "platformSetInformation",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-platformsetinformation.json"
+  },
+  {
+    "id": "jsbridge-djibridge-platformsetlogencryptkey",
+    "name": "platformSetLogEncryptKey",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-platformsetlogencryptkey.json"
+  },
+  {
+    "id": "jsbridge-djibridge-platformsetworkspaceid",
+    "name": "platformSetWorkspaceId",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-platformsetworkspaceid.json"
+  },
+  {
+    "id": "jsbridge-djibridge-platformstopself",
+    "name": "platformStopSelf",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-platformstopself.json"
+  },
+  {
+    "id": "jsbridge-djibridge-platformunloadcomponent",
+    "name": "platformUnloadComponent",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-platformunloadcomponent.json"
+  },
+  {
+    "id": "jsbridge-djibridge-platformverifylicense",
+    "name": "platformVerifyLicense",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-platformverifylicense.json"
+  },
+  {
+    "id": "jsbridge-djibridge-thingconnect",
+    "name": "启动连接",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-thingconnect.json"
+  },
+  {
+    "id": "jsbridge-djibridge-thingdisconnect",
+    "name": "关闭连接",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-thingdisconnect.json"
+  },
+  {
+    "id": "jsbridge-djibridge-thinggetconfigs",
+    "name": "返回设置的参数param",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-thinggetconfigs.json"
+  },
+  {
+    "id": "jsbridge-djibridge-thinggetconnectstate",
+    "name": "获取连接状态",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-thinggetconnectstate.json"
+  },
+  {
+    "id": "jsbridge-djibridge-wsconnect",
+    "name": "重新连接",
+    "protocol": "jsbridge",
+    "module": "ws",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-wsconnect.json"
+  },
+  {
+    "id": "jsbridge-djibridge-wsdisconnect",
+    "name": "断开连接",
+    "protocol": "jsbridge",
+    "module": "ws",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-wsdisconnect.json"
+  },
+  {
+    "id": "jsbridge-djibridge-wsgetconnectstate",
+    "name": "获取连接状态",
+    "protocol": "jsbridge",
+    "module": "ws",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-wsgetconnectstate.json"
+  },
+  {
+    "id": "jsbridge-djibridge-wssend",
+    "name": "发送消息",
+    "protocol": "jsbridge",
+    "module": "ws",
+    "file": "catalog/endpoints/jsbridge/jsbridge-djibridge-wssend.json"
+  },
+  {
+    "id": "jsbridge-open",
+    "name": "open",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-open.json"
+  },
+  {
+    "id": "jsbridge-thing-setconnectcallback",
+    "name": "设置回调函数",
+    "protocol": "jsbridge",
+    "module": "3bc15c8aae3e",
+    "file": "catalog/endpoints/jsbridge/jsbridge-thing-setconnectcallback.json"
+  },
+  {
+    "id": "mqtt-air-conditioner-mode-switch",
+    "name": "机场空调工作模式切换",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-air-conditioner-mode-switch.json"
+  },
+  {
+    "id": "mqtt-airport-bind-status",
+    "name": "获取设备绑定信息",
+    "protocol": "mqtt",
+    "module": "organization",
+    "file": "catalog/endpoints/mqtt/mqtt-airport-bind-status.json"
+  },
+  {
+    "id": "mqtt-airport-organization-bind",
+    "name": "设备绑定到组织",
+    "protocol": "mqtt",
+    "module": "organization",
+    "file": "catalog/endpoints/mqtt/mqtt-airport-organization-bind.json"
+  },
+  {
+    "id": "mqtt-airport-organization-get",
+    "name": "查询设备绑定对应的组织信息",
+    "protocol": "mqtt",
+    "module": "organization",
+    "file": "catalog/endpoints/mqtt/mqtt-airport-organization-get.json"
+  },
+  {
+    "id": "mqtt-airsense-warning",
+    "name": "Airsense 告警通知",
+    "protocol": "mqtt",
+    "module": "airsense",
+    "file": "catalog/endpoints/mqtt/mqtt-airsense-warning.json"
+  },
+  {
+    "id": "mqtt-alarm-state-switch",
+    "name": "机场声光报警开关",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-alarm-state-switch.json"
+  },
+  {
+    "id": "mqtt-battery-maintenance-switch",
+    "name": "电池保养状态切换",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-battery-maintenance-switch.json"
+  },
+  {
+    "id": "mqtt-battery-store-mode-switch",
+    "name": "电池运行模式切换",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-battery-store-mode-switch.json"
+  },
+  {
+    "id": "mqtt-camera-aim",
+    "name": "负载控制—双击成为 AIM",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-aim.json"
+  },
+  {
+    "id": "mqtt-camera-exposure-mode-set",
+    "name": "负载控制—相机曝光模式设置",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-exposure-mode-set.json"
+  },
+  {
+    "id": "mqtt-camera-exposure-set",
+    "name": "负载控制—相机曝光值调节",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-exposure-set.json"
+  },
+  {
+    "id": "mqtt-camera-focal-length-set",
+    "name": "负载控制—变焦",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-focal-length-set.json"
+  },
+  {
+    "id": "mqtt-camera-focus-mode-set",
+    "name": "负载控制—相机对焦模式设置",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-focus-mode-set.json"
+  },
+  {
+    "id": "mqtt-camera-focus-value-set",
+    "name": "负载控制—相机对焦值设置",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-focus-value-set.json"
+  },
+  {
+    "id": "mqtt-camera-frame-zoom",
+    "name": "负载控制-框选变焦",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-frame-zoom.json"
+  },
+  {
+    "id": "mqtt-camera-look-at",
+    "name": "负载控制—Look At",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-look-at.json"
+  },
+  {
+    "id": "mqtt-camera-mode-switch",
+    "name": "负载控制—切换相机模式",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-mode-switch.json"
+  },
+  {
+    "id": "mqtt-camera-photo-stop",
+    "name": "负载控制—停止拍照",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-photo-stop.json"
+  },
+  {
+    "id": "mqtt-camera-photo-take",
+    "name": "负载控制—开始拍照",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-photo-take.json"
+  },
+  {
+    "id": "mqtt-camera-photo-take-progress",
+    "name": "上报拍照进度",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-photo-take-progress.json"
+  },
+  {
+    "id": "mqtt-camera-point-focus-action",
+    "name": "负载控制—点对焦",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-point-focus-action.json"
+  },
+  {
+    "id": "mqtt-camera-recording-start",
+    "name": "负载控制—开始录像",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-recording-start.json"
+  },
+  {
+    "id": "mqtt-camera-recording-stop",
+    "name": "负载控制—停止录像",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-recording-stop.json"
+  },
+  {
+    "id": "mqtt-camera-screen-drag",
+    "name": "负载控制—画面拖动控制",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-screen-drag.json"
+  },
+  {
+    "id": "mqtt-camera-screen-split",
+    "name": "负载控制—分屏",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-camera-screen-split.json"
+  },
+  {
+    "id": "mqtt-charge-close",
+    "name": "关闭充电进度",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-charge-close.json"
+  },
+  {
+    "id": "mqtt-charge-open",
+    "name": "打开充电进度",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-charge-open.json"
+  },
+  {
+    "id": "mqtt-cloud-control-auth-notify",
+    "name": "请求授权结果通知",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-cloud-control-auth-notify.json"
+  },
+  {
+    "id": "mqtt-cloud-control-auth-request",
+    "name": "请求授权云端控制",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-cloud-control-auth-request.json"
+  },
+  {
+    "id": "mqtt-cloud-control-release",
+    "name": "释放云端控制",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-cloud-control-release.json"
+  },
+  {
+    "id": "mqtt-config",
+    "name": "获取配置",
+    "protocol": "mqtt",
+    "module": "config",
+    "file": "catalog/endpoints/mqtt/mqtt-config.json"
+  },
+  {
+    "id": "mqtt-cover-close",
+    "name": "关闭舱盖进度",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-cover-close.json"
+  },
+  {
+    "id": "mqtt-cover-force-close",
+    "name": "强制关舱盖进度",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-cover-force-close.json"
+  },
+  {
+    "id": "mqtt-cover-open",
+    "name": "打开舱盖进度",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-cover-open.json"
+  },
+  {
+    "id": "mqtt-custom-data-transmission-from-esdk",
+    "name": "自定义消息推送cloud",
+    "protocol": "mqtt",
+    "module": "esdk-transmit-custom-data",
+    "file": "catalog/endpoints/mqtt/mqtt-custom-data-transmission-from-esdk.json"
+  },
+  {
+    "id": "mqtt-custom-data-transmission-from-psdk",
+    "name": "自定义消息推送 Cloud",
+    "protocol": "mqtt",
+    "module": "psdk-transmit-custom-data",
+    "file": "catalog/endpoints/mqtt/mqtt-custom-data-transmission-from-psdk.json"
+  },
+  {
+    "id": "mqtt-custom-data-transmission-to-esdk",
+    "name": "cloud-自定义消息推送到esdk",
+    "protocol": "mqtt",
+    "module": "esdk-transmit-custom-data",
+    "file": "catalog/endpoints/mqtt/mqtt-custom-data-transmission-to-esdk.json"
+  },
+  {
+    "id": "mqtt-custom-data-transmission-to-psdk",
+    "name": "Cloud - 自定义消息推送到 PSDK",
+    "protocol": "mqtt",
+    "module": "psdk-transmit-custom-data",
+    "file": "catalog/endpoints/mqtt/mqtt-custom-data-transmission-to-psdk.json"
+  },
+  {
+    "id": "mqtt-debug-mode-close",
+    "name": "调试模式关闭",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-debug-mode-close.json"
+  },
+  {
+    "id": "mqtt-debug-mode-open",
+    "name": "调试模式开启",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-debug-mode-open.json"
+  },
+  {
+    "id": "mqtt-delay-info-push",
+    "name": "DRC-图传链路延时信息上报",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-delay-info-push.json"
+  },
+  {
+    "id": "mqtt-device-exit-homing-notify",
+    "name": "设备返航退出状态通知",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-device-exit-homing-notify.json"
+  },
+  {
+    "id": "mqtt-device-format",
+    "name": "机场数据格式化进度",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-device-format.json"
+  },
+  {
+    "id": "mqtt-device-reboot",
+    "name": "机场重启进度",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-device-reboot.json"
+  },
+  {
+    "id": "mqtt-drc-camera-aperture-value-set",
+    "name": "负载控制—相机光圈",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-camera-aperture-value-set.json"
+  },
+  {
+    "id": "mqtt-drc-camera-dewarping-set",
+    "name": "负载控制—镜头去畸变",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-camera-dewarping-set.json"
+  },
+  {
+    "id": "mqtt-drc-camera-iso-set",
+    "name": "负载控制—ISO设置",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-camera-iso-set.json"
+  },
+  {
+    "id": "mqtt-drc-camera-mechanical-shutter-set",
+    "name": "负载控制—机械快门",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-camera-mechanical-shutter-set.json"
+  },
+  {
+    "id": "mqtt-drc-camera-osd-info-push",
+    "name": "摄像头osd 推送",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-camera-osd-info-push.json"
+  },
+  {
+    "id": "mqtt-drc-camera-photo-info-push",
+    "name": "拍照信息上报",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-camera-photo-info-push.json"
+  },
+  {
+    "id": "mqtt-drc-camera-shutter-set",
+    "name": "负载控制—相机快门",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-camera-shutter-set.json"
+  },
+  {
+    "id": "mqtt-drc-camera-state-push",
+    "name": "相机状态上报",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-camera-state-push.json"
+  },
+  {
+    "id": "mqtt-drc-drone-state-push",
+    "name": "飞行器状态信息上报",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-drone-state-push.json"
+  },
+  {
+    "id": "mqtt-drc-emergency-landing",
+    "name": "紧急降落",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-emergency-landing.json"
+  },
+  {
+    "id": "mqtt-drc-force-landing",
+    "name": "强制降落",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-force-landing.json"
+  },
+  {
+    "id": "mqtt-drc-initial-state-subscribe",
+    "name": "drc初始状态订阅",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-initial-state-subscribe.json"
+  },
+  {
+    "id": "mqtt-drc-interval-photo-set",
+    "name": "负载控制—设置定时拍",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-interval-photo-set.json"
+  },
+  {
+    "id": "mqtt-drc-linkage-zoom-set",
+    "name": "负载控制—红外联动变焦",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-linkage-zoom-set.json"
+  },
+  {
+    "id": "mqtt-drc-mode-enter",
+    "name": "进入指令控制模式",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-mode-enter.json"
+  },
+  {
+    "id": "mqtt-drc-mode-exit",
+    "name": "退出指令飞行控制模式",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-mode-exit.json"
+  },
+  {
+    "id": "mqtt-drc-night-lights-state-set",
+    "name": "夜航灯设置",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-night-lights-state-set.json"
+  },
+  {
+    "id": "mqtt-drc-photo-storage-set",
+    "name": "负载控制—照片存储设置",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-photo-storage-set.json"
+  },
+  {
+    "id": "mqtt-drc-status-notify",
+    "name": "DRC 链路状态通知",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-status-notify.json"
+  },
+  {
+    "id": "mqtt-drc-stealth-state-set",
+    "name": "飞行控制—隐蔽模式",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-stealth-state-set.json"
+  },
+  {
+    "id": "mqtt-drc-video-resolution-set",
+    "name": "负载控制—视频分辨率设置",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-video-resolution-set.json"
+  },
+  {
+    "id": "mqtt-drc-video-storage-set",
+    "name": "负载控制—视频存储设置",
+    "protocol": "mqtt",
+    "module": "remote-control",
+    "file": "catalog/endpoints/mqtt/mqtt-drc-video-storage-set.json"
+  },
+  {
+    "id": "mqtt-drone-close",
+    "name": "飞行器关机进度",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-drone-close.json"
+  },
+  {
+    "id": "mqtt-drone-control",
+    "name": "DRC-飞行控制",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-drone-control.json"
+  },
+  {
+    "id": "mqtt-drone-emergency-stop",
+    "name": "DRC-飞行器急停",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-drone-emergency-stop.json"
+  },
+  {
+    "id": "mqtt-drone-format",
+    "name": "飞行器数据格式化进度",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-drone-format.json"
+  },
+  {
+    "id": "mqtt-drone-open",
+    "name": "飞行器开机进度",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-drone-open.json"
+  },
+  {
+    "id": "mqtt-esim-activate",
+    "name": "eSIM 激活进度",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-esim-activate.json"
+  },
+  {
+    "id": "mqtt-esim-operator-switch",
+    "name": "eSIM 的运营商切换进度",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-esim-operator-switch.json"
+  },
+  {
+    "id": "mqtt-file-upload-callback",
+    "name": "媒体文件上传结果上报",
+    "protocol": "mqtt",
+    "module": "file",
+    "file": "catalog/endpoints/mqtt/mqtt-file-upload-callback.json"
+  },
+  {
+    "id": "mqtt-fileupload-list",
+    "name": "获取设备可上传的文件列表",
+    "protocol": "mqtt",
+    "module": "log",
+    "file": "catalog/endpoints/mqtt/mqtt-fileupload-list.json"
+  },
+  {
+    "id": "mqtt-fileupload-progress",
+    "name": "文件上传进度通知",
+    "protocol": "mqtt",
+    "module": "log",
+    "file": "catalog/endpoints/mqtt/mqtt-fileupload-progress.json"
+  },
+  {
+    "id": "mqtt-fileupload-start",
+    "name": "发起日志文件上传",
+    "protocol": "mqtt",
+    "module": "log",
+    "file": "catalog/endpoints/mqtt/mqtt-fileupload-start.json"
+  },
+  {
+    "id": "mqtt-fileupload-update",
+    "name": "上传状态更新",
+    "protocol": "mqtt",
+    "module": "log",
+    "file": "catalog/endpoints/mqtt/mqtt-fileupload-update.json"
+  },
+  {
+    "id": "mqtt-flight-areas-drone-location",
+    "name": "自定义飞行区告警信息推送",
+    "protocol": "mqtt",
+    "module": "custom-flight-area",
+    "file": "catalog/endpoints/mqtt/mqtt-flight-areas-drone-location.json"
+  },
+  {
+    "id": "mqtt-flight-areas-get",
+    "name": "自定义飞行区文件获取",
+    "protocol": "mqtt",
+    "module": "custom-flight-area",
+    "file": "catalog/endpoints/mqtt/mqtt-flight-areas-get.json"
+  },
+  {
+    "id": "mqtt-flight-areas-sync-progress",
+    "name": "自定义飞行区文件同步状态",
+    "protocol": "mqtt",
+    "module": "custom-flight-area",
+    "file": "catalog/endpoints/mqtt/mqtt-flight-areas-sync-progress.json"
+  },
+  {
+    "id": "mqtt-flight-areas-update",
+    "name": "自定义飞行区更新指令",
+    "protocol": "mqtt",
+    "module": "custom-flight-area",
+    "file": "catalog/endpoints/mqtt/mqtt-flight-areas-update.json"
+  },
+  {
+    "id": "mqtt-flight-authority-grab",
+    "name": "飞行控制权抢夺",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-flight-authority-grab.json"
+  },
+  {
+    "id": "mqtt-flight-setup-abort",
+    "name": "取消准备中的任务",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-flight-setup-abort.json"
+  },
+  {
+    "id": "mqtt-flight-setup-exception-notify",
+    "name": "机场任务准备异常通知",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-flight-setup-exception-notify.json"
+  },
+  {
+    "id": "mqtt-flighttask-create",
+    "name": "创建航线任务（废弃）",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-flighttask-create.json"
+  },
+  {
+    "id": "mqtt-flighttask-execute",
+    "name": "执行任务",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-flighttask-execute.json"
+  },
+  {
+    "id": "mqtt-flighttask-pause",
+    "name": "航线暂停",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-flighttask-pause.json"
+  },
+  {
+    "id": "mqtt-flighttask-prepare",
+    "name": "下发任务",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-flighttask-prepare.json"
+  },
+  {
+    "id": "mqtt-flighttask-progress",
+    "name": "上报航线任务进度",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-flighttask-progress.json"
+  },
+  {
+    "id": "mqtt-flighttask-progress-get",
+    "name": "机场任务状态获取",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-flighttask-progress-get.json"
+  },
+  {
+    "id": "mqtt-flighttask-ready",
+    "name": "任务就绪通知",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-flighttask-ready.json"
+  },
+  {
+    "id": "mqtt-flighttask-recovery",
+    "name": "航线恢复",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-flighttask-recovery.json"
+  },
+  {
+    "id": "mqtt-flighttask-resource-get",
+    "name": "任务资源获取",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-flighttask-resource-get.json"
+  },
+  {
+    "id": "mqtt-flighttask-stop",
+    "name": "任务终止",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-flighttask-stop.json"
+  },
+  {
+    "id": "mqtt-flighttask-undo",
+    "name": "取消任务",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-flighttask-undo.json"
+  },
+  {
+    "id": "mqtt-fly-to-point",
+    "name": "flyto 飞向目标点",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-fly-to-point.json"
+  },
+  {
+    "id": "mqtt-fly-to-point-progress",
+    "name": "flyto 执行结果事件通知",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-fly-to-point-progress.json"
+  },
+  {
+    "id": "mqtt-fly-to-point-stop",
+    "name": "结束 flyto 飞向目标点任务",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-fly-to-point-stop.json"
+  },
+  {
+    "id": "mqtt-fly-to-point-update",
+    "name": "更新 flyto 目标点",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-fly-to-point-update.json"
+  },
+  {
+    "id": "mqtt-gimbal-reset",
+    "name": "负载控制—重置云台",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-gimbal-reset.json"
+  },
+  {
+    "id": "mqtt-heart-beat",
+    "name": "DRC-心跳",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-heart-beat.json"
+  },
+  {
+    "id": "mqtt-highest-priority-upload-flighttask-media",
+    "name": "媒体文件上传优先级上报",
+    "protocol": "mqtt",
+    "module": "file",
+    "file": "catalog/endpoints/mqtt/mqtt-highest-priority-upload-flighttask-media.json"
+  },
+  {
+    "id": "mqtt-hms",
+    "name": "健康告警",
+    "protocol": "mqtt",
+    "module": "hms",
+    "file": "catalog/endpoints/mqtt/mqtt-hms.json"
+  },
+  {
+    "id": "mqtt-hsi-info-push",
+    "name": "DRC-避障信息上报",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-hsi-info-push.json"
+  },
+  {
+    "id": "mqtt-ir-metering-area-set",
+    "name": "负载控制—红外测温区域设置",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-ir-metering-area-set.json"
+  },
+  {
+    "id": "mqtt-ir-metering-mode-set",
+    "name": "负载控制—红外测温模式设置",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-ir-metering-mode-set.json"
+  },
+  {
+    "id": "mqtt-ir-metering-point-set",
+    "name": "负载控制—红外测温点设置",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-ir-metering-point-set.json"
+  },
+  {
+    "id": "mqtt-joystick-invalid-notify",
+    "name": "Joystick 控制无效原因通知",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-joystick-invalid-notify.json"
+  },
+  {
+    "id": "mqtt-live-camera-change",
+    "name": "直播相机切换",
+    "protocol": "mqtt",
+    "module": "live",
+    "file": "catalog/endpoints/mqtt/mqtt-live-camera-change.json"
+  },
+  {
+    "id": "mqtt-live-lens-change",
+    "name": "设置直播镜头",
+    "protocol": "mqtt",
+    "module": "live",
+    "file": "catalog/endpoints/mqtt/mqtt-live-lens-change.json"
+  },
+  {
+    "id": "mqtt-live-set-quality",
+    "name": "设置直播清晰度",
+    "protocol": "mqtt",
+    "module": "live",
+    "file": "catalog/endpoints/mqtt/mqtt-live-set-quality.json"
+  },
+  {
+    "id": "mqtt-live-start-push",
+    "name": "开始直播",
+    "protocol": "mqtt",
+    "module": "live",
+    "file": "catalog/endpoints/mqtt/mqtt-live-start-push.json"
+  },
+  {
+    "id": "mqtt-live-stop-push",
+    "name": "停止直播",
+    "protocol": "mqtt",
+    "module": "live",
+    "file": "catalog/endpoints/mqtt/mqtt-live-stop-push.json"
+  },
+  {
+    "id": "mqtt-osd-info-push",
+    "name": "DRC-高频 osd 信息上报",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-osd-info-push.json"
+  },
+  {
+    "id": "mqtt-ota-create",
+    "name": "固件升级",
+    "protocol": "mqtt",
+    "module": "firmware",
+    "file": "catalog/endpoints/mqtt/mqtt-ota-create.json"
+  },
+  {
+    "id": "mqtt-ota-progress",
+    "name": "固件升级进度",
+    "protocol": "mqtt",
+    "module": "firmware",
+    "file": "catalog/endpoints/mqtt/mqtt-ota-progress.json"
+  },
+  {
+    "id": "mqtt-payload-authority-grab",
+    "name": "负载控制权抢夺",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-payload-authority-grab.json"
+  },
+  {
+    "id": "mqtt-photo-storage-set",
+    "name": "负载控制—照片存储设置",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-photo-storage-set.json"
+  },
+  {
+    "id": "mqtt-poi-circle-speed-set",
+    "name": "飞行控制—POI 环绕速度设置",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-poi-circle-speed-set.json"
+  },
+  {
+    "id": "mqtt-poi-mode-enter",
+    "name": "飞行控制—进入 POI 环绕模式",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-poi-mode-enter.json"
+  },
+  {
+    "id": "mqtt-poi-mode-exit",
+    "name": "飞行控制—退出 POI 环绕模式",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-poi-mode-exit.json"
+  },
+  {
+    "id": "mqtt-poi-status-notify",
+    "name": "飞行控制—POI 环绕状态信息通知",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-poi-status-notify.json"
+  },
+  {
+    "id": "mqtt-property-4g-freq-band",
+    "name": "»4g_freq_band",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-4g-freq-band.json"
+  },
+  {
+    "id": "mqtt-property-4g-gnd-quality",
+    "name": "»4g_gnd_quality",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-4g-gnd-quality.json"
+  },
+  {
+    "id": "mqtt-property-4g-link-state",
+    "name": "»4g_link_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-4g-link-state.json"
+  },
+  {
+    "id": "mqtt-property-4g-quality",
+    "name": "»4g_quality",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-4g-quality.json"
+  },
+  {
+    "id": "mqtt-property-4g-uav-quality",
+    "name": "»4g_uav_quality",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-4g-uav-quality.json"
+  },
+  {
+    "id": "mqtt-property-acc-time",
+    "name": "acc_time",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-acc-time.json"
+  },
+  {
+    "id": "mqtt-property-activation-time",
+    "name": "activation_time",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-activation-time.json"
+  },
+  {
+    "id": "mqtt-property-air-conditioner",
+    "name": "air_conditioner",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-air-conditioner.json"
+  },
+  {
+    "id": "mqtt-property-air-conditioner-state",
+    "name": "»air_conditioner_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-air-conditioner-state.json"
+  },
+  {
+    "id": "mqtt-property-air-transfer-enable",
+    "name": "air_transfer_enable",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-air-transfer-enable.json"
+  },
+  {
+    "id": "mqtt-property-alarm-state",
+    "name": "alarm_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-alarm-state.json"
+  },
+  {
+    "id": "mqtt-property-alternate-land-point",
+    "name": "alternate_land_point",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-alternate-land-point.json"
+  },
+  {
+    "id": "mqtt-property-attitude-head",
+    "name": "attitude_head",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-attitude-head.json"
+  },
+  {
+    "id": "mqtt-property-attitude-pitch",
+    "name": "attitude_pitch",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-attitude-pitch.json"
+  },
+  {
+    "id": "mqtt-property-attitude-roll",
+    "name": "attitude_roll",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-attitude-roll.json"
+  },
+  {
+    "id": "mqtt-property-available-video-number",
+    "name": "»available_video_number",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-available-video-number.json"
+  },
+  {
+    "id": "mqtt-property-aver-temperature",
+    "name": "»»aver_temperature",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-aver-temperature.json"
+  },
+  {
+    "id": "mqtt-property-backup-battery",
+    "name": "backup_battery",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-backup-battery.json"
+  },
+  {
+    "id": "mqtt-property-batteries",
+    "name": "»batteries",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-batteries.json"
+  },
+  {
+    "id": "mqtt-property-battery",
+    "name": "battery",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-battery.json"
+  },
+  {
+    "id": "mqtt-property-battery-store-mode",
+    "name": "battery_store_mode",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-battery-store-mode.json"
+  },
+  {
+    "id": "mqtt-property-best-link-gateway",
+    "name": "best_link_gateway",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-best-link-gateway.json"
+  },
+  {
+    "id": "mqtt-property-bottom",
+    "name": "»»bottom",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-bottom.json"
+  },
+  {
+    "id": "mqtt-property-camera-index",
+    "name": "»»»camera_index",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-camera-index.json"
+  },
+  {
+    "id": "mqtt-property-camera-list",
+    "name": "»»camera_list",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-camera-list.json"
+  },
+  {
+    "id": "mqtt-property-camera-mode",
+    "name": "»camera_mode",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-camera-mode.json"
+  },
+  {
+    "id": "mqtt-property-camera-watermark-settings",
+    "name": "camera_watermark_settings",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-camera-watermark-settings.json"
+  },
+  {
+    "id": "mqtt-property-cameras",
+    "name": "cameras",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-cameras.json"
+  },
+  {
+    "id": "mqtt-property-capacity-percent",
+    "name": "»capacity_percent",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-capacity-percent.json"
+  },
+  {
+    "id": "mqtt-property-center-node",
+    "name": "»center_node",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-center-node.json"
+  },
+  {
+    "id": "mqtt-property-coexist-video-number-max",
+    "name": "»coexist_video_number_max",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-coexist-video-number-max.json"
+  },
+  {
+    "id": "mqtt-property-commander-flight-height",
+    "name": "commander_flight_height",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-commander-flight-height.json"
+  },
+  {
+    "id": "mqtt-property-commander-flight-mode",
+    "name": "commander_flight_mode",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-commander-flight-mode.json"
+  },
+  {
+    "id": "mqtt-property-commander-mode-lost-action",
+    "name": "commander_mode_lost_action",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-commander-mode-lost-action.json"
+  },
+  {
+    "id": "mqtt-property-compatible-status",
+    "name": "compatible_status",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-compatible-status.json"
+  },
+  {
+    "id": "mqtt-property-control-source",
+    "name": "control_source",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-control-source.json"
+  },
+  {
+    "id": "mqtt-property-control-source-index",
+    "name": "»»control_source_index",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-control-source-index.json"
+  },
+  {
+    "id": "mqtt-property-country",
+    "name": "country",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-country.json"
+  },
+  {
+    "id": "mqtt-property-cover-state",
+    "name": "cover_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-cover-state.json"
+  },
+  {
+    "id": "mqtt-property-current-commander-flight-mode",
+    "name": "current_commander_flight_mode",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-current-commander-flight-mode.json"
+  },
+  {
+    "id": "mqtt-property-current-rth-mode",
+    "name": "current_rth_mode",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-current-rth-mode.json"
+  },
+  {
+    "id": "mqtt-property-data",
+    "name": "data",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-data.json"
+  },
+  {
+    "id": "mqtt-property-datetime-enable",
+    "name": "»datetime_enable",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-datetime-enable.json"
+  },
+  {
+    "id": "mqtt-property-device-list",
+    "name": "»device_list",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-device-list.json"
+  },
+  {
+    "id": "mqtt-property-device-model-key",
+    "name": "»device_model_key",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-device-model-key.json"
+  },
+  {
+    "id": "mqtt-property-device-online-status",
+    "name": "»device_online_status",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-device-online-status.json"
+  },
+  {
+    "id": "mqtt-property-device-paired",
+    "name": "»device_paired",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-device-paired.json"
+  },
+  {
+    "id": "mqtt-property-device-sn",
+    "name": "»device_sn",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-device-sn.json"
+  },
+  {
+    "id": "mqtt-property-distance-limit",
+    "name": "»distance_limit",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-distance-limit.json"
+  },
+  {
+    "id": "mqtt-property-distance-limit-status",
+    "name": "distance_limit_status",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-distance-limit-status.json"
+  },
+  {
+    "id": "mqtt-property-dongle-infos",
+    "name": "dongle_infos",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-dongle-infos.json"
+  },
+  {
+    "id": "mqtt-property-dongle-number",
+    "name": "»dongle_number",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-dongle-number.json"
+  },
+  {
+    "id": "mqtt-property-dongle-type",
+    "name": "»dongle_type",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-dongle-type.json"
+  },
+  {
+    "id": "mqtt-property-downside",
+    "name": "»downside",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-downside.json"
+  },
+  {
+    "id": "mqtt-property-drc-state",
+    "name": "drc_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-drc-state.json"
+  },
+  {
+    "id": "mqtt-property-drone-authority-info",
+    "name": "drone_authority_info",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-drone-authority-info.json"
+  },
+  {
+    "id": "mqtt-property-drone-battery-maintenance-info",
+    "name": "drone_battery_maintenance_info",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-drone-battery-maintenance-info.json"
+  },
+  {
+    "id": "mqtt-property-drone-charge-state",
+    "name": "drone_charge_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-drone-charge-state.json"
+  },
+  {
+    "id": "mqtt-property-drone-in-dock",
+    "name": "drone_in_dock",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-drone-in-dock.json"
+  },
+  {
+    "id": "mqtt-property-drone-sn-enable",
+    "name": "»drone_sn_enable",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-drone-sn-enable.json"
+  },
+  {
+    "id": "mqtt-property-drone-type-enable",
+    "name": "»drone_type_enable",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-drone-type-enable.json"
+  },
+  {
+    "id": "mqtt-property-eid",
+    "name": "»eid",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-eid.json"
+  },
+  {
+    "id": "mqtt-property-electric-supply-voltage",
+    "name": "electric_supply_voltage",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-electric-supply-voltage.json"
+  },
+  {
+    "id": "mqtt-property-elevation",
+    "name": "elevation",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-elevation.json"
+  },
+  {
+    "id": "mqtt-property-emergency-stop-state",
+    "name": "emergency_stop_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-emergency-stop-state.json"
+  },
+  {
+    "id": "mqtt-property-enabled",
+    "name": "»»enabled",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-enabled.json"
+  },
+  {
+    "id": "mqtt-property-environment-temperature",
+    "name": "environment_temperature",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-environment-temperature.json"
+  },
+  {
+    "id": "mqtt-property-error-status",
+    "name": "»error_status",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-error-status.json"
+  },
+  {
+    "id": "mqtt-property-esim-activate-state",
+    "name": "»esim_activate_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-esim-activate-state.json"
+  },
+  {
+    "id": "mqtt-property-esim-infos",
+    "name": "»esim_infos",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-esim-infos.json"
+  },
+  {
+    "id": "mqtt-property-exit-wayline-when-rc-lost",
+    "name": "exit_wayline_when_rc_lost",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-exit-wayline-when-rc-lost.json"
+  },
+  {
+    "id": "mqtt-property-firmware-upgrade-status",
+    "name": "firmware_upgrade_status",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-firmware-upgrade-status.json"
+  },
+  {
+    "id": "mqtt-property-firmware-version",
+    "name": "»»firmware_version",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-firmware-version.json"
+  },
+  {
+    "id": "mqtt-property-first-power-on",
+    "name": "first_power_on",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-first-power-on.json"
+  },
+  {
+    "id": "mqtt-property-flighttask-step-code",
+    "name": "flighttask_step_code",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-flighttask-step-code.json"
+  },
+  {
+    "id": "mqtt-property-flysafe-database-version",
+    "name": "flysafe_database_version",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-flysafe-database-version.json"
+  },
+  {
+    "id": "mqtt-property-gear",
+    "name": "gear",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-gear.json"
+  },
+  {
+    "id": "mqtt-property-gimbal-pitch",
+    "name": "»gimbal_pitch",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-gimbal-pitch.json"
+  },
+  {
+    "id": "mqtt-property-gimbal-roll",
+    "name": "»gimbal_roll",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-gimbal-roll.json"
+  },
+  {
+    "id": "mqtt-property-gimbal-yaw",
+    "name": "»gimbal_yaw",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-gimbal-yaw.json"
+  },
+  {
+    "id": "mqtt-property-global-enable",
+    "name": "»global_enable",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-global-enable.json"
+  },
+  {
+    "id": "mqtt-property-gps-enable",
+    "name": "»gps_enable",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-gps-enable.json"
+  },
+  {
+    "id": "mqtt-property-gps-number",
+    "name": "»gps_number",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-gps-number.json"
+  },
+  {
+    "id": "mqtt-property-heading",
+    "name": "heading",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-heading.json"
+  },
+  {
+    "id": "mqtt-property-heat-state",
+    "name": "»heat_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-heat-state.json"
+  },
+  {
+    "id": "mqtt-property-height",
+    "name": "»»height",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-height.json"
+  },
+  {
+    "id": "mqtt-property-height-limit",
+    "name": "height_limit",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-height-limit.json"
+  },
+  {
+    "id": "mqtt-property-high-voltage-storage-days",
+    "name": "»»high_voltage_storage_days",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-high-voltage-storage-days.json"
+  },
+  {
+    "id": "mqtt-property-home-distance",
+    "name": "home_distance",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-home-distance.json"
+  },
+  {
+    "id": "mqtt-property-home-latitude",
+    "name": "home_latitude",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-home-latitude.json"
+  },
+  {
+    "id": "mqtt-property-home-longitude",
+    "name": "home_longitude",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-home-longitude.json"
+  },
+  {
+    "id": "mqtt-property-home-position-is-valid",
+    "name": "home_position_is_valid",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-home-position-is-valid.json"
+  },
+  {
+    "id": "mqtt-property-horizon",
+    "name": "»horizon",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-horizon.json"
+  },
+  {
+    "id": "mqtt-property-horizontal-speed",
+    "name": "horizontal_speed",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-horizontal-speed.json"
+  },
+  {
+    "id": "mqtt-property-host",
+    "name": "»host",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-host.json"
+  },
+  {
+    "id": "mqtt-property-humidity",
+    "name": "humidity",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-humidity.json"
+  },
+  {
+    "id": "mqtt-property-iccid",
+    "name": "»»iccid",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-iccid.json"
+  },
+  {
+    "id": "mqtt-property-imei",
+    "name": "»imei",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-imei.json"
+  },
+  {
+    "id": "mqtt-property-index",
+    "name": "»»index",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-index.json"
+  },
+  {
+    "id": "mqtt-property-ir-metering-area",
+    "name": "»ir_metering_area",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-ir-metering-area.json"
+  },
+  {
+    "id": "mqtt-property-ir-metering-mode",
+    "name": "»ir_metering_mode",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-ir-metering-mode.json"
+  },
+  {
+    "id": "mqtt-property-ir-metering-point",
+    "name": "»ir_metering_point",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-ir-metering-point.json"
+  },
+  {
+    "id": "mqtt-property-ir-zoom-factor",
+    "name": "»ir_zoom_factor",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-ir-zoom-factor.json"
+  },
+  {
+    "id": "mqtt-property-is-calibration",
+    "name": "»is_calibration",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-is-calibration.json"
+  },
+  {
+    "id": "mqtt-property-is-configured",
+    "name": "»is_configured",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-is-configured.json"
+  },
+  {
+    "id": "mqtt-property-is-fixed",
+    "name": "»is_fixed",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-is-fixed.json"
+  },
+  {
+    "id": "mqtt-property-is-near-area-limit",
+    "name": "is_near_area_limit",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-is-near-area-limit.json"
+  },
+  {
+    "id": "mqtt-property-is-near-distance-limit",
+    "name": "»is_near_distance_limit",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-is-near-distance-limit.json"
+  },
+  {
+    "id": "mqtt-property-is-near-height-limit",
+    "name": "is_near_height_limit",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-is-near-height-limit.json"
+  },
+  {
+    "id": "mqtt-property-job-number",
+    "name": "job_number",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-job-number.json"
+  },
+  {
+    "id": "mqtt-property-landing-power",
+    "name": "»landing_power",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-landing-power.json"
+  },
+  {
+    "id": "mqtt-property-last-maintain-flight-sorties",
+    "name": "»»last_maintain_flight_sorties",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-last-maintain-flight-sorties.json"
+  },
+  {
+    "id": "mqtt-property-last-maintain-flight-time",
+    "name": "»»last_maintain_flight_time",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-last-maintain-flight-time.json"
+  },
+  {
+    "id": "mqtt-property-last-maintain-time",
+    "name": "»»last_maintain_time",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-last-maintain-time.json"
+  },
+  {
+    "id": "mqtt-property-last-maintain-type",
+    "name": "»»last_maintain_type",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-last-maintain-type.json"
+  },
+  {
+    "id": "mqtt-property-last-maintain-work-sorties",
+    "name": "»»last_maintain_work_sorties",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-last-maintain-work-sorties.json"
+  },
+  {
+    "id": "mqtt-property-latitude",
+    "name": "latitude",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-latitude.json"
+  },
+  {
+    "id": "mqtt-property-layout",
+    "name": "»layout",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-layout.json"
+  },
+  {
+    "id": "mqtt-property-leaf-nodes",
+    "name": "»leaf_nodes",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-leaf-nodes.json"
+  },
+  {
+    "id": "mqtt-property-left",
+    "name": "»»left",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-left.json"
+  },
+  {
+    "id": "mqtt-property-link-workmode",
+    "name": "»link_workmode",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-link-workmode.json"
+  },
+  {
+    "id": "mqtt-property-live-capacity",
+    "name": "live_capacity",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-live-capacity.json"
+  },
+  {
+    "id": "mqtt-property-live-status",
+    "name": "live_status",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-live-status.json"
+  },
+  {
+    "id": "mqtt-property-liveview-world-region",
+    "name": "»liveview_world_region",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-liveview-world-region.json"
+  },
+  {
+    "id": "mqtt-property-locked",
+    "name": "»locked",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-locked.json"
+  },
+  {
+    "id": "mqtt-property-longitude",
+    "name": "longitude",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-longitude.json"
+  },
+  {
+    "id": "mqtt-property-loop-times",
+    "name": "»»loop_times",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-loop-times.json"
+  },
+  {
+    "id": "mqtt-property-low-battery-warning-threshold",
+    "name": "low_battery_warning_threshold",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-low-battery-warning-threshold.json"
+  },
+  {
+    "id": "mqtt-property-maintain-status",
+    "name": "maintain_status",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-maintain-status.json"
+  },
+  {
+    "id": "mqtt-property-maintain-status-array",
+    "name": "»maintain_status_array",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-maintain-status-array.json"
+  },
+  {
+    "id": "mqtt-property-maintenance-state",
+    "name": "»maintenance_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-maintenance-state.json"
+  },
+  {
+    "id": "mqtt-property-maintenance-time-left",
+    "name": "»maintenance_time_left",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-maintenance-time-left.json"
+  },
+  {
+    "id": "mqtt-property-max-temperature-point",
+    "name": "»»max_temperature_point",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-max-temperature-point.json"
+  },
+  {
+    "id": "mqtt-property-measure-target-altitude",
+    "name": "»measure_target_altitude",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-measure-target-altitude.json"
+  },
+  {
+    "id": "mqtt-property-measure-target-distance",
+    "name": "»measure_target_distance",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-measure-target-distance.json"
+  },
+  {
+    "id": "mqtt-property-measure-target-error-state",
+    "name": "»measure_target_error_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-measure-target-error-state.json"
+  },
+  {
+    "id": "mqtt-property-measure-target-latitude",
+    "name": "»measure_target_latitude",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-measure-target-latitude.json"
+  },
+  {
+    "id": "mqtt-property-measure-target-longitude",
+    "name": "»measure_target_longitude",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-measure-target-longitude.json"
+  },
+  {
+    "id": "mqtt-property-media-file-detail",
+    "name": "media_file_detail",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-media-file-detail.json"
+  },
+  {
+    "id": "mqtt-property-min-temperature-point",
+    "name": "»»min_temperature_point",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-min-temperature-point.json"
+  },
+  {
+    "id": "mqtt-property-mode-code",
+    "name": "mode_code",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-mode-code.json"
+  },
+  {
+    "id": "mqtt-property-mode-code-reason",
+    "name": "mode_code_reason",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-mode-code-reason.json"
+  },
+  {
+    "id": "mqtt-property-mount-point",
+    "name": "»mount_point",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-mount-point.json"
+  },
+  {
+    "id": "mqtt-property-network-state",
+    "name": "network_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-network-state.json"
+  },
+  {
+    "id": "mqtt-property-night-lights-state",
+    "name": "night_lights_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-night-lights-state.json"
+  },
+  {
+    "id": "mqtt-property-object-key",
+    "name": "»object_key",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-object-key.json"
+  },
+  {
+    "id": "mqtt-property-obstacle-avoidance",
+    "name": "obstacle_avoidance",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-obstacle-avoidance.json"
+  },
+  {
+    "id": "mqtt-property-offline-map-enable",
+    "name": "offline_map_enable",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-offline-map-enable.json"
+  },
+  {
+    "id": "mqtt-property-payload-index",
+    "name": "»payload_index",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-payload-index.json"
+  },
+  {
+    "id": "mqtt-property-payloads",
+    "name": "payloads",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-payloads.json"
+  },
+  {
+    "id": "mqtt-property-photo-state",
+    "name": "»photo_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-photo-state.json"
+  },
+  {
+    "id": "mqtt-property-photo-storage-settings",
+    "name": "»photo_storage_settings",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-photo-storage-settings.json"
+  },
+  {
+    "id": "mqtt-property-play-file-md5",
+    "name": "»»play_file_md5",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-play-file-md5.json"
+  },
+  {
+    "id": "mqtt-property-play-file-name",
+    "name": "»»play_file_name",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-play-file-name.json"
+  },
+  {
+    "id": "mqtt-property-play-mode",
+    "name": "»»play_mode",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-play-mode.json"
+  },
+  {
+    "id": "mqtt-property-play-volume",
+    "name": "»»play_volume",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-play-volume.json"
+  },
+  {
+    "id": "mqtt-property-port",
+    "name": "»port",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-port.json"
+  },
+  {
+    "id": "mqtt-property-position-state",
+    "name": "position_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-position-state.json"
+  },
+  {
+    "id": "mqtt-property-product-type",
+    "name": "»product_type",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-product-type.json"
+  },
+  {
+    "id": "mqtt-property-psdk-index",
+    "name": "»psdk_index",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-psdk-index.json"
+  },
+  {
+    "id": "mqtt-property-psdk-lib-version",
+    "name": "»psdk_lib_version",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-psdk-lib-version.json"
+  },
+  {
+    "id": "mqtt-property-psdk-name",
+    "name": "»psdk_name",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-psdk-name.json"
+  },
+  {
+    "id": "mqtt-property-psdk-ready",
+    "name": "»psdk_ready",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-psdk-ready.json"
+  },
+  {
+    "id": "mqtt-property-psdk-sn",
+    "name": "»psdk_sn",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-psdk-sn.json"
+  },
+  {
+    "id": "mqtt-property-psdk-ui-resource",
+    "name": "psdk_ui_resource",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-psdk-ui-resource.json"
+  },
+  {
+    "id": "mqtt-property-psdk-version",
+    "name": "»psdk_version",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-psdk-version.json"
+  },
+  {
+    "id": "mqtt-property-psdk-widget-values",
+    "name": "psdk_widget_values",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-psdk-widget-values.json"
+  },
+  {
+    "id": "mqtt-property-putter-state",
+    "name": "putter_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-putter-state.json"
+  },
+  {
+    "id": "mqtt-property-quality",
+    "name": "»quality",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-quality.json"
+  },
+  {
+    "id": "mqtt-property-rainfall",
+    "name": "rainfall",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-rainfall.json"
+  },
+  {
+    "id": "mqtt-property-rate",
+    "name": "»rate",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-rate.json"
+  },
+  {
+    "id": "mqtt-property-rc-lost-action",
+    "name": "rc_lost_action",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-rc-lost-action.json"
+  },
+  {
+    "id": "mqtt-property-record-time",
+    "name": "»record_time",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-record-time.json"
+  },
+  {
+    "id": "mqtt-property-recording-state",
+    "name": "»recording_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-recording-state.json"
+  },
+  {
+    "id": "mqtt-property-remain-flight-time",
+    "name": "»remain_flight_time",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-remain-flight-time.json"
+  },
+  {
+    "id": "mqtt-property-remain-photo-num",
+    "name": "»remain_photo_num",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-remain-photo-num.json"
+  },
+  {
+    "id": "mqtt-property-remain-record-duration",
+    "name": "»remain_record_duration",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-remain-record-duration.json"
+  },
+  {
+    "id": "mqtt-property-remain-upload",
+    "name": "»remain_upload",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-remain-upload.json"
+  },
+  {
+    "id": "mqtt-property-return-home-power",
+    "name": "»return_home_power",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-return-home-power.json"
+  },
+  {
+    "id": "mqtt-property-rid-state",
+    "name": "rid_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-rid-state.json"
+  },
+  {
+    "id": "mqtt-property-right",
+    "name": "»»right",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-right.json"
+  },
+  {
+    "id": "mqtt-property-rtcm-device-type",
+    "name": "»rtcm_device_type",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-rtcm-device-type.json"
+  },
+  {
+    "id": "mqtt-property-rtcm-info",
+    "name": "rtcm_info",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-rtcm-info.json"
+  },
+  {
+    "id": "mqtt-property-rth-altitude",
+    "name": "rth_altitude",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-rth-altitude.json"
+  },
+  {
+    "id": "mqtt-property-rth-mode",
+    "name": "rth_mode",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-rth-mode.json"
+  },
+  {
+    "id": "mqtt-property-rtk-number",
+    "name": "»rtk_number",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-rtk-number.json"
+  },
+  {
+    "id": "mqtt-property-safe-land-height",
+    "name": "»safe_land_height",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-safe-land-height.json"
+  },
+  {
+    "id": "mqtt-property-screen-split-enable",
+    "name": "»screen_split_enable",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-screen-split-enable.json"
+  },
+  {
+    "id": "mqtt-property-sdr-freq-band",
+    "name": "»sdr_freq_band",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-sdr-freq-band.json"
+  },
+  {
+    "id": "mqtt-property-sdr-id",
+    "name": "»»sdr_id",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-sdr-id.json"
+  },
+  {
+    "id": "mqtt-property-sdr-link-state",
+    "name": "»sdr_link_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-sdr-link-state.json"
+  },
+  {
+    "id": "mqtt-property-sdr-quality",
+    "name": "»sdr_quality",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-sdr-quality.json"
+  },
+  {
+    "id": "mqtt-property-secret-code",
+    "name": "»secret_code",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-secret-code.json"
+  },
+  {
+    "id": "mqtt-property-serious-low-battery-warning-threshold",
+    "name": "serious_low_battery_warning_threshold",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-serious-low-battery-warning-threshold.json"
+  },
+  {
+    "id": "mqtt-property-silent-mode",
+    "name": "silent_mode",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-silent-mode.json"
+  },
+  {
+    "id": "mqtt-property-sim-card-state",
+    "name": "»sim_card_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-sim-card-state.json"
+  },
+  {
+    "id": "mqtt-property-sim-info",
+    "name": "»sim_info",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-sim-info.json"
+  },
+  {
+    "id": "mqtt-property-sim-slot",
+    "name": "»sim_slot",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-sim-slot.json"
+  },
+  {
+    "id": "mqtt-property-sim-type",
+    "name": "»»sim_type",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-sim-type.json"
+  },
+  {
+    "id": "mqtt-property-sn",
+    "name": "»»sn",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-sn.json"
+  },
+  {
+    "id": "mqtt-property-source-type",
+    "name": "»source_type",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-source-type.json"
+  },
+  {
+    "id": "mqtt-property-speaker",
+    "name": "»speaker",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-speaker.json"
+  },
+  {
+    "id": "mqtt-property-state",
+    "name": "»»state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-state.json"
+  },
+  {
+    "id": "mqtt-property-status",
+    "name": "»status",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-status.json"
+  },
+  {
+    "id": "mqtt-property-storage",
+    "name": "storage",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-storage.json"
+  },
+  {
+    "id": "mqtt-property-sub-device",
+    "name": "sub_device",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-sub-device.json"
+  },
+  {
+    "id": "mqtt-property-sub-type",
+    "name": "»»sub_type",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-sub-type.json"
+  },
+  {
+    "id": "mqtt-property-supplement-light-state",
+    "name": "supplement_light_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-supplement-light-state.json"
+  },
+  {
+    "id": "mqtt-property-switch",
+    "name": "»switch",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-switch.json"
+  },
+  {
+    "id": "mqtt-property-switch-time",
+    "name": "»switch_time",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-switch-time.json"
+  },
+  {
+    "id": "mqtt-property-switchable-video-types",
+    "name": "»»»»switchable_video_types",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-switchable-video-types.json"
+  },
+  {
+    "id": "mqtt-property-system-state",
+    "name": "»»system_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-system-state.json"
+  },
+  {
+    "id": "mqtt-property-telecom-operator",
+    "name": "»»telecom_operator",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-telecom-operator.json"
+  },
+  {
+    "id": "mqtt-property-temperature",
+    "name": "»»temperature",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-temperature.json"
+  },
+  {
+    "id": "mqtt-property-thermal-current-palette-style",
+    "name": "»thermal_current_palette_style",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-thermal-current-palette-style.json"
+  },
+  {
+    "id": "mqtt-property-thermal-gain-mode",
+    "name": "»thermal_gain_mode",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-thermal-gain-mode.json"
+  },
+  {
+    "id": "mqtt-property-thermal-global-temperature-max",
+    "name": "»thermal_global_temperature_max",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-thermal-global-temperature-max.json"
+  },
+  {
+    "id": "mqtt-property-thermal-global-temperature-min",
+    "name": "»thermal_global_temperature_min",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-thermal-global-temperature-min.json"
+  },
+  {
+    "id": "mqtt-property-thermal-isotherm-lower-limit",
+    "name": "»thermal_isotherm_lower_limit",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-thermal-isotherm-lower-limit.json"
+  },
+  {
+    "id": "mqtt-property-thermal-isotherm-state",
+    "name": "»thermal_isotherm_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-thermal-isotherm-state.json"
+  },
+  {
+    "id": "mqtt-property-thermal-isotherm-upper-limit",
+    "name": "»thermal_isotherm_upper_limit",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-thermal-isotherm-upper-limit.json"
+  },
+  {
+    "id": "mqtt-property-thermal-supported-palette-styles",
+    "name": "»thermal_supported_palette_styles",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-thermal-supported-palette-styles.json"
+  },
+  {
+    "id": "mqtt-property-top",
+    "name": "»»top",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-top.json"
+  },
+  {
+    "id": "mqtt-property-total",
+    "name": "»total",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-total.json"
+  },
+  {
+    "id": "mqtt-property-total-flight-distance",
+    "name": "total_flight_distance",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-total-flight-distance.json"
+  },
+  {
+    "id": "mqtt-property-total-flight-sorties",
+    "name": "total_flight_sorties",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-total-flight-sorties.json"
+  },
+  {
+    "id": "mqtt-property-total-flight-time",
+    "name": "total_flight_time",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-total-flight-time.json"
+  },
+  {
+    "id": "mqtt-property-track-id",
+    "name": "track_id",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-track-id.json"
+  },
+  {
+    "id": "mqtt-property-type",
+    "name": "»»type",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-type.json"
+  },
+  {
+    "id": "mqtt-property-type-subtype-gimbalindex",
+    "name": "*{type-subtype-gimbalindex}*",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-type-subtype-gimbalindex.json"
+  },
+  {
+    "id": "mqtt-property-upside",
+    "name": "»upside",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-upside.json"
+  },
+  {
+    "id": "mqtt-property-used",
+    "name": "»used",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-used.json"
+  },
+  {
+    "id": "mqtt-property-user-custom-string",
+    "name": "»user_custom_string",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-user-custom-string.json"
+  },
+  {
+    "id": "mqtt-property-user-custom-string-enable",
+    "name": "»user_custom_string_enable",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-user-custom-string-enable.json"
+  },
+  {
+    "id": "mqtt-property-user-experience-improvement",
+    "name": "user_experience_improvement",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-user-experience-improvement.json"
+  },
+  {
+    "id": "mqtt-property-value",
+    "name": "»»value",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-value.json"
+  },
+  {
+    "id": "mqtt-property-values",
+    "name": "»values",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-values.json"
+  },
+  {
+    "id": "mqtt-property-vertical-speed",
+    "name": "vertical_speed",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-vertical-speed.json"
+  },
+  {
+    "id": "mqtt-property-video-id",
+    "name": "»video_id",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-video-id.json"
+  },
+  {
+    "id": "mqtt-property-video-index",
+    "name": "»»»»video_index",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-video-index.json"
+  },
+  {
+    "id": "mqtt-property-video-list",
+    "name": "»»»video_list",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-video-list.json"
+  },
+  {
+    "id": "mqtt-property-video-quality",
+    "name": "»video_quality",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-video-quality.json"
+  },
+  {
+    "id": "mqtt-property-video-storage-settings",
+    "name": "»video_storage_settings",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-video-storage-settings.json"
+  },
+  {
+    "id": "mqtt-property-video-type",
+    "name": "»»»»video_type",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-video-type.json"
+  },
+  {
+    "id": "mqtt-property-voltage",
+    "name": "»»voltage",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-voltage.json"
+  },
+  {
+    "id": "mqtt-property-wide-exposure-mode",
+    "name": "»wide_exposure_mode",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-wide-exposure-mode.json"
+  },
+  {
+    "id": "mqtt-property-wide-exposure-value",
+    "name": "»wide_exposure_value",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-wide-exposure-value.json"
+  },
+  {
+    "id": "mqtt-property-wide-iso",
+    "name": "»wide_iso",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-wide-iso.json"
+  },
+  {
+    "id": "mqtt-property-wide-shutter-speed",
+    "name": "»wide_shutter_speed",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-wide-shutter-speed.json"
+  },
+  {
+    "id": "mqtt-property-width",
+    "name": "»»width",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-width.json"
+  },
+  {
+    "id": "mqtt-property-wind-direction",
+    "name": "wind_direction",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-wind-direction.json"
+  },
+  {
+    "id": "mqtt-property-wind-speed",
+    "name": "wind_speed",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-wind-speed.json"
+  },
+  {
+    "id": "mqtt-property-wireless-link",
+    "name": "wireless_link",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-wireless-link.json"
+  },
+  {
+    "id": "mqtt-property-wireless-link-topo",
+    "name": "wireless_link_topo",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-wireless-link-topo.json"
+  },
+  {
+    "id": "mqtt-property-work-mode",
+    "name": "»»work_mode",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-work-mode.json"
+  },
+  {
+    "id": "mqtt-property-working-current",
+    "name": "working_current",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-working-current.json"
+  },
+  {
+    "id": "mqtt-property-working-voltage",
+    "name": "working_voltage",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-working-voltage.json"
+  },
+  {
+    "id": "mqtt-property-wpmz-version",
+    "name": "wpmz_version",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-wpmz-version.json"
+  },
+  {
+    "id": "mqtt-property-x",
+    "name": "»»x",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-x.json"
+  },
+  {
+    "id": "mqtt-property-y",
+    "name": "»»y",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-y.json"
+  },
+  {
+    "id": "mqtt-property-zoom-calibrate-farthest-focus-value",
+    "name": "»zoom_calibrate_farthest_focus_value",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-zoom-calibrate-farthest-focus-value.json"
+  },
+  {
+    "id": "mqtt-property-zoom-calibrate-nearest-focus-value",
+    "name": "»zoom_calibrate_nearest_focus_value",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-zoom-calibrate-nearest-focus-value.json"
+  },
+  {
+    "id": "mqtt-property-zoom-exposure-mode",
+    "name": "»zoom_exposure_mode",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-zoom-exposure-mode.json"
+  },
+  {
+    "id": "mqtt-property-zoom-exposure-value",
+    "name": "»zoom_exposure_value",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-zoom-exposure-value.json"
+  },
+  {
+    "id": "mqtt-property-zoom-factor",
+    "name": "»zoom_factor",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-zoom-factor.json"
+  },
+  {
+    "id": "mqtt-property-zoom-focus-mode",
+    "name": "»zoom_focus_mode",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-zoom-focus-mode.json"
+  },
+  {
+    "id": "mqtt-property-zoom-focus-state",
+    "name": "»zoom_focus_state",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-zoom-focus-state.json"
+  },
+  {
+    "id": "mqtt-property-zoom-focus-value",
+    "name": "»zoom_focus_value",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-zoom-focus-value.json"
+  },
+  {
+    "id": "mqtt-property-zoom-iso",
+    "name": "»zoom_iso",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-zoom-iso.json"
+  },
+  {
+    "id": "mqtt-property-zoom-max-focus-value",
+    "name": "»zoom_max_focus_value",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-zoom-max-focus-value.json"
+  },
+  {
+    "id": "mqtt-property-zoom-min-focus-value",
+    "name": "»zoom_min_focus_value",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-zoom-min-focus-value.json"
+  },
+  {
+    "id": "mqtt-property-zoom-shutter-speed",
+    "name": "»zoom_shutter_speed",
+    "protocol": "mqtt",
+    "module": "device-properties",
+    "file": "catalog/endpoints/mqtt/mqtt-property-zoom-shutter-speed.json"
+  },
+  {
+    "id": "mqtt-psdk-floating-window-text",
+    "name": "psdk-浮窗文本推送",
+    "protocol": "mqtt",
+    "module": "psdk",
+    "file": "catalog/endpoints/mqtt/mqtt-psdk-floating-window-text.json"
+  },
+  {
+    "id": "mqtt-psdk-input-box-text-set",
+    "name": "psdk-发送文本框内容",
+    "protocol": "mqtt",
+    "module": "psdk",
+    "file": "catalog/endpoints/mqtt/mqtt-psdk-input-box-text-set.json"
+  },
+  {
+    "id": "mqtt-psdk-ui-resource-upload-result",
+    "name": "psdk-ui资源包上传结果上报",
+    "protocol": "mqtt",
+    "module": "psdk",
+    "file": "catalog/endpoints/mqtt/mqtt-psdk-ui-resource-upload-result.json"
+  },
+  {
+    "id": "mqtt-psdk-widget-value-set",
+    "name": "psdk-设置控件值",
+    "protocol": "mqtt",
+    "module": "psdk",
+    "file": "catalog/endpoints/mqtt/mqtt-psdk-widget-value-set.json"
+  },
+  {
+    "id": "mqtt-putter-close",
+    "name": "推杆闭合进度",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-putter-close.json"
+  },
+  {
+    "id": "mqtt-putter-open",
+    "name": "推杆展开进度",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-putter-open.json"
+  },
+  {
+    "id": "mqtt-return-home",
+    "name": "一键返航",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-return-home.json"
+  },
+  {
+    "id": "mqtt-return-home-cancel",
+    "name": "取消返航",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-return-home-cancel.json"
+  },
+  {
+    "id": "mqtt-return-home-info",
+    "name": "返航信息",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-return-home-info.json"
+  },
+  {
+    "id": "mqtt-return-specific-home",
+    "name": "指定home点的返航",
+    "protocol": "mqtt",
+    "module": "wayline",
+    "file": "catalog/endpoints/mqtt/mqtt-return-specific-home.json"
+  },
+  {
+    "id": "mqtt-sdr-workmode-switch",
+    "name": "增强图传开关",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-sdr-workmode-switch.json"
+  },
+  {
+    "id": "mqtt-sim-slot-switch",
+    "name": "eSIM 和 SIM 切换",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-sim-slot-switch.json"
+  },
+  {
+    "id": "mqtt-speaker-audio-play-start",
+    "name": "喊话器-开始播放音频",
+    "protocol": "mqtt",
+    "module": "psdk",
+    "file": "catalog/endpoints/mqtt/mqtt-speaker-audio-play-start.json"
+  },
+  {
+    "id": "mqtt-speaker-audio-play-start-progress",
+    "name": "喊话器-音频播放进度通知",
+    "protocol": "mqtt",
+    "module": "psdk",
+    "file": "catalog/endpoints/mqtt/mqtt-speaker-audio-play-start-progress.json"
+  },
+  {
+    "id": "mqtt-speaker-play-mode-set",
+    "name": "喊话器-设置播放模式",
+    "protocol": "mqtt",
+    "module": "psdk",
+    "file": "catalog/endpoints/mqtt/mqtt-speaker-play-mode-set.json"
+  },
+  {
+    "id": "mqtt-speaker-play-stop",
+    "name": "喊话器-停止播放",
+    "protocol": "mqtt",
+    "module": "psdk",
+    "file": "catalog/endpoints/mqtt/mqtt-speaker-play-stop.json"
+  },
+  {
+    "id": "mqtt-speaker-play-volume-set",
+    "name": "喊话器-设置音量",
+    "protocol": "mqtt",
+    "module": "psdk",
+    "file": "catalog/endpoints/mqtt/mqtt-speaker-play-volume-set.json"
+  },
+  {
+    "id": "mqtt-speaker-replay",
+    "name": "喊话器-重新播放",
+    "protocol": "mqtt",
+    "module": "psdk",
+    "file": "catalog/endpoints/mqtt/mqtt-speaker-replay.json"
+  },
+  {
+    "id": "mqtt-speaker-tts-play-start",
+    "name": "喊话器-开始播放TTS文本",
+    "protocol": "mqtt",
+    "module": "psdk",
+    "file": "catalog/endpoints/mqtt/mqtt-speaker-tts-play-start.json"
+  },
+  {
+    "id": "mqtt-speaker-tts-play-start-progress",
+    "name": "喊话器-tts播放进度通知",
+    "protocol": "mqtt",
+    "module": "psdk",
+    "file": "catalog/endpoints/mqtt/mqtt-speaker-tts-play-start-progress.json"
+  },
+  {
+    "id": "mqtt-storage-config-get",
+    "name": "获取上传临时凭证",
+    "protocol": "mqtt",
+    "module": "psdk",
+    "file": "catalog/endpoints/mqtt/mqtt-storage-config-get.json"
+  },
+  {
+    "id": "mqtt-supplement-light-close",
+    "name": "关闭补光灯",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-supplement-light-close.json"
+  },
+  {
+    "id": "mqtt-supplement-light-open",
+    "name": "打开补光灯",
+    "protocol": "mqtt",
+    "module": "cmd",
+    "file": "catalog/endpoints/mqtt/mqtt-supplement-light-open.json"
+  },
+  {
+    "id": "mqtt-takeoff-to-point",
+    "name": "一键起飞",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-takeoff-to-point.json"
+  },
+  {
+    "id": "mqtt-takeoff-to-point-progress",
+    "name": "一键起飞结果事件通知",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-takeoff-to-point-progress.json"
+  },
+  {
+    "id": "mqtt-unlock-license-list",
+    "name": "获取设备的解禁证书列表",
+    "protocol": "mqtt",
+    "module": "flysafe",
+    "file": "catalog/endpoints/mqtt/mqtt-unlock-license-list.json"
+  },
+  {
+    "id": "mqtt-unlock-license-switch",
+    "name": "启用/禁用设备的单个解禁证书",
+    "protocol": "mqtt",
+    "module": "flysafe",
+    "file": "catalog/endpoints/mqtt/mqtt-unlock-license-switch.json"
+  },
+  {
+    "id": "mqtt-unlock-license-update",
+    "name": "更新设备的解禁证书",
+    "protocol": "mqtt",
+    "module": "flysafe",
+    "file": "catalog/endpoints/mqtt/mqtt-unlock-license-update.json"
+  },
+  {
+    "id": "mqtt-update-topo",
+    "name": "设备拓扑更新",
+    "protocol": "mqtt",
+    "module": "device",
+    "file": "catalog/endpoints/mqtt/mqtt-update-topo.json"
+  },
+  {
+    "id": "mqtt-upload-flighttask-media-prioritize",
+    "name": "调整上传的文件为最高优先级",
+    "protocol": "mqtt",
+    "module": "file",
+    "file": "catalog/endpoints/mqtt/mqtt-upload-flighttask-media-prioritize.json"
+  },
+  {
+    "id": "mqtt-video-storage-set",
+    "name": "负载控制—视频存储设置",
+    "protocol": "mqtt",
+    "module": "drc",
+    "file": "catalog/endpoints/mqtt/mqtt-video-storage-set.json"
+  },
+  {
+    "id": "websocket-map-elements-map-element-create",
+    "name": "mapElementCreate",
+    "protocol": "websocket",
+    "module": "map-elements",
+    "file": "catalog/endpoints/websocket/websocket-map-elements-map-element-create.json"
+  },
+  {
+    "id": "websocket-map-elements-map-element-delete",
+    "name": "mapElementDelete",
+    "protocol": "websocket",
+    "module": "map-elements",
+    "file": "catalog/endpoints/websocket/websocket-map-elements-map-element-delete.json"
+  },
+  {
+    "id": "websocket-map-elements-map-element-update",
+    "name": "mapElementUpdate",
+    "protocol": "websocket",
+    "module": "map-elements",
+    "file": "catalog/endpoints/websocket/websocket-map-elements-map-element-update.json"
+  },
+  {
+    "id": "websocket-map-elements-map-group-refresh",
+    "name": "mapGroupRefresh",
+    "protocol": "websocket",
+    "module": "map-elements",
+    "file": "catalog/endpoints/websocket/websocket-map-elements-map-group-refresh.json"
+  },
+  {
+    "id": "websocket-situation-awareness-device-offline",
+    "name": "deviceOffline",
+    "protocol": "websocket",
+    "module": "situation-awareness",
+    "file": "catalog/endpoints/websocket/websocket-situation-awareness-device-offline.json"
+  },
+  {
+    "id": "websocket-situation-awareness-device-online",
+    "name": "deviceOnline",
+    "protocol": "websocket",
+    "module": "situation-awareness",
+    "file": "catalog/endpoints/websocket/websocket-situation-awareness-device-online.json"
+  },
+  {
+    "id": "websocket-situation-awareness-device-osd",
+    "name": "deviceOsd",
+    "protocol": "websocket",
+    "module": "situation-awareness",
+    "file": "catalog/endpoints/websocket/websocket-situation-awareness-device-osd.json"
+  },
+  {
+    "id": "websocket-situation-awareness-device-update-topo",
+    "name": "deviceUpdateTopo",
+    "protocol": "websocket",
+    "module": "situation-awareness",
+    "file": "catalog/endpoints/websocket/websocket-situation-awareness-device-update-topo.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-accuratecameraapertue",
+    "name": "wpml:accurateCameraApertue",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-accuratecameraapertue.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-accuratecameraiso",
+    "name": "wpml:accurateCameraISO",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-accuratecameraiso.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-accuratecameraluminance",
+    "name": "wpml:accurateCameraLuminance",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-accuratecameraluminance.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-accuratecamerashuttertime",
+    "name": "wpml:accurateCameraShutterTime",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-accuratecamerashuttertime.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-accuratecameratype",
+    "name": "wpml:accurateCameraType",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-accuratecameratype.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-accuratefilemd5",
+    "name": "wpml:accurateFileMD5",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-accuratefilemd5.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-accuratefilepath",
+    "name": "wpml:accurateFilePath",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-accuratefilepath.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-accuratefilesize",
+    "name": "wpml:accurateFileSize",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-accuratefilesize.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-accuratefilesuffix",
+    "name": "wpml:accurateFileSuffix",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-accuratefilesuffix.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-accurateframevalid",
+    "name": "wpml:accurateFrameValid",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-accurateframevalid.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-afpos",
+    "name": "wpml:AFPos",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-afpos.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-aircraftheading",
+    "name": "wpml:aircraftHeading",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-aircraftheading.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-focallength",
+    "name": "wpml:focalLength",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-focallength.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-focusregionheight",
+    "name": "wpml:focusRegionHeight",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-focusregionheight.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-focusregionwidth",
+    "name": "wpml:focusRegionWidth",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-focusregionwidth.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-focusx",
+    "name": "wpml:focusX",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-focusx.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-focusy",
+    "name": "wpml:focusY",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-focusy.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-gimbalpitchrotateangle",
+    "name": "wpml:gimbalPitchRotateAngle",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-gimbalpitchrotateangle.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-gimbalport",
+    "name": "wpml:gimbalPort",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-gimbalport.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-gimbalyawrotateangle",
+    "name": "wpml:gimbalYawRotateAngle",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-gimbalyawrotateangle.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-imageheight",
+    "name": "wpml:imageHeight",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-imageheight.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-imagewidth",
+    "name": "wpml:imageWidth",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-imagewidth.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-payloadlensindex",
+    "name": "wpml:payloadLensIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-payloadlensindex.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-payloadpositionindex",
+    "name": "wpml:payloadPositionIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-payloadpositionindex.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-targetangle",
+    "name": "wpml:targetAngle",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-targetangle.json"
+  },
+  {
+    "id": "wpml-common-element-accurateshoot-wpml-useglobalpayloadlensindex",
+    "name": "wpml:useGlobalPayloadLensIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-accurateshoot-wpml-useglobalpayloadlensindex.json"
+  },
+  {
+    "id": "wpml-common-element-customdirname-wpml-directoryname",
+    "name": "wpml:directoryName",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-customdirname-wpml-directoryname.json"
+  },
+  {
+    "id": "wpml-common-element-customdirname-wpml-payloadpositionindex",
+    "name": "wpml:payloadPositionIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-customdirname-wpml-payloadpositionindex.json"
+  },
+  {
+    "id": "wpml-common-element-focus-wpml-focusregionheight",
+    "name": "wpml:focusRegionHeight",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-focus-wpml-focusregionheight.json"
+  },
+  {
+    "id": "wpml-common-element-focus-wpml-focusregionwidth",
+    "name": "wpml:focusRegionWidth",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-focus-wpml-focusregionwidth.json"
+  },
+  {
+    "id": "wpml-common-element-focus-wpml-focusx",
+    "name": "wpml:focusX",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-focus-wpml-focusx.json"
+  },
+  {
+    "id": "wpml-common-element-focus-wpml-focusy",
+    "name": "wpml:focusY",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-focus-wpml-focusy.json"
+  },
+  {
+    "id": "wpml-common-element-focus-wpml-isinfinitefocus",
+    "name": "wpml:isInfiniteFocus",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-focus-wpml-isinfinitefocus.json"
+  },
+  {
+    "id": "wpml-common-element-focus-wpml-ispointfocus",
+    "name": "wpml:isPointFocus",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-focus-wpml-ispointfocus.json"
+  },
+  {
+    "id": "wpml-common-element-focus-wpml-payloadpositionindex",
+    "name": "wpml:payloadPositionIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-focus-wpml-payloadpositionindex.json"
+  },
+  {
+    "id": "wpml-common-element-gimbalevenlyrotate-wpml-gimbalpitchrotateangle",
+    "name": "wpml:gimbalPitchRotateAngle",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-gimbalevenlyrotate-wpml-gimbalpitchrotateangle.json"
+  },
+  {
+    "id": "wpml-common-element-gimbalevenlyrotate-wpml-payloadpositionindex",
+    "name": "wpml:payloadPositionIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-gimbalevenlyrotate-wpml-payloadpositionindex.json"
+  },
+  {
+    "id": "wpml-common-element-gimbalrotate-wpml-gimbalheadingyawbase",
+    "name": "wpml:gimbalHeadingYawBase",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-gimbalrotate-wpml-gimbalheadingyawbase.json"
+  },
+  {
+    "id": "wpml-common-element-gimbalrotate-wpml-gimbalpitchrotateangle",
+    "name": "wpml:gimbalPitchRotateAngle",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-gimbalrotate-wpml-gimbalpitchrotateangle.json"
+  },
+  {
+    "id": "wpml-common-element-gimbalrotate-wpml-gimbalpitchrotateenable",
+    "name": "wpml:gimbalPitchRotateEnable",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-gimbalrotate-wpml-gimbalpitchrotateenable.json"
+  },
+  {
+    "id": "wpml-common-element-gimbalrotate-wpml-gimbalrollrotateangle",
+    "name": "wpml:gimbalRollRotateAngle",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-gimbalrotate-wpml-gimbalrollrotateangle.json"
+  },
+  {
+    "id": "wpml-common-element-gimbalrotate-wpml-gimbalrollrotateenable",
+    "name": "wpml:gimbalRollRotateEnable",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-gimbalrotate-wpml-gimbalrollrotateenable.json"
+  },
+  {
+    "id": "wpml-common-element-gimbalrotate-wpml-gimbalrotatemode",
+    "name": "wpml:gimbalRotateMode",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-gimbalrotate-wpml-gimbalrotatemode.json"
+  },
+  {
+    "id": "wpml-common-element-gimbalrotate-wpml-gimbalrotatetime",
+    "name": "wpml:gimbalRotateTime",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-gimbalrotate-wpml-gimbalrotatetime.json"
+  },
+  {
+    "id": "wpml-common-element-gimbalrotate-wpml-gimbalrotatetimeenable",
+    "name": "wpml:gimbalRotateTimeEnable",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-gimbalrotate-wpml-gimbalrotatetimeenable.json"
+  },
+  {
+    "id": "wpml-common-element-gimbalrotate-wpml-gimbalyawrotateangle",
+    "name": "wpml:gimbalYawRotateAngle",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-gimbalrotate-wpml-gimbalyawrotateangle.json"
+  },
+  {
+    "id": "wpml-common-element-gimbalrotate-wpml-gimbalyawrotateenable",
+    "name": "wpml:gimbalYawRotateEnable",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-gimbalrotate-wpml-gimbalyawrotateenable.json"
+  },
+  {
+    "id": "wpml-common-element-gimbalrotate-wpml-payloadpositionindex",
+    "name": "wpml:payloadPositionIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-gimbalrotate-wpml-payloadpositionindex.json"
+  },
+  {
+    "id": "wpml-common-element-hover-wpml-hovertime",
+    "name": "wpml:hoverTime",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-hover-wpml-hovertime.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-accurateframevalid",
+    "name": "wpml:accurateFrameValid",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-accurateframevalid.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-actionuuid",
+    "name": "wpml:actionUUID",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-actionuuid.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-afpos",
+    "name": "wpml:AFPos",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-afpos.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-aircraftheading",
+    "name": "wpml:aircraftHeading",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-aircraftheading.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-focallength",
+    "name": "wpml:focalLength",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-focallength.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-focusregionheight",
+    "name": "wpml:focusRegionHeight",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-focusregionheight.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-focusregionwidth",
+    "name": "wpml:focusRegionWidth",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-focusregionwidth.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-focusx",
+    "name": "wpml:focusX",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-focusx.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-focusy",
+    "name": "wpml:focusY",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-focusy.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-gimbalpitchrotateangle",
+    "name": "wpml:gimbalPitchRotateAngle",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-gimbalpitchrotateangle.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-gimbalport",
+    "name": "wpml:gimbalPort",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-gimbalport.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-gimbalyawrotateangle",
+    "name": "wpml:gimbalYawRotateAngle",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-gimbalyawrotateangle.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-imageheight",
+    "name": "wpml:imageHeight",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-imageheight.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-imagewidth",
+    "name": "wpml:imageWidth",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-imagewidth.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-orientedcameraapertue",
+    "name": "wpml:orientedCameraApertue",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-orientedcameraapertue.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-orientedcameraiso",
+    "name": "wpml:orientedCameraISO",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-orientedcameraiso.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-orientedcameraluminance",
+    "name": "wpml:orientedCameraLuminance",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-orientedcameraluminance.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-orientedcamerashuttertime",
+    "name": "wpml:orientedCameraShutterTime",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-orientedcamerashuttertime.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-orientedcameratype",
+    "name": "wpml:orientedCameraType",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-orientedcameratype.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-orientedfilemd5",
+    "name": "wpml:orientedFileMD5",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-orientedfilemd5.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-orientedfilepath",
+    "name": "wpml:orientedFilePath",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-orientedfilepath.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-orientedfilesize",
+    "name": "wpml:orientedFileSize",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-orientedfilesize.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-orientedfilesuffix",
+    "name": "wpml:orientedFileSuffix",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-orientedfilesuffix.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-orientedphotomode",
+    "name": "wpml:orientedPhotoMode",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-orientedphotomode.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-payloadlensindex",
+    "name": "wpml:payloadLensIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-payloadlensindex.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-payloadpositionindex",
+    "name": "wpml:payloadPositionIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-payloadpositionindex.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-targetangle",
+    "name": "wpml:targetAngle",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-targetangle.json"
+  },
+  {
+    "id": "wpml-common-element-orientedshoot-wpml-useglobalpayloadlensindex",
+    "name": "wpml:useGlobalPayloadLensIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-orientedshoot-wpml-useglobalpayloadlensindex.json"
+  },
+  {
+    "id": "wpml-common-element-panoshot-wpml-panoshotsubmode",
+    "name": "wpml:panoShotSubMode",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-panoshot-wpml-panoshotsubmode.json"
+  },
+  {
+    "id": "wpml-common-element-panoshot-wpml-payloadlensindex",
+    "name": "wpml:payloadLensIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-panoshot-wpml-payloadlensindex.json"
+  },
+  {
+    "id": "wpml-common-element-panoshot-wpml-payloadpositionindex",
+    "name": "wpml:payloadPositionIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-panoshot-wpml-payloadpositionindex.json"
+  },
+  {
+    "id": "wpml-common-element-panoshot-wpml-useglobalpayloadlensindex",
+    "name": "wpml:useGlobalPayloadLensIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-panoshot-wpml-useglobalpayloadlensindex.json"
+  },
+  {
+    "id": "wpml-common-element-recordpointcloud-wpml-payloadpositionindex",
+    "name": "wpml:payloadPositionIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-recordpointcloud-wpml-payloadpositionindex.json"
+  },
+  {
+    "id": "wpml-common-element-recordpointcloud-wpml-recordpointcloudoperate",
+    "name": "wpml:recordPointCloudOperate",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-recordpointcloud-wpml-recordpointcloudoperate.json"
+  },
+  {
+    "id": "wpml-common-element-rotateyaw-wpml-aircraftheading",
+    "name": "wpml:aircraftHeading",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-rotateyaw-wpml-aircraftheading.json"
+  },
+  {
+    "id": "wpml-common-element-rotateyaw-wpml-aircraftpathmode",
+    "name": "wpml:aircraftPathMode",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-rotateyaw-wpml-aircraftpathmode.json"
+  },
+  {
+    "id": "wpml-common-element-startrecord-wpml-filesuffix",
+    "name": "wpml:fileSuffix",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-startrecord-wpml-filesuffix.json"
+  },
+  {
+    "id": "wpml-common-element-startrecord-wpml-payloadlensindex",
+    "name": "wpml:payloadLensIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-startrecord-wpml-payloadlensindex.json"
+  },
+  {
+    "id": "wpml-common-element-startrecord-wpml-payloadpositionindex",
+    "name": "wpml:payloadPositionIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-startrecord-wpml-payloadpositionindex.json"
+  },
+  {
+    "id": "wpml-common-element-startrecord-wpml-useglobalpayloadlensindex",
+    "name": "wpml:useGlobalPayloadLensIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-startrecord-wpml-useglobalpayloadlensindex.json"
+  },
+  {
+    "id": "wpml-common-element-stoprecord-wpml-payloadlensindex",
+    "name": "wpml:payloadLensIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-stoprecord-wpml-payloadlensindex.json"
+  },
+  {
+    "id": "wpml-common-element-stoprecord-wpml-payloadpositionindex",
+    "name": "wpml:payloadPositionIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-stoprecord-wpml-payloadpositionindex.json"
+  },
+  {
+    "id": "wpml-common-element-takephoto-wpml-filesuffix",
+    "name": "wpml:fileSuffix",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-takephoto-wpml-filesuffix.json"
+  },
+  {
+    "id": "wpml-common-element-takephoto-wpml-payloadlensindex",
+    "name": "wpml:payloadLensIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-takephoto-wpml-payloadlensindex.json"
+  },
+  {
+    "id": "wpml-common-element-takephoto-wpml-payloadpositionindex",
+    "name": "wpml:payloadPositionIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-takephoto-wpml-payloadpositionindex.json"
+  },
+  {
+    "id": "wpml-common-element-takephoto-wpml-useglobalpayloadlensindex",
+    "name": "wpml:useGlobalPayloadLensIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-takephoto-wpml-useglobalpayloadlensindex.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-action-wpml-actionactuatorfunc",
+    "name": "wpml:actionActuatorFunc",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-action-wpml-actionactuatorfunc.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-action-wpml-actionactuatorfuncparam",
+    "name": "wpml:actionActuatorFuncParam",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-action-wpml-actionactuatorfuncparam.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-action-wpml-actionid",
+    "name": "wpml:actionId",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-action-wpml-actionid.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-actiongroup-wpml-action",
+    "name": "wpml:action",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-actiongroup-wpml-action.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-actiongroup-wpml-actiongroupendindex",
+    "name": "wpml:actionGroupEndIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-actiongroup-wpml-actiongroupendindex.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-actiongroup-wpml-actiongroupid",
+    "name": "wpml:actionGroupId",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-actiongroup-wpml-actiongroupid.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-actiongroup-wpml-actiongroupmode",
+    "name": "wpml:actionGroupMode",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-actiongroup-wpml-actiongroupmode.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-actiongroup-wpml-actiongroupstartindex",
+    "name": "wpml:actionGroupStartIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-actiongroup-wpml-actiongroupstartindex.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-actiongroup-wpml-actiontrigger",
+    "name": "wpml:actionTrigger",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-actiongroup-wpml-actiontrigger.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-actiontrigger-wpml-actiontriggerparam",
+    "name": "wpml:actionTriggerParam",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-actiontrigger-wpml-actiontriggerparam.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-actiontrigger-wpml-actiontriggertype",
+    "name": "wpml:actionTriggerType",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-actiontrigger-wpml-actiontriggertype.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-autorerouteinfo-wpml-missionautoreroutemode",
+    "name": "wpml:missionAutoRerouteMode",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-autorerouteinfo-wpml-missionautoreroutemode.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-autorerouteinfo-wpml-transitionalautoreroutemode",
+    "name": "wpml:transitionalAutoRerouteMode",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-autorerouteinfo-wpml-transitionalautoreroutemode.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-droneinfo-wpml-droneenumvalue",
+    "name": "wpml:droneEnumValue",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-droneinfo-wpml-droneenumvalue.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-droneinfo-wpml-dronesubenumvalue",
+    "name": "wpml:droneSubEnumValue",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-droneinfo-wpml-dronesubenumvalue.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-payloadinfo-wpml-payloadenumvalue",
+    "name": "wpml:payloadEnumValue",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-payloadinfo-wpml-payloadenumvalue.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-payloadinfo-wpml-payloadpositionindex",
+    "name": "wpml:payloadPositionIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-payloadinfo-wpml-payloadpositionindex.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-payloadparam-wpml-dewarpingenable",
+    "name": "wpml:dewarpingEnable",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-payloadparam-wpml-dewarpingenable.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-payloadparam-wpml-focusmode",
+    "name": "wpml:focusMode",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-payloadparam-wpml-focusmode.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-payloadparam-wpml-imageformat",
+    "name": "wpml:imageFormat",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-payloadparam-wpml-imageformat.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-payloadparam-wpml-meteringmode",
+    "name": "wpml:meteringMode",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-payloadparam-wpml-meteringmode.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-payloadparam-wpml-modelcoloringenable",
+    "name": "wpml:modelColoringEnable",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-payloadparam-wpml-modelcoloringenable.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-payloadparam-wpml-payloadpositionindex",
+    "name": "wpml:payloadPositionIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-payloadparam-wpml-payloadpositionindex.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-payloadparam-wpml-returnmode",
+    "name": "wpml:returnMode",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-payloadparam-wpml-returnmode.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-payloadparam-wpml-samplingrate",
+    "name": "wpml:samplingRate",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-payloadparam-wpml-samplingrate.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-payloadparam-wpml-scanningmode",
+    "name": "wpml:scanningMode",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-payloadparam-wpml-scanningmode.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-waypointheadingparam-wpml-globalwaypointheadingparam-wpml-waypointheadingangle",
+    "name": "wpml:waypointHeadingAngle",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-waypointheadingparam-wpml-globalwaypointheadingparam-wpml-waypointheadingangle.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-waypointheadingparam-wpml-globalwaypointheadingparam-wpml-waypointheadingmode",
+    "name": "wpml:waypointHeadingMode",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-waypointheadingparam-wpml-globalwaypointheadingparam-wpml-waypointheadingmode.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-waypointheadingparam-wpml-globalwaypointheadingparam-wpml-waypointheadingpathmode",
+    "name": "wpml:waypointHeadingPathMode",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-waypointheadingparam-wpml-globalwaypointheadingparam-wpml-waypointheadingpathmode.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-waypointheadingparam-wpml-globalwaypointheadingparam-wpml-waypointpoipoint",
+    "name": "wpml:waypointPoiPoint",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-waypointheadingparam-wpml-globalwaypointheadingparam-wpml-waypointpoipoint.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-waypointturnparam-wpml-waypointturndampingdist",
+    "name": "wpml:waypointTurnDampingDist",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-waypointturnparam-wpml-waypointturndampingdist.json"
+  },
+  {
+    "id": "wpml-common-element-wpml-waypointturnparam-wpml-waypointturnmode",
+    "name": "wpml:waypointTurnMode",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-wpml-waypointturnparam-wpml-waypointturnmode.json"
+  },
+  {
+    "id": "wpml-common-element-zoom-wpml-focallength",
+    "name": "wpml:focalLength",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-zoom-wpml-focallength.json"
+  },
+  {
+    "id": "wpml-common-element-zoom-wpml-payloadpositionindex",
+    "name": "wpml:payloadPositionIndex",
+    "protocol": "wpml",
+    "module": "common-element",
+    "file": "catalog/endpoints/wpml/wpml-common-element-zoom-wpml-payloadpositionindex.json"
+  },
+  {
+    "id": "wpml-template-kml-document-wpml-author",
+    "name": "wpml:author",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-document-wpml-author.json"
+  },
+  {
+    "id": "wpml-template-kml-document-wpml-createtime",
+    "name": "wpml:createTime",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-document-wpml-createtime.json"
+  },
+  {
+    "id": "wpml-template-kml-document-wpml-updatetime",
+    "name": "wpml:updateTime",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-document-wpml-updatetime.json"
+  },
+  {
+    "id": "wpml-template-kml-folder-placemark-point",
+    "name": "Placemark(Point)",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-folder-placemark-point.json"
+  },
+  {
+    "id": "wpml-template-kml-folder-wpml-autoflightspeed",
+    "name": "wpml:autoFlightSpeed",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-folder-wpml-autoflightspeed.json"
+  },
+  {
+    "id": "wpml-template-kml-folder-wpml-gimbalpitchmode",
+    "name": "wpml:gimbalPitchMode",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-folder-wpml-gimbalpitchmode.json"
+  },
+  {
+    "id": "wpml-template-kml-folder-wpml-globalheight",
+    "name": "wpml:globalHeight",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-folder-wpml-globalheight.json"
+  },
+  {
+    "id": "wpml-template-kml-folder-wpml-globalusestraightline",
+    "name": "wpml:globalUseStraightLine",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-folder-wpml-globalusestraightline.json"
+  },
+  {
+    "id": "wpml-template-kml-folder-wpml-globalwaypointheadingparam",
+    "name": "wpml:globalWaypointHeadingParam",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-folder-wpml-globalwaypointheadingparam.json"
+  },
+  {
+    "id": "wpml-template-kml-folder-wpml-globalwaypointturnmode",
+    "name": "wpml:globalWaypointTurnMode",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-folder-wpml-globalwaypointturnmode.json"
+  },
+  {
+    "id": "wpml-template-kml-folder-wpml-payloadparam",
+    "name": "wpml:payloadParam",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-folder-wpml-payloadparam.json"
+  },
+  {
+    "id": "wpml-template-kml-folder-wpml-templateid",
+    "name": "wpml:templateId",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-folder-wpml-templateid.json"
+  },
+  {
+    "id": "wpml-template-kml-folder-wpml-templatetype",
+    "name": "wpml:templateType",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-folder-wpml-templatetype.json"
+  },
+  {
+    "id": "wpml-template-kml-folder-wpml-waylinecoordinatesysparam",
+    "name": "wpml:waylineCoordinateSysParam",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-folder-wpml-waylinecoordinatesysparam.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-linestring",
+    "name": "LineString",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-linestring.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-point",
+    "name": "Point",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-point.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-polygon",
+    "name": "Polygon",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-polygon.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-polygon-2",
+    "name": "Polygon",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-polygon-2.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-boundaryoptimenable",
+    "name": "wpml:boundaryOptimEnable",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-boundaryoptimenable.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-califlightenable",
+    "name": "wpml:caliFlightEnable",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-califlightenable.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-califlightenable-2",
+    "name": "wpml:caliFlightEnable",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-califlightenable-2.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-califlightenable-3",
+    "name": "wpml:caliFlightEnable",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-califlightenable-3.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-cuttingdistance",
+    "name": "wpml:cuttingDistance",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-cuttingdistance.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-direction",
+    "name": "wpml:direction",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-direction.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-direction-2",
+    "name": "wpml:direction",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-direction-2.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-direction-3",
+    "name": "wpml:direction",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-direction-3.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-elevationoptimizeenable",
+    "name": "wpml:elevationOptimizeEnable",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-elevationoptimizeenable.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-ellipsoidheight",
+    "name": "wpml:ellipsoidHeight",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-ellipsoidheight.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-ellipsoidheight-2",
+    "name": "wpml:ellipsoidHeight",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-ellipsoidheight-2.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-ellipsoidheight-3",
+    "name": "wpml:ellipsoidHeight",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-ellipsoidheight-3.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-ellipsoidheight-4",
+    "name": "wpml:ellipsoidHeight",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-ellipsoidheight-4.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-facadewaylineenable",
+    "name": "wpml:facadeWaylineEnable",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-facadewaylineenable.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-gimbalpitchangle",
+    "name": "wpml:gimbalPitchAngle",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-gimbalpitchangle.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-gimbalpitchangle-2",
+    "name": "wpml:gimbalPitchAngle",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-gimbalpitchangle-2.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-gimbalpitchmode",
+    "name": "wpml:gimbalPitchMode",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-gimbalpitchmode.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-height",
+    "name": "wpml:height",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-height.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-height-2",
+    "name": "wpml:height",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-height-2.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-height-3",
+    "name": "wpml:height",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-height-3.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-height-4",
+    "name": "wpml:height",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-height-4.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-inclinedflightspeed",
+    "name": "wpml:inclinedFlightSpeed",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-inclinedflightspeed.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-inclinedgimbalpitch",
+    "name": "wpml:inclinedGimbalPitch",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-inclinedgimbalpitch.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-includecenterenable",
+    "name": "wpml:includeCenterEnable",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-includecenterenable.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-index",
+    "name": "wpml:index",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-index.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-isrisky",
+    "name": "wpml:isRisky",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-isrisky.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-leftextend",
+    "name": "wpml:leftExtend",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-leftextend.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-mappingheadingparam",
+    "name": "wpml:mappingHeadingParam",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-mappingheadingparam.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-margin",
+    "name": "wpml:margin",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-margin.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-margin-2",
+    "name": "wpml:margin",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-margin-2.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-margin-3",
+    "name": "wpml:margin",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-margin-3.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-overlap",
+    "name": "wpml:overlap",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-overlap.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-overlap-2",
+    "name": "wpml:overlap",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-overlap-2.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-overlap-3",
+    "name": "wpml:overlap",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-overlap-3.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-rightextend",
+    "name": "wpml:rightExtend",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-rightextend.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-shoottype",
+    "name": "wpml:shootType",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-shoottype.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-shoottype-2",
+    "name": "wpml:shootType",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-shoottype-2.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-shoottype-3",
+    "name": "wpml:shootType",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-shoottype-3.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-singlelineenable",
+    "name": "wpml:singleLineEnable",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-singlelineenable.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-smartobliqueenable",
+    "name": "wpml:smartObliqueEnable",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-smartobliqueenable.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-smartobliquegimbalpitch",
+    "name": "wpml:smartObliqueGimbalPitch",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-smartobliquegimbalpitch.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-stripusetemplatealtitude",
+    "name": "wpml:stripUseTemplateAltitude",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-stripusetemplatealtitude.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-useglobalheadingparam",
+    "name": "wpml:useGlobalHeadingParam",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-useglobalheadingparam.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-useglobalheight",
+    "name": "wpml:useGlobalHeight",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-useglobalheight.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-useglobalspeed",
+    "name": "wpml:useGlobalSpeed",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-useglobalspeed.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-useglobalturnparam",
+    "name": "wpml:useGlobalTurnParam",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-useglobalturnparam.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-usestraightline",
+    "name": "wpml:useStraightLine",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-usestraightline.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-waypointheadingparam",
+    "name": "wpml:waypointHeadingParam",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-waypointheadingparam.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-waypointspeed",
+    "name": "wpml:waypointSpeed",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-waypointspeed.json"
+  },
+  {
+    "id": "wpml-template-kml-placemark-wpml-waypointturnparam",
+    "name": "wpml:waypointTurnParam",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-placemark-wpml-waypointturnparam.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-mappingheadingparam-wpml-mappingheadingangle",
+    "name": "wpml:mappingHeadingAngle",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-mappingheadingparam-wpml-mappingheadingangle.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-mappingheadingparam-wpml-mappingheadingmode",
+    "name": "wpml:mappingHeadingMode",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-mappingheadingparam-wpml-mappingheadingmode.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-missionconfig-wpml-autorerouteinfo",
+    "name": "wpml:autoRerouteInfo",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-missionconfig-wpml-autorerouteinfo.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-missionconfig-wpml-droneinfo",
+    "name": "wpml:droneInfo",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-missionconfig-wpml-droneinfo.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-missionconfig-wpml-executerclostaction",
+    "name": "wpml:executeRCLostAction",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-missionconfig-wpml-executerclostaction.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-missionconfig-wpml-exitonrclost",
+    "name": "wpml:exitOnRCLost",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-missionconfig-wpml-exitonrclost.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-missionconfig-wpml-finishaction",
+    "name": "wpml:finishAction",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-missionconfig-wpml-finishaction.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-missionconfig-wpml-flytowaylinemode",
+    "name": "wpml:flyToWaylineMode",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-missionconfig-wpml-flytowaylinemode.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-missionconfig-wpml-globalrthheight",
+    "name": "wpml:globalRTHHeight",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-missionconfig-wpml-globalrthheight.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-missionconfig-wpml-globaltransitionalspeed",
+    "name": "wpml:globalTransitionalSpeed",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-missionconfig-wpml-globaltransitionalspeed.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-missionconfig-wpml-payloadinfo",
+    "name": "wpml:payloadInfo",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-missionconfig-wpml-payloadinfo.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-missionconfig-wpml-takeoffrefpoint-x-y-z",
+    "name": "wpml:takeOffRefPoint<x,y,z>",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-missionconfig-wpml-takeoffrefpoint-x-y-z.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-missionconfig-wpml-takeoffrefpointaglheight",
+    "name": "wpml:takeOffRefPointAGLHeight",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-missionconfig-wpml-takeoffrefpointaglheight.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-missionconfig-wpml-takeoffsecurityheight",
+    "name": "wpml:takeOffSecurityHeight",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-missionconfig-wpml-takeoffsecurityheight.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-overlap-wpml-inclinedcameraoverlaph",
+    "name": "wpml:inclinedCameraOverlapH",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-overlap-wpml-inclinedcameraoverlaph.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-overlap-wpml-inclinedcameraoverlapw",
+    "name": "wpml:inclinedCameraOverlapW",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-overlap-wpml-inclinedcameraoverlapw.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-overlap-wpml-inclinedlidaroverlaph",
+    "name": "wpml:inclinedLidarOverlapH",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-overlap-wpml-inclinedlidaroverlaph.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-overlap-wpml-inclinedlidaroverlapw",
+    "name": "wpml:inclinedLidarOverlapW",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-overlap-wpml-inclinedlidaroverlapw.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-overlap-wpml-orthocameraoverlaph",
+    "name": "wpml:orthoCameraOverlapH",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-overlap-wpml-orthocameraoverlaph.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-overlap-wpml-orthocameraoverlapw",
+    "name": "wpml:orthoCameraOverlapW",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-overlap-wpml-orthocameraoverlapw.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-overlap-wpml-ortholidaroverlaph",
+    "name": "wpml:orthoLidarOverlapH",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-overlap-wpml-ortholidaroverlaph.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-overlap-wpml-ortholidaroverlapw",
+    "name": "wpml:orthoLidarOverlapW",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-overlap-wpml-ortholidaroverlapw.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-payloadparam-wpml-dewarpingenable",
+    "name": "wpml:dewarpingEnable",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-payloadparam-wpml-dewarpingenable.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-payloadparam-wpml-focusmode",
+    "name": "wpml:focusMode",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-payloadparam-wpml-focusmode.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-payloadparam-wpml-imageformat",
+    "name": "wpml:imageFormat",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-payloadparam-wpml-imageformat.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-payloadparam-wpml-meteringmode",
+    "name": "wpml:meteringMode",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-payloadparam-wpml-meteringmode.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-payloadparam-wpml-modelcoloringenable",
+    "name": "wpml:modelColoringEnable",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-payloadparam-wpml-modelcoloringenable.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-payloadparam-wpml-payloadpositionindex",
+    "name": "wpml:payloadPositionIndex",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-payloadparam-wpml-payloadpositionindex.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-payloadparam-wpml-returnmode",
+    "name": "wpml:returnMode",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-payloadparam-wpml-returnmode.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-payloadparam-wpml-samplingrate",
+    "name": "wpml:samplingRate",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-payloadparam-wpml-samplingrate.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-payloadparam-wpml-scanningmode",
+    "name": "wpml:scanningMode",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-payloadparam-wpml-scanningmode.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-waylinecoordinatesysparam-wpml-coordinatemode",
+    "name": "wpml:coordinateMode",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-waylinecoordinatesysparam-wpml-coordinatemode.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-waylinecoordinatesysparam-wpml-globalshootheight",
+    "name": "wpml:globalShootHeight",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-waylinecoordinatesysparam-wpml-globalshootheight.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-waylinecoordinatesysparam-wpml-heightmode",
+    "name": "wpml:heightMode",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-waylinecoordinatesysparam-wpml-heightmode.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-waylinecoordinatesysparam-wpml-positioningtype",
+    "name": "wpml:positioningType",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-waylinecoordinatesysparam-wpml-positioningtype.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-waylinecoordinatesysparam-wpml-surfacefollowmodeenable",
+    "name": "wpml:surfaceFollowModeEnable",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-waylinecoordinatesysparam-wpml-surfacefollowmodeenable.json"
+  },
+  {
+    "id": "wpml-template-kml-wpml-waylinecoordinatesysparam-wpml-surfacerelativeheight",
+    "name": "wpml:surfaceRelativeHeight",
+    "protocol": "wpml",
+    "module": "template-kml",
+    "file": "catalog/endpoints/wpml/wpml-template-kml-wpml-waylinecoordinatesysparam-wpml-surfacerelativeheight.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-placemark-point",
+    "name": "Point",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-placemark-point.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-placemark-wpml-executeheight",
+    "name": "wpml:executeHeight",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-placemark-wpml-executeheight.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-placemark-wpml-index",
+    "name": "wpml:index",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-placemark-wpml-index.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-placemark-wpml-isrisky",
+    "name": "wpml:isRisky",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-placemark-wpml-isrisky.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-placemark-wpml-usestraightline",
+    "name": "wpml:useStraightLine",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-placemark-wpml-usestraightline.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-placemark-wpml-waypointheadingparam",
+    "name": "wpml:waypointHeadingParam",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-placemark-wpml-waypointheadingparam.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-placemark-wpml-waypointspeed",
+    "name": "wpml:waypointSpeed",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-placemark-wpml-waypointspeed.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-placemark-wpml-waypointturnparam",
+    "name": "wpml:waypointTurnParam",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-placemark-wpml-waypointturnparam.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-wpml-missionconfig-placemark-point",
+    "name": "Placemark(Point)",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-wpml-missionconfig-placemark-point.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-wpml-missionconfig-wpml-autoflightspeed",
+    "name": "wpml:autoFlightSpeed",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-wpml-missionconfig-wpml-autoflightspeed.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-wpml-missionconfig-wpml-autorerouteinfo",
+    "name": "wpml:autoRerouteInfo",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-wpml-missionconfig-wpml-autorerouteinfo.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-wpml-missionconfig-wpml-droneinfo",
+    "name": "wpml:droneInfo",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-wpml-missionconfig-wpml-droneinfo.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-wpml-missionconfig-wpml-executeheightmode",
+    "name": "wpml:executeHeightMode",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-wpml-missionconfig-wpml-executeheightmode.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-wpml-missionconfig-wpml-executerclostaction",
+    "name": "wpml:executeRCLostAction",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-wpml-missionconfig-wpml-executerclostaction.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-wpml-missionconfig-wpml-exitonrclost",
+    "name": "wpml:exitOnRCLost",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-wpml-missionconfig-wpml-exitonrclost.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-wpml-missionconfig-wpml-finishaction",
+    "name": "wpml:finishAction",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-wpml-missionconfig-wpml-finishaction.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-wpml-missionconfig-wpml-flytowaylinemode",
+    "name": "wpml:flyToWaylineMode",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-wpml-missionconfig-wpml-flytowaylinemode.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-wpml-missionconfig-wpml-globalrthheight",
+    "name": "wpml:globalRTHHeight",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-wpml-missionconfig-wpml-globalrthheight.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-wpml-missionconfig-wpml-globaltransitionalspeed",
+    "name": "wpml:globalTransitionalSpeed",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-wpml-missionconfig-wpml-globaltransitionalspeed.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-wpml-missionconfig-wpml-payloadinfo",
+    "name": "wpml:payloadInfo",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-wpml-missionconfig-wpml-payloadinfo.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-wpml-missionconfig-wpml-startactiongroup",
+    "name": "wpml:startActionGroup",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-wpml-missionconfig-wpml-startactiongroup.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-wpml-missionconfig-wpml-takeoffsecurityheight",
+    "name": "wpml:takeOffSecurityHeight",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-wpml-missionconfig-wpml-takeoffsecurityheight.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-wpml-missionconfig-wpml-templateid",
+    "name": "wpml:templateId",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-wpml-missionconfig-wpml-templateid.json"
+  },
+  {
+    "id": "wpml-waylines-wpml-wpml-missionconfig-wpml-waylineid",
+    "name": "wpml:waylineId",
+    "protocol": "wpml",
+    "module": "waylines-wpml",
+    "file": "catalog/endpoints/wpml/wpml-waylines-wpml-wpml-missionconfig-wpml-waylineid.json"
+  }
+]

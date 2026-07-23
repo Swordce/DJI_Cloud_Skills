@@ -1,0 +1,255 @@
+{
+  "id": "http-post-media-api-v1-workspaces-workspace-id-upload-callback",
+  "name": "上报文件上传结果",
+  "purpose": "POST /media/api/v1/workspaces/{workspace_id}/upload-callback",
+  "protocol": "http",
+  "module": "media-management",
+  "operation": {
+    "method": "POST",
+    "path": "/media/api/v1/workspaces/{workspace_id}/upload-callback",
+    "content_type": "application/json"
+  },
+  "parameters": [
+    {
+      "name": "workspace_id",
+      "in": "path",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "工作空间id",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "x-auth-token",
+      "in": "header",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "访问令牌",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "body",
+      "in": "body",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "-",
+      "constraints": "",
+      "schema": "media.UploadCallbackInput",
+      "fields": [
+        {
+          "name": "result",
+          "in": "body",
+          "type": "integer",
+          "required": true,
+          "required_status": "required",
+          "description": "文件上传到存储桶是否成功，非0代表失败",
+          "constraints": "none",
+          "schema": "int"
+        },
+        {
+          "name": "ext",
+          "in": "body",
+          "type": "string",
+          "required": false,
+          "required_status": "optional",
+          "description": "文件关联的扩展字段",
+          "constraints": "none",
+          "schema": "media.MediaFile"
+        },
+        {
+          "name": "fingerprint",
+          "in": "body",
+          "type": "string",
+          "required": false,
+          "required_status": "optional",
+          "description": "文件指纹",
+          "constraints": "none",
+          "schema": "string"
+        },
+        {
+          "name": "metadata",
+          "in": "body",
+          "type": "string",
+          "required": false,
+          "required_status": "optional",
+          "description": "媒体元数据",
+          "constraints": "none",
+          "schema": "media.MetaData"
+        },
+        {
+          "name": "name",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "required_status": "required",
+          "description": "文件的名称",
+          "constraints": "none",
+          "schema": "string"
+        },
+        {
+          "name": "object_key",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "required_status": "required",
+          "description": "文件在对象存储桶的key",
+          "constraints": "none",
+          "schema": "string"
+        },
+        {
+          "name": "path",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "required_status": "required",
+          "description": "文件的业务路径",
+          "constraints": "none",
+          "schema": "string"
+        },
+        {
+          "name": "sub_file_type",
+          "in": "body",
+          "type": "integer",
+          "required": false,
+          "required_status": "optional",
+          "description": "当文件为图片的时候生效 * 0 - 普通图片 * 1 - 全景图",
+          "constraints": "none",
+          "schema": "integer"
+        }
+      ]
+    }
+  ],
+  "authentication": {
+    "type": "token",
+    "location": "header",
+    "name": "X-Auth-Token"
+  },
+  "responses": [
+    {
+      "status": "200",
+      "description": "OK",
+      "schema": "media.UploadCallbackOutput",
+      "fields": [
+        {
+          "name": "code",
+          "in": "response",
+          "type": "integer",
+          "required": false,
+          "required_status": "optional",
+          "description": "错误码",
+          "constraints": "none",
+          "schema": "integer"
+        },
+        {
+          "name": "data",
+          "in": "response",
+          "type": "string",
+          "required": false,
+          "required_status": "optional",
+          "description": "none",
+          "constraints": "none",
+          "schema": "media.UploadCallbackOutputData"
+        },
+        {
+          "name": "message",
+          "in": "response",
+          "type": "string",
+          "required": false,
+          "required_status": "optional",
+          "description": "错误描述",
+          "constraints": "none",
+          "schema": "string"
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "400",
+      "meaning": "invalid_request",
+      "retry": false
+    },
+    {
+      "code": "401",
+      "meaning": "token_expired_or_invalid",
+      "retry": false
+    },
+    {
+      "code": "403",
+      "meaning": "forbidden",
+      "retry": false
+    },
+    {
+      "code": "404",
+      "meaning": "resource_not_found",
+      "retry": false
+    },
+    {
+      "code": "5xx",
+      "meaning": "server_error",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "code": 0,
+        "message": "success",
+        "data": {
+          "object_key": "5asjwu24-2a18-4b4b-86f9-3a678da0bf4d/example.jpg"
+        }
+      },
+      "source": "official"
+    },
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "result": 0,
+        "ext": {
+          "file_group_id": "string",
+          "drone_model_key": "string",
+          "is_original": true,
+          "payload_model_key": "string",
+          "tinny_fingerprint": "string",
+          "sn": "string"
+        },
+        "fingerprint": "string",
+        "metadata": {
+          "absolute_altitude": 0,
+          "created_time": "string",
+          "gimbal_yaw_degree": 0,
+          "relative_altitude": 0,
+          "shoot_position": {
+            "lat": 0,
+            "lng": 0
+          }
+        },
+        "name": "string",
+        "object_key": "string",
+        "path": "string",
+        "sub_file_type": 0
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "POST requires an application idempotency key or explicit confirmation before retry."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/40.mediafile-upload-result-report.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/40.mediafile-upload-result-report.md"
+  }
+}

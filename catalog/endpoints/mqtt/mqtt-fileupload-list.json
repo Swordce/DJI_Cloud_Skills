@@ -1,0 +1,149 @@
+{
+  "id": "mqtt-fileupload-list",
+  "name": "获取设备可上传的文件列表",
+  "purpose": "MQTT services: fileupload_list",
+  "protocol": "mqtt",
+  "module": "log",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/*{gateway_sn}*/services",
+    "direction": "down",
+    "method": "fileupload_list",
+    "reply_topic": "thing/product/*{gateway_sn}*/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "module_list",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文件所属过滤列表",
+      "constraints": "{\"size\": -, \"item_type\": enum_int}",
+      "schema": "array"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/*{gateway_sn}*/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "module_list": [
+            "0",
+            "3"
+          ]
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "fileupload_list"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "files": [
+            {
+              "device_sn": "xxxxxxxxx",
+              "list": [
+                {
+                  "boot_index": 1111,
+                  "end_time": 1659427398806,
+                  "size": 33789,
+                  "start_time": 1654070968655
+                },
+                {
+                  "boot_index": 22222,
+                  "end_ime": 1659427398806,
+                  "size": 33789,
+                  "start_time": 1659427398806
+                }
+              ],
+              "module": "0",
+              "result": 0
+            },
+            {
+              "device_sn": "device_sn",
+              "list": [
+                {
+                  "boot_index": 11111,
+                  "end_time": 1659427398806,
+                  "size": 36772,
+                  "start_time": 1659427398806
+                },
+                {
+                  "boot_index": 22222,
+                  "end_ime": 1659427398806,
+                  "size": 33789,
+                  "start_time": 1659427398806
+                }
+              ],
+              "module": "3",
+              "result": 0
+            }
+          ],
+          "result": 0
+        },
+        "gateway": "",
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "fileupload_list"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1",
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/90.log.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/90.log.md"
+  },
+  "alternate_sources": [
+    {
+      "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/90.log.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/90.log.md"
+    }
+  ]
+}

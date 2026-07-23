@@ -1,0 +1,199 @@
+{
+  "id": "mqtt-drc-mode-enter",
+  "name": "进入指令控制模式",
+  "purpose": "MQTT services: drc_mode_enter",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/*{gateway_sn}*/services",
+    "direction": "down",
+    "method": "drc_mode_enter",
+    "reply_topic": "thing/product/*{gateway_sn}*/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "mqtt_broker",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "获取 MQTT 中继服务的地址与认证信息",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "address",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "服务器连接地址，例如：192.0.2.1:8883, mqtt.dji.com:8883",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "client_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "可自定义的 MQTT 客户端 ID。建议使用设备的 SN 码，也可以与具有语义的前缀组合，例如，drc-4J4R101",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "username",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "建立连接时使用的用户名",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "password",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "建立连接时认证所需要的密码",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "expire_time",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "在有效期内认证信息可以重复使用，另外认证信息过期后，并不会影响已建立连接的设备",
+      "constraints": "{\"unit_name\":\"秒 / s\"}",
+      "schema": "int"
+    },
+    {
+      "name": "enable_tls",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "启用 TLS 即对 MQTT 链路开启加密",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "osd_frequency",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "设置 OSD 上报频率",
+      "constraints": "{\"max\":30,\"min\":1,\"step\":\"\",\"unit_name\":\"赫兹 / Hz\"}",
+      "schema": "int"
+    },
+    {
+      "name": "hsi_frequency",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "设置 HSI 上报频率",
+      "constraints": "{\"max\":30,\"min\":1,\"step\":\"\",\"unit_name\":\"赫兹 / Hz\"}",
+      "schema": "int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/*{gateway_sn}*/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "hsi_frequency": 1,
+          "mqtt_broker": {
+            "address": "mqtt.dji.com:8883",
+            "client_id": "sn_a",
+            "enable_tls": true,
+            "expire_time": 1672744922,
+            "password": "jwt_token",
+            "username": "sn_a_username"
+          },
+          "osd_frequency": 10
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "drc_mode_enter"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "result": 0
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "drc_mode_enter"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1",
+    "dock2",
+    "pilot"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/00.mqtt/20.rc-pro/30.drc.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/00.mqtt/20.rc-pro/30.drc.md"
+  },
+  "alternate_sources": [
+    {
+      "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/110.drc.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/110.drc.md"
+    },
+    {
+      "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/110.drc.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/110.drc.md"
+    }
+  ]
+}

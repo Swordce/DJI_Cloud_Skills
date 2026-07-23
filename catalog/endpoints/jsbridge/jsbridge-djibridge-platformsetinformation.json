@@ -1,0 +1,75 @@
+{
+  "id": "jsbridge-djibridge-platformsetinformation",
+  "name": "platformSetInformation",
+  "purpose": "设置平台名称 | platformName: 平台名称 workspaceName: DJI Pilot 2上云入口显示工作空间名称 desc: DJI Pilot 2上云入口显示工作空间描述",
+  "protocol": "jsbridge",
+  "module": "3bc15c8aae3e",
+  "operation": {
+    "method": "window.djiBridge.platformSetInformation",
+    "signature": "window.djiBridge.platformSetInformation(String platformName, String workspaceName, String desc)"
+  },
+  "parameters": [
+    {
+      "name": "platformName",
+      "in": "argument",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "设置平台名称 | platformName: 平台名称 workspaceName: DJI Pilot 2上云入口显示工作空间名称 desc: DJI Pilot 2上云入口显示工作空间描述",
+      "constraints": "",
+      "schema": "String"
+    },
+    {
+      "name": "workspaceName",
+      "in": "argument",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "设置平台名称 | platformName: 平台名称 workspaceName: DJI Pilot 2上云入口显示工作空间名称 desc: DJI Pilot 2上云入口显示工作空间描述",
+      "constraints": "",
+      "schema": "String"
+    },
+    {
+      "name": "desc",
+      "in": "argument",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "设置平台名称 | platformName: 平台名称 workspaceName: DJI Pilot 2上云入口显示工作空间名称 desc: DJI Pilot 2上云入口显示工作空间描述",
+      "constraints": "",
+      "schema": "String"
+    }
+  ],
+  "authentication": {
+    "type": "license",
+    "location": "initialization",
+    "name": "appId/appKey/license"
+  },
+  "responses": [
+    {
+      "type": "string",
+      "description": "JSON string with code, message, and data; parse with JSON.parse when applicable."
+    }
+  ],
+  "errors": [
+    {
+      "code": "code != 0",
+      "meaning": "Bridge invocation failed; inspect message.",
+      "retry": false
+    }
+  ],
+  "examples": [],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "none",
+    "retry_on": [],
+    "notes": "Verify the license and required component state before invoking again."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md"
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "id": "websocket-situation-awareness-device-osd",
+  "name": "deviceOsd",
+  "purpose": "deviceOsd",
+  "protocol": "websocket",
+  "module": "situation-awareness",
+  "operation": {
+    "action": "receive",
+    "endpoint": "platform-defined-wss-url",
+    "message": "deviceOsd",
+    "biz_code": "device_osd"
+  },
+  "parameters": [
+    {
+      "name": "biz_code",
+      "in": "message",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "消息业务码",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "version",
+      "in": "message",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "消息版本",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "timestamp",
+      "in": "message",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "消息发送时间（毫秒）",
+      "constraints": "",
+      "schema": "integer"
+    },
+    {
+      "name": "data",
+      "in": "message",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "-",
+      "constraints": "",
+      "schema": "object"
+    },
+    {
+      "name": "data.host",
+      "in": "message",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "-",
+      "constraints": "",
+      "schema": "object"
+    },
+    {
+      "name": "data.sn",
+      "in": "message",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "设备序列号",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "data.host.latitude",
+      "in": "message",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "纬度",
+      "constraints": "",
+      "schema": "number"
+    },
+    {
+      "name": "data.host.longitude",
+      "in": "message",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "经度",
+      "constraints": "",
+      "schema": "number"
+    },
+    {
+      "name": "data.host.height",
+      "in": "message",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "椭球高度",
+      "constraints": "",
+      "schema": "integer"
+    },
+    {
+      "name": "data.host.attitude_head",
+      "in": "message",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "设备朝向",
+      "constraints": "",
+      "schema": "number"
+    },
+    {
+      "name": "data.host.elevation",
+      "in": "message",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相对起飞高度",
+      "constraints": "",
+      "schema": "number"
+    },
+    {
+      "name": "data.host.horizontal_speed",
+      "in": "message",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "水平速度",
+      "constraints": "",
+      "schema": "number"
+    },
+    {
+      "name": "data.host.vertical_speed",
+      "in": "message",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "垂直速度",
+      "constraints": "",
+      "schema": "number"
+    }
+  ],
+  "authentication": {
+    "type": "token",
+    "location": "query",
+    "name": "x-auth-token"
+  },
+  "responses": [
+    {
+      "transport": "websocket",
+      "description": "Application callback consumes the pushed message."
+    }
+  ],
+  "errors": [],
+  "examples": [
+    {
+      "kind": "message",
+      "format": "json",
+      "value": {
+        "biz_code": "device_osd",
+        "version": "1.0",
+        "timestamp": 146052438362,
+        "data": {
+          "host": {
+            "latitude": 113.44444,
+            "longitude": 23.45656,
+            "height": 44.35,
+            "attitude_head": 90,
+            "elevation": 40,
+            "horizontal_speed": 0,
+            "vertical_speed": 2.3
+          },
+          "sn": "string"
+        }
+      },
+      "source": "official"
+    },
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {},
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 0,
+    "backoff": "capped_exponential_jitter",
+    "retry_on": [
+      "disconnect"
+    ],
+    "notes": "Reconnect the transport, resubscribe, and deduplicate application messages."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/20.websocket/20.situation-awareness/10.message-push.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/20.websocket/20.situation-awareness/10.message-push.md"
+  }
+}

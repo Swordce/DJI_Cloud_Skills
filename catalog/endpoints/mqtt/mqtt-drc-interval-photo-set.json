@@ -1,0 +1,105 @@
+{
+  "id": "mqtt-drc-interval-photo-set",
+  "name": "负载控制—设置定时拍",
+  "purpose": "MQTT message: drc_interval_photo_set",
+  "protocol": "mqtt",
+  "module": "remote-control",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/*{gateway_sn}*/drc/down",
+    "direction": "down",
+    "method": "drc_interval_photo_set",
+    "reply_topic": "thing/product/*{gateway_sn}*/drc/up",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "payload_index",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相机枚举值。非标准的 device_mode_key，格式为 {type-subtype-gimbalindex}，可以参考产品支持",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "interval",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "不同照片尺寸取值范围不一样。照片尺寸在 8K 以下时拍照间隔的设置没有限制。8K 照片不能设置0.7s 和 1s。请忽略照片尺寸在 8K 以上的场景。",
+      "constraints": "{\"1\":\"1s\",\"2\":\"2s\",\"3\":\"3s\",\"5\":\"5s\",\"7\":\"7s\",\"10\":\"10s\",\"15\":\"15s\",\"20\":\"20s\",\"30\":\"30s\",\"60\":\"60s\",\"0.7\":\"0.7s\"}",
+      "schema": "enum_string"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/*{gateway_sn}*/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "interval": 1,
+          "payload_index": "80-0-0"
+        },
+        "method": "drc_interval_photo_set",
+        "seq": 1
+      },
+      "source": "official"
+    },
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "result": 0
+        },
+        "method": "drc_interval_photo_set",
+        "seq": 1
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/180.remote-control.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/180.remote-control.md"
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "id": "mqtt-flight-areas-sync-progress",
+  "name": "自定义飞行区文件同步状态",
+  "purpose": "MQTT events: flight_areas_sync_progress",
+  "protocol": "mqtt",
+  "module": "custom-flight-area",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/*{gateway_sn}*/events",
+    "direction": "up",
+    "method": "flight_areas_sync_progress",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "status",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "同步状态",
+      "constraints": "{\"fail\":\"失败\",\"switch_fail\":\"使能开关失败\",\"synchronized\":\"已同步\",\"synchronizing\":\"同步中\",\"wait_sync\":\"待同步\"}",
+      "schema": "enum_string"
+    },
+    {
+      "name": "reason",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "返回码",
+      "constraints": "{\"1\":\"解析云端返回的文件信息失败\",\"2\":\"获取飞行器端文件信息失败\",\"3\":\"从云端下载文件失败\",\"4\":\"链路翻转失败\",\"5\":\"传输文件失败\",\"6\":\"disable失败\",\"7\":\"自定义飞行区删除失败\",\"8\":\"飞行器端加载作业区域数据失败\",\"9\":\"enable失败\",\"10\":\"机场增强图传无法关闭，作业区域数据同步失败\",\"11\":\"飞行器开机失败，无法同步作业区域数据\",\"12\":\"checksum校验失败\",\"13\":\"同步异常超时\"}",
+      "schema": "int"
+    },
+    {
+      "name": "file",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "自定义飞行区文件",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "name",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "自定义飞行区文件名称",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "checksum",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文件 SHA256 签名",
+      "constraints": "{}",
+      "schema": "text"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/*{gateway_sn}*/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "file": {
+            "checksum": "sha256",
+            "name": "geofence_xxx.json"
+          },
+          "reason": 0,
+          "status": "synchronized"
+        },
+        "method": "flight_areas_sync_progress",
+        "need_reply": 1,
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 16540709686556
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1",
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/130.custom-flight-area.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/130.custom-flight-area.md"
+  },
+  "alternate_sources": [
+    {
+      "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/130.custom-flight-area.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/130.custom-flight-area.md"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "id": "mqtt-drc-video-resolution-set",
+  "name": "负载控制—视频分辨率设置",
+  "purpose": "MQTT message: drc_video_resolution_set",
+  "protocol": "mqtt",
+  "module": "remote-control",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/*{gateway_sn}*/drc/down",
+    "direction": "down",
+    "method": "drc_video_resolution_set",
+    "reply_topic": "thing/product/*{gateway_sn}*/drc/up",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "payload_index",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相机枚举值。非标准的 device_mode_key，格式为 {type-subtype-gimbalindex}，可以参考产品支持",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "video_resolution",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "可见光相机分辨率分别为 1920*1080、3840*2160。红外相机仅支持 640*512，无法设置",
+      "constraints": "{\"0\":\"1920*1080\",\"1\":\"3840*2160\"}",
+      "schema": "enum_string"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/*{gateway_sn}*/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "payload_index": "81-0-0",
+          "video_resolution": 0
+        },
+        "method": "drc_video_resolution_set",
+        "seq": 1
+      },
+      "source": "official"
+    },
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "result": 0
+        },
+        "method": "drc_video_resolution_set",
+        "seq": 1
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/180.remote-control.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/180.remote-control.md"
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "id": "http-post-media-api-v1-workspaces-workspace-id-group-upload-callback",
+  "name": "文件组上传完成后回调",
+  "purpose": "POST /media/api/v1/workspaces/{workspace_id}/group-upload-callback",
+  "protocol": "http",
+  "module": "media-management",
+  "operation": {
+    "method": "POST",
+    "path": "/media/api/v1/workspaces/{workspace_id}/group-upload-callback",
+    "content_type": "application/json"
+  },
+  "parameters": [
+    {
+      "name": "workspace_id",
+      "in": "path",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "工作空间 ID",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "x-auth-token",
+      "in": "header",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "访问令牌",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "body",
+      "in": "body",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "body参数",
+      "constraints": "",
+      "schema": "storage.FolderUploadCallbackInput",
+      "fields": [
+        {
+          "name": "file_group_id",
+          "in": "body",
+          "type": "string",
+          "required": false,
+          "required_status": "optional",
+          "description": "文件组id，在一次航线任务中产生的媒体文件组 ID 相同",
+          "constraints": "none",
+          "schema": "string"
+        },
+        {
+          "name": "file_count",
+          "in": "body",
+          "type": "integer",
+          "required": true,
+          "required_status": "required",
+          "description": "指定文件组的媒体文件总数",
+          "constraints": "none",
+          "schema": "int"
+        },
+        {
+          "name": "file_uploaded_count",
+          "in": "body",
+          "type": "integer",
+          "required": true,
+          "required_status": "required",
+          "description": "文件组中已经成功上传的媒体文件总数",
+          "constraints": "none",
+          "schema": "int"
+        }
+      ]
+    }
+  ],
+  "authentication": {
+    "type": "token",
+    "location": "header",
+    "name": "X-Auth-Token"
+  },
+  "responses": [
+    {
+      "status": "200",
+      "description": "OK",
+      "schema": "storage.FolderUploadCallbackOutput",
+      "fields": [
+        {
+          "name": "file_group_id",
+          "in": "response",
+          "type": "string",
+          "required": false,
+          "required_status": "optional",
+          "description": "文件组id，在一次航线任务中产生的媒体文件组 ID 相同",
+          "constraints": "none",
+          "schema": "string"
+        },
+        {
+          "name": "file_count",
+          "in": "response",
+          "type": "integer",
+          "required": true,
+          "required_status": "required",
+          "description": "指定文件组的媒体文件总数",
+          "constraints": "none",
+          "schema": "int"
+        },
+        {
+          "name": "file_uploaded_count",
+          "in": "response",
+          "type": "integer",
+          "required": true,
+          "required_status": "required",
+          "description": "文件组中已经成功上传的媒体文件总数",
+          "constraints": "none",
+          "schema": "int"
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "400",
+      "meaning": "invalid_request",
+      "retry": false
+    },
+    {
+      "code": "401",
+      "meaning": "token_expired_or_invalid",
+      "retry": false
+    },
+    {
+      "code": "403",
+      "meaning": "forbidden",
+      "retry": false
+    },
+    {
+      "code": "404",
+      "meaning": "resource_not_found",
+      "retry": false
+    },
+    {
+      "code": "5xx",
+      "meaning": "server_error",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "code": 0,
+        "data": {},
+        "message": "success"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "file_group_id": "xxx",
+        "file_count": 0,
+        "file_uploaded_count": 0
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "POST requires an application idempotency key or explicit confirmation before retry."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/50.group-upload-callback.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/50.group-upload-callback.md"
+  }
+}

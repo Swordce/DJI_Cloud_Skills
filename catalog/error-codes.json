@@ -1,0 +1,3546 @@
+[
+  {
+    "code": "312014",
+    "description": "设备升级中，请勿重复操作",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "312015",
+    "description": "机场：{dock_org_name} 业务繁忙无法进行设备升级，请等待机场处于空闲中后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "312016",
+    "description": "升级失败，机场和飞行器图传链路异常，请重启机场和飞行器后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "312022",
+    "description": "飞行器开机失败或未连接，请检查飞行器是否在舱内，是否安装电池，机场和飞行器是否已对频",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "312023",
+    "description": "推杆闭合失败无法升级飞行器，请检查急停按钮是否被按下，推杆是否有异物卡住",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "312027",
+    "description": "升级失败，机场未检测到飞行器",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "312028",
+    "description": "升级失败，设备升级过程中设备被重启",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "312029",
+    "description": "设备重启中无法进行设备升级，请等待设备重启完成后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "312030",
+    "description": "升级失败，飞行器增强图传开启后无法升级，请关闭飞行器增强图传后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "312704",
+    "description": "设备电量过低，请充电至20%以上后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314000",
+    "description": "设备当前无法支持该操作，建议检查设备当前工作状态",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314001",
+    "description": "飞行任务下发失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314002",
+    "description": "飞行任务下发失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314003",
+    "description": "航线文件格式不兼容，请检查航线文件是否正确",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314005",
+    "description": "飞行任务下发失败，请稍后重试或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314006",
+    "description": "飞行器初始化失败，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314007",
+    "description": "机场传输航线至飞行器失败，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314008",
+    "description": "飞行器起飞前准备超时，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314009",
+    "description": "飞行器初始化失败，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314010",
+    "description": "航线执行失败，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314011",
+    "description": "机场系统异常，无法获取飞行任务执行结果",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314012",
+    "description": "飞行器起飞前准备失败，无法执行飞行任务，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314013",
+    "description": "飞行任务下发失败，机场无法获取到本次飞行任务的航线，无法执行飞行任务，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314014",
+    "description": "机场系统异常，飞行任务执行失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314015",
+    "description": "机场传输精准复拍航线至飞行器失败，无法执行飞行任务，请稍后重试或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314016",
+    "description": "航线文件解析失败，无法执行飞行任务，请检查航线文件",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314017",
+    "description": "航线文件解析失败，请检查航线后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314018",
+    "description": "飞行器 RTK 定位异常，无法执行飞行任务，请稍后重试或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314019",
+    "description": "飞行器 RTK 收敛失败，无法执行飞行任务，请稍后重试或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314020",
+    "description": "飞行器不在停机坪正中间或飞行器朝向不正确，无法执行飞行任务，请检查飞行器位置和朝向",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314021",
+    "description": "飞行器 RTK 定位异常，无法执行飞行任务，请稍后重试或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314024",
+    "description": "进离场航线下发失败，请稍后重试或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314025",
+    "description": "RTK收敛超时，用户手动取消任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "314200",
+    "description": "任务失败，由于机场网络断开，飞行器已自动返航，请确保机场已连接网络后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315000",
+    "description": "机场通信异常，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315001",
+    "description": "机场通信异常，请远程开启飞机并等待 1min 后，再次下发任务重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315002",
+    "description": "机场通信异常，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315003",
+    "description": "机场通信异常，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315004",
+    "description": "任务失败，请等待两个机场都空闲后，再次下发任务重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315005",
+    "description": "机场通信异常，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315006",
+    "description": "机场通信异常，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315007",
+    "description": "机场通信异常，请将机场升级到最新版本或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315008",
+    "description": "降落机场和起飞机场标定信息不一致，请确认两个机场均链路通畅且使用了相同的网络信息标定",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315009",
+    "description": "机场通信异常，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315010",
+    "description": "无法停止飞行任务，请稍后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315011",
+    "description": "无法停止飞行任务，请稍后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315012",
+    "description": "无法停止飞行任务，请稍后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315013",
+    "description": "飞行任务下发失败，请稍后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315014",
+    "description": "当前任务类型不支持设置返航点",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315015",
+    "description": "返航点设置失败，请稍后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315016",
+    "description": "飞行任务下发失败，请稍后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315017",
+    "description": "飞行任务下发失败，请稍后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315018",
+    "description": "任务失败，请等待两个机场都空闲后，再次下发任务重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315019",
+    "description": "设备部署位置不佳，无法执行蛙跳任务，请选择其它机场再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315050",
+    "description": "机场系统异常，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315051",
+    "description": "任务失败，请重启机场并再次下发任务后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315052",
+    "description": "机场位置未收敛，请等待一段时间后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315053",
+    "description": "任务失败，请重启机场并再次下发任务后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315054",
+    "description": "任务失败，请重启机场并再次下发任务后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315055",
+    "description": "任务失败，请重启机场并再次下发任务后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315056",
+    "description": "任务失败，请重启机场并再次下发任务后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315057",
+    "description": "任务失败，请重启机场并再次下发任务后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315058",
+    "description": "任务失败，请重启机场并再次下发任务后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315059",
+    "description": "任务失败，请重启机场并再次下发任务后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315060",
+    "description": "任务失败，请重启机场并再次下发任务后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315061",
+    "description": "任务失败，请重启机场并再次下发任务后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315062",
+    "description": "任务失败，请重启机场并再次下发任务后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315063",
+    "description": "任务失败，请重启机场并再次下发任务后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315064",
+    "description": "任务失败，请重启机场并再次下发任务后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "315065",
+    "description": "任务失败，请重启机场并再次下发任务后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316001",
+    "description": "飞行器参数配置失败，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316002",
+    "description": "飞行器参数配置失败，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316003",
+    "description": "飞行器参数配置失败，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316004",
+    "description": "飞行器参数配置失败，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316005",
+    "description": "飞行器 RTK 收敛失败，无法执行飞行任务，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316006",
+    "description": "任务超时，飞行器已丢失或降落时机场未开启舱盖或展开推杆，飞行器无法降落回机场，请尽快至机场部署现场检查飞行器状况",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316007",
+    "description": "飞行器初始化失败，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316008",
+    "description": "机场获取飞行器控制权失败，无法执行飞行任务，请确认遥控器未锁定控制权",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316009",
+    "description": "飞行器电量低于30%，无法执行飞行任务，请充电后重试（建议电量≥50%）",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316010",
+    "description": "机场未检测到飞行器，无法执行飞行任务，请检查舱内是否有飞行器，机场与飞行器是否已对频，或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316011",
+    "description": "飞行器降落位置偏移过大，请检查飞行器是否需要现场摆正",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316012",
+    "description": "飞行器起飞前准备失败，无法执行飞行任务，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316013",
+    "description": "飞行器起飞前准备失败，无法执行飞行任务，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316014",
+    "description": "飞行器起飞前准备失败，无法执行飞行任务，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316015",
+    "description": "飞行器 RTK 收敛位置距离机场过远，无法执行飞行任务，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316016",
+    "description": "飞行器降落至机场超时，可能是机场与飞行器断连导致，请通过直播查看飞行器是否降落至舱内",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316017",
+    "description": "获取飞行器媒体数量超时，可能是机场与飞行器断连导致，请通过直播查看飞行器是否降落至舱内",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316018",
+    "description": "飞行任务执行超时，可能是机场与飞行器断连导致，请通过直播查看飞行器是否降落至舱内",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316019",
+    "description": "机场系统错误，无法执行飞行任务，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316020",
+    "description": "飞行器使用的 RTK 信号源错误，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316021",
+    "description": "飞行器 RTK 信号源检查超时，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316022",
+    "description": "飞行器无法执行返航指令，请检查飞行器是否已开机，机场与飞行器是否已断连，请确认无以上问题后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316023",
+    "description": "飞行器无法执行返航指令，飞行器已被 B 控接管，请在 B 控操控飞行器，或关闭 B 控后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316024",
+    "description": "飞行器执行返航指令失败，请检查飞行器是否已起飞，确认飞行器已起飞后请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316025",
+    "description": "飞行器参数配置失败，请稍后重试或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316026",
+    "description": "机场急停按钮被按下，无法执行飞行任务，请释放急停按钮后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316027",
+    "description": "飞行器参数配置超时，请稍后重试或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316029",
+    "description": "机场急停按钮被按下，飞行器将飞往备降点降落，请立即检查飞行器是否已安全降落并将飞行器放回至机场",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316032",
+    "description": "获取电池数据超时，请稍后重试或重启飞行器后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316033",
+    "description": "飞行器电池循环次数过高，为保证飞行安全，已自动终止任务，建议更换该电池",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316034",
+    "description": "无法起飞，飞行器固件版本与机场固件版本不匹配，为保证飞行安全请升级固件后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316035",
+    "description": "进离场航线下发失败，请确保设备固件为最新版本后重新下发任务，如果持续报错，请联系大疆售后。",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316050",
+    "description": "飞行器因电量过低在舱外降落，请立即检查飞行器是否已安全降落并将飞行器放回至机场",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316051",
+    "description": "飞行任务异常，飞行器在舱外降落，请立即检查飞行器是否已安全降落并将飞行器放回至机场",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316052",
+    "description": "飞行任务异常，飞行器将飞往备降点降落，请立即检查飞行器是否已安全降落并将飞行器放回至机场",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316053",
+    "description": "用户已操控飞行器降落，请立即检查飞行器是否已安全降落并将飞行器放回至机场",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316100",
+    "description": "获取相机概要信息失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316101",
+    "description": "设置相机为单拍模式失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316102",
+    "description": "关闭相机水印失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316103",
+    "description": "设置测光模式到平均测光失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316104",
+    "description": "切换镜头到广角镜头失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316105",
+    "description": "设置相机存储照片失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316106",
+    "description": "红外变焦倍数设置失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316107",
+    "description": "照片尺寸设置4k失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316108",
+    "description": "设置照片存储格式为jpeg格式失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316109",
+    "description": "关闭相机畸变矫正失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316110",
+    "description": "打开相机机械快门失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "316111",
+    "description": "设置对焦模式失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "317001",
+    "description": "获取飞行器媒体文件数量失败，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "317002",
+    "description": "飞行器存储格式化失败，飞行器未开机、未连接或未检测到相机，请确认无以上问题后重试，或重启飞行器后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "317003",
+    "description": "飞行器存储格式化失败，请重启飞行器后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "317004",
+    "description": "机场媒体文件格式化失败，请稍后重试或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "317005",
+    "description": "飞行器结束录像失败，本次飞行任务的媒体文件可能无法上传",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "317006",
+    "description": "无法格式化，请等待当前飞行器媒体文件下载完成后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "317007",
+    "description": "获取媒体文件数量失败，请稍后重试，如本架次任务有媒体文件且持续报错可联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319001",
+    "description": "机场作业中或设备异常反馈上传日志中，无法执行飞行任务，请等待当前飞行任务或操作执行完成后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319002",
+    "description": "机场系统运行异常，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319003",
+    "description": "机场系统运行异常，请重新下发任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319004",
+    "description": "飞行任务执行超时，已自动终止本次飞行任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319005",
+    "description": "云端与机场通信异常，无法执行飞行任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319006",
+    "description": "取消飞行任务失败，飞行任务已经在执行中",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319007",
+    "description": "修改飞行任务失败，飞行任务已经在执行中",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319008",
+    "description": "机场时间与云端时间不同步，机场无法执行飞行任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319009",
+    "description": "飞行任务下发失败，请稍后重试或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319010",
+    "description": "机场固件版本过低，无法执行飞行任务，请升级机场固件为最新版本后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319015",
+    "description": "机场正在初始化中，无法执行飞行任务，请等待机场初始化完成后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319016",
+    "description": "机场正在执行其他飞行任务，无法执行本次飞行任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319017",
+    "description": "机场正在处理上次飞行任务媒体文件，无法执行本次飞行任务，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319018",
+    "description": "机场正在自动导出日志中（设备异常反馈），无法执行飞行任务，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319019",
+    "description": "机场正在拉取日志中（设备异常反馈），无法执行飞行任务，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319020",
+    "description": "航线中断失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319021",
+    "description": "退出远程控制失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319022",
+    "description": "指点飞行失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319023",
+    "description": "指点飞行停止失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319024",
+    "description": "一键起飞失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319025",
+    "description": "机场未准备完成，无法执行云端下发的飞行任务，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319026",
+    "description": "飞行器电池电量低于用户设置的任务开始执行的电量，请等待充电完成后再执行飞行任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319027",
+    "description": "机场或飞行器剩余存储容量过低，无法执行飞行任务，请等待媒体文件上传，机场和飞行器存储容量释放后再执行飞行任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319028",
+    "description": "正在更新自定义飞行区",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319029",
+    "description": "正在更新离线地图",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319030",
+    "description": "操作失败，无飞行器控制权",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319031",
+    "description": "控制权异常，请刷新重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319032",
+    "description": "指点飞行失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319033",
+    "description": "虚拟摇杆操作失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319034",
+    "description": "虚拟摇杆操作失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319035",
+    "description": "急停失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319036",
+    "description": "设备远程调试中，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319037",
+    "description": "设备本地调试中，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319038",
+    "description": "设备正在升级，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319042",
+    "description": "航线恢复失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319043",
+    "description": "取消返航失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319044",
+    "description": "航线任务已结束，无法恢复",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319045",
+    "description": "急停成功，请重新按键操作",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319046",
+    "description": "无法暂停航线，飞行器尚未进入航线或已退出航线",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "319999",
+    "description": "机场系统运行异常，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321000",
+    "description": "航线执行异常，请稍后重试或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321004",
+    "description": "航线文件解析失败，无法执行飞行任务，请检查航线文件",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321005",
+    "description": "航线缺少断点信息，机场无法执行飞行任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321257",
+    "description": "飞行任务已在执行中，请勿重复执行",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321258",
+    "description": "飞行任务无法终止，请检查飞行器状态",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321259",
+    "description": "飞行任务未开始执行，无法终止飞行任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321260",
+    "description": "飞行任务未开始执行，无法中断飞行任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321513",
+    "description": "航线规划高度已超过飞行器限高，机场无法执行飞行任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321514",
+    "description": "任务失败，起点或终点位于限远区域的缓冲区内或超过了限远距离",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321515",
+    "description": "航线穿过限飞区，机场无法执行飞行任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321516",
+    "description": "飞行器飞行高度过低，飞行任务执行被终止",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321517",
+    "description": "飞行器触发避障，飞行任务执行被终止。为保证飞行安全，请勿用当前航线执行断点续飞任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321519",
+    "description": "飞行器接近限飞区或限远距离自动返航，无法完成航线飞行",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321523",
+    "description": "飞行器起飞失败，请稍后重试，如果仍报错请联系大疆售后。",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321524",
+    "description": "飞行器起飞前准备失败，可能是飞行器无法定位或档位错误导致，请检查飞行器状态",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321528",
+    "description": "触碰自定义飞行区边界，航线任务已暂停",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321529",
+    "description": "目标点位于禁飞区域或者障碍物内，无法到达，航线任务已暂停，请重新规划后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321530",
+    "description": "飞行器飞行航线过程中轨迹规划失败，航线任务已暂停",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321531",
+    "description": "进离场航线执行失败，请联系大疆售后。",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321532",
+    "description": "进离场航线执行失败，请联系大疆售后。",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321533",
+    "description": "进离场航线执行失败，请联系大疆售后。",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321769",
+    "description": "飞行器卫星定位信号差，无法执行飞行任务，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321770",
+    "description": "飞行器挡位错误，无法执行飞行任务，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321771",
+    "description": "飞行器返航点未设置，无法执行飞行任务，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321772",
+    "description": "飞行器电量低于30%，无法执行飞行任务，请充电后重试（建议电量≥50%）",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321773",
+    "description": "飞行器执行飞行任务过程中低电量返航，无法完成航线飞行",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321775",
+    "description": "飞行器航线飞行过程中失联，无法完成航线飞行",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321776",
+    "description": "飞行器 RTK 收敛失败，无法执行飞行任务，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321777",
+    "description": "飞行器未悬停，无法开始执行飞行任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321778",
+    "description": "用户使用 B 控操控飞行器起桨，机场无法执行飞行任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "321784",
+    "description": "任务过程中遇到大风紧急返航",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "322281",
+    "description": "任务失败，机场执行飞行任务过程被手动打断或异常终止",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "322282",
+    "description": "机场执行飞行任务过程中被中断，飞行器被云端用户或遥控器接管",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "322283",
+    "description": "机场执行飞行任务过程中被用户触发返航，无法完成航线飞行",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "322539",
+    "description": "航线的断点信息错误，机场无法执行飞行任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "322563",
+    "description": "航线轨迹生成失败，请检查飞行器视觉镜头是否存在脏污或重启飞行器后再试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "324012",
+    "description": "日志压缩过程超时，所选日志过多，请减少选择的日志后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "324013",
+    "description": "设备日志列表获取失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "324014",
+    "description": "设备日志列表为空，请刷新页面或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "324015",
+    "description": "飞行器已关机或未连接，无法获取日志列表，请确认飞行器在舱内，通过远程调试将飞行器开机后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "324016",
+    "description": "机场存储空间不足，日志压缩失败，请清理机场存储空间或稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "324017",
+    "description": "日志压缩失败，无法获取所选飞行器日志，请刷新页面或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "324018",
+    "description": "日志文件拉取失败，导致本次设备异常反馈上传失败，请稍后重试或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "324019",
+    "description": "因机场网络异常，日志上传失败，请稍后重试。如果连续多次出现该问题，请联系代理商或大疆售后进行网络排障",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "324021",
+    "description": "因机场断电或重启导致日志导出中断，日志导出失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "324030",
+    "description": "因机场网络异常、飞行器图传链路异常等原因，媒体文件暂时无法上传或文件已上传但云端读取失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "325001",
+    "description": "云端下发命令不符合格式要求，设备无法执行",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "325003",
+    "description": "指令响应失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "325004",
+    "description": "设备端命令请求已超时，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "325005",
+    "description": "当前机场无法响应任务，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "325006",
+    "description": "当前机场启动检查中，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "325007",
+    "description": "当前机场执行作业任务中，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "325008",
+    "description": "当前机场处理作业任务结果中，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "325009",
+    "description": "当前机场执行远程日志导出中，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "325010",
+    "description": "当前机场更新自定义飞行区中，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "325011",
+    "description": "当前机场更新离线地图中，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "325012",
+    "description": "当前飞机未连接，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "326002",
+    "description": "飞行器未安装 DJI Cellualr 模块",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "326003",
+    "description": "飞行器 DJI Cellualr 模块中未安装 SIM 卡",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "326004",
+    "description": "飞行器 DJI Cellualr 模块需要强制升级，否则无法使用",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "326005",
+    "description": "操作失败，增强图传无法建立连接，请检查 4G 信号强度，或咨询运营商查询套餐流量和 APN 设置",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "326006",
+    "description": "增强图传开关切换失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "326008",
+    "description": "机场未安装 DJI Cellualr 模块",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "326009",
+    "description": "机场 DJI Cellualr 模块中未安装 SIM 卡",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "326010",
+    "description": "机场 DJI Cellualr 模块需要强制升级，否则无法使用",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "326103",
+    "description": "当前 eSIM 正在激活中，请稍后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "326104",
+    "description": "当前 eSIM 正在切换运营商中，请稍后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "326105",
+    "description": "DJI 增强图传模块正在切换模式中，请稍后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "326106",
+    "description": "DJI 增强图传模块异常，请重启设备后再试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "326107",
+    "description": "请在设备管理 > 机场 > 设备运维中激活DJI增强图传模块的 eSIM 或插入 SIM 卡后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327000",
+    "description": "参数设置失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327001",
+    "description": "参数设置失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327002",
+    "description": "获取控制权失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327003",
+    "description": "获取控制权失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327004",
+    "description": "画面拖动失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327005",
+    "description": "双击画面归中失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327006",
+    "description": "拍照失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327007",
+    "description": "开始录像失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327008",
+    "description": "停止录像失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327009",
+    "description": "切换相机模式失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327010",
+    "description": "ZOOM相机变焦失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327011",
+    "description": "IR相机变焦失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327012",
+    "description": "获取控制权失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327013",
+    "description": "参数设置失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327014",
+    "description": "云台已达限位",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327015",
+    "description": "直播启动失败，建议刷新直播或重新打开设备小窗",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327016",
+    "description": "失联动作设置失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327017",
+    "description": "指点飞行高度设置失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327018",
+    "description": "指点飞行模式切换失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327019",
+    "description": "当前状态无法看向标注点",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327020",
+    "description": "全景拍照停止命令超时",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327050",
+    "description": "当前设备状态不支持播放音频",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327051",
+    "description": "下载音频文件失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327052",
+    "description": "喊话器处理模式切换失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327053",
+    "description": "上传音频文件失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327054",
+    "description": "播放音频失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327055",
+    "description": "设置工作模式失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327056",
+    "description": "上传文本失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327057",
+    "description": "停止播放失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327058",
+    "description": "设置播放模式失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327059",
+    "description": "设置音量失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327060",
+    "description": "设置控件值失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327061",
+    "description": "发送文本值失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327062",
+    "description": "切换系统语言失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327063",
+    "description": "获取设备功能列表失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327064",
+    "description": "获取设备配置文件失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327065",
+    "description": "获取设备图片文件失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327066",
+    "description": "设备文件压缩失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327067",
+    "description": "设备文件上传失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327068",
+    "description": "上传音频文件失败，md5校验失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327069",
+    "description": "上传音频文件失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327070",
+    "description": "上传音频文件失败，异常终止",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327071",
+    "description": "上传TTS文本失败，md5校验失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327072",
+    "description": "上传TTS文本失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327073",
+    "description": "上传TTS文本失败，异常终止",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327074",
+    "description": "喊话器重播失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327075",
+    "description": "喊话器编码失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327201",
+    "description": "全景拍照失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327202",
+    "description": "全景拍摄终止",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327203",
+    "description": "当前设备不支持全景拍照",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327204",
+    "description": "系统繁忙，无法全景拍照",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327205",
+    "description": "请求失败，无法全景拍照",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327206",
+    "description": "飞机未起飞，无法开始全景拍摄",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327207",
+    "description": "控制权获取失败，全景拍摄终止",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327208",
+    "description": "未知相机错误，无法开始全景拍摄",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327209",
+    "description": "相机超时，全景拍摄终止",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327210",
+    "description": "无法全景拍照",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327211",
+    "description": "存储空间不足，全景拍摄终止",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327212",
+    "description": "飞机运动中，无法开始全景拍摄",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327213",
+    "description": "云台运动中，无法开始全景拍摄",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327214",
+    "description": "用户操作摇杆，全景拍摄终止",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327215",
+    "description": "碰到限飞区，全景拍摄终止",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327216",
+    "description": "触发距离限制，全景拍摄终止",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327217",
+    "description": "云台受阻，全景拍摄终止",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327218",
+    "description": "拍照失败，全景拍摄终止",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327219",
+    "description": "全景图片拼接失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327220",
+    "description": "加载标定参数失败，全景拍摄终止",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327221",
+    "description": "调整相机参数失败，全景拍摄终止",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "327500",
+    "description": "飞行器镜头除雾失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "328051",
+    "description": "飞机未完成实名登记，请连接遥控器，按照指引完成、实名登记后飞行",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "328052",
+    "description": "飞机实名登记状态已注销，请连接遥控器，按照指引完成实名登记后飞行",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "336000",
+    "description": "指点飞行命令发送失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "336001",
+    "description": "飞行器数据异常，无法响应指令",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "336002",
+    "description": "飞行器GPS信号差",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "336003",
+    "description": "飞行器定位失效，无法响应指令",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "336004",
+    "description": "指点飞行自主规划失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "336005",
+    "description": "飞行器返航点未更新",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "336006",
+    "description": "飞行器已失联，已退出指点飞行",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "336017",
+    "description": "飞行器电量不足以完成当前任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "336018",
+    "description": "已切换飞行器规划模式",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "336019",
+    "description": "指点飞行因限高自动调整飞行高度",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "336513",
+    "description": "目标点在禁飞区内",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "336514",
+    "description": "目标点超出飞行器限远",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "336515",
+    "description": "目标点在禁飞区内",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "336516",
+    "description": "目标点超出飞行器限高",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "336517",
+    "description": "目标点超出飞行器限低",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "337025",
+    "description": "飞行器无法起飞",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "337026",
+    "description": "目标点异常，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "337027",
+    "description": "飞行器速度设置异常，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "337028",
+    "description": "飞行器版本异常，请检查飞行器版本",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "337029",
+    "description": "飞行器无法响应当前任务，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "337030",
+    "description": "指令飞行安全离场高过低",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "337537",
+    "description": "已触碰禁飞区",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "337538",
+    "description": "已触碰飞行器限远",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "337539",
+    "description": "已触碰禁飞区",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "337540",
+    "description": "已触碰飞行器限高或限高区",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "337541",
+    "description": "已触碰飞行器限低",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "337542",
+    "description": "飞行器起飞失败，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "337543",
+    "description": "目标点可能在障碍物内，请检查周边环境",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "337544",
+    "description": "检测到障碍物，请检查周边环境",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "337545",
+    "description": "飞行器规划异常，请重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "337546",
+    "description": "已触碰自定义飞行区边界",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338001",
+    "description": "飞行器通信异常，无法执行飞行任务，请重启飞行器与机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338002",
+    "description": "飞行器通信异常，无法执行飞行任务，请重启飞行器与机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338003",
+    "description": "飞行器通信异常，无法执行飞行任务，请重启飞行器与机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338004",
+    "description": "飞行器通信异常，无法执行飞行任务，请重启飞行器与机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338005",
+    "description": "起飞机场与降落机场部署距离超出限制，无法执行飞行任务，请选择两个部署距离不超过 15km 的机场执行任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338006",
+    "description": "无法执行飞行任务，请检查降落机场是否已申请解禁证书、是否位于自定义禁飞区或是否位于自定义飞行区外",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338007",
+    "description": "目标降落机场部署突破限高区限高，无法执行任务，请申请解禁证书后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338008",
+    "description": "目标降落机场部署突破飞行器设置的限高，无法执行任务，请调整限高后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338009",
+    "description": "飞行器 GPS 定位信号差，无法执行任务，请重启飞行器后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338010",
+    "description": "飞行器定位失效，无法执行任务，请重启飞行器后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338011",
+    "description": "任务失败，目标机场处于地理鸟笼作业区域外，请重新规划任务后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338017",
+    "description": "飞行器数据更新失败，无法执行任务，请重启飞行器后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338018",
+    "description": "飞行器数据更新失败，无法执行任务，请重启飞行器后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338019",
+    "description": "飞行器到目标机场的返航路线正在规划中，无法执行任务，请重启飞行器后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338020",
+    "description": "飞行器无法根据规划的路径到达目标降落机场，无法执行任务，请重新选择降落机场后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338021",
+    "description": "飞行器当前电量不足以到达目标降落机场，无法执行任务，请给飞行器充电后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338049",
+    "description": "响应遥控器杆量，已退出指点飞行",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338050",
+    "description": "响应终止指令，已退出指点飞行",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338051",
+    "description": "飞行器低电量返航，已退出指点飞行",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338052",
+    "description": "飞行器低电量降落，已退出指点飞行",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338053",
+    "description": "附近有载人机，已退出指点飞行",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338054",
+    "description": "响应其他高优先级任务，已退出指点飞行",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "338255",
+    "description": "飞行器通信异常，无法执行飞行任务，请重启飞行器与机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "386535",
+    "description": "航线执行异常，请稍后重试或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "513002",
+    "description": "直播失败，相机不存在或相机类型错误",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "513003",
+    "description": "相机已经在直播中，请勿重复开启直播",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "513005",
+    "description": "直播失败，直播参数（清晰度）设置错误",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "513006",
+    "description": "直播启动失败，请刷新重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "513008",
+    "description": "直播失败，设备端图传数据异常",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "513010",
+    "description": "直播失败，设备无法联网",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "513011",
+    "description": "操作失败，设备未开启直播",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "513012",
+    "description": "操作失败，设备已在直播中，不支持切换镜头",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "513013",
+    "description": "直播失败，直播使用的视频传输协议不支持",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "513014",
+    "description": "直播失败，直播参数错误或者不完整",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "513015",
+    "description": "直播异常，网络卡顿, 请刷新后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "513016",
+    "description": "直播异常，视频解码失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "513017",
+    "description": "直播已暂停，请等待当前飞行器媒体文件下载完成后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "513099",
+    "description": "直播失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514100",
+    "description": "机场运行异常，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514101",
+    "description": "推杆闭合失败，请检查停机坪上是否存在异物，飞行器方向是否放反，或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514102",
+    "description": "推杆展开失败，请检查停机坪上是否存在异物，或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514103",
+    "description": "飞行器电量低于30%，无法执行飞行任务，请充电后重试（建议电量≥50%）",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514104",
+    "description": "飞行器电池开始充电失败，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514105",
+    "description": "飞行器电池停止充电失败，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514106",
+    "description": "飞行器电源控制异常，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514107",
+    "description": "舱盖开启失败，请检查舱盖周围是否存在异物，或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514108",
+    "description": "舱盖关闭失败，请检查舱盖周围是否存在异物，或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514109",
+    "description": "飞行器开机失败，请检查飞行器是否在舱和飞机电量是否正常，或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514110",
+    "description": "飞行器关机失败，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514111",
+    "description": "飞行器慢转收桨控制异常，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514112",
+    "description": "飞行器慢转收桨控制异常，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514113",
+    "description": "机场推杆与飞行器无法连接，请检查飞行器是否在舱内，推杆闭合时是否被卡住，充电连接器是否脏污或损坏",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514114",
+    "description": "获取飞行器电源状态失败，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514116",
+    "description": "无法执行当前操作，机场正在执行其他控制指令，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514117",
+    "description": "舱盖开启或关闭未到位，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514118",
+    "description": "推杆展开或闭合未到位，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514120",
+    "description": "机场与飞行器断连，请重启机场后重试或重新对频",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514121",
+    "description": "机场急停按钮被按下，请释放急停按钮",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514122",
+    "description": "获取飞行器充电状态失败，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514123",
+    "description": "飞行器电池电量过低无法开机",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514124",
+    "description": "获取飞行器电池信息失败，无法执行飞行任务，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514125",
+    "description": "飞行器电池电量已接近满电状态，无法开始充电，请使用至95%以下再进行充电",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514134",
+    "description": "雨量过大，机场无法执行飞行任务，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514135",
+    "description": "风速过大，机场无法执行飞行任务，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514136",
+    "description": "机场供电断开，机场无法执行飞行任务，请恢复机场供电后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514137",
+    "description": "环境温度过低于-20℃ (-4°F)，机场无法执行飞行任务，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514138",
+    "description": "飞行器电池正在保养中，机场无法执行飞行任务，请等待保养结束后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514139",
+    "description": "飞行器电池无法执行保养指令，飞行器电池无需保养",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514140",
+    "description": "飞行器电池无法执行保养指令，飞行器电池无需保养",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514141",
+    "description": "机场系统运行异常，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514142",
+    "description": "飞行器起飞前，机场推杆与飞行器无法连接，请检查飞行器是否在舱内，推杆闭合时是否被卡住，充电连接器是否脏污或损坏",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514143",
+    "description": "推杆未闭合或闭合不到位，请稍后重试或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514144",
+    "description": "舱盖未关闭或关闭不到位，请稍后重试或重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514145",
+    "description": "机场处于现场调试中，无法执行当前操作或执行飞行任务，请断开遥控器和机场的数据线连接后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514146",
+    "description": "机场处于远程调试中，无法执行飞行任务，请退出远程调试后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514147",
+    "description": "设备升级中，无法进行远程调试或执行飞行任务，请等待升级完成后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514148",
+    "description": "机场已经在作业中，无法进行远程调试或再次执行飞行任务，请等待当前任务执行完成后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514149",
+    "description": "机场系统运行异常，无法执行飞行任务，请重启机场后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514150",
+    "description": "设备重启中，无法执行飞行任务，请等待重启完成后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514151",
+    "description": "设备升级中，无法执行设备重启指令，请等待升级完成后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514153",
+    "description": "机场已退出远程调试模式，无法执行当前操作",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514154",
+    "description": "获取内循环出风口温度失败，请稍后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514156",
+    "description": "飞机不在舱内，请立即检查飞行器是否已安全降落并将飞行器放回至机场",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514157",
+    "description": "执行开机失败，无线充电线圈业务繁忙，请重启机场后再试复",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514158",
+    "description": "无法起飞，机场 RTK 业务异常，请重启机场后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514159",
+    "description": "任务失败，降落机场检测到飞行器，请确保降落机场没有飞行器后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514162",
+    "description": "飞行器和机场连接失败，请关闭机场舱盖或重启机场后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514163",
+    "description": "电池功能异常，请确保飞行器电池插入到位或重启飞行器后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514164",
+    "description": "设备重启失败，请稍后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514165",
+    "description": "设备重启失败，请稍后重试，如果仍报错请联系大疆售后",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514170",
+    "description": "机场系统初始化中，无法执行当前操作或指令，请等待机场系统初始化完成后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514171",
+    "description": "云端下发给机场的命令不符合格式要求，机场无法执行",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514172",
+    "description": "飞行器无法关机，蓝牙连接状态为未连接，请尝试重启飞行器和机场，或去现场重新对频飞行器与机场后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514173",
+    "description": "由于天气原因（环境温度低于5度并且降雨大于等于中雨），可能导致桨叶结冰影响作业安全，暂无法执行任务",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514174",
+    "description": "飞行器充电失败，机场舱盖开启或关闭未到位，请关闭舱盖后再试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514180",
+    "description": "停止空调制冷或停止空调制热失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514181",
+    "description": "开启空调制冷失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514182",
+    "description": "开启空调制热失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514183",
+    "description": "开启空调除湿失败，请稍后重试",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514184",
+    "description": "当前温度低于 0 ℃（32°F），无法开启空调制冷",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514185",
+    "description": "当前温度高于 45 ℃（115°F），无法开启空调制热",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514300",
+    "description": "网关异常",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514301",
+    "description": "请求超时，连接断开",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514302",
+    "description": "网络证书异常，连接失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514303",
+    "description": "网络异常，连接断开",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  },
+  {
+    "code": "514304",
+    "description": "请求被拒，连接失败",
+    "source": {
+      "file": "docs/cn/71.error-code.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/71.error-code.md"
+    }
+  }
+]

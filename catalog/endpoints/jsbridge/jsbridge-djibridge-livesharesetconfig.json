@@ -1,0 +1,88 @@
+{
+  "id": "jsbridge-djibridge-livesharesetconfig",
+  "name": "App端手动发起直播",
+  "purpose": "App端手动发起直播",
+  "protocol": "jsbridge",
+  "module": "3bc15c8aae3e",
+  "operation": {
+    "method": "window.djiBridge.liveshareSetConfig",
+    "signature": "window.djiBridge.liveshareSetConfig(type: Int, params: String)"
+  },
+  "parameters": [
+    {
+      "name": "Int",
+      "in": "argument",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "",
+      "constraints": "",
+      "schema": "type"
+    },
+    {
+      "name": "String",
+      "in": "argument",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "",
+      "constraints": "",
+      "schema": "params"
+    }
+  ],
+  "authentication": {
+    "type": "license",
+    "location": "initialization",
+    "name": "appId/appKey/license"
+  },
+  "responses": [
+    {
+      "type": "string",
+      "description": "JSON string with code, message, and data; parse with JSON.parse when applicable."
+    }
+  ],
+  "errors": [
+    {
+      "code": "code != 0",
+      "meaning": "Bridge invocation failed; inspect message.",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "method": "window.djiBridge.liveshareSetConfig",
+        "arguments": [
+          "<Int>",
+          "<String>"
+        ]
+      },
+      "source": "generated_from_schema"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "code": 0,
+        "message": "success",
+        "data": null
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "none",
+    "retry_on": [],
+    "notes": "Verify the license and required component state before invoking again."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md"
+  }
+}

@@ -1,0 +1,15 @@
+.upstream/
+__pycache__/
+*.pyc
+build/
+dist/
+.cursor/skills/dji-cloud-api/
+.agents/skills/dji-cloud-api/
+.claude/skills/dji-cloud-api/
+.codebuddy/skills/dji-cloud-api/
+.workbuddy/
+.github/skills/dji-cloud-api/
+.agent/skills/dji-cloud-api/
+.gemini/skills/dji-cloud-api/
+skills/dji-cloud-api/references/
+skills/dji-cloud-api/assets/

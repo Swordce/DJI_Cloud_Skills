@@ -1,0 +1,187 @@
+{
+  "id": "mqtt-osd-info-push",
+  "name": "DRC-高频 osd 信息上报",
+  "purpose": "MQTT message: osd_info_push",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/*{gateway_sn}*/drc/up",
+    "direction": "up",
+    "method": "osd_info_push",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "attitude_head",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "飞行器姿态 head 角",
+      "constraints": "{\"unit_name\":\"度 / °\"}",
+      "schema": "double"
+    },
+    {
+      "name": "latitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "飞行器纬度",
+      "constraints": "{\"unit_name\":\"度 / °\"}",
+      "schema": "double"
+    },
+    {
+      "name": "longitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "飞行器经度",
+      "constraints": "{\"unit_name\":\"度 / °\"}",
+      "schema": "double"
+    },
+    {
+      "name": "height",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "飞行器海拔高度",
+      "constraints": "{\"unit_name\":\"度 / °\"}",
+      "schema": "double"
+    },
+    {
+      "name": "speed_x",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前飞行器 x 坐标方向的速度",
+      "constraints": "{\"unit_name\":\"米每秒 / m/s\"}",
+      "schema": "double"
+    },
+    {
+      "name": "speed_y",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前飞行器 y 坐标方向的速度",
+      "constraints": "{\"unit_name\":\"米每秒 / m/s\"}",
+      "schema": "double"
+    },
+    {
+      "name": "speed_z",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前飞行器 z 坐标方向的速度",
+      "constraints": "{\"unit_name\":\"米每秒 / m/s\"}",
+      "schema": "double"
+    },
+    {
+      "name": "gimbal_pitch",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "云台 pitch 角",
+      "constraints": "{\"unit_name\":\"度 / °\"}",
+      "schema": "double"
+    },
+    {
+      "name": "gimbal_roll",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "云台 roll 角",
+      "constraints": "{\"unit_name\":\"度 / °\"}",
+      "schema": "double"
+    },
+    {
+      "name": "gimbal_yaw",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "云台 yaw 角",
+      "constraints": "{\"unit_name\":\"度 / °\"}",
+      "schema": "double"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/*{gateway_sn}*/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "attitude_head": 60,
+          "gimbal_pitch": 60,
+          "gimbal_roll": 60,
+          "gimbal_yaw": 60,
+          "height": 10,
+          "latitude": 10,
+          "longitude": 10,
+          "speed_x": 10,
+          "speed_y": 10,
+          "speed_z": 10
+        },
+        "timestamp": 1670415891013
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1",
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/110.drc.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/110.drc.md"
+  },
+  "alternate_sources": [
+    {
+      "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/110.drc.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/110.drc.md"
+    }
+  ]
+}

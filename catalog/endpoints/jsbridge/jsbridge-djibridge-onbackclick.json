@@ -1,0 +1,44 @@
+{
+  "id": "jsbridge-djibridge-onbackclick",
+  "name": "onBackClick",
+  "purpose": "返回键回调 | 在webview页面时，点击页面左上角的返回键时，会触发该接口回调，如果返回值是true，则DJI Pilot 2不处理，如果是false或者没有实现该函数，则DJI Pilot 2会退出webview页面，效果会跟遥控器实体返回按键一致。注意：遥控器返回键无法触发该回调。",
+  "protocol": "jsbridge",
+  "module": "3bc15c8aae3e",
+  "operation": {
+    "method": "window.djiBridge.onBackClick",
+    "signature": "window.djiBridge.onBackClick()"
+  },
+  "parameters": [],
+  "authentication": {
+    "type": "license",
+    "location": "initialization",
+    "name": "appId/appKey/license"
+  },
+  "responses": [
+    {
+      "type": "string",
+      "description": "JSON string with code, message, and data; parse with JSON.parse when applicable."
+    }
+  ],
+  "errors": [
+    {
+      "code": "code != 0",
+      "meaning": "Bridge invocation failed; inspect message.",
+      "retry": false
+    }
+  ],
+  "examples": [],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "none",
+    "retry_on": [],
+    "notes": "Verify the license and required component state before invoking again."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md"
+  }
+}

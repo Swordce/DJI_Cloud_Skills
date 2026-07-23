@@ -1,0 +1,126 @@
+{
+  "id": "http-post-media-api-v1-workspaces-workspace-id-fast-upload",
+  "name": "文件快传",
+  "purpose": "POST /media/api/v1/workspaces/{workspace_id}/fast-upload",
+  "protocol": "http",
+  "module": "media-management",
+  "operation": {
+    "method": "POST",
+    "path": "/media/api/v1/workspaces/{workspace_id}/fast-upload",
+    "content_type": "application/json"
+  },
+  "parameters": [
+    {
+      "name": "workspace_id",
+      "in": "path",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "工作空间id",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "x-auth-token",
+      "in": "header",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "访问令牌",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "body",
+      "in": "body",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "body",
+      "constraints": "",
+      "schema": "media.FastUploadInput"
+    }
+  ],
+  "authentication": {
+    "type": "token",
+    "location": "header",
+    "name": "X-Auth-Token"
+  },
+  "responses": [
+    {
+      "status": "200",
+      "description": "OK",
+      "schema": "media.FastUploadOutput",
+      "fields": []
+    }
+  ],
+  "errors": [
+    {
+      "code": "400",
+      "meaning": "invalid_request",
+      "retry": false
+    },
+    {
+      "code": "401",
+      "meaning": "token_expired_or_invalid",
+      "retry": false
+    },
+    {
+      "code": "403",
+      "meaning": "forbidden",
+      "retry": false
+    },
+    {
+      "code": "404",
+      "meaning": "resource_not_found",
+      "retry": false
+    },
+    {
+      "code": "5xx",
+      "meaning": "server_error",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "code": 0,
+        "message": "success",
+        "data": {}
+      },
+      "source": "official"
+    },
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "ext": {
+          "drone_model_key": "string",
+          "is_original": true,
+          "payload_model_key": "string",
+          "tinny_fingerprint": "string",
+          "sn": "string"
+        },
+        "fingerprint": "string",
+        "name": "string",
+        "path": "string"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "POST requires an application idempotency key or explicit confirmation before retry."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/10.fast-upload.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/10.fast-upload.md"
+  }
+}

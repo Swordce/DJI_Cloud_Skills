@@ -1,0 +1,55 @@
+{
+  "id": "jsbridge-djibridge-apisettoken",
+  "name": "apiSetToken",
+  "purpose": "设置Token | 注意：需要加载API模块后才能获取到",
+  "protocol": "jsbridge",
+  "module": "3bc15c8aae3e",
+  "operation": {
+    "method": "window.djiBridge.apiSetToken",
+    "signature": "window.djiBridge.apiSetToken(String token)"
+  },
+  "parameters": [
+    {
+      "name": "token",
+      "in": "argument",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "设置Token | 注意：需要加载API模块后才能获取到",
+      "constraints": "",
+      "schema": "String"
+    }
+  ],
+  "authentication": {
+    "type": "license",
+    "location": "initialization",
+    "name": "appId/appKey/license"
+  },
+  "responses": [
+    {
+      "type": "string",
+      "description": "JSON string with code, message, and data; parse with JSON.parse when applicable."
+    }
+  ],
+  "errors": [
+    {
+      "code": "code != 0",
+      "meaning": "Bridge invocation failed; inspect message.",
+      "retry": false
+    }
+  ],
+  "examples": [],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "none",
+    "retry_on": [],
+    "notes": "Verify the license and required component state before invoking again."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md"
+  }
+}

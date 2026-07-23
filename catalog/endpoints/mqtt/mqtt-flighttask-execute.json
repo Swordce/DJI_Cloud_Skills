@@ -1,0 +1,352 @@
+{
+  "id": "mqtt-flighttask-execute",
+  "name": "执行任务",
+  "purpose": "MQTT services: flighttask_execute",
+  "protocol": "mqtt",
+  "module": "wayline",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/*{gateway_sn}*/services",
+    "direction": "down",
+    "method": "flighttask_execute",
+    "reply_topic": "thing/product/*{gateway_sn}*/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "flight_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "计划 ID",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "multi_dock_task",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "蛙跳任务参数",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "wireless_link_topo",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "图传连接拓扑",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "secret_code",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "从飞行器的设备属性中获取",
+      "constraints": "{\"size\": 28, \"item_type\": int}",
+      "schema": "array"
+    },
+    {
+      "name": "center_node",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "从飞行器的设备属性中获取",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "sdr_id",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "扰码信息",
+      "constraints": "",
+      "schema": "int"
+    },
+    {
+      "name": "sn",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "设备sn",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "leaf_nodes",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "机场或遥控器对频信息，组装执行蛙跳任务的对应机场属性",
+      "constraints": "{\"size\": -, \"item_type\": struct}",
+      "schema": "array"
+    },
+    {
+      "name": "control_source_index",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "控制源序号",
+      "constraints": "{\"max\":\"2\",\"min\":\"1\",\"step\":\"1\",\"unit_name\":\"无 / \"}",
+      "schema": "int"
+    },
+    {
+      "name": "dock_infos",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "执行本次蛙跳任务的机场信息，除了dock_type需要指定外，其他字段均可从设备属性上报中直接获取",
+      "constraints": "{\"size\": 2, \"item_type\": struct}",
+      "schema": "array"
+    },
+    {
+      "name": "dock_type",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "机场在蛙跳任务中的角色",
+      "constraints": "{\"landing\":\"降落\",\"takeoff\":\"起飞机场\"}",
+      "schema": "enum_string"
+    },
+    {
+      "name": "latitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "机场纬度，可从机场设备属性中获取",
+      "constraints": "{\"max\":\"90\",\"min\":\"-90\",\"step\":\"0.01\"}",
+      "schema": "double"
+    },
+    {
+      "name": "longitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "机场经度，可从机场设备属性中获取",
+      "constraints": "{\"max\":\"180\",\"min\":\"-180\",\"step\":\"0.01\"}",
+      "schema": "double"
+    },
+    {
+      "name": "height",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "机场高度，可从机场设备属性中获取",
+      "constraints": "{\"unit_name\":\"米 / m\"}",
+      "schema": "double"
+    },
+    {
+      "name": "heading",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "机场朝向角，可从机场设备属性中获取",
+      "constraints": "{\"max\":\"180\",\"min\":\"-180\",\"step\":\"\",\"unit_name\":\"度 / °\"}",
+      "schema": "double"
+    },
+    {
+      "name": "home_position_is_valid",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "可从机场设备属性中获取",
+      "constraints": "{\"0\":\"无效\",\"1\":\"有效\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "index",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "给机场分配的序号，单次任务中保持唯一且最好长期固定使用",
+      "constraints": "{\"max\":\"31\",\"min\":\"1\"}",
+      "schema": "int"
+    },
+    {
+      "name": "rtcm_info",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "机场RTK标定源",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "mount_point",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "网络RTK挂载点信息",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "port",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "网络端口信息",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "host",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "网络host信息",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "rtcm_device_type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "设备类型",
+      "constraints": "{\"1\":\"机场\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "source_type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "标定类型",
+      "constraints": "{\"0\":\"未标定\",\"1\":\"自收敛标定\",\"2\":\"手动标定\",\"3\":\"网络RTK标定\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "alternate_land_point",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "备降点",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "safe_land_height",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "安全高度(备降转移高)",
+      "constraints": "{}",
+      "schema": "float"
+    },
+    {
+      "name": "is_configured",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "是否设置备降点",
+      "constraints": "{\"0\":\"未设置\",\"1\":\"已设置\"}",
+      "schema": "enum_int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/*{gateway_sn}*/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "flight_id": "xxxxxxx"
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1234567890123,
+        "method": "flighttask_execute"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "result": 0
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1234567890123,
+        "method": "flighttask_execute"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1",
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/50.wayline.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/50.wayline.md"
+  },
+  "alternate_sources": [
+    {
+      "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/50.wayline.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/50.wayline.md"
+    }
+  ]
+}

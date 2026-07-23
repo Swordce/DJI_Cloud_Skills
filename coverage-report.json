@@ -1,0 +1,41 @@
+{
+  "entry_count": 755,
+  "protocol_counts": {
+    "http": 16,
+    "mqtt": 426,
+    "websocket": 8,
+    "jsbridge": 47,
+    "wpml": 258
+  },
+  "entries_with_examples": 498,
+  "entries_without_examples": 257,
+  "source_markdown_files": 75,
+  "source_candidates": {
+    "http_operations": 16,
+    "websocket_messages": 8,
+    "wpml_field_rows": 258,
+    "mqtt_method_identifiers": 155,
+    "mqtt_property_rows": 1031,
+    "jsbridge_signatures": 47
+  },
+  "known_source_exceptions": [
+    "Several HTTP examples omit a comma after code; JSON repair is limited to this documented pattern.",
+    "The waypoint cancel document is duplicated and is deduplicated by stable operation ID.",
+    "HTTP anchors/opIds contain known copy-paste errors; method and path are authoritative.",
+    "WebSocket message heading depth differs between map-elements and situation-awareness.",
+    "WPML fields are context-scoped because the same element name can have different parent semantics.",
+    "MQTT topic placeholders and Method labels contain documented formatting inconsistencies."
+  ],
+  "notes": [
+    "Dock 1/Dock 2 and Pilot duplicates are merged by protocol operation ID; compatibility records preserve variants.",
+    "Build artifacts are derived from catalog and are not repository facts.",
+    "validate_catalog.py is the sole writer of this report."
+  ],
+  "validation": {
+    "status": "passed",
+    "catalog_files": 755,
+    "unique_ids": 755,
+    "source_derived_ids": 755,
+    "errors": []
+  }
+}

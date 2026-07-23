@@ -1,0 +1,116 @@
+{
+  "id": "mqtt-drc-camera-iso-set",
+  "name": "负载控制—ISO设置",
+  "purpose": "MQTT message: drc_camera_iso_set",
+  "protocol": "mqtt",
+  "module": "remote-control",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/*{gateway_sn}*/drc/down",
+    "direction": "down",
+    "method": "drc_camera_iso_set",
+    "reply_topic": "thing/product/*{gateway_sn}*/drc/up",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "payload_index",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相机枚举值。非标准的 device_mode_key，格式为 {type-subtype-gimbalindex}，可以参考产品支持",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "camera_type",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相机类型枚举",
+      "constraints": "{\"wide\":\"广角\",\"zoom\":\"变焦\"}",
+      "schema": "enum_string"
+    },
+    {
+      "name": "iso_value",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "不同机型范围不一样",
+      "constraints": "{\"0\":\"ISO_AUTO\",\"2\":\"ISO_50\",\"3\":\"ISO_100\",\"4\":\"ISO_200\",\"5\":\"ISO_400\",\"6\":\"ISO_800\",\"7\":\"ISO_1600\",\"8\":\"ISO_3200\",\"9\":\"ISO_6400\",\"10\":\"ISO_12800\",\"11\":\"ISO_25600\",\"12\":\"ISO_51200\",\"13\":\"ISO_102400\",\"255\":\"ISO_FIXED\"}",
+      "schema": "enum_int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/*{gateway_sn}*/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "camera_type": "zoom",
+          "iso_value": 5,
+          "payload_index": "39-0-7"
+        },
+        "method": "drc_camera_iso_set",
+        "seq": 1
+      },
+      "source": "official"
+    },
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "result": 0
+        },
+        "method": "drc_camera_iso_set",
+        "seq": 1
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/180.remote-control.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/180.remote-control.md"
+  }
+}

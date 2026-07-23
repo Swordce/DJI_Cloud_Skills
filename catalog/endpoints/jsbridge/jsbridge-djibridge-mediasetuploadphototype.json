@@ -1,0 +1,77 @@
+{
+  "id": "jsbridge-djibridge-mediasetuploadphototype",
+  "name": "设置自动上传照片类型",
+  "purpose": "设置自动上传照片类型",
+  "protocol": "jsbridge",
+  "module": "media",
+  "operation": {
+    "method": "window.djiBridge.mediaSetUploadPhotoType",
+    "signature": "window.djiBridge.mediaSetUploadPhotoType(int type)"
+  },
+  "parameters": [
+    {
+      "name": "type",
+      "in": "argument",
+      "type": "integer",
+      "required": true,
+      "required_status": "required",
+      "description": "",
+      "constraints": "",
+      "schema": "int"
+    }
+  ],
+  "authentication": {
+    "type": "license",
+    "location": "initialization",
+    "name": "appId/appKey/license"
+  },
+  "responses": [
+    {
+      "type": "string",
+      "description": "JSON string with code, message, and data; parse with JSON.parse when applicable."
+    }
+  ],
+  "errors": [
+    {
+      "code": "code != 0",
+      "meaning": "Bridge invocation failed; inspect message.",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "method": "window.djiBridge.mediaSetUploadPhotoType",
+        "arguments": [
+          0
+        ]
+      },
+      "source": "generated_from_schema"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "code": 0,
+        "message": "success",
+        "data": null
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "none",
+    "retry_on": [],
+    "notes": "Verify the license and required component state before invoking again."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md"
+  }
+}

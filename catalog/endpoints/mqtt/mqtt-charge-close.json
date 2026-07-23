@@ -1,0 +1,170 @@
+{
+  "id": "mqtt-charge-close",
+  "name": "关闭充电进度",
+  "purpose": "MQTT events: charge_close",
+  "protocol": "mqtt",
+  "module": "cmd",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/*{gateway_sn}*/events",
+    "direction": "up",
+    "method": "charge_close",
+    "reply_topic": "thing/product/*{gateway_sn}*/events_reply",
+    "reply_direction": "down"
+  },
+  "parameters": [
+    {
+      "name": "result",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "非 0 代表错误",
+      "constraints": "",
+      "schema": "int"
+    },
+    {
+      "name": "output",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "输出",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "status",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "任务状态",
+      "constraints": "{\"canceled\":\"取消或终止\",\"failed\":\"失败\",\"in_progress\":\"执行中\",\"ok\":\"执行成功\",\"paused\":\"暂停\",\"rejected\":\"拒绝\",\"sent\":\"已下发\",\"timeout\":\"超时\"}",
+      "schema": "enum_string"
+    },
+    {
+      "name": "progress",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "进度",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "percent",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "进度百分比",
+      "constraints": "{\"max\":\"100\",\"min\":\"0\",\"step\":\"1\",\"unit_name\":\"百分比 / %\"}",
+      "schema": "int"
+    },
+    {
+      "name": "step_key",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前步骤",
+      "constraints": "{\"download_firmware\":\"下载固件\",\"upgrade_firmware\":\"更新固件\"}",
+      "schema": "enum_string"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/*{gateway_sn}*/events_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "output": {
+            "progress": {
+              "percent": 80,
+              "step_key": "stop_charge"
+            },
+            "status": "in_progress"
+          },
+          "result": 0
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "charge_close"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "method": "charge_close",
+        "tid": "6a7bfe89-c386-4043-b600-b518e10096cc",
+        "bid": "42a19f36-5117-4520-bd13-fd61d818d52e",
+        "timestamp": "1234567890123",
+        "data": {
+          "result": 0
+        }
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1",
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/70.cmd.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/70.cmd.md"
+  },
+  "alternate_sources": [
+    {
+      "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/70.cmd.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/70.cmd.md"
+    },
+    {
+      "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/70.cmd.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/70.cmd.md"
+    },
+    {
+      "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/70.cmd.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/70.cmd.md"
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "id": "mqtt-camera-frame-zoom",
+  "name": "负载控制-框选变焦",
+  "purpose": "MQTT services: camera_frame_zoom",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/*{gateway_sn}*/services",
+    "direction": "down",
+    "method": "camera_frame_zoom",
+    "reply_topic": "thing/product/*{gateway_sn}*/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "payload_index",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相机枚举",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "camera_type",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相机类型",
+      "constraints": "{\"ir\":\"红外\",\"wide\":\"广角\",\"zoom\":\"变焦\"}",
+      "schema": "enum_string"
+    },
+    {
+      "name": "locked",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "机头和云台的相对关系是否锁定",
+      "constraints": "{\"0\":\"仅云台转，机身不转\",\"1\":\"锁定机头，云台和机身一起转\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "x",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "目标框左上角点坐标x",
+      "constraints": "{\"max\":\"1\",\"min\":\"0\",\"step\":\"0.000001\",\"unit_name\":\"无 / \"}",
+      "schema": "float"
+    },
+    {
+      "name": "y",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "目标框左上角点坐标y",
+      "constraints": "{\"max\":\"1\",\"min\":\"0\",\"step\":\"0.000001\",\"unit_name\":\"无 / \"}",
+      "schema": "float"
+    },
+    {
+      "name": "width",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "目标框宽度",
+      "constraints": "{\"max\":\"1\",\"min\":\"0\",\"step\":\"0.000001\",\"unit_name\":\"无 / \"}",
+      "schema": "float"
+    },
+    {
+      "name": "height",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "目标框高度",
+      "constraints": "{\"max\":\"1\",\"min\":\"0\",\"step\":\"0.000001\",\"unit_name\":\"无 / \"}",
+      "schema": "float"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/*{gateway_sn}*/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "camera_type": "zoom",
+          "height": 0.2,
+          "locked": true,
+          "payload_index": "39-0-7",
+          "width": 0.2,
+          "x": 0.5,
+          "y": 0.5
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "camera_frame_zoom"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "result": 0
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "camera_frame_zoom"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/110.drc.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/110.drc.md"
+  }
+}

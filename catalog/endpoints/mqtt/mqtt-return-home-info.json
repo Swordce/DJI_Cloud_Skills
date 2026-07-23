@@ -1,0 +1,220 @@
+{
+  "id": "mqtt-return-home-info",
+  "name": "返航信息",
+  "purpose": "MQTT events: return_home_info",
+  "protocol": "mqtt",
+  "module": "wayline",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/*{gateway_sn}*/events",
+    "direction": "up",
+    "method": "return_home_info",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "planned_path_points",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "规划的轨迹点列表",
+      "constraints": "{\"size\": -, \"item_type\": struct}",
+      "schema": "array"
+    },
+    {
+      "name": "latitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "轨迹点纬度，角度值，南纬是负，北纬是正，精度到小数点后6位",
+      "constraints": "{\"max\":90,\"min\":-90}",
+      "schema": "double"
+    },
+    {
+      "name": "longitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "轨迹点经度，角度值，东经是正，西经是负，精度到小数点后6位",
+      "constraints": "{\"max\":180,\"min\":-180}",
+      "schema": "double"
+    },
+    {
+      "name": "height",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "轨迹点高度，椭球高",
+      "constraints": "{\"max\":\"\",\"min\":\"\",\"step\":0.1,\"unit_name\":\"米 / m\"}",
+      "schema": "float"
+    },
+    {
+      "name": "last_point_type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "返航路径最后一个点的类型",
+      "constraints": "{\"0\":\"轨迹最后一个点在返航点的上空\",\"1\":\"轨迹最后一个点不在返航点上空\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "flight_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "任务 ID",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "home_dock_sn",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "蛙跳任务中当前选择的机场home点SN，普通任务无该字段",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "multi_dock_home_info",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "普通任务无该字段",
+      "constraints": "{\"size\": 2, \"item_type\": struct}",
+      "schema": "array"
+    },
+    {
+      "name": "sn",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "机场SN",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "plan_status",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "路径规划状态",
+      "constraints": "{\"0\":\"规划失败或正在规划中\",\"1\":\"规划路径不可达\",\"2\":\"规划路径因电量不可达\",\"3\":\"目标可达\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "estimated_battery_consumption",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "预估电量消耗",
+      "constraints": "{\"max\":\"100\",\"min\":\"0\",\"step\":\"1\",\"unit_name\":null}",
+      "schema": "int"
+    },
+    {
+      "name": "home_distance",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "home点距离",
+      "constraints": "{\"unit_name\":\"米 / m\"}",
+      "schema": "float"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/*{gateway_sn}*/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "flight_id": "abc",
+          "last_point_type": 0,
+          "planned_path_points": [
+            {
+              "height": 123.234,
+              "latitude": 13.23,
+              "longitude": 123.234
+            }
+          ]
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "return_home_info"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "return_home_info",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1",
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/50.wayline.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/50.wayline.md"
+  },
+  "alternate_sources": [
+    {
+      "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/50.wayline.md",
+      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/50.wayline.md"
+    }
+  ]
+}

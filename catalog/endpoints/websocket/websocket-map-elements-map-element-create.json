@@ -1,0 +1,196 @@
+{
+  "id": "websocket-map-elements-map-element-create",
+  "name": "mapElementCreate",
+  "purpose": "mapElementCreate",
+  "protocol": "websocket",
+  "module": "map-elements",
+  "operation": {
+    "action": "receive",
+    "endpoint": "platform-defined-wss-url",
+    "message": "mapElementCreate",
+    "biz_code": "map_element_create"
+  },
+  "parameters": [
+    {
+      "name": "biz_code",
+      "in": "message",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "消息业务码",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "version",
+      "in": "message",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "消息版本",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "timestamp",
+      "in": "message",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "消息发送时间（毫秒）",
+      "constraints": "",
+      "schema": "integer"
+    },
+    {
+      "name": "data",
+      "in": "message",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "-",
+      "constraints": "",
+      "schema": "object"
+    },
+    {
+      "name": "data.id",
+      "in": "message",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "元素id",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "data.group_id",
+      "in": "message",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "元素组id",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "data.name",
+      "in": "message",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "元素名称",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "data.resource",
+      "in": "message",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "-",
+      "constraints": "",
+      "schema": "object"
+    },
+    {
+      "name": "data.resource.user_name",
+      "in": "message",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "用户名称",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "data.resource.content",
+      "in": "message",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "资源内容对象",
+      "constraints": "",
+      "schema": "object"
+    },
+    {
+      "name": "data.resource.type",
+      "in": "message",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "资源类型",
+      "constraints": "",
+      "schema": "integer"
+    }
+  ],
+  "authentication": {
+    "type": "token",
+    "location": "query",
+    "name": "x-auth-token"
+  },
+  "responses": [
+    {
+      "transport": "websocket",
+      "description": "Application callback consumes the pushed message."
+    }
+  ],
+  "errors": [],
+  "examples": [
+    {
+      "kind": "message",
+      "format": "json",
+      "value": {
+        "biz_code": "map_element_create",
+        "version": "1.0",
+        "timestamp": 146052438362,
+        "data": {
+          "group_id": "string",
+          "id": "string",
+          "name": "",
+          "resource": {
+            "user_name": "string",
+            "content": {
+              "type": "Feature",
+              "properties": {
+                "color": "#0091FF"
+              },
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  [
+                    -114.59526255248164,
+                    44.52039593722584
+                  ],
+                  [
+                    -96.91234166804537,
+                    47.39200791922252
+                  ],
+                  [
+                    -101.53652432009943,
+                    39.10142503321269
+                  ]
+                ]
+              }
+            },
+            "type": 0
+          }
+        }
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 0,
+    "backoff": "capped_exponential_jitter",
+    "retry_on": [
+      "disconnect"
+    ],
+    "notes": "Reconnect the transport, resubscribe, and deduplicate application messages."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/20.websocket/10.map-elements/10.message-push.md",
+    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/20.websocket/10.map-elements/10.message-push.md"
+  }
+}
