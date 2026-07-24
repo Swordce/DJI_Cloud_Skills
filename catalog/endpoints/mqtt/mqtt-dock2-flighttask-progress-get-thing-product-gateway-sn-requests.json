@@ -1,0 +1,120 @@
+{
+  "id": "mqtt-dock2-flighttask-progress-get-thing-product-gateway-sn-requests",
+  "name": "机场任务状态获取",
+  "purpose": "MQTT requests: flighttask_progress_get",
+  "protocol": "mqtt",
+  "module": "wayline",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/requests",
+    "direction": "up",
+    "method": "flighttask_progress_get",
+    "reply_topic": "thing/product/{gateway_sn}/requests_reply",
+    "reply_direction": "down"
+  },
+  "parameters": [
+    {
+      "name": "target_sn",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "目标设备sn",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "flight_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "目标航线任务uuid",
+      "constraints": "",
+      "schema": "text"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/requests_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "flight_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+          "target_sn": "xxx"
+        },
+        "gateway": "xxx",
+        "method": "flighttask_progress_get",
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1234567890123
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "output": {
+            "flight_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+            "progress": {
+              "current_step": 27,
+              "percent": 90
+            },
+            "status": "in_progress"
+          },
+          "result": 0
+        },
+        "gateway": "xxx",
+        "method": "flighttask_progress_get",
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 0
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/50.wayline.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock2/wayline.html",
+    "sha256": "ab3084c76c8fa9d65f308da3a107b0090084cf7f05f79baa512c19c3b1afb112",
+    "asset_sha256": "9a61e8534085ecaaf89095935513edd842edcd66a075cb89b09255aa79407390",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

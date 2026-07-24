@@ -1,0 +1,322 @@
+{
+  "id": "mqtt-dock3-drc-ai-info-push-thing-product-gateway-sn-drc-up",
+  "name": "AI状态上报",
+  "purpose": "MQTT message: drc_ai_info_push",
+  "protocol": "mqtt",
+  "module": "remote-control",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/drc/up",
+    "direction": "up",
+    "method": "drc_ai_info_push",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "identify_on",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "是否开启目标识别功能。",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "spotlight_zoom_on",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "是否启用 AI 跟随功能",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "ai_spotlight_zoom",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "AI 跟随状态与原因信息。",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "state",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前 AI 跟随状态。",
+      "constraints": "{\"0\":\"空闲\",\"1\":\"等待选择\",\"2\":\"等待确认\",\"3\":\"跟随中\"}",
+      "schema": "enum_int",
+      "parent": "ai_spotlight_zoom"
+    },
+    {
+      "name": "state_reason",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前状态或退出原因说明。",
+      "constraints": "{\"0\":\"正常\",\"1\":\"距离目标过近\",\"2\":\"距离目标过远\",\"3\":\"到达限低\",\"4\":\"到达限高\",\"5\":\"到达限远\",\"6\":\"接近限飞区\",\"7\":\"云台到达限位\",\"8\":\"飞机偏航达到环绕模式最大限制\",\"9\":\"障碍物距离过近\",\"10\":\"定位源切换(GPS→RTK)\",\"11\":\"定位源切换(RTK→GPS)\",\"12\":\"避障失效\",\"13\":\"到达变焦范围限制\",\"14\":\"跟踪目标丢失\",\"15\":\"GPS信号弱\",注意：以下状态原因，会退出AI跟随160\":\"正常退出\",\"161\":\"未适配负载\",\"162\":\"不支持相机模式\",\"163\":\"非法命令\",\"164\":\"定位失败\",\"165\":\"飞机未起飞\",\"166\":\"飞行模式错误\",\"167\":\"当前模式不可用(返航/降落/姿态)\",\"168\":\"丢失遥控/图传信号\"}",
+      "schema": "enum_int",
+      "parent": "ai_spotlight_zoom"
+    },
+    {
+      "name": "ai_model_list",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "设备中可用的 AI 模型列表。",
+      "constraints": "{\"item_type\":\"struct\"}",
+      "schema": "array"
+    },
+    {
+      "name": "index",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "模型编号",
+      "constraints": "{\"min\":0}",
+      "schema": "int",
+      "parent": "ai_model_list"
+    },
+    {
+      "name": "signed_name",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "模型签名名称。",
+      "constraints": "{\"length\":\"\"}",
+      "schema": "text",
+      "parent": "ai_model_list"
+    },
+    {
+      "name": "selected_ai_model",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前被选中的 AI 模型信息。",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "index",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前选中的模型编号。",
+      "constraints": "{\"min\":0}",
+      "schema": "int",
+      "parent": "selected_ai_model"
+    },
+    {
+      "name": "score",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前识别结果的置信度。",
+      "constraints": "{\"max\":\"100\",\"min\":\"0\",\"step\":\"1\"}",
+      "schema": "int",
+      "parent": "selected_ai_model"
+    },
+    {
+      "name": "score_mode",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "置信度模式",
+      "constraints": "{\"0\":\"无效值\",\"1\":\"计数模式\",\"2\":\"搜救模式\",\"3\":\"用户自定义模式\"}",
+      "schema": "enum_int",
+      "parent": "selected_ai_model"
+    },
+    {
+      "name": "image_source",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "模型支持的码流。",
+      "constraints": "{\"1\":\"广角\",\"2\":\"变焦\",\"3\":\"红外\",\"7\":\"可见光\"}",
+      "schema": "enum_list",
+      "parent": "selected_ai_model"
+    },
+    {
+      "name": "digital_effect",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "模型支持的红外调色板类型。",
+      "constraints": "{\"0\":\"白热\",\"1\":\"黑热\",\"2\":\"红热\"}",
+      "schema": "enum_list",
+      "parent": "selected_ai_model"
+    },
+    {
+      "name": "filters",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前目标过滤列表。三方模型filters 数值需使用对应的 label index 加 128 偏移后生成。例如：label index 为 1 则 filters 值为 129。",
+      "constraints": "{\"size\": -, \"item_type\": int}",
+      "schema": "array",
+      "parent": "selected_ai_model"
+    },
+    {
+      "name": "labels",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "模型支持识别的标签集合。",
+      "constraints": "{\"item_type\":\"struct\"}",
+      "schema": "array",
+      "parent": "selected_ai_model"
+    },
+    {
+      "name": "index",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "标签唯一标识符。",
+      "constraints": "{\"min\":0}",
+      "schema": "int",
+      "parent": "labels"
+    },
+    {
+      "name": "name",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "标签名称",
+      "constraints": "{\"length\":\"\"}",
+      "schema": "text",
+      "parent": "labels"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "seq": 1,
+        "method": "drc_ai_info_push",
+        "data": {
+          "identify_on": 1,
+          "spotlight_zoom_on": 1,
+          "ai_spotlight_zoom": {
+            "state": 0,
+            "state_reason": 0
+          },
+          "ai_model_list": [
+            {
+              "index": 0,
+              "signed_name": "DJI"
+            },
+            {
+              "index": 128,
+              "signed_name": "高速公路场景识别"
+            }
+          ],
+          "selected_ai_model": {
+            "index": 0,
+            "score": 100,
+            "score_mode": 1,
+            "image_source": [
+              1,
+              2,
+              3
+            ],
+            "digital_effect": [
+              0,
+              1,
+              2
+            ],
+            "filters": [
+              1,
+              2,
+              3
+            ],
+            "labels": [
+              {
+                "index": 0,
+                "name": "摩托车"
+              },
+              {
+                "index": 1,
+                "name": "自行车"
+              }
+            ]
+          },
+          "ai_wayline_state": {
+            "sequence_shot": true,
+            "wait_control": true,
+            "record": true,
+            "normal_shot": true,
+            "count_down_time": 23,
+            "alert_uuid": "xxxxxxxxxxxxxxx"
+          }
+        }
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock3"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/20.dock3/190.remote-control.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock3/remote-control.html",
+    "sha256": "32c7063215c1c5130cce2a2bffccb552084a00ae518739334c5a80d9e452ec64",
+    "asset_sha256": "26fc0533f2e2b55c8c36240e62cbc503f3c5c85f8d0be4dc8bdbf372fb894289",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

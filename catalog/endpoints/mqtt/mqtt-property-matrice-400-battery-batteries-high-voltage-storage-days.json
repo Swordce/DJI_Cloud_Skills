@@ -1,0 +1,93 @@
+{
+  "id": "mqtt-property-matrice-400-battery-batteries-high-voltage-storage-days",
+  "name": "high_voltage_storage_days",
+  "purpose": "高电压存储天数",
+  "protocol": "mqtt",
+  "module": "device-properties",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{device_sn}/osd",
+    "set_topic": null,
+    "direction": "up",
+    "method": "property_report",
+    "property_path": "battery.batteries.high_voltage_storage_days",
+    "access_mode": null,
+    "push_mode": "0"
+  },
+  "parameters": [
+    {
+      "name": "high_voltage_storage_days",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "高电压存储天数",
+      "constraints": "{\"unit_name\":\"日 / day\"}",
+      "schema": "int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "payload_field": "data.high_voltage_storage_days"
+    }
+  ],
+  "errors": [],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "high_voltage_storage_days": 0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "matrice-400"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/00.mqtt/50.matrice-400/00.properties.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/mqtt/matrice-400/properties.html",
+    "sha256": "cb45c822670601e09427698350761836f539e4cf7c7961de8b05c86372f7a5ae",
+    "asset_sha256": "1420c71b31528b21f55bd957411f0df736246d797d9993ea2dd45ef4c187eb61",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

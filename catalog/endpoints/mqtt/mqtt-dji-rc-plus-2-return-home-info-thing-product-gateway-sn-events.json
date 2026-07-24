@@ -1,0 +1,141 @@
+{
+  "id": "mqtt-dji-rc-plus-2-return-home-info-thing-product-gateway-sn-events",
+  "name": "返航信息",
+  "purpose": "MQTT events: return_home_info",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/events",
+    "direction": "up",
+    "method": "return_home_info",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "planned_path_points",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "规划的轨迹点列表",
+      "constraints": "{\"size\": -, \"item_type\": struct}",
+      "schema": "array"
+    },
+    {
+      "name": "latitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "轨迹点纬度，角度值，南纬是负，北纬是正，精度到小数点后6位",
+      "constraints": "{\"max\":90,\"min\":-90}",
+      "schema": "double",
+      "parent": "planned_path_points"
+    },
+    {
+      "name": "longitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "轨迹点经度，角度值，东经是正，西经是负，精度到小数点后6位",
+      "constraints": "{\"max\":180,\"min\":-180}",
+      "schema": "double",
+      "parent": "planned_path_points"
+    },
+    {
+      "name": "height",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "轨迹点高度，椭球高",
+      "constraints": "{\"max\":\"\",\"min\":\"\",\"step\":0.1,\"unit_name\":\"米 / m\"}",
+      "schema": "float",
+      "parent": "planned_path_points"
+    },
+    {
+      "name": "flight_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "任务 ID",
+      "constraints": "{\"length\":\"\"}",
+      "schema": "text"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "flight_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+          "planned_path_points": [
+            {
+              "height": 107.91999816894531,
+              "latitude": 22.591622374020517,
+              "longitude": 114.00506408885121
+            },
+            {
+              "height": 107.91999816894531,
+              "latitude": 22.591547439806163,
+              "longitude": 114.00506366975605
+            }
+          ]
+        },
+        "gateway": "7XJDLC10010639",
+        "method": "return_home_info",
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1734446832046
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dji-rc-plus-2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/00.mqtt/40.dji-rc-plus-2/30.drc.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/mqtt/dji-rc-plus-2/drc.html",
+    "sha256": "7b17a731be6913ebb3ce8d26ac866609f8dafc67d246c948e38d61cb0a9aadfd",
+    "asset_sha256": "0385630290d751552b0edda7b60cb181eeb47ce59b927fd339eb924b47d65b88",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

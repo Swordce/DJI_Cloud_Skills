@@ -1,0 +1,93 @@
+{
+  "id": "mqtt-property-dock1-backup-battery-temperature",
+  "name": "temperature",
+  "purpose": "保留小数点后一位",
+  "protocol": "mqtt",
+  "module": "device-properties",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{device_sn}/osd",
+    "set_topic": null,
+    "direction": "up",
+    "method": "property_report",
+    "property_path": "backup_battery.temperature",
+    "access_mode": null,
+    "push_mode": "0"
+  },
+  "parameters": [
+    {
+      "name": "temperature",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "保留小数点后一位",
+      "constraints": "{\"step\":\"0.1\",\"unit_name\":\"摄氏度 / °C\"}",
+      "schema": "float"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "payload_field": "data.temperature"
+    }
+  ],
+  "errors": [],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "temperature": 0.0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/00.properties.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock1/properties.html",
+    "sha256": "239d2a21346d3ef151dc24ada1b1e9a06d6d14ba1a7626635440f83835b0c3ba",
+    "asset_sha256": "9344585b1affe130c253dd18ebcf6af3395c4500c6537a067cdda52f697d19d4",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

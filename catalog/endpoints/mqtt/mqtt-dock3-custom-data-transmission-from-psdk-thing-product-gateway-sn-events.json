@@ -1,0 +1,89 @@
+{
+  "id": "mqtt-dock3-custom-data-transmission-from-psdk-thing-product-gateway-sn-events",
+  "name": "自定义消息推送cloud",
+  "purpose": "MQTT events: custom_data_transmission_from_psdk",
+  "protocol": "mqtt",
+  "module": "psdk-transmit-custom-data",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/events",
+    "direction": "up",
+    "method": "custom_data_transmission_from_psdk",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "value",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "数据内容",
+      "constraints": "{\"length\":\"小于 256\"}",
+      "schema": "text"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "data": {
+          "value": "hello world"
+        },
+        "gateway": "4TADKAQ000002J",
+        "method": "custom_data_transmission_from_psdk",
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "timestamp": 1689911315621
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock3"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/20.dock3/150.psdk-transmit-custom-data.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock3/psdk-transmit-custom-data.html",
+    "sha256": "0bafd7c8693ee43c465b353cf97a071227e7c0521c25b935e80603b043977e59",
+    "asset_sha256": "f6092e8e56e35f1f7065359df464db7e470eac166b7e5c47b62557251c614058",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

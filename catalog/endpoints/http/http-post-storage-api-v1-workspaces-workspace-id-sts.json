@@ -38,127 +38,141 @@
   },
   "responses": [
     {
-      "status": "200",
-      "description": "OK",
-      "schema": "storage.GetStsOutput",
+      "status": "documented_example",
+      "description": "Response structure shown by the official documentation.",
+      "schema": "official_example",
       "fields": [
         {
           "name": "code",
           "in": "response",
-          "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "错误码",
-          "constraints": "none",
-          "schema": "string"
-        },
-        {
-          "name": "message",
-          "in": "response",
-          "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "描述",
-          "constraints": "none",
-          "schema": "string"
+          "type": "integer",
+          "required": null,
+          "required_status": "not_specified_by_source",
+          "description": "Field present in the official example response.",
+          "constraints": "",
+          "schema": "int"
         },
         {
           "name": "data",
           "in": "response",
           "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "返回内容",
-          "constraints": "none",
-          "schema": "string"
+          "required": null,
+          "required_status": "not_specified_by_source",
+          "description": "Field present in the official example response.",
+          "constraints": "",
+          "schema": "dict",
+          "fields": [
+            {
+              "name": "bucket",
+              "in": "response",
+              "type": "string",
+              "required": null,
+              "required_status": "not_specified_by_source",
+              "description": "Field present in the official example response.",
+              "constraints": "",
+              "schema": "str"
+            },
+            {
+              "name": "credentials",
+              "in": "response",
+              "type": "string",
+              "required": null,
+              "required_status": "not_specified_by_source",
+              "description": "Field present in the official example response.",
+              "constraints": "",
+              "schema": "dict",
+              "fields": [
+                {
+                  "name": "access_key_id",
+                  "in": "response",
+                  "type": "string",
+                  "required": null,
+                  "required_status": "not_specified_by_source",
+                  "description": "Field present in the official example response.",
+                  "constraints": "",
+                  "schema": "str"
+                },
+                {
+                  "name": "access_key_secret",
+                  "in": "response",
+                  "type": "string",
+                  "required": null,
+                  "required_status": "not_specified_by_source",
+                  "description": "Field present in the official example response.",
+                  "constraints": "",
+                  "schema": "str"
+                },
+                {
+                  "name": "expire",
+                  "in": "response",
+                  "type": "integer",
+                  "required": null,
+                  "required_status": "not_specified_by_source",
+                  "description": "Field present in the official example response.",
+                  "constraints": "",
+                  "schema": "int"
+                },
+                {
+                  "name": "security_token",
+                  "in": "response",
+                  "type": "string",
+                  "required": null,
+                  "required_status": "not_specified_by_source",
+                  "description": "Field present in the official example response.",
+                  "constraints": "",
+                  "schema": "str"
+                }
+              ]
+            },
+            {
+              "name": "endpoint",
+              "in": "response",
+              "type": "string",
+              "required": null,
+              "required_status": "not_specified_by_source",
+              "description": "Field present in the official example response.",
+              "constraints": "",
+              "schema": "str"
+            },
+            {
+              "name": "object_key_prefix",
+              "in": "response",
+              "type": "string",
+              "required": null,
+              "required_status": "not_specified_by_source",
+              "description": "Field present in the official example response.",
+              "constraints": "",
+              "schema": "str"
+            },
+            {
+              "name": "provider",
+              "in": "response",
+              "type": "string",
+              "required": null,
+              "required_status": "not_specified_by_source",
+              "description": "Field present in the official example response.",
+              "constraints": "",
+              "schema": "str"
+            }
+          ]
         },
         {
-          "name": "bucket",
-          "in": "response",
-          "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "对象存储桶名称",
-          "constraints": "none",
-          "schema": "string"
-        },
-        {
-          "name": "credentials",
+          "name": "message",
           "in": "response",
           "type": "string",
           "required": null,
           "required_status": "not_specified_by_source",
-          "description": "凭证信息",
-          "constraints": "none",
-          "schema": "storage.Credentials"
-        },
-        {
-          "name": "endpoint",
-          "in": "response",
-          "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "对外服务的访问域名",
-          "constraints": "none",
-          "schema": "string"
-        },
-        {
-          "name": "object_key_prefix",
-          "in": "response",
-          "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "文件在对象存储桶的key的前缀",
-          "constraints": "none",
-          "schema": "string"
-        },
-        {
-          "name": "provider",
-          "in": "response",
-          "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "云厂商枚举值 * ali - 阿里云 * aws - 亚马逊云",
-          "constraints": "none",
-          "schema": "string"
-        },
-        {
-          "name": "region",
-          "in": "response",
-          "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "数据中心所在的地域,参考相应云厂商region枚举值",
-          "constraints": "none",
-          "schema": "string"
+          "description": "Field present in the official example response.",
+          "constraints": "",
+          "schema": "str"
         }
       ]
     }
   ],
   "errors": [
     {
-      "code": "400",
-      "meaning": "invalid_request",
-      "retry": false
-    },
-    {
-      "code": "401",
-      "meaning": "token_expired_or_invalid",
-      "retry": false
-    },
-    {
-      "code": "403",
-      "meaning": "forbidden",
-      "retry": false
-    },
-    {
-      "code": "404",
-      "meaning": "resource_not_found",
-      "retry": false
-    },
-    {
-      "code": "5xx",
-      "meaning": "server_error",
+      "code": "code != 0",
+      "meaning": "Resolve the returned code through catalog/error-codes.json.",
       "retry": false
     }
   ],
@@ -183,28 +197,6 @@
         "message": "success"
       },
       "source": "official"
-    },
-    {
-      "kind": "response",
-      "format": "json",
-      "value": {
-        "code": 0,
-        "message": "string",
-        "data": {
-          "bucket": "string",
-          "credentials": {
-            "access_key_id": "string",
-            "access_key_secret": "string",
-            "expire": 0,
-            "security_token": "string"
-          },
-          "endpoint": "string",
-          "object_key_prefix": "string",
-          "provider": "ali",
-          "region": "string"
-        }
-      },
-      "source": "official"
     }
   ],
   "retry": {
@@ -218,12 +210,10 @@
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/20.obtain-temporary-credential.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/20.obtain-temporary-credential.md"
-  },
-  "alternate_sources": [
-    {
-      "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/30.obtain-temporary-credential.md",
-      "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/30.obtain-temporary-credential.md"
-    }
-  ]
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/https/waypoint-management/obtain-temporary-credential.html",
+    "sha256": "fc929231d339e1b9aab3d8be2335529cbb891e83c2fe7b66183a623abeace58a",
+    "asset_sha256": "aa80463dd7e99e76adfa28fbb6671b3a59f9ae0430434b83ffb525c5ff050c15",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
 }

@@ -1,0 +1,94 @@
+{
+  "id": "mqtt-dock3-cover-open-thing-product-gateway-sn-services",
+  "name": "打开舱盖",
+  "purpose": "MQTT services: cover_open",
+  "protocol": "mqtt",
+  "module": "cmd",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/services",
+    "direction": "down",
+    "method": "cover_open",
+    "reply_topic": "thing/product/{gateway_sn}/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "result",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "非 0 代表错误",
+      "constraints": "",
+      "schema": "int"
+    },
+    {
+      "name": "output",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "输出",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "status",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "任务状态",
+      "constraints": "{\"canceled\":\"取消或终止\",\"failed\":\"失败\",\"in_progress\":\"执行中\",\"ok\":\"执行成功\",\"paused\":\"暂停\",\"rejected\":\"拒绝\",\"sent\":\"已下发\",\"timeout\":\"超时\"}",
+      "schema": "enum_string",
+      "parent": "output"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock3"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/20.dock3/70.cmd.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock3/cmd.html",
+    "sha256": "6b0224f38b262284ce92deaffe66a73678b629098acb2bd017840ff7a4d6c0e6",
+    "asset_sha256": "f686a93d92c4c31ccae86dfbf6817779c63bcbbe4ca915853fa893521d6a4b15",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "id": "mqtt-dock1-camera-exposure-set-thing-product-gateway-sn-services",
+  "name": "负载控制—相机曝光值调节",
+  "purpose": "MQTT services: camera_exposure_set",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/services",
+    "direction": "down",
+    "method": "camera_exposure_set",
+    "reply_topic": "thing/product/{gateway_sn}/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "camera_type",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相机类型",
+      "constraints": "{\"wide\":\"广角\",\"zoom\":\"变焦\"}",
+      "schema": "enum_string"
+    },
+    {
+      "name": "exposure_value",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "曝光值",
+      "constraints": "{\"1\":\"-5.0EV\",\"2\":\"-4.7EV\",\"3\":\"-4.3EV\",\"4\":\"-4.0EV\",\"5\":\"-3.7EV\",\"6\":\"-3.3EV\",\"7\":\"-3.0EV\",\"8\":\"-2.7EV\",\"9\":\"-2.3EV\",\"10\":\"-2.0EV\",\"11\":\"-1.7EV\",\"12\":\"-1.3EV\",\"13\":\"-1.0EV\",\"14\":\"-0.7EV\",\"15\":\"-0.3EV\",\"16\":\"0EV\",\"17\":\"0.3EV\",\"18\":\"0.7EV\",\"19\":\"1.0EV\",\"20\":\"1.3EV\",\"21\":\"1.7EV\",\"22\":\"2.0EV\",\"23\":\"2.3EV\",\"24\":\"2.7EV\",\"25\":\"3.0EV\",\"26\":\"3.3EV\",\"27\":\"3.7EV\",\"28\":\"4.0EV\",\"29\":\"4.3EV\",\"30\":\"4.7EV\",\"31\":\"5.0EV\",\"255\":\"FIXED\"}",
+      "schema": "enum_string"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "camera_type": "zoom",
+          "exposure_value": 5,
+          "payload_index": "39-0-7"
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "camera_exposure_set"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "result": 0
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "camera_exposure_set"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/110.drc.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock1/drc.html",
+    "sha256": "3b13fef85c93deb5396c1406951bf5c09e32fe8a524e5b1ff74ff2a4e7f13a09",
+    "asset_sha256": "2f683a97003dcf261c809438eefdbf5a0d5085d41c55ea05e15e276f1d46d76f",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

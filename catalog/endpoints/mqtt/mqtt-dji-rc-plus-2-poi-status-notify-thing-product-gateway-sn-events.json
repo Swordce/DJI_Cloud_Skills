@@ -1,0 +1,133 @@
+{
+  "id": "mqtt-dji-rc-plus-2-poi-status-notify-thing-product-gateway-sn-events",
+  "name": "飞行控制—POI 环绕状态信息通知",
+  "purpose": "MQTT events: poi_status_notify",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/events",
+    "direction": "up",
+    "method": "poi_status_notify",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "status",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "状态",
+      "constraints": "{\"failed\":\"执行失败\",\"in_progress\":\"执行中\",\"ok\":\"执行成功\"}",
+      "schema": "enum_string"
+    },
+    {
+      "name": "reason",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "结果返回码",
+      "constraints": "{\"0\":\"状态正常\",\"1\":\"距离目标过近\",\"2\":\"距离目标过远\",\"3\":\"到达限低\",\"4\":\"到达限高\",\"5\":\"到达限远\",\"6\":\"接近限飞区\",\"7\":\"云台到达限位\",\"8\":\"飞机偏航达到环绕模式最大限制（±80°）\",\"9\":\"障碍物距离过近\",\"10\":\"定位源切换（由GPS切换为RTK），暂停环绕\",\"11\":\"定位源切换（由RTK切换为GPS）\",\"12\":\"避障失效\",\"160\":\"正常退出\",\"161\":\"未适配负载\",\"162\":\"不支持该相机模式（全景、超清矩阵、精准复拍等）\",\"163\":\"非法命令\",\"164\":\"定位失效\",\"165\":\"飞机未起飞\",\"166\":\"飞行模式错误，仅N档可用\",\"167\":\"该模式下不可用（返航、降落、姿态）\",\"168\":\"丢失遥控器或图传信号\"}",
+      "schema": "int"
+    },
+    {
+      "name": "circle_radius",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "环绕半径",
+      "constraints": "{\"unit_name\":\"米 / m\"}",
+      "schema": "float"
+    },
+    {
+      "name": "circle_speed",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "环绕速度",
+      "constraints": "{\"unit_name\":\"米每秒 / m/s\"}",
+      "schema": "float"
+    },
+    {
+      "name": "max_circle_speed",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "最大环绕速度",
+      "constraints": "{\"unit_name\":\"米每秒 / m/s\"}",
+      "schema": "float"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "circle_radius": 10.1,
+          "circle_speed": 100.1,
+          "max_circle_speed": 200.2,
+          "reason": 0,
+          "status": "in_progress"
+        },
+        "need_reply": 1,
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 16540709686556,
+        "method": "poi_status_notify"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dji-rc-plus-2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/00.mqtt/40.dji-rc-plus-2/30.drc.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/mqtt/dji-rc-plus-2/drc.html",
+    "sha256": "7b17a731be6913ebb3ce8d26ac866609f8dafc67d246c948e38d61cb0a9aadfd",
+    "asset_sha256": "0385630290d751552b0edda7b60cb181eeb47ce59b927fd339eb924b47d65b88",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

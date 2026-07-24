@@ -81,35 +81,27 @@
   "responses": [
     {
       "status": "200",
-      "description": "OK",
-      "schema": "wayline.BaseResponse",
+      "description": "航线文件元数据",
+      "schema": "",
+      "fields": []
+    },
+    {
+      "status": "200",
+      "description": "文件名称",
+      "schema": "",
+      "fields": []
+    },
+    {
+      "status": "200",
+      "description": "文件在对象存储桶的key",
+      "schema": "",
       "fields": []
     }
   ],
   "errors": [
     {
-      "code": "400",
-      "meaning": "invalid_request",
-      "retry": false
-    },
-    {
-      "code": "401",
-      "meaning": "token_expired_or_invalid",
-      "retry": false
-    },
-    {
-      "code": "403",
-      "meaning": "forbidden",
-      "retry": false
-    },
-    {
-      "code": "404",
-      "meaning": "resource_not_found",
-      "retry": false
-    },
-    {
-      "code": "5xx",
-      "meaning": "server_error",
+      "code": "code != 0",
+      "meaning": "Resolve the returned code through catalog/error-codes.json.",
       "retry": false
     }
   ],
@@ -128,19 +120,11 @@
       "kind": "request",
       "format": "json",
       "value": {
-        "metadata": {
-          "drone_model_key": "string",
-          "payload_model_keys": [
-            "string"
-          ],
-          "template_types": [
-            0
-          ]
-        },
-        "name": "string",
-        "object_key": "string"
+        "workspace_id": "<workspace_id>",
+        "x-auth-token": "<x-auth-token>",
+        "body": "<body>"
       },
-      "source": "official"
+      "source": "generated_from_schema"
     }
   ],
   "retry": {
@@ -154,6 +138,10 @@
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/50.waypointfile-upload-result-report.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/50.waypointfile-upload-result-report.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/https/waypoint-management/waypointfile-upload-result-report.html",
+    "sha256": "ec890ab82ab85a02b6b873ad6010abb0e989958107795c9d12503f974120a4ba",
+    "asset_sha256": "63f08b740e8647d7eebe07f8ad50b6fb3c290a92a9fee371b5f0760e9ecfffd5",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

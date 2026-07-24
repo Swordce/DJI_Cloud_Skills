@@ -1,0 +1,174 @@
+{
+  "id": "mqtt-dock2-speaker-tts-play-start-progress-thing-product-gateway-sn-events",
+  "name": "喊话器-tts播放进度通知",
+  "purpose": "MQTT events: speaker_tts_play_start_progress",
+  "protocol": "mqtt",
+  "module": "psdk",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/events",
+    "direction": "up",
+    "method": "speaker_tts_play_start_progress",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "result",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "结果返回码",
+      "constraints": "",
+      "schema": "int"
+    },
+    {
+      "name": "output",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "输出",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "psdk_index",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "psdk 负载设备索引",
+      "constraints": "{\"min\":0}",
+      "schema": "int",
+      "parent": "output"
+    },
+    {
+      "name": "status",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前所处阶段",
+      "constraints": "{\"in_progress\":\"处理中\",\"ok\":\"播放成功\"}",
+      "schema": "enum_string",
+      "parent": "output"
+    },
+    {
+      "name": "md5",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文件内容的md5校验和, 用作机场唯一标识",
+      "constraints": "",
+      "schema": "text",
+      "parent": "output"
+    },
+    {
+      "name": "progress",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "进度",
+      "constraints": "",
+      "schema": "struct",
+      "parent": "output"
+    },
+    {
+      "name": "percent",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "进度百分比",
+      "constraints": "{\"max\":\"100\",\"min\":\"0\",\"step\":\"1\",\"unit_name\":\"百分比 / %\"}",
+      "schema": "int",
+      "parent": "progress"
+    },
+    {
+      "name": "step_key",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前步骤",
+      "constraints": "{\"change_work_mode\":\"切换工作模式\",\"play\":\"开始播放\",\"upload\":\"机场上传音频到psdk\"}",
+      "schema": "enum_string",
+      "parent": "progress"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "data": {
+          "output": {
+            "md5": "bacee8ed225fa346f6da87f67c914728",
+            "progress": {
+              "percent": 100,
+              "step_key": "play"
+            },
+            "psdk_index": 2,
+            "status": "success"
+          },
+          "result": 0
+        },
+        "gateway": "4TADKAQ000002J",
+        "method": "speaker_tts_play_start_progress",
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "timestamp": 1689911352309
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/140.psdk.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock2/psdk.html",
+    "sha256": "953dd88ba58f47abd0c8ff52b5ac6bc022e5ce63fc57b254f140bca84069672f",
+    "asset_sha256": "3fcf8f2743ff576f2cb38bb751715efb636b3df2dbc8978e1f77ec5033b29115",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

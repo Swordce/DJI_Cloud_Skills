@@ -1,0 +1,290 @@
+{
+  "id": "mqtt-rc-pro-hsi-info-push-thing-product-gateway-sn-drc-up",
+  "name": "DRC-避障信息上报",
+  "purpose": "MQTT message: hsi_info_push",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/drc/up",
+    "direction": "up",
+    "method": "hsi_info_push",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "up_distance",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "上方的障碍物距离",
+      "constraints": "{\"max\":\"\",\"min\":\"\",\"step\":\"\",\"unit_name\":\"毫米 / mm\"}",
+      "schema": "int"
+    },
+    {
+      "name": "down_distance",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "下方的障碍物距离",
+      "constraints": "{\"max\":\"\",\"min\":\"\",\"step\":\"\",\"unit_name\":\"毫米 / mm\"}",
+      "schema": "int"
+    },
+    {
+      "name": "up_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "上视避障开关状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "up_work",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "上视避障工作状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "down_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "下视避障开关状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "down_work",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "下视避障工作状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "around_distances",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "周边的障碍物距离",
+      "constraints": "{\"size\": -, \"item_type\": int}",
+      "schema": "array"
+    },
+    {
+      "name": "left_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "左视避障开关状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "left_work",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "左视避障工作状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "right_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "右视避障开关状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "right_work",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "右视避障工作状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "front_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "前视避障开关状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "front_work",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "前视避障工作状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "back_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "后视避障开关状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "back_work",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "后视避障工作状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "vertical_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "垂直避障开关状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "vertical_work",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "垂直避障工作状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "horizontal_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "水平避障开关状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "horizontal_work",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "水平避障工作状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "around_distance": [
+            10,
+            8,
+            9,
+            16,
+            2
+          ],
+          "back_enable": true,
+          "back_work": true,
+          "down_distance": 10,
+          "down_enable": true,
+          "down_work": true,
+          "front_enable": true,
+          "front_work": true,
+          "horizontal_enable": true,
+          "horizontal_work": true,
+          "left_enable": true,
+          "left_work": true,
+          "right_enable": true,
+          "right_work": true,
+          "up_distance": 10,
+          "up_enable": true,
+          "up_work": true,
+          "vertical_enable": true,
+          "vertical_work": true
+        },
+        "timestamp": 1670415891013,
+        "method": "hsi_info_push"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "rc-pro"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/00.mqtt/20.rc-pro/30.drc.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/mqtt/rc-pro/drc.html",
+    "sha256": "d790437b6837237d120c4dfda12f344ecbd543c83b2e4221ae79e6ddec1e1fbc",
+    "asset_sha256": "0576c1465474a500ddbae5c8635386c3043974d44ff1ae5da5914a8ca41924eb",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "id": "mqtt-dock1-fileupload-progress-thing-product-gateway-sn-events",
+  "name": "文件上传进度通知",
+  "purpose": "MQTT events: fileupload_progress",
+  "protocol": "mqtt",
+  "module": "log",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/events",
+    "direction": "up",
+    "method": "fileupload_progress",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "result",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "非 0 代表错误",
+      "constraints": "",
+      "schema": "int"
+    },
+    {
+      "name": "output",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "输出",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "ext",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "扩展信息",
+      "constraints": "",
+      "schema": "struct",
+      "parent": "output"
+    },
+    {
+      "name": "files",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文件列表",
+      "constraints": "{\"size\": -, \"item_type\": struct}",
+      "schema": "array",
+      "parent": "ext"
+    },
+    {
+      "name": "module",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "所属设备类型",
+      "constraints": "{\"0\":\"飞行器\",\"3\":\"机场\"}",
+      "schema": "enum_int",
+      "parent": "files"
+    },
+    {
+      "name": "size",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "byte",
+      "constraints": "",
+      "schema": "int",
+      "parent": "files"
+    },
+    {
+      "name": "device_sn",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "设备序列号（SN）",
+      "constraints": "",
+      "schema": "text",
+      "parent": "files"
+    },
+    {
+      "name": "key",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "对象存储桶 Key",
+      "constraints": "",
+      "schema": "text",
+      "parent": "files"
+    },
+    {
+      "name": "fingerprint",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文件指纹",
+      "constraints": "",
+      "schema": "text",
+      "parent": "files"
+    },
+    {
+      "name": "progress",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "进度信息",
+      "constraints": "",
+      "schema": "struct",
+      "parent": "files"
+    },
+    {
+      "name": "progress",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "进度值",
+      "constraints": "",
+      "schema": "int",
+      "parent": "progress"
+    },
+    {
+      "name": "finish_time",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "上传完成时间",
+      "constraints": "",
+      "schema": "int",
+      "parent": "progress"
+    },
+    {
+      "name": "upload_rate",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "上传速率",
+      "constraints": "",
+      "schema": "int",
+      "parent": "progress"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "output": {
+            "ext": {
+              "files": [
+                {
+                  "device_sn": "drone_sn",
+                  "fingerprint": "4f65b891f3bc09bdb6d4c36a996b532d",
+                  "key": "4bf0039f-6434-44a8-b891-8d7b6b7ff138/drone_sn/video_20220621_110830.log",
+                  "module": "0",
+                  "progress": {
+                    "current_step": 19,
+                    "finish_time": 1655781395926,
+                    "progress": 100,
+                    "result": 0,
+                    "status": "ok",
+                    "upload_rate": 0
+                  },
+                  "size": 155232
+                },
+                {
+                  "device_sn": "dock_sn",
+                  "fingerprint": "4f65b891f3bc09bdb6d4c36a996b532d",
+                  "key": "4bf0039f-6434-44a8-b891-8d7b6b7ff138/dock_sn/video_20220621_110830.log",
+                  "module": "3",
+                  "progress": {
+                    "current_step": 19,
+                    "finish_time": 1655781395926,
+                    "progress": 100,
+                    "result": 0,
+                    "status": "ok",
+                    "total_step": 30,
+                    "upload_rate": 0
+                  },
+                  "size": 155232
+                }
+              ]
+            },
+            "status": "ok"
+          }
+        },
+        "gateway": "dock_sn",
+        "need_reply": 0,
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1655781395926,
+        "method": "fileupload_progress"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "fileupload_progress",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/90.log.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock1/log.html",
+    "sha256": "b414ced4a3fd2eef191da94f97572d63c15a93508a1f4bf25166ca496bb4d988",
+    "asset_sha256": "527be05ec4fb723d3d54a125e2e7290c3b9823ad92db4ca190297b4c23809047",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

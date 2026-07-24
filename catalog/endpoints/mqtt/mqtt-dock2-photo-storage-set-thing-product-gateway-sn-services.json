@@ -1,0 +1,107 @@
+{
+  "id": "mqtt-dock2-photo-storage-set-thing-product-gateway-sn-services",
+  "name": "负载控制—照片存储设置",
+  "purpose": "MQTT services: photo_storage_set",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/services",
+    "direction": "down",
+    "method": "photo_storage_set",
+    "reply_topic": "thing/product/{gateway_sn}/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "photo_storage_settings",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "拍照存储类型{current, vision, ir}，可多选",
+      "constraints": "{\"size\": -, \"item_type\": enum_string}",
+      "schema": "array"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "payload_index": "39-0-7",
+          "photo_storage_settings": [
+            "current",
+            "vision",
+            "ir"
+          ]
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "photo_storage_set"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "result": 0
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "photo_storage_set"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/110.drc.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock2/drc.html",
+    "sha256": "5c2ce863e86aa46ba26c4e0f03532b4f73a8c9277b0c6809ed1c316f5abd2b4d",
+    "asset_sha256": "8c4032cb0d6748d7bae5f08bd7c1a3517edb8fbd665b43d9ff42ef33543c81aa",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

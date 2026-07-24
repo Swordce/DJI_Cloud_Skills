@@ -1,0 +1,140 @@
+{
+  "id": "mqtt-dock2-drone-control-thing-product-gateway-sn-drc-down",
+  "name": "DRC-飞行控制（已废弃）",
+  "purpose": "MQTT message: drone_control",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/drc/down",
+    "direction": "down",
+    "method": "drone_control",
+    "reply_topic": "thing/product/{gateway_sn}/drc/up",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "seq",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "递增的序号，保证指令顺序执行。若 x、y、h、w 参数发生变化，seq 需要从 0 开始增长。",
+      "constraints": "",
+      "schema": "int"
+    },
+    {
+      "name": "x",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "前进后退的最大速度，负值表示向后移动",
+      "constraints": "{\"max\":17,\"min\":-17,\"unit_name\":\"米每秒 / m/s\"}",
+      "schema": "double"
+    },
+    {
+      "name": "y",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "左右移动的最大速度，负值表示向左移动",
+      "constraints": "{\"max\":17,\"min\":-17,\"unit_name\":\"米每秒 / m/s\"}",
+      "schema": "double"
+    },
+    {
+      "name": "h",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "向上向下移动的最大速度，负值表示向下移动",
+      "constraints": "{\"max\":5,\"min\":-4,\"unit_name\":\"米每秒 / m/s\"}",
+      "schema": "double"
+    },
+    {
+      "name": "w",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "顺时针与逆时针的最大角速度，负值表示逆时针转动",
+      "constraints": "{\"max\":90,\"min\":-90,\"unit_name\":\"度每秒 / degree/s\"}",
+      "schema": "double"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "h": 2.76,
+          "seq": 1,
+          "w": 2.86,
+          "x": 2.34,
+          "y": -2.45
+        },
+        "method": "drone_control"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "data": {
+          "output": {
+            "seq": -1
+          },
+          "result": 319033
+        },
+        "method": "drone_control"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": true,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/110.drc.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock2/drc.html",
+    "sha256": "5c2ce863e86aa46ba26c4e0f03532b4f73a8c9277b0c6809ed1c316f5abd2b4d",
+    "asset_sha256": "8c4032cb0d6748d7bae5f08bd7c1a3517edb8fbd665b43d9ff42ef33543c81aa",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

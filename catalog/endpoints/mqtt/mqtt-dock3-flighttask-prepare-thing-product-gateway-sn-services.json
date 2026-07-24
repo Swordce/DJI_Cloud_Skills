@@ -1,0 +1,381 @@
+{
+  "id": "mqtt-dock3-flighttask-prepare-thing-product-gateway-sn-services",
+  "name": "下发任务",
+  "purpose": "MQTT services: flighttask_prepare",
+  "protocol": "mqtt",
+  "module": "wayline",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/services",
+    "direction": "down",
+    "method": "flighttask_prepare",
+    "reply_topic": "thing/product/{gateway_sn}/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "flight_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "计划 ID",
+      "constraints": "{\"length\":\"\"}",
+      "schema": "text"
+    },
+    {
+      "name": "execute_time",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "任务开始执行时间毫秒时间戳。可选字段。当 task_type 为 0 或 1 时必填，为 2 时非必填。",
+      "constraints": "{\"max\":\"\",\"min\":\"\",\"step\":\"\",\"unit_name\":null}",
+      "schema": "int"
+    },
+    {
+      "name": "task_type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "立即任务和定时任务均由execute_time指定执行时间；条件任务支持ready_conditions字段指定任务就绪条件，设备可在指定时间段内满足就绪条件后即可执行；立即任务媒体上传优先级最高，定时任务和条件任务媒体上传优先级相同",
+      "constraints": "{\"0\":\"立即任务\",\"1\":\"定时任务\",\"2\":\"条件任务\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "file",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "航线文件对象",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "url",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文件 URL",
+      "constraints": "",
+      "schema": "text",
+      "parent": "file"
+    },
+    {
+      "name": "fingerprint",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文件内容 MD5 签名",
+      "constraints": "",
+      "schema": "text",
+      "parent": "file"
+    },
+    {
+      "name": "ready_conditions",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "可选字段。条件任务（即 task_type 为2）时必填，其他类型任务会忽略该字段。下发条件任务后，设备会定频检查 ready_conditions 是否全部满足，若全部满足则会有 flighttask_ready 事件通知。且设备端接收 flighttask_execute 指令时，也会检查任务的 ready_conditions 是否已全部满足。",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "battery_capacity",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "可执行任务的飞行器电池电量百分比阈值，任务开始执行时的飞行器电量必须大于 battery_capacity。",
+      "constraints": "",
+      "schema": "int",
+      "parent": "ready_conditions"
+    },
+    {
+      "name": "begin_time",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "任务可执行时段起始时间毫秒时间戳，任务开始执行的时间必须大于 begin_time。",
+      "constraints": "{\"length\":13}",
+      "schema": "int",
+      "parent": "ready_conditions"
+    },
+    {
+      "name": "end_time",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "任务可执行时段截止时间毫秒时间戳，任务开始执行的时间必须小于 end_time。",
+      "constraints": "{\"length\":13}",
+      "schema": "int",
+      "parent": "ready_conditions"
+    },
+    {
+      "name": "executable_conditions",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "可选字段，用于在设备端增加任务执行的前置检查条件，存在任一条件不满足时会执行失败",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "storage_capacity",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "可执行任务的机场或飞行器最低存储容量，机场或飞行器存储容量不满足 storage_capacity 时，任务执行失败。",
+      "constraints": "",
+      "schema": "int",
+      "parent": "executable_conditions"
+    },
+    {
+      "name": "break_point",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "可选字段，用于断点续飞，若指定该字段，航线任务会从字段指定的断点位置开始执行。",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "index",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "断点序号",
+      "constraints": "",
+      "schema": "int",
+      "parent": "break_point"
+    },
+    {
+      "name": "state",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "断点状态",
+      "constraints": "{\"0\":\"在航段上\",\"1\":\"在航点上\"}",
+      "schema": "enum_int",
+      "parent": "break_point"
+    },
+    {
+      "name": "progress",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前航段进度",
+      "constraints": "{\"max\":\"1.0\",\"min\":\"0\"}",
+      "schema": "float",
+      "parent": "break_point"
+    },
+    {
+      "name": "wayline_id",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "航线 ID",
+      "constraints": "",
+      "schema": "int",
+      "parent": "break_point"
+    },
+    {
+      "name": "rth_altitude",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "返航高度",
+      "constraints": "{\"max\":1500,\"min\":20,\"step\":\"\",\"unit_name\":\"米 / m\"}",
+      "schema": "int"
+    },
+    {
+      "name": "rth_mode",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "智能返航模式下，飞行器将自动规划最佳返航高度。大疆机场当前不支持设置返航高度模式，只能选择'设定高度'模式。当环境，光线不满足视觉系统要求时（譬如傍晚阳光直射、夜间弱光无光），飞行器将使用您设定的返航高度进行直线返航",
+      "constraints": "{\"0\":\"智能高度\",\"1\":\"设定高度\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "out_of_control_action",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "失控动作，当前固定传的值是 0，即返航。注意该枚举值定义跟飞控跟机场定义的不一致，机场端会进行转换。",
+      "constraints": "{\"0\":\"返航\",\"1\":\"悬停\",\"2\":\"降落\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "exit_wayline_when_rc_lost",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "保持跟 KMZ 文件一致",
+      "constraints": "{\"0\":\"继续执行航线任务\",\"1\":\"退出航线任务，执行遥控器失控动作\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "wayline_precision_type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "高精度 RTK 任务：飞行器起飞后会在空中等待 RTK 收敛后再执行任务，等待 RTK 收敛的过程中无法暂停任务。默认场景建议使用该模式。GPS 任务：飞行器无需等待 RTK 收敛便可以直接开始执行。精度要求不高的任务或对起飞时效性要求较高的任务建议使用该模式。",
+      "constraints": "{\"0\":\"GPS 任务\",\"1\":\"高精度 RTK 任务\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "simulate_mission",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "可选字段，用于在室内进行模拟任务调试。注意：进行模拟飞行前，请务必取下桨叶，以防舱盖关闭时夹断桨叶。",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "is_enable",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当次任务打开或关闭模拟器",
+      "constraints": "{\"0\":\"不开启\",\"1\":\"开启\"}",
+      "schema": "enum_int",
+      "parent": "simulate_mission"
+    },
+    {
+      "name": "latitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "纬度",
+      "constraints": "{\"max\":\"90.0\",\"min\":\"-90.0\"}",
+      "schema": "double",
+      "parent": "simulate_mission"
+    },
+    {
+      "name": "longitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "经度",
+      "constraints": "{\"max\":\"180.0\",\"min\":\"-180.0\"}",
+      "schema": "double",
+      "parent": "simulate_mission"
+    },
+    {
+      "name": "altitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "高度",
+      "constraints": "{\"max\":\"9999.9\",\"min\":\"-9999.9\"unit_name\":\"米 / m\"}",
+      "schema": "double",
+      "parent": "simulate_mission"
+    },
+    {
+      "name": "flight_safety_advance_check",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "设置一键起飞和航线任务中的飞行安全是否预先检查。此字段为可选，默认为0，值为0表示关闭，1表示开启。飞行安全预先检查表示: 飞行器执行任务前，检查自身作业区文件是否与云端一致，如果不一致则拉取文件更新，如果一致则不处理",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {},
+        "method": "flighttask_prepare",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "flighttask_prepare",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock3"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/20.dock3/50.wayline.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock3/wayline.html",
+    "sha256": "93915cc7ebb63539aee15b2b84d0cde676ca87846adf71f70a5ecd2b77fe350d",
+    "asset_sha256": "f46a403e88af67603a3fa787c857f10e9f8be16040ed7b9e352c1233dea584c4",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

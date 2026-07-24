@@ -1,0 +1,373 @@
+{
+  "id": "mqtt-dock3-drc-psdk-state-info-thing-product-gateway-sn-drc-up",
+  "name": "PSDK—状态上报",
+  "purpose": "MQTT message: drc_psdk_state_info",
+  "protocol": "mqtt",
+  "module": "remote-control",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/drc/up",
+    "direction": "up",
+    "method": "drc_psdk_state_info",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "psdk_index",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "psdk 负载设备索引",
+      "constraints": "依据设备推送",
+      "schema": "int"
+    },
+    {
+      "name": "psdk_type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "psdk类型",
+      "constraints": "{\"4\":\"三方\",\"5\":\"大疆自研\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "psdk_name",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "名称",
+      "constraints": "{\"Searchlight\":\"探照灯\",\"Speaker\":\"喊话器\"}",
+      "schema": "enum_string"
+    },
+    {
+      "name": "psdk_sn",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "SN",
+      "constraints": "{\"length\":\"\"}",
+      "schema": "text"
+    },
+    {
+      "name": "psdk_version",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "版本",
+      "constraints": "{\"length\":\"\"}",
+      "schema": "text"
+    },
+    {
+      "name": "psdk_lib_version",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "lib版本",
+      "constraints": "{\"length\":\"\"}",
+      "schema": "text"
+    },
+    {
+      "name": "speaker",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "喊话器",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "work_mode",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "工作模式",
+      "constraints": "{\"0\": \"TTS模式\", \"1\":\"实时喊话\",\"4\": \"边传边播\", \"5\":\"航线喊话\"}",
+      "schema": "int",
+      "parent": "speaker"
+    },
+    {
+      "name": "play_mode",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "播放模式",
+      "constraints": "{\"0\":\"单曲播放\",\"1\":\"循环播放\"}",
+      "schema": "enum_int",
+      "parent": "speaker"
+    },
+    {
+      "name": "system_state",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "喊话器状态",
+      "constraints": "{\"0\":\"空闲中\",\"1\":\"传输中(机场到飞行器)\",\"2\":\"播放中\",\"3\":\"异常中\",\"4\":\"TTS 文本转换中\",\"99\":\"下载中(机场从云端下载)\"}",
+      "schema": "enum_int",
+      "parent": "speaker"
+    },
+    {
+      "name": "play_volume",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "音量",
+      "constraints": "{\"max\":\"100\",\"min\":\"1\"}",
+      "schema": "int",
+      "parent": "speaker"
+    },
+    {
+      "name": "play_file_name",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文件名称",
+      "constraints": "{\"length\":\"\"}",
+      "schema": "text",
+      "parent": "speaker"
+    },
+    {
+      "name": "play_file_md5",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文件验证",
+      "constraints": "{\"length\":\"\"}",
+      "schema": "text",
+      "parent": "speaker"
+    },
+    {
+      "name": "tts_volume",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "TTS播放音量",
+      "constraints": "{\"max\":\"100\",\"min\":\"1\"}",
+      "schema": "int",
+      "parent": "speaker"
+    },
+    {
+      "name": "tts_type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "TTS播放类型",
+      "constraints": "{\"0\":\"男声\",\"1\":\"女声\"}",
+      "schema": "enum_int",
+      "parent": "speaker"
+    },
+    {
+      "name": "tts_language",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "语言",
+      "constraints": "{\"0\":\"中文\",\"1\":\"英文\"}",
+      "schema": "enum_int",
+      "parent": "speaker"
+    },
+    {
+      "name": "tts_speed",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "语速",
+      "constraints": "{\"max\":\"100\",\"min\":\"1\"}",
+      "schema": "int",
+      "parent": "speaker"
+    },
+    {
+      "name": "light",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "探照灯",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "work_mode",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "工作模式",
+      "constraints": "",
+      "schema": "int",
+      "parent": "light"
+    },
+    {
+      "name": "brightness",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "亮度",
+      "constraints": "",
+      "schema": "int",
+      "parent": "light"
+    },
+    {
+      "name": "calibration_status",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "校准",
+      "constraints": "{\"0\":\"校准完成\",\"1\":\"正在校准\",\"2\":\"校准失败\"}",
+      "schema": "enum_int",
+      "parent": "light"
+    },
+    {
+      "name": "calibration_progress",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "校准进度",
+      "constraints": "",
+      "schema": "int",
+      "parent": "light"
+    },
+    {
+      "name": "left_value",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "左灯微调值",
+      "constraints": "{\"max\":\"+3°\",\"min\":-3\"}",
+      "schema": "int",
+      "parent": "light"
+    },
+    {
+      "name": "right_value",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "右灯微调值",
+      "constraints": "{\"max\":\"+3°\",\"min\":-3\"}",
+      "schema": "int",
+      "parent": "light"
+    },
+    {
+      "name": "wide_field_mode",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "探照灯广视野模式是否开启",
+      "constraints": "{\"false\":\"关闭\",\"true\":\"开启\"}",
+      "schema": "bool",
+      "parent": "light"
+    },
+    {
+      "name": "light_gimbal_control",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "探照灯云台联动是否开启",
+      "constraints": "{\"false\":\"关闭\",\"true\":\"开启\"}",
+      "schema": "bool",
+      "parent": "light"
+    },
+    {
+      "name": "values",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "自定义值空间位置",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "index",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "index",
+      "constraints": "",
+      "schema": "int",
+      "parent": "values"
+    },
+    {
+      "name": "value",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "value",
+      "constraints": "",
+      "schema": "int",
+      "parent": "values"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock3"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/20.dock3/190.remote-control.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock3/remote-control.html",
+    "sha256": "32c7063215c1c5130cce2a2bffccb552084a00ae518739334c5a80d9e452ec64",
+    "asset_sha256": "26fc0533f2e2b55c8c36240e62cbc503f3c5c85f8d0be4dc8bdbf372fb894289",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

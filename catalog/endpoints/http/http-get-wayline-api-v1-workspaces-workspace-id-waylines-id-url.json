@@ -46,39 +46,12 @@
     "location": "header",
     "name": "X-Auth-Token"
   },
-  "responses": [
-    {
-      "status": "200",
-      "description": "OK",
-      "schema": "/",
-      "fields": []
-    }
-  ],
+  "responses": [],
   "errors": [
     {
-      "code": "400",
-      "meaning": "invalid_request",
+      "code": "code != 0",
+      "meaning": "Resolve the returned code through catalog/error-codes.json.",
       "retry": false
-    },
-    {
-      "code": "401",
-      "meaning": "token_expired_or_invalid",
-      "retry": false
-    },
-    {
-      "code": "403",
-      "meaning": "forbidden",
-      "retry": false
-    },
-    {
-      "code": "404",
-      "meaning": "resource_not_found",
-      "retry": false
-    },
-    {
-      "code": "5xx",
-      "meaning": "server_error",
-      "retry": true
     }
   ],
   "examples": [
@@ -121,6 +94,10 @@
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/30.get-waypointfile-download-location.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/30.get-waypointfile-download-location.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/https/waypoint-management/get-waypointfile-download-location.html",
+    "sha256": "c895daa231bdd128591d6d278672d41ebc1093567916e242628dba5a5a49ea56",
+    "asset_sha256": "210f7a226b27f01991253dbaa24794643931c807a369f8dc845594af3b180f0d",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

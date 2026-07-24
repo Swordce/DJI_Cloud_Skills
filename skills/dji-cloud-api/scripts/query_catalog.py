@@ -24,6 +24,7 @@ def searchable(entry: dict[str, Any]) -> str:
         operation.get("method", ""),
         operation.get("path", ""),
         operation.get("topic", ""),
+        operation.get("reply_topic", ""),
         operation.get("biz_code", ""),
         operation.get("element", ""),
     ]
@@ -36,6 +37,7 @@ def load_matches(query: str, protocols: tuple[str, ...]) -> list[dict[str, Any]]
         with index_path.open(encoding="utf-8") as handle:
             groups = json.load(handle)
         matches: list[dict[str, Any]] = []
+        scanned: set[str] = set()
         for group in groups:
             if group["protocol"] not in protocols:
                 continue
@@ -43,20 +45,33 @@ def load_matches(query: str, protocols: tuple[str, ...]) -> list[dict[str, Any]]
             candidate_ids = {
                 item["id"]
                 for item in group["entries"]
-                if summary_hit
-                or query
-                in f"{item['id']} {item['name']} {item['purpose']} {json.dumps(item['operation'], ensure_ascii=False)}".lower()
+                if summary_hit or query in f"{item['id']} {item['name']} {item['purpose']}".lower()
             }
             if not candidate_ids and not summary_hit:
                 continue
+            scanned.add(group["file"])
             with (REFERENCES / group["file"]).open(encoding="utf-8") as handle:
                 entries = json.load(handle)
             matches.extend(
                 entry for entry in entries if summary_hit or entry["id"] in candidate_ids or query in searchable(entry)
             )
+        if not matches:
+            # The slim index omits operation fields; a method/topic/biz_code
+            # query can miss every shard above, so rescan all shards fully.
+            for group in groups:
+                if group["protocol"] not in protocols or group["file"] in scanned:
+                    continue
+                with (REFERENCES / group["file"]).open(encoding="utf-8") as handle:
+                    entries = json.load(handle)
+                matches.extend(entry for entry in entries if query in searchable(entry))
         return matches
 
     repo_catalog = ROOT.parents[1] / "catalog/endpoints"
+    if not repo_catalog.exists():
+        raise SystemExit(
+            "references/index.json is missing and no repository catalog was found; "
+            "the skill package is incomplete — rebuild it with build_artifacts.py"
+        )
     matches = []
     for protocol in protocols:
         for path in sorted((repo_catalog / protocol).glob("*.json")):

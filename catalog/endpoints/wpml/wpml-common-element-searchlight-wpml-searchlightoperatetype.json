@@ -1,0 +1,63 @@
+{
+  "id": "wpml-common-element-searchlight-wpml-searchlightoperatetype",
+  "name": "wpml:searchlightOperateType",
+  "purpose": "探照灯操作类型",
+  "protocol": "wpml",
+  "module": "common-element",
+  "operation": {
+    "action": "define_element",
+    "element": "wpml:searchlightOperateType",
+    "document": "40.common-element.md",
+    "context": "searchlight"
+  },
+  "parameters": [
+    {
+      "name": "wpml:searchlightOperateType",
+      "in": "xml_element",
+      "type": "integer",
+      "required": true,
+      "required_status": "required",
+      "description": "探照灯操作类型",
+      "constraints": "0：关灯 1：照明 2：爆闪",
+      "schema": "整形"
+    }
+  ],
+  "authentication": {
+    "type": "none",
+    "location": "local_document",
+    "name": null
+  },
+  "responses": [
+    {
+      "type": "validated_xml",
+      "description": "A locally validated WPML/KML document."
+    }
+  ],
+  "errors": [
+    {
+      "code": "validation_error",
+      "meaning": "Element violates required type, range, order, or compatibility constraint.",
+      "retry": false
+    }
+  ],
+  "examples": [],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "none",
+    "retry_on": [],
+    "notes": "Validate the WPML document locally; network retry is not applicable."
+  },
+  "compatibility": [
+    "M4D/M4TD"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/00.dji-wpml/40.common-element.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dji-wpml/common-element.html",
+    "sha256": "e72f1692ea2cac4dfed6779fdf099c6ddb6413afdc2f299fab34ba3336807868",
+    "asset_sha256": "c25246dcd63fbbc613a3671e19a1191f7dd2a25fd5370cf7bcb95443d96695a8",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

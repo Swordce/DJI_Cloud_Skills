@@ -1,7 +1,7 @@
 {
   "id": "wpml-common-element-wpml-waypointheadingparam-wpml-globalwaypointheadingparam-wpml-waypointheadingangle",
   "name": "wpml:waypointHeadingAngle",
-  "purpose": "<wpml:waypointHeadingParam> & <wpml:globalWaypointHeadingParam>",
+  "purpose": "飞行器偏航角度",
   "protocol": "wpml",
   "module": "common-element",
   "operation": {
@@ -14,11 +14,11 @@
     {
       "name": "wpml:waypointHeadingAngle",
       "in": "xml_element",
-      "type": "string",
-      "required": null,
-      "required_status": "not_specified_by_source",
-      "description": "",
-      "constraints": "",
+      "type": "number",
+      "required": true,
+      "required_status": "required",
+      "description": "飞行器偏航角度",
+      "constraints": "[-180, 180]给定某航点的目标偏航角，并在航段飞行过程中均匀过渡至下一航点的目标偏航角。；单位:°",
       "schema": "浮点型"
     }
   ],
@@ -48,10 +48,22 @@
     "retry_on": [],
     "notes": "Validate the WPML document locally; network retry is not applicable."
   },
-  "compatibility": [],
+  "compatibility": [
+    "M300 RTK",
+    "M350 RTK",
+    "M30/M30T",
+    "M3E/M3T/M3M",
+    "M3D/M3TD",
+    "M4D/M4TD",
+    "M4E/M4T"
+  ],
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/00.dji-wpml/40.common-element.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/00.dji-wpml/40.common-element.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dji-wpml/common-element.html",
+    "sha256": "e72f1692ea2cac4dfed6779fdf099c6ddb6413afdc2f299fab34ba3336807868",
+    "asset_sha256": "c25246dcd63fbbc613a3671e19a1191f7dd2a25fd5370cf7bcb95443d96695a8",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

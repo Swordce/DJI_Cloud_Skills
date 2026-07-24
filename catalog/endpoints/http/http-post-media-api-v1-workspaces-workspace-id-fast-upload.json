@@ -49,35 +49,33 @@
   "responses": [
     {
       "status": "200",
-      "description": "OK",
-      "schema": "media.FastUploadOutput",
+      "description": "文件关联的扩展属性",
+      "schema": "",
+      "fields": []
+    },
+    {
+      "status": "200",
+      "description": "文件指纹",
+      "schema": "",
+      "fields": []
+    },
+    {
+      "status": "200",
+      "description": "文件的名称",
+      "schema": "",
+      "fields": []
+    },
+    {
+      "status": "200",
+      "description": "文件的业务路径",
+      "schema": "",
       "fields": []
     }
   ],
   "errors": [
     {
-      "code": "400",
-      "meaning": "invalid_request",
-      "retry": false
-    },
-    {
-      "code": "401",
-      "meaning": "token_expired_or_invalid",
-      "retry": false
-    },
-    {
-      "code": "403",
-      "meaning": "forbidden",
-      "retry": false
-    },
-    {
-      "code": "404",
-      "meaning": "resource_not_found",
-      "retry": false
-    },
-    {
-      "code": "5xx",
-      "meaning": "server_error",
+      "code": "code != 0",
+      "meaning": "Resolve the returned code through catalog/error-codes.json.",
       "retry": false
     }
   ],
@@ -96,18 +94,11 @@
       "kind": "request",
       "format": "json",
       "value": {
-        "ext": {
-          "drone_model_key": "string",
-          "is_original": true,
-          "payload_model_key": "string",
-          "tinny_fingerprint": "string",
-          "sn": "string"
-        },
-        "fingerprint": "string",
-        "name": "string",
-        "path": "string"
+        "workspace_id": "<workspace_id>",
+        "x-auth-token": "<x-auth-token>",
+        "body": "<body>"
       },
-      "source": "official"
+      "source": "generated_from_schema"
     }
   ],
   "retry": {
@@ -121,6 +112,10 @@
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/10.fast-upload.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/10.fast-upload.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/https/media-management/fast-upload.html",
+    "sha256": "25e8b8abf394806f7c4fc9a28fd6197e0304a0dfbad4bed25dba0937de417d4d",
+    "asset_sha256": "9a31badc4e9bda90bf059340ec310982204012ed76db40f8ad445cc3d832d9ef",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

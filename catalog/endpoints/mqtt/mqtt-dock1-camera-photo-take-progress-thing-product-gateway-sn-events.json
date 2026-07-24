@@ -1,0 +1,175 @@
+{
+  "id": "mqtt-dock1-camera-photo-take-progress-thing-product-gateway-sn-events",
+  "name": "上报拍照进度",
+  "purpose": "MQTT events: camera_photo_take_progress",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/events",
+    "direction": "up",
+    "method": "camera_photo_take_progress",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "output",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "输出",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "status",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "拍照状态",
+      "constraints": "{\"fail\":\"失败\",\"in_progress\":\"执行中\",\"ok\":\"完成\"}",
+      "schema": "enum_string",
+      "parent": "output"
+    },
+    {
+      "name": "progress",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "进度",
+      "constraints": "",
+      "schema": "struct",
+      "parent": "output"
+    },
+    {
+      "name": "current_step",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "执行步骤",
+      "constraints": "{\"3000\":\"全景图拍摄未开始或者已结束\",\"3002\":\"全景图正在拍摄\",\"3005\":\"全景图合成中\"}",
+      "schema": "enum_int",
+      "parent": "progress"
+    },
+    {
+      "name": "percent",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "进度值",
+      "constraints": "{\"max\":\"100\",\"min\":\"0\",\"step\":\"1\"}",
+      "schema": "int",
+      "parent": "progress"
+    },
+    {
+      "name": "ext",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "扩展内容",
+      "constraints": "",
+      "schema": "struct",
+      "parent": "output"
+    },
+    {
+      "name": "camera_mode",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前相机模式",
+      "constraints": "{\"3\":\"全景拍照\"}",
+      "schema": "enum_int",
+      "parent": "ext"
+    },
+    {
+      "name": "result",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "非 0 代表错误",
+      "constraints": "",
+      "schema": "int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "output": {
+            "ext": {
+              "camera_mode": 3
+            },
+            "progress": {
+              "current_step": 0,
+              "percent": 100
+            },
+            "status": "ok"
+          },
+          "result": 0
+        },
+        "need_reply": 1,
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "camera_photo_take_progress"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/110.drc.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock1/drc.html",
+    "sha256": "3b13fef85c93deb5396c1406951bf5c09e32fe8a524e5b1ff74ff2a4e7f13a09",
+    "asset_sha256": "2f683a97003dcf261c809438eefdbf5a0d5085d41c55ea05e15e276f1d46d76f",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

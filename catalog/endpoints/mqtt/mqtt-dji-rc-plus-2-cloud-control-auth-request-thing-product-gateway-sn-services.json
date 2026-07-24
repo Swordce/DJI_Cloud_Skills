@@ -1,0 +1,126 @@
+{
+  "id": "mqtt-dji-rc-plus-2-cloud-control-auth-request-thing-product-gateway-sn-services",
+  "name": "请求授权云端控制",
+  "purpose": "MQTT services: cloud_control_auth_request",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/services",
+    "direction": "down",
+    "method": "cloud_control_auth_request",
+    "reply_topic": "thing/product/{gateway_sn}/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "user_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "请求授权的云端用户ID。",
+      "constraints": "{\"length\":\"\"}",
+      "schema": "text"
+    },
+    {
+      "name": "user_callsign",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "请求授权的云端用户昵称。",
+      "constraints": "{\"length\":\"\"}",
+      "schema": "text"
+    },
+    {
+      "name": "control_keys",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "请求飞行控制权，请填写“flight”。",
+      "constraints": "{\"size\": 1, \"item_type\": text}",
+      "schema": "array"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "control_keys": [
+            "flight"
+          ],
+          "user_callsign": "xxxxxxx",
+          "user_id": "xxxxxxxxxxx"
+        },
+        "method": "cloud_control_auth_request",
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1704038400000
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "output": {
+            "status": "ok"
+          },
+          "result": 0
+        },
+        "method": "cloud_control_auth_request",
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1704038400000
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dji-rc-plus-2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/00.mqtt/40.dji-rc-plus-2/30.drc.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/mqtt/dji-rc-plus-2/drc.html",
+    "sha256": "7b17a731be6913ebb3ce8d26ac866609f8dafc67d246c948e38d61cb0a9aadfd",
+    "asset_sha256": "0385630290d751552b0edda7b60cb181eeb47ce59b927fd339eb924b47d65b88",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

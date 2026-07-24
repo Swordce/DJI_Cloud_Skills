@@ -1,0 +1,239 @@
+{
+  "id": "http-post-storage-api-v1-workspaces-workspace-id-sts-9db92f89",
+  "name": "生成上传文件临时凭证",
+  "purpose": "POST /storage/api/v1/workspaces/{workspace_id}/sts",
+  "protocol": "http",
+  "module": "media-management",
+  "operation": {
+    "method": "POST",
+    "path": "/storage/api/v1/workspaces/{workspace_id}/sts",
+    "content_type": "application/json"
+  },
+  "parameters": [
+    {
+      "name": "workspace_id",
+      "in": "path",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "工作空间id",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "x-auth-token",
+      "in": "header",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "访问令牌",
+      "constraints": "",
+      "schema": "string"
+    }
+  ],
+  "authentication": {
+    "type": "token",
+    "location": "header",
+    "name": "X-Auth-Token"
+  },
+  "responses": [
+    {
+      "status": "documented_example",
+      "description": "Response structure shown by the official documentation.",
+      "schema": "official_example",
+      "fields": [
+        {
+          "name": "code",
+          "in": "response",
+          "type": "integer",
+          "required": null,
+          "required_status": "not_specified_by_source",
+          "description": "Field present in the official example response.",
+          "constraints": "",
+          "schema": "int"
+        },
+        {
+          "name": "data",
+          "in": "response",
+          "type": "string",
+          "required": null,
+          "required_status": "not_specified_by_source",
+          "description": "Field present in the official example response.",
+          "constraints": "",
+          "schema": "dict",
+          "fields": [
+            {
+              "name": "bucket",
+              "in": "response",
+              "type": "string",
+              "required": null,
+              "required_status": "not_specified_by_source",
+              "description": "Field present in the official example response.",
+              "constraints": "",
+              "schema": "str"
+            },
+            {
+              "name": "credentials",
+              "in": "response",
+              "type": "string",
+              "required": null,
+              "required_status": "not_specified_by_source",
+              "description": "Field present in the official example response.",
+              "constraints": "",
+              "schema": "dict",
+              "fields": [
+                {
+                  "name": "access_key_id",
+                  "in": "response",
+                  "type": "string",
+                  "required": null,
+                  "required_status": "not_specified_by_source",
+                  "description": "Field present in the official example response.",
+                  "constraints": "",
+                  "schema": "str"
+                },
+                {
+                  "name": "access_key_secret",
+                  "in": "response",
+                  "type": "string",
+                  "required": null,
+                  "required_status": "not_specified_by_source",
+                  "description": "Field present in the official example response.",
+                  "constraints": "",
+                  "schema": "str"
+                },
+                {
+                  "name": "expire",
+                  "in": "response",
+                  "type": "integer",
+                  "required": null,
+                  "required_status": "not_specified_by_source",
+                  "description": "Field present in the official example response.",
+                  "constraints": "",
+                  "schema": "int"
+                },
+                {
+                  "name": "security_token",
+                  "in": "response",
+                  "type": "string",
+                  "required": null,
+                  "required_status": "not_specified_by_source",
+                  "description": "Field present in the official example response.",
+                  "constraints": "",
+                  "schema": "str"
+                }
+              ]
+            },
+            {
+              "name": "endpoint",
+              "in": "response",
+              "type": "string",
+              "required": null,
+              "required_status": "not_specified_by_source",
+              "description": "Field present in the official example response.",
+              "constraints": "",
+              "schema": "str"
+            },
+            {
+              "name": "object_key_prefix",
+              "in": "response",
+              "type": "string",
+              "required": null,
+              "required_status": "not_specified_by_source",
+              "description": "Field present in the official example response.",
+              "constraints": "",
+              "schema": "str"
+            },
+            {
+              "name": "provider",
+              "in": "response",
+              "type": "string",
+              "required": null,
+              "required_status": "not_specified_by_source",
+              "description": "Field present in the official example response.",
+              "constraints": "",
+              "schema": "str"
+            },
+            {
+              "name": "region",
+              "in": "response",
+              "type": "string",
+              "required": null,
+              "required_status": "not_specified_by_source",
+              "description": "Field present in the official example response.",
+              "constraints": "",
+              "schema": "str"
+            }
+          ]
+        },
+        {
+          "name": "message",
+          "in": "response",
+          "type": "string",
+          "required": null,
+          "required_status": "not_specified_by_source",
+          "description": "Field present in the official example response.",
+          "constraints": "",
+          "schema": "str"
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "code != 0",
+      "meaning": "Resolve the returned code through catalog/error-codes.json.",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "code": 0,
+        "data": {
+          "bucket": "string",
+          "credentials": {
+            "access_key_id": "STS.NUBdKtVadL1U8aBJ2TH6PWoYo",
+            "access_key_secret": "9NG2P2yJaUrck576CkdRoRbchKssJiZygi5D93CBsduY",
+            "expire": 3600,
+            "security_token": "CAIS8AN1q6Ft5B2yfSjIr5b3L/HAu75F+/O+OkfzrjIBRLl8uKryjTz2IHhOenBhB+Actfk+lWhV6v0Tlrt+UMQcHQnKbM99q49L9hmobIeZWV4pagxD2vOfAmG2J0PRH6WwCryLq7q/F96pb1fb7FgRpZLxaTSlWXG8LJSNkuQJR98LXw6+H1UkadBNPVkg0sJ4U0HcLvGwKBXnr3PNBU5zwGpGhHh49L60z7+9iDXXh0aozfQO9cajYMqkfYxiPZNyFsyp2/Z/eaeEzCNL918X/fl43aAY83Kdt4rNRgVbvx/DY7Tao5g0JVEmNqQzQ6RK8PG714+D046+voDzzAk3fIMxei/DRYem7dLZEeeyTLgQfqr6PHK/q7LoMYLu4Sclem48PgFHcMY6UCUSbyYhUTbHMKSq1UnXawO4Mci/3boxzIB+wieWn6aDLEPdRK6Cg2RKeM05flsoMAIRxhaiEM09bxZNdVxDBrWYN+d0dwsMkbnlswzCJFQCqXFeufLsZ/TL/fpHMNi4HLA+iNpCPcQa6zd6Fg+rEunw1n15LjI1Hexkt4D2IoK65bO/x+GeXPXLEPhvuC8BKWqP9nvTGSkLcHygvoB/MguCjt/N1+nM4dZuEQ8jo8tDChuMftsos1F9/+6o6BCe4DNU548fW6tTGoABfvC8lAYwapu2ryxHRLeBodm278eCTa57hXytE/f/l9neR9Zg9tLoIJzFOdjs2gLfVc+BhjQ0GkZDP9ie332XnhH5nOugICpYlv5++p2Ap6WZIKTVEkFetdVKjkxal2zhXoCN9Aq4YeLn5bfQiTHrA3pjjhuE7sMSFsMVdxVvftI="
+          },
+          "endpoint": "https://oss-cn-hangzhou.aliyuncs.com",
+          "object_key_prefix": "5a6f9d4b-2a38-4b4b-86f9-3a678da0bf4a",
+          "provider": "ali",
+          "region": "cn-hangzhou"
+        },
+        "message": "success"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "workspace_id": "<workspace_id>",
+        "x-auth-token": "<x-auth-token>"
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "POST requires an application idempotency key or explicit confirmation before retry."
+  },
+  "compatibility": [],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/30.obtain-temporary-credential.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/https/media-management/obtain-temporary-credential.html",
+    "sha256": "71c43106547a55e3ae6dc922b51df204e3719948e7bc249c1ff90cd62a8f5239",
+    "asset_sha256": "347dc07d8c098beed7f7f93a5c100be133cdb0ea58d32eeb4de49ae0569517fb",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

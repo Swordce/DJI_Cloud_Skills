@@ -1,0 +1,160 @@
+{
+  "id": "mqtt-dock1-return-home-info-thing-product-gateway-sn-events",
+  "name": "返航信息",
+  "purpose": "MQTT events: return_home_info",
+  "protocol": "mqtt",
+  "module": "wayline",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/events",
+    "direction": "up",
+    "method": "return_home_info",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "planned_path_points",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "飞行器实时规划的返航路线，数组中为一条完整的返航路线，每次推送为全量更新",
+      "constraints": "{\"size\": -, \"item_type\": struct}",
+      "schema": "array"
+    },
+    {
+      "name": "latitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "轨迹点纬度，角度值，南纬是负，北纬是正，精度到小数点后6位",
+      "constraints": "{\"max\":90,\"min\":-90}",
+      "schema": "double",
+      "parent": "planned_path_points"
+    },
+    {
+      "name": "longitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "轨迹点经度，角度值，东经是正，西经是负，精度到小数点后6位",
+      "constraints": "{\"max\":180,\"min\":-180}",
+      "schema": "double",
+      "parent": "planned_path_points"
+    },
+    {
+      "name": "height",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "轨迹点高度，椭球高",
+      "constraints": "{\"step\":0.1,\"unit_name\":\"米 / m\"}",
+      "schema": "float",
+      "parent": "planned_path_points"
+    },
+    {
+      "name": "last_point_type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "轨迹planned_path_points最后一个点的类型。可用此字段，决定轨迹最后一个点的显示方式。0：轨迹最后一个点在返航点的地面上空。终端可以显示轨迹最后一个点到返航点的连线；1：轨迹最后一个点不是返航点。终端不应显示轨迹最后一个点到返航点的连线。无法到达返航点的原因：返航点在禁飞区或障碍物内",
+      "constraints": "{\"0\":\"轨迹最后一个点在返航点的上空\",\"1\":\"轨迹最后一个点不在返航点上空\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "flight_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前正在执行的航线任务 ID",
+      "constraints": "",
+      "schema": "text"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "flight_id": "abc",
+          "last_point_type": 0,
+          "planned_path_points": [
+            {
+              "height": 123.234,
+              "latitude": 13.23,
+              "longitude": 123.234
+            }
+          ]
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "return_home_info"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "return_home_info",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/50.wayline.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock1/wayline.html",
+    "sha256": "f45121b90cb8320558dab11ca4809fbcadf33e3c5f3afa04bf9e16069c9d4363",
+    "asset_sha256": "63c2767490f70be5e69a4cf82db0687a8aa11924732d9dbba73f41623d572ece",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

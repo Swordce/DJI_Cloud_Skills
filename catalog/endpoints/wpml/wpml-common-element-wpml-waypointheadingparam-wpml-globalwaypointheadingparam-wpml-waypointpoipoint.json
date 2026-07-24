@@ -1,7 +1,7 @@
 {
   "id": "wpml-common-element-wpml-waypointheadingparam-wpml-globalwaypointheadingparam-wpml-waypointpoipoint",
   "name": "wpml:waypointPoiPoint",
-  "purpose": "<wpml:waypointHeadingParam> & <wpml:globalWaypointHeadingParam>",
+  "purpose": "兴趣点",
   "protocol": "wpml",
   "module": "common-element",
   "operation": {
@@ -15,10 +15,10 @@
       "name": "wpml:waypointPoiPoint",
       "in": "xml_element",
       "type": "string",
-      "required": null,
-      "required_status": "not_specified_by_source",
-      "description": "",
-      "constraints": "",
+      "required": true,
+      "required_status": "required",
+      "description": "兴趣点",
+      "constraints": "数据格式为：纬度,经度,高度注：仅当wpml:waypointHeadingMode为towardPOI该字段生效。目前不支持Z方向朝向兴趣点，高度可设置为0。当某一航点wpml:waypointHeadingMode设置为towardPOI后，飞行器从该航点飞向下一航点途中机头都将朝向兴趣点",
       "schema": "-"
     }
   ],
@@ -48,10 +48,22 @@
     "retry_on": [],
     "notes": "Validate the WPML document locally; network retry is not applicable."
   },
-  "compatibility": [],
+  "compatibility": [
+    "M300 RTK",
+    "M350 RTK",
+    "M30/M30T",
+    "M3E/M3T/M3M",
+    "M3D/M3TD",
+    "M4D/M4TD",
+    "M4E/M4T"
+  ],
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/00.dji-wpml/40.common-element.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/00.dji-wpml/40.common-element.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dji-wpml/common-element.html",
+    "sha256": "e72f1692ea2cac4dfed6779fdf099c6ddb6413afdc2f299fab34ba3336807868",
+    "asset_sha256": "c25246dcd63fbbc613a3671e19a1191f7dd2a25fd5370cf7bcb95443d96695a8",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

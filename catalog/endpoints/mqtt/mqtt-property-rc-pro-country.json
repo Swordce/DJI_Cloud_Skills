@@ -1,0 +1,93 @@
+{
+  "id": "mqtt-property-rc-pro-country",
+  "name": "country",
+  "purpose": "国家码",
+  "protocol": "mqtt",
+  "module": "device-properties",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{device_sn}/osd",
+    "set_topic": null,
+    "direction": "up",
+    "method": "property_report",
+    "property_path": "country",
+    "access_mode": "r",
+    "push_mode": "0"
+  },
+  "parameters": [
+    {
+      "name": "country",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "国家码",
+      "constraints": "",
+      "schema": "text"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "payload_field": "data.country"
+    }
+  ],
+  "errors": [],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "country": "<country>"
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "rc-pro"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/00.mqtt/20.rc-pro/00.properties.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/mqtt/rc-pro/properties.html",
+    "sha256": "f0d637a61b9ff6d088f035d70ffa1054aff99c2a648903f69dab45332a48b3d6",
+    "asset_sha256": "cc6076b3d76a8e8aabf0b7a7a8f9a4cacc1a5cb7a1d0f81c5adcd27a63429408",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

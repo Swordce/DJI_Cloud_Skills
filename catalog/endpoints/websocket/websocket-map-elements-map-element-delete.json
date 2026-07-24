@@ -113,6 +113,10 @@
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/10.pilot-to-cloud/20.websocket/10.map-elements/10.message-push.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/20.websocket/10.map-elements/10.message-push.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/websocket/map-elements/message-push.html",
+    "sha256": "d48bdc732dee7f658a1aaeb034368e1f9c0396be02d49fcb8fb9027886fc1261",
+    "asset_sha256": "089298efe8d8052fd8b0a48982ad0959eb2edde5c2a3faaac9975863f75fdc09",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

@@ -49,67 +49,28 @@
   "responses": [
     {
       "status": "200",
-      "description": "OK",
-      "schema": "map.SwagUUIDResp",
-      "fields": [
-        {
-          "name": "code",
-          "in": "response",
-          "type": "integer",
-          "required": true,
-          "required_status": "required",
-          "description": "错误码",
-          "constraints": "none",
-          "schema": "integer"
-        },
-        {
-          "name": "data",
-          "in": "response",
-          "type": "string",
-          "required": true,
-          "required_status": "required",
-          "description": "none",
-          "constraints": "none",
-          "schema": "map.UUIDResp"
-        },
-        {
-          "name": "message",
-          "in": "response",
-          "type": "string",
-          "required": true,
-          "required_status": "required",
-          "description": "错误描述",
-          "constraints": "none",
-          "schema": "string"
-        }
-      ]
+      "description": "错误码",
+      "schema": "",
+      "fields": []
+    },
+    {
+      "status": "200",
+      "description": "none",
+      "schema": "",
+      "fields": []
+    },
+    {
+      "status": "200",
+      "description": "错误描述",
+      "schema": "",
+      "fields": []
     }
   ],
   "errors": [
     {
-      "code": "400",
-      "meaning": "invalid_request",
+      "code": "code != 0",
+      "meaning": "Resolve the returned code through catalog/error-codes.json.",
       "retry": false
-    },
-    {
-      "code": "401",
-      "meaning": "token_expired_or_invalid",
-      "retry": false
-    },
-    {
-      "code": "403",
-      "meaning": "forbidden",
-      "retry": false
-    },
-    {
-      "code": "404",
-      "meaning": "resource_not_found",
-      "retry": false
-    },
-    {
-      "code": "5xx",
-      "meaning": "server_error",
-      "retry": true
     }
   ],
   "examples": [
@@ -122,18 +83,6 @@
           "id": "94c51c50-f111-45e8-ac8c-4f96c93ced44"
         },
         "message": "success"
-      },
-      "source": "official"
-    },
-    {
-      "kind": "response",
-      "format": "json",
-      "value": {
-        "code": 0,
-        "data": {
-          "id": "string"
-        },
-        "message": "string"
       },
       "source": "official"
     }
@@ -156,6 +105,10 @@
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/10.map-elements/40.delete.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/10.map-elements/40.delete.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/https/map-elements/delete.html",
+    "sha256": "5fa1f3f21c2d67c9fd294d1ae5396048d7afa5b9139b5cd2888c9ba72d850f00",
+    "asset_sha256": "8c6074da2901f971efcbe2d0c2c7142f0328a11817c971ac528b0a59a74ac64c",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

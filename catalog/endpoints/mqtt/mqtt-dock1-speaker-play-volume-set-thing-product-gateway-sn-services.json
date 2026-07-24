@@ -1,0 +1,113 @@
+{
+  "id": "mqtt-dock1-speaker-play-volume-set-thing-product-gateway-sn-services",
+  "name": "喊话器-设置音量",
+  "purpose": "MQTT services: speaker_play_volume_set",
+  "protocol": "mqtt",
+  "module": "psdk",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/services",
+    "direction": "down",
+    "method": "speaker_play_volume_set",
+    "reply_topic": "thing/product/{gateway_sn}/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "psdk_index",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "psdk 负载设备索引",
+      "constraints": "{\"max\":3,\"min\":0,\"step\":1}",
+      "schema": "int"
+    },
+    {
+      "name": "play_volume",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "喊话器音量",
+      "constraints": "{\"max\":100,\"min\":0,\"step\":1}",
+      "schema": "int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "data": {
+          "play_volume": 13,
+          "psdk_index": 2
+        },
+        "method": "speaker_play_volume_set",
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "timestamp": 1689842989237
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "result": 0
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "speaker_play_volume_set"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/140.psdk.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock1/psdk.html",
+    "sha256": "4ebc27ff1080d227ab8a9a83764d3b0bdc3cc429defe5fad9529f1fea4225948",
+    "asset_sha256": "14dfc7b1ec57897091144fa67fdaa522a1af349001bd26cd8bad8287bb60c36c",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

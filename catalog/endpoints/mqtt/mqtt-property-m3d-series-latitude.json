@@ -1,0 +1,93 @@
+{
+  "id": "mqtt-property-m3d-series-latitude",
+  "name": "latitude",
+  "purpose": "当前位置纬度",
+  "protocol": "mqtt",
+  "module": "device-properties",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{device_sn}/osd",
+    "set_topic": null,
+    "direction": "up",
+    "method": "property_report",
+    "property_path": "latitude",
+    "access_mode": "r",
+    "push_mode": "0"
+  },
+  "parameters": [
+    {
+      "name": "latitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前位置纬度",
+      "constraints": "{\"max\":\"3.4028235E38\",\"min\":\"-1.4E-45\",\"step\":\"0.1\"}",
+      "schema": "double"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "payload_field": "data.latitude"
+    }
+  ],
+  "errors": [],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "latitude": 0.0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "m3d-series"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/10.aircraft/10.m3d-properties.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/aircraft/m3d-properties.html",
+    "sha256": "edb8c39055be1e27693eb0f31a482eab53805ddd6f746dff5dae9c1e4a3e0bcc",
+    "asset_sha256": "8fed81687087e86c8273c0c1cb3ce7150664bfc37fab8919583ee118a577daf0",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

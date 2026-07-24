@@ -1,0 +1,200 @@
+{
+  "id": "mqtt-dock1-hms-thing-product-gateway-sn-events",
+  "name": "健康告警",
+  "purpose": "MQTT events: hms",
+  "protocol": "mqtt",
+  "module": "hms",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/events",
+    "direction": "up",
+    "method": "hms",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "list",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "健康告警列表",
+      "constraints": "{\"size\": 20, \"item_type\": struct}",
+      "schema": "array"
+    },
+    {
+      "name": "level",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "告警等级",
+      "constraints": "{\"0\":\"通知\",\"1\":\"提醒\",\"2\":\"警告\"}",
+      "schema": "enum_int",
+      "parent": "list"
+    },
+    {
+      "name": "module",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "事件模块",
+      "constraints": "{\"0\":\"飞行任务\",\"1\":\"设备管理\",\"2\":\"媒体\",\"3\":\"hms\"}",
+      "schema": "enum_int",
+      "parent": "list"
+    },
+    {
+      "name": "in_the_sky",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "是否飞行",
+      "constraints": "{\"0\":\"在地上\",\"1\":\"在天上\"}",
+      "schema": "enum_int",
+      "parent": "list"
+    },
+    {
+      "name": "code",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "告警码",
+      "constraints": "{\"length\":\"10240\"}",
+      "schema": "text",
+      "parent": "list"
+    },
+    {
+      "name": "imminent",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "代表是否为及时性的告警码。比如风过大，会随着风力减小而自动消失。",
+      "constraints": "{\"0\":\"否\",\"1\":\"是\"}",
+      "schema": "enum_int",
+      "parent": "list"
+    },
+    {
+      "name": "args",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "参数",
+      "constraints": "",
+      "schema": "struct",
+      "parent": "list"
+    },
+    {
+      "name": "device_type",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "设备类型",
+      "constraints": "",
+      "schema": "text",
+      "parent": "list"
+    },
+    {
+      "name": "component_index",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文案变量",
+      "constraints": "{\"length\":\"10240\"}",
+      "schema": "int",
+      "parent": "device_type"
+    },
+    {
+      "name": "sensor_index",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文案变量",
+      "constraints": "{\"length\":\"10240\"}",
+      "schema": "int",
+      "parent": "device_type"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "list": [
+            {
+              "args": {
+                "component_index": 0,
+                "sensor_index": 0
+              },
+              "code": "0x16100083",
+              "device_type": "0-67-0",
+              "imminent": 1,
+              "in_the_sky": 0,
+              "level": 2,
+              "module": 3
+            }
+          ]
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "hms"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/60.hms.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock1/hms.html",
+    "sha256": "9894dbadfe091c67268682cea8f39b1c2d832e01baf5cabec624c5030528e58d",
+    "asset_sha256": "76a0713f1daffd405cd3dcb3f0e49e54e683c4e6136e0b6f0eee64af81ebcbf2",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

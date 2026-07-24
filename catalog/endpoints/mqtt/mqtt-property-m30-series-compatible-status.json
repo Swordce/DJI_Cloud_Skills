@@ -1,0 +1,93 @@
+{
+  "id": "mqtt-property-m30-series-compatible-status",
+  "name": "compatible_status",
+  "purpose": "一致性升级：指飞行器某些模块的固件版本与系统匹配版本不一致，需要进行升级。常见的情况例如：飞行器与遥控器已经升级至最新版本，但替换电池时发现电池未升级，此时一致性升级将被提示。普通升级：开发者将飞行器所有模块升级至指定固件版本。",
+  "protocol": "mqtt",
+  "module": "device-properties",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{device_sn}/state",
+    "set_topic": null,
+    "direction": "up",
+    "method": "property_report",
+    "property_path": "compatible_status",
+    "access_mode": "r",
+    "push_mode": "1"
+  },
+  "parameters": [
+    {
+      "name": "compatible_status",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "一致性升级：指飞行器某些模块的固件版本与系统匹配版本不一致，需要进行升级。常见的情况例如：飞行器与遥控器已经升级至最新版本，但替换电池时发现电池未升级，此时一致性升级将被提示。普通升级：开发者将飞行器所有模块升级至指定固件版本。",
+      "constraints": "{\"0\":\"不需要一致性升级\",\"1\":\"需要一致性升级\"}",
+      "schema": "enum_int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "payload_field": "data.compatible_status"
+    }
+  ],
+  "errors": [],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "compatible_status": 0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "m30-series"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/10.aircraft/00.m30-properties.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/aircraft/m30-properties.html",
+    "sha256": "fb813a50caf5d4911bd978abd9ca2374605c8ea744d8f91c520e45eaec52a704",
+    "asset_sha256": "604dc444626b9ff2458e81e65e23228cf666eec85f15efac293eec230a605024",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

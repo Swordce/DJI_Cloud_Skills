@@ -1,0 +1,147 @@
+{
+  "id": "mqtt-dock2-in-flight-wayline-progress-thing-product-gateway-sn-events",
+  "name": "空中下发航线状态上报",
+  "purpose": "MQTT events: in_flight_wayline_progress",
+  "protocol": "mqtt",
+  "module": "wayline",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/events",
+    "direction": "up",
+    "method": "in_flight_wayline_progress",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "in_flight_wayline_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "空中航线任务的唯一标识符",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "progress",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "任务进度信息",
+      "constraints": "",
+      "schema": "object"
+    },
+    {
+      "name": "progress.percent",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "任务完成百分比",
+      "constraints": "{min: 0, max: 100}",
+      "schema": "int"
+    },
+    {
+      "name": "status",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "状态码说明：status: 1: 上传文件中 (wayline_uploading) 2: 文件上传成功 (wayline_uploaded) 3: 执行任务中 (wayline_progress) 4: 任务暂停 (wayline_paused) 5: 任务取消 (wayline_cancel) 6: 任务成功 (wayline_ok) 7: 任务失败 (wayline_failed)任务失败时的错误码8: 任务超时",
+      "constraints": "",
+      "schema": "int"
+    },
+    {
+      "name": "result",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "错误原因码",
+      "constraints": "",
+      "schema": "int"
+    },
+    {
+      "name": "way_point_index",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前执行的航点索引",
+      "constraints": "",
+      "schema": "int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {},
+        "method": "in_flight_wayline_progress",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "in_flight_wayline_progress",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/50.wayline.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock2/wayline.html",
+    "sha256": "ab3084c76c8fa9d65f308da3a107b0090084cf7f05f79baa512c19c3b1afb112",
+    "asset_sha256": "9a61e8534085ecaaf89095935513edd842edcd66a075cb89b09255aa79407390",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

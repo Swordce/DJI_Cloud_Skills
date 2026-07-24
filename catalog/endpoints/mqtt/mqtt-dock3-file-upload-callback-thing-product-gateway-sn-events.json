@@ -1,0 +1,301 @@
+{
+  "id": "mqtt-dock3-file-upload-callback-thing-product-gateway-sn-events",
+  "name": "媒体文件上传结果上报",
+  "purpose": "MQTT events: file_upload_callback",
+  "protocol": "mqtt",
+  "module": "media",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/events",
+    "direction": "up",
+    "method": "file_upload_callback",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "file",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文件信息",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "object_key",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文件在对象存储桶的 Key",
+      "constraints": "",
+      "schema": "text",
+      "parent": "file"
+    },
+    {
+      "name": "path",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文件的业务路径",
+      "constraints": "",
+      "schema": "text",
+      "parent": "file"
+    },
+    {
+      "name": "name",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文件名称",
+      "constraints": "",
+      "schema": "text",
+      "parent": "file"
+    },
+    {
+      "name": "ext",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文件扩展内容",
+      "constraints": "",
+      "schema": "struct",
+      "parent": "file"
+    },
+    {
+      "name": "flight_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "任务 ID",
+      "constraints": "",
+      "schema": "text",
+      "parent": "ext"
+    },
+    {
+      "name": "drone_model_key",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "飞行器产品枚举值",
+      "constraints": "",
+      "schema": "text",
+      "parent": "ext"
+    },
+    {
+      "name": "payload_model_key",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "负载产品枚举值",
+      "constraints": "",
+      "schema": "text",
+      "parent": "ext"
+    },
+    {
+      "name": "is_original",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "是否为原图",
+      "constraints": "{\"0\":\"否\",\"1\":\"是\"}",
+      "schema": "bool",
+      "parent": "ext"
+    },
+    {
+      "name": "metadata",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "媒体元数据",
+      "constraints": "",
+      "schema": "struct",
+      "parent": "file"
+    },
+    {
+      "name": "gimbal_yaw_degree",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "云台偏航角",
+      "constraints": "",
+      "schema": "float",
+      "parent": "metadata"
+    },
+    {
+      "name": "absolute_altitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "拍摄绝对高度",
+      "constraints": "",
+      "schema": "float",
+      "parent": "metadata"
+    },
+    {
+      "name": "relative_altitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "拍摄相对高度",
+      "constraints": "",
+      "schema": "float",
+      "parent": "metadata"
+    },
+    {
+      "name": "create_time",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "媒体拍摄时间",
+      "constraints": "{\"format\":\"iso8601\"}",
+      "schema": "date",
+      "parent": "metadata"
+    },
+    {
+      "name": "shoot_position",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "拍摄位置",
+      "constraints": "",
+      "schema": "struct",
+      "parent": "metadata"
+    },
+    {
+      "name": "lat",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "拍摄位置纬度",
+      "constraints": "",
+      "schema": "float",
+      "parent": "shoot_position"
+    },
+    {
+      "name": "lng",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "拍摄位置经度",
+      "constraints": "",
+      "schema": "float",
+      "parent": "shoot_position"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "file": {
+            "cloud_to_cloud_id": "DEFAULT",
+            "ext": {
+              "drone_model_key": "0-67-0",
+              "flight_id": "xxx",
+              "is_original": true,
+              "payload_model_key": "0-67-0"
+            },
+            "metadata": {
+              "absolute_altitude": 56.311,
+              "create_time": "2021-05-10 16:04:20",
+              "gimbal_yaw_degree": "-91.40",
+              "relative_altitude": 41.124,
+              "shoot_position": {
+                "lat": 22.1,
+                "lng": 122.5
+              }
+            },
+            "name": "dog.jpeg",
+            "object_key": "object_key",
+            "path": "xxx"
+          }
+        },
+        "gateway": "xxx",
+        "method": "file_upload_callback",
+        "need_reply": 1,
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655
+      },
+      "source": "official"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "file_upload_callback",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock3"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/20.dock3/40.media.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock3/media.html",
+    "sha256": "889ca632d7e1cc6377dbb4d23ee6fd4f7e5816aae1bcce58a71cb8411d7785c0",
+    "asset_sha256": "e9df3cedb719120de3be2c16795ece0c38a4e5c8a683358b793071cbccab842a",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

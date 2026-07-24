@@ -1,0 +1,93 @@
+{
+  "id": "mqtt-property-m4d-series-cameras-zoom-exposure-value",
+  "name": "zoom_exposure_value",
+  "purpose": "当前配置的变焦镜头曝光值",
+  "protocol": "mqtt",
+  "module": "device-properties",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{device_sn}/osd",
+    "set_topic": null,
+    "direction": "up",
+    "method": "property_report",
+    "property_path": "cameras.zoom_exposure_value",
+    "access_mode": null,
+    "push_mode": "0"
+  },
+  "parameters": [
+    {
+      "name": "zoom_exposure_value",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前配置的变焦镜头曝光值",
+      "constraints": "{\"1\":\"-5.0EV\",\"2\":\"-4.7EV\",\"3\":\"-4.3EV\",\"4\":\"-4.0EV\",\"5\":\"-3.7EV\",\"6\":\"-3.3EV\",\"7\":\"-3.0EV\",\"8\":\"-2.7EV\",\"9\":\"-2.3EV\",\"10\":\"-2.0EV\",\"11\":\"-1.7EV\",\"12\":\"-1.3EV\",\"13\":\"-1.0EV\",\"14\":\"-0.7EV\",\"15\":\"-0.3EV\",\"16\":\"0EV\",\"17\":\"0.3EV\",\"18\":\"0.7EV\",\"19\":\"1.0EV\",\"20\":\"1.3EV\",\"21\":\"1.7EV\",\"22\":\"2.0EV\",\"23\":\"2.3EV\",\"24\":\"2.7EV\",\"25\":\"3.0EV\",\"26\":\"3.3EV\",\"27\":\"3.7EV\",\"28\":\"4.0EV\",\"29\":\"4.3EV\",\"30\":\"4.7EV\",\"31\":\"5.0EV\",\"255\":\"FIXED\"}",
+      "schema": "enum_int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "payload_field": "data.zoom_exposure_value"
+    }
+  ],
+  "errors": [],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "zoom_exposure_value": 0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "m4d-series"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/10.aircraft/20.m4d-properties.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/aircraft/m4d-properties.html",
+    "sha256": "d9917a92c11959a319e18692b8bbdfe68b891a2039f74ce824ebccb7a638ce3c",
+    "asset_sha256": "de376fe809a165e9b6f1c88be468eb63e2e685f15f276c92c6f44fca6a9f782a",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

@@ -1,6 +1,8 @@
 .upstream/
+.official-cache/
 __pycache__/
 *.pyc
+_tmp_*
 build/
 dist/
 .cursor/skills/dji-cloud-api/

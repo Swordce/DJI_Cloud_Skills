@@ -1,0 +1,168 @@
+{
+  "id": "mqtt-dji-rc-plus-2-drc-camera-photo-info-push-thing-product-gateway-sn-drc-up",
+  "name": "拍照信息上报",
+  "purpose": "MQTT message: drc_camera_photo_info_push",
+  "protocol": "mqtt",
+  "module": "remote-control",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/drc/up",
+    "direction": "up",
+    "method": "drc_camera_photo_info_push",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "countdown_time",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "定时拍倒计时",
+      "constraints": "{\"max\":\"\",\"min\":\"\",\"step\":\"\",\"unit_name\":null}",
+      "schema": "int"
+    },
+    {
+      "name": "result",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "非 0 代表错误",
+      "constraints": "{\"max\":\"\",\"min\":\"\",\"step\":\"\",\"unit_name\":null}",
+      "schema": "int"
+    },
+    {
+      "name": "status",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "状态",
+      "constraints": "{\"fail\":\"失败\",\"in_progress\":\"执行中\",\"ok\":\"完成\"}",
+      "schema": "enum_string"
+    },
+    {
+      "name": "progress",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "进度",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "current_step",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "执行步骤",
+      "constraints": "{\"3000\":\"全景图拍摄未开始或者已结束\",\"3002\":\"全景图正在拍摄\",\"3005\":\"全景图合成中\"}",
+      "schema": "enum_int",
+      "parent": "progress"
+    },
+    {
+      "name": "percent",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "进度值",
+      "constraints": "{\"max\":\"100\",\"min\":\"0\",\"step\":\"\",\"unit_name\":null}",
+      "schema": "int",
+      "parent": "progress"
+    },
+    {
+      "name": "ext",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "扩展内容",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "camera_mode",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前相机模式",
+      "constraints": "{\"3\":\"全景拍照\"}",
+      "schema": "enum_int",
+      "parent": "ext"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "countdown_time": 4,
+          "ext": {
+            "camera_mode": 2
+          },
+          "progress": {
+            "current_step": 0,
+            "percent": 100
+          },
+          "result": 0,
+          "status": "in_progress"
+        },
+        "method": "drc_camera_photo_info_push",
+        "seq": 1
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dji-rc-plus-2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/00.mqtt/40.dji-rc-plus-2/40.remote-control.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/mqtt/dji-rc-plus-2/remote-control.html",
+    "sha256": "474d36810f777c08b1b3fb174e4189f13771bddafbae9733e80340129722c51c",
+    "asset_sha256": "144d7b7a36f3bdb787b59cd873902ee5cababf391e650ddba7dcec46adfa9cd2",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

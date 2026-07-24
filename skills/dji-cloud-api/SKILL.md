@@ -4,12 +4,12 @@ description: Generates integration code and answers protocol questions for the c
 compatibility: Requires an agent that can read local JSON files. Python 3 is optional for fast catalog queries. Network calls require a host-provided protocol executor and credentials.
 metadata:
   author: dji-cloud-skills
-  version: "1.0"
+  version: "1.16.1"
 ---
 
 # DJI Cloud API
 
-Use this package as the source of truth for DJI Cloud API integration. Do not guess paths, topics, method identifiers, parameters, enum values, authentication, or errors.
+Use this package as the source of truth for DJI Cloud API v1.16.1 integration. Its protocol facts come only from the official Chinese Cloud API tutorial. Do not guess paths, topics, method identifiers, parameters, enum values, authentication, or errors.
 
 ## Find an operation
 
@@ -23,8 +23,14 @@ python <skill-root>/scripts/query_catalog.py "固件升级" --full
 
 Otherwise search [references/index.json](references/index.json). Each index group
 names a small protocol/module reference file; read only the matching file.
+Never load `references/index.json` or a reference shard wholesale into context
+when the query helper or a targeted grep can answer — the index is a map, not
+reading material.
 Use [DJI error codes](references/error-codes.json) when an operation returns a
 DJI result code.
+Check [source provenance](references/source-manifest.json) for the pinned
+official snapshot and [migration changes](references/change-report-summary.json)
+for the GitHub-to-official catalog transition.
 
 ## Generate calls
 
@@ -41,7 +47,7 @@ DJI result code.
 - Follow `operation.action`, `topic`, `direction`, `method`, and reply topic.
 - Preserve `tid`, `bid`, `method`, `data`, and millisecond `timestamp`.
 - Correlate replies by `tid`, `bid`, and `method`; MQTT delivery is not operation success.
-- Check `compatibility` for Pilot, Dock 1, and Dock 2 differences.
+- Check `compatibility` for each controller, aircraft, Dock generation, and product-series difference.
 
 ### WebSocket
 

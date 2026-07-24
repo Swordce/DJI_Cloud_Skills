@@ -1,0 +1,100 @@
+{
+  "id": "mqtt-dock3-psdk-floating-window-text-thing-product-gateway-sn-events",
+  "name": "psdk-浮窗文本推送",
+  "purpose": "MQTT events: psdk_floating_window_text",
+  "protocol": "mqtt",
+  "module": "psdk",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/events",
+    "direction": "up",
+    "method": "psdk_floating_window_text",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "psdk_index",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "psdk 负载设备索引",
+      "constraints": "{\"max\":3,\"min\":0,\"step\":1}",
+      "schema": "int"
+    },
+    {
+      "name": "value",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "浮窗内容",
+      "constraints": "",
+      "schema": "text"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "data": {
+          "psdk_index": 2,
+          "value": "System time : 1193683 ms"
+        },
+        "gateway": "4TADKAQ000002J",
+        "method": "psdk_floating_window_text",
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "timestamp": 1689911744380
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock3"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/20.dock3/140.psdk.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock3/psdk.html",
+    "sha256": "47dfb1fd65fa51501991a974d22c816dea03c6aaae4583cdbe1b950d4c9b4237",
+    "asset_sha256": "aada40b0455ecd215ffc70c4803ae2369003ecb0b48a2230f76b4b8dc797ebe9",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

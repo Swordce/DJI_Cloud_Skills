@@ -1,0 +1,99 @@
+{
+  "id": "mqtt-dji-rc-plus-2-drc-camera-mode-switch-thing-product-gateway-sn-drc-down",
+  "name": "负载控制—切换相机模式",
+  "purpose": "MQTT message: drc_camera_mode_switch",
+  "protocol": "mqtt",
+  "module": "remote-control",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/drc/down",
+    "direction": "down",
+    "method": "drc_camera_mode_switch",
+    "reply_topic": "thing/product/{gateway_sn}/drc/up",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "camera_mode",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "模式",
+      "constraints": "{\"0\":\"拍照\",\"1\":\"录像\",\"2\":\"智能低光\",\"3\":\"全景拍照\",\"4\":\"定时拍\"}",
+      "schema": "enum_int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "camera_mode": 2,
+          "payload_index": "89-0-0"
+        },
+        "method": "drc_camera_mode_switch",
+        "seq": 1
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "data": {
+          "result": 0
+        },
+        "method": "drc_camera_mode_switch",
+        "seq": 1
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dji-rc-plus-2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/00.mqtt/40.dji-rc-plus-2/40.remote-control.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/mqtt/dji-rc-plus-2/remote-control.html",
+    "sha256": "474d36810f777c08b1b3fb174e4189f13771bddafbae9733e80340129722c51c",
+    "asset_sha256": "144d7b7a36f3bdb787b59cd873902ee5cababf391e650ddba7dcec46adfa9cd2",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

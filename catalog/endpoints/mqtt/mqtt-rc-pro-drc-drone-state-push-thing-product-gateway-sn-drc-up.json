@@ -1,0 +1,108 @@
+{
+  "id": "mqtt-rc-pro-drc-drone-state-push-thing-product-gateway-sn-drc-up",
+  "name": "飞行器状态信息上报",
+  "purpose": "MQTT message: drc_drone_state_push",
+  "protocol": "mqtt",
+  "module": "remote-control",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/drc/up",
+    "direction": "up",
+    "method": "drc_drone_state_push",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "stealth_state",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "隐蔽模式状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "night_lights_state",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "夜航灯状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "mode_code",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "飞行器状态",
+      "constraints": "{\"0\":\"待机\",\"1\":\"起飞准备\",\"2\":\"起飞准备完毕\",\"3\":\"手动飞行\",\"4\":\"自动起飞\",\"5\":\"航线飞行\",\"6\":\"全景拍照\",\"7\":\"智能跟随\",\"8\":\"ADS-B 躲避\",\"9\":\"自动返航\",\"10\":\"自动降落\",\"11\":\"强制降落\",\"12\":\"三桨叶降落\",\"13\":\"升级中\",\"14\":\"未连接\",\"15\":\"APAS\",\"16\":\"虚拟摇杆状态\",\"17\":\"指令飞行\"}",
+      "schema": "enum_int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "mode_code": 0,
+          "night_lights_state": 0,
+          "stealth_state": 0
+        },
+        "method": "drc_drone_state_push",
+        "seq": 1
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "rc-pro"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/00.mqtt/20.rc-pro/40.remote-control.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/mqtt/rc-pro/remote-control.html",
+    "sha256": "3827ed8c0acad773de29bff6a282285d2ea6327235d5b26eb9fb73d6f2989489",
+    "asset_sha256": "27d55af324efa6c0435a84d2d283fea94aa0631f0aca8e5a9271b458b624129c",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

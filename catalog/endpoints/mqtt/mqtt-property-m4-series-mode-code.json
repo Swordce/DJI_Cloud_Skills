@@ -1,0 +1,93 @@
+{
+  "id": "mqtt-property-m4-series-mode-code",
+  "name": "mode_code",
+  "purpose": "机场选址指飞行器在空中悬停，为机场选址以及检查 RTK 信号质量",
+  "protocol": "mqtt",
+  "module": "device-properties",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{device_sn}/osd",
+    "set_topic": null,
+    "direction": "up",
+    "method": "property_report",
+    "property_path": "mode_code",
+    "access_mode": "r",
+    "push_mode": "0"
+  },
+  "parameters": [
+    {
+      "name": "mode_code",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "机场选址指飞行器在空中悬停，为机场选址以及检查 RTK 信号质量",
+      "constraints": "{\"0\":\"待机\",\"1\":\"起飞准备\",\"2\":\"起飞准备完毕\",\"3\":\"手动飞行\",\"4\":\"自动起飞\",\"5\":\"航线飞行\",\"6\":\"全景拍照\",\"7\":\"智能跟随\",\"8\":\"ADS-B 躲避\",\"9\":\"自动返航\",\"10\":\"自动降落\",\"11\":\"强制降落\",\"12\":\"三桨叶降落\",\"13\":\"升级中\",\"14\":\"未连接\",\"15\":\"APAS\",\"16\":\"虚拟摇杆状态\",\"17\":\"指令飞行\",\"18\":\"空中 RTK 收敛模式\",\"19\":\"机场选址中\"}",
+      "schema": "enum_int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "payload_field": "data.mode_code"
+    }
+  ],
+  "errors": [],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "mode_code": 0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "m4-series"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/00.mqtt/30.m4-series/00.properties.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/mqtt/m4-series/properties.html",
+    "sha256": "cb45c822670601e09427698350761836f539e4cf7c7961de8b05c86372f7a5ae",
+    "asset_sha256": "f0535428f2080bf71827ab1406693fde5f29f472681e2cfeaac23bf01d5453d3",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

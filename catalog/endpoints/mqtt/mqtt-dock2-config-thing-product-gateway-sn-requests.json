@@ -1,0 +1,119 @@
+{
+  "id": "mqtt-dock2-config-thing-product-gateway-sn-requests",
+  "name": "获取配置",
+  "purpose": "MQTT requests: config",
+  "protocol": "mqtt",
+  "module": "config",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/requests",
+    "direction": "up",
+    "method": "config",
+    "reply_topic": "thing/product/{gateway_sn}/requests_reply",
+    "reply_direction": "down"
+  },
+  "parameters": [
+    {
+      "name": "config_type",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "配置类型",
+      "constraints": "{\"json\":\"json 格式\"}",
+      "schema": "enum_string"
+    },
+    {
+      "name": "config_scope",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "配置范围",
+      "constraints": "{\"product\":\"产品维度\"}",
+      "schema": "enum_string"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/requests_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "42a19f36-5117-4520-bd13-fd61d818d52e",
+        "data": {
+          "config_scope": "product",
+          "config_type": "json"
+        },
+        "gateway": "sn",
+        "tid": "6a7bfe89-c386-4043-b600-b518e10096cc",
+        "timestamp": 1667803298000,
+        "method": "config"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "42a19f36-5117-4520-bd13-fd61d818d52e",
+        "data": {
+          "app_id": "123456",
+          "app_key": "app_key",
+          "app_license": "app_license",
+          "ntp_server_host": "host_url",
+          "ntp_server_port": 456
+        },
+        "gateway": "sn",
+        "tid": "6a7bfe89-c386-4043-b600-b518e10096cc",
+        "timestamp": 1667803298000,
+        "method": "config"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/100.config.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock2/config.html",
+    "sha256": "b57660d9cbeb73f4435c2335d3ee7ed0a2bbe754c913fac7b0edd26b4cc43d20",
+    "asset_sha256": "013c446eecf1ce1ccd5297760ac728d65380bdd19652201030789f72a2951c1b",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

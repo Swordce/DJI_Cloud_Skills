@@ -15,11 +15,34 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
+OFFICIAL_HOST = "https://developer.dji.com/doc/cloud-api-tutorial/cn/"
+NON_INTERFACE_ROUTES = {
+    "/cn/api-reference/dji-wpml/overview.html": "WPML explanatory overview; contains no operation or element table.",
+    "/cn/api-reference/dock-to-cloud/mqtt/topic-definition.html": "MQTT topic convention reference; contains no method operation.",
+    "/cn/api-reference/pilot-to-cloud/mqtt/topic-definition.html": "MQTT topic convention reference; contains no method operation.",
+}
+HASH_MODULE_RE = re.compile(r"^[a-f0-9]{12}$")
+# Field-completeness baselines measured on the official v1.16.1 snapshot
+# (http 1.00, mqtt 0.9986, websocket 1.00, wpml 1.00, jsbridge 0.53).
+# A parser degradation trips these fail-closed; lowering a baseline requires
+# a recorded entry in coverage-report known_source_exceptions.
+MIN_PARAM_DESCRIPTION_RATIO = {
+    "http": 0.95,
+    "mqtt": 0.99,
+    "websocket": 0.95,
+    "wpml": 1.0,
+    "jsbridge": 0.5,
+}
 
 
 def load_json(path: Path) -> Any:
     with path.open(encoding="utf-8") as handle:
         return json.load(handle)
+
+
+def write_text_lf(path: Path, content: str) -> None:
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        handle.write(content)
 
 
 def matches_type(value: Any, expected: str) -> bool:
@@ -86,16 +109,20 @@ def validate_entry(
     path: Path,
     schema: dict[str, Any],
     source: Path,
+    snapshot: dict[str, Any],
     errors: list[str],
 ) -> None:
     validate_schema(entry, schema, str(path), errors)
     if path.stem != entry["id"]:
         errors.append(f"{path}: filename does not match id")
+    if HASH_MODULE_RE.fullmatch(entry["module"]):
+        errors.append(f"{path}: module is a hash fallback; assign a semantic module")
     names = set()
     for parameter in entry["parameters"]:
-        if parameter.get("name") in names:
+        key = (parameter.get("parent"), parameter.get("name"))
+        if key in names:
             errors.append(f"{path}: duplicate parameter {parameter.get('name')}")
-        names.add(parameter.get("name"))
+        names.add(key)
     if entry["protocol"] == "http":
         if not entry["operation"].get("method") or not entry["operation"].get("path"):
             errors.append(f"{path}: HTTP operation lacks method/path")
@@ -109,11 +136,32 @@ def validate_entry(
     source_file = source / entry["source"].get("file", "")
     if not source_file.exists():
         errors.append(f"{path}: missing source file {source_file}")
+        return
+    if not entry["source"].get("url", "").startswith(OFFICIAL_HOST):
+        errors.append(f"{path}: source URL is not the official Chinese tutorial")
+    page = next(
+        (item for item in snapshot["pages"] if item["file"] == entry["source"].get("file")),
+        None,
+    )
+    if not page:
+        errors.append(f"{path}: source file is absent from the official snapshot")
+    else:
+        expected = {
+            "url": page["source_url"],
+            "sha256": page["content_sha256"],
+            "asset_sha256": page["asset_sha256"],
+            "snapshot_sha256": snapshot["snapshot_sha256"],
+            "version": snapshot["version"],
+        }
+        for name, value in expected.items():
+            if entry["source"].get(name) != value:
+                errors.append(f"{path}: source {name} does not match the official snapshot")
 
 
 def validate_tools(entries: list[dict[str, Any]], errors: list[str]) -> None:
-    openai = load_json(ROOT / "build/dist/openai/tools.json")
-    claude = load_json(ROOT / "build/dist/claude/tools.json")
+    # The portable skill package is the canonical publisher of full tool files.
+    openai = load_json(ROOT / "build/skills/dji-cloud-api/assets/openai-tools.json")
+    claude = load_json(ROOT / "build/skills/dji-cloud-api/assets/claude-tools.json")
     if len(openai) != len(entries) or len(claude) != len(entries):
         errors.append("Tool adapter counts do not match catalog")
     openai_names = [item.get("function", {}).get("name") for item in openai]
@@ -178,15 +226,29 @@ def validate_portable_skill(entries: list[dict[str, Any]], errors: list[str]) ->
         errors.append("Portable Claude tools count mismatch")
     if not (root / "scripts/query_catalog.py").exists():
         errors.append("Portable query helper is missing")
+    if not (root / "references/source-manifest.json").exists():
+        errors.append("Portable official source manifest is missing")
+    if not (root / "references/change-report-summary.json").exists():
+        errors.append("Portable migration change summary is missing")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--source", type=Path, default=ROOT / ".upstream")
+    parser.add_argument("--source", type=Path, default=ROOT / ".official-cache")
     parser.add_argument("--check-determinism", action="store_true")
     args = parser.parse_args()
     errors: list[str] = []
     source = args.source.resolve()
+    snapshot_path = source / "snapshot.json"
+    if not snapshot_path.exists():
+        raise SystemExit(f"Official snapshot is missing: {snapshot_path}")
+    snapshot = load_json(snapshot_path)
+    manifest = load_json(ROOT / "manifest.json")
+    expected_version = manifest.get("official_version")
+    if snapshot.get("version") != expected_version:
+        errors.append(f"Official snapshot version is {snapshot.get('version')}, expected {expected_version}")
+    if snapshot.get("route_count", 0) < 100 or snapshot.get("error_page_count") != 1:
+        errors.append("Official snapshot route/error-page counts are implausible")
     schema = load_json(ROOT / "catalog/schema.json")
     files = sorted((ROOT / "catalog/endpoints").rglob("*.json"))
     entries = [load_json(path) for path in files]
@@ -194,7 +256,7 @@ def main() -> int:
     if len(ids) != len(set(ids)):
         errors.append("Catalog IDs are not unique")
     for entry, path in zip(entries, files):
-        validate_entry(entry, path, schema, source, errors)
+        validate_entry(entry, path, schema, source, snapshot, errors)
 
     generator = load_generator()
     expected = generator.collect(source)
@@ -204,6 +266,24 @@ def main() -> int:
         errors.append(
             f"Source coverage mismatch: missing={sorted(expected_ids - actual_ids)[:20]}, extra={sorted(actual_ids - expected_ids)[:20]}"
         )
+
+    official_routes = {
+        page["route"]: page
+        for page in snapshot["pages"]
+        if "/api-reference/" in page["route"]
+    }
+    used_urls = {entry["source"]["url"] for entry in entries}
+    uncovered = {
+        route
+        for route, page in official_routes.items()
+        if page["source_url"] not in used_urls
+    }
+    unexpected_uncovered = uncovered - set(NON_INTERFACE_ROUTES)
+    stale_exceptions = set(NON_INTERFACE_ROUTES) - uncovered
+    if unexpected_uncovered:
+        errors.append(f"Official API pages lack catalog coverage: {sorted(unexpected_uncovered)}")
+    if stale_exceptions:
+        errors.append(f"Non-interface route exceptions became stale: {sorted(stale_exceptions)}")
 
     core_tokens = ("device", "organization", "bind", "live", "wayline", "flighttask", "media", "file", "firmware", "upgrade")
     missing_examples = [
@@ -216,6 +296,63 @@ def main() -> int:
 
     if not load_json(ROOT / "catalog/error-codes.json"):
         errors.append("No DJI error codes extracted")
+    else:
+        for item in load_json(ROOT / "catalog/error-codes.json"):
+            if not item["source"]["url"].startswith(OFFICIAL_HOST):
+                errors.append("DJI error codes contain a non-official source")
+                break
+    wpml_entries = [entry for entry in entries if entry["protocol"] == "wpml"]
+    if wpml_entries:
+        empty_description = [
+            entry["id"]
+            for entry in wpml_entries
+            if not entry["parameters"] or not entry["parameters"][0].get("description")
+        ]
+        if empty_description:
+            errors.append(f"WPML entries missing description: {empty_description[:20]}")
+        if all(not entry["compatibility"] for entry in wpml_entries):
+            errors.append("WPML entries uniformly lack compatibility; the model-column mapping is broken")
+        if all(
+            entry["parameters"] and entry["parameters"][0].get("required_status") == "not_specified_by_source"
+            for entry in wpml_entries
+        ):
+            errors.append("WPML required_status is uniformly unspecified; the required-column mapping is broken")
+    param_totals: dict[str, list[int]] = {}
+    for entry in entries:
+        totals = param_totals.setdefault(entry["protocol"], [0, 0])
+        for parameter in entry["parameters"]:
+            totals[0] += 1
+            if parameter.get("description"):
+                totals[1] += 1
+    for protocol, minimum in MIN_PARAM_DESCRIPTION_RATIO.items():
+        total, filled = param_totals.get(protocol, [0, 0])
+        if total and filled / total < minimum:
+            errors.append(
+                f"{protocol} parameter description ratio {filled}/{total} is below the {minimum:.2f} baseline; "
+                "fix the parser degradation or record a known_source_exception"
+            )
+    change_report = load_json(ROOT / "catalog/change-report.json")
+    if (
+        change_report.get("official_version") != snapshot["version"]
+        or change_report.get("snapshot_sha256") != snapshot["snapshot_sha256"]
+    ):
+        errors.append("Change report is not pinned to the current official snapshot")
+    report_new_count = sum(
+        change_report["summary"][key]
+        for key in ("added", "renamed", "modified", "unchanged")
+    )
+    if report_new_count != len(entries):
+        errors.append(
+            f"Change report new-side count {report_new_count} does not match catalog {len(entries)}"
+        )
+    if (
+        manifest.get("official_version") != snapshot["version"]
+        or manifest.get("snapshot_sha256") != snapshot["snapshot_sha256"]
+        or manifest.get("api_reference_route_count") != snapshot["route_count"]
+        or manifest.get("app_hash") != snapshot["app"]["hash"]
+        or manifest.get("runtime_hash") != snapshot["runtime"]["hash"]
+    ):
+        errors.append("manifest.json is not pinned to the current official snapshot")
     subprocess.run(
         [sys.executable, str(ROOT / "scripts/build_artifacts.py")],
         cwd=ROOT,
@@ -260,9 +397,20 @@ def main() -> int:
         "jsbridge": candidates.get("jsbridge_signatures"),
     }
     for protocol, expected_count in direct_checks.items():
-        if expected_count is not None and protocol_counts[protocol] != expected_count:
+        actual_count = (
+            len(
+                {
+                    (entry["operation"].get("method"), entry["operation"].get("path"))
+                    for entry in entries
+                    if entry["protocol"] == "http"
+                }
+            )
+            if protocol == "http"
+            else protocol_counts[protocol]
+        )
+        if expected_count is not None and actual_count != expected_count:
             errors.append(
-                f"{protocol} source coverage mismatch: catalog={protocol_counts[protocol]}, source_candidates={expected_count}"
+                f"{protocol} source coverage mismatch: catalog={actual_count}, source_candidates={expected_count}"
             )
     if protocol_counts["mqtt"] < candidates.get("mqtt_method_identifiers", 0):
         errors.append("MQTT catalog contains fewer entries than unique source method identifiers")
@@ -271,20 +419,26 @@ def main() -> int:
         "protocol_counts": protocol_counts,
         "entries_with_examples": sum(bool(entry["examples"]) for entry in entries),
         "entries_without_examples": sum(not entry["examples"] for entry in entries),
+        "official_version": snapshot["version"],
+        "snapshot_sha256": snapshot["snapshot_sha256"],
+        "official_api_reference_routes": snapshot["route_count"],
+        "covered_api_reference_routes": len(official_routes) - len(uncovered),
+        "non_interface_route_exceptions": NON_INTERFACE_ROUTES,
         "source_markdown_files": len(list((source / generator.CN_API).rglob("*.md"))),
         "source_candidates": candidates,
         "known_source_exceptions": [
-            "Several HTTP examples omit a comma after code; JSON repair is limited to this documented pattern.",
-            "The waypoint cancel document is duplicated and is deduplicated by stable operation ID.",
-            "HTTP anchors/opIds contain known copy-paste errors; method and path are authoritative.",
+            "Several official HTTP examples omit a comma after code; JSON repair is limited to this documented pattern.",
+            "The official waypoint cancel page duplicates the endpoint and is deduplicated by method/path.",
+            "HTTP anchors/opIds contain copy-paste inconsistencies; the displayed method and path are authoritative.",
             "WebSocket message heading depth differs between map-elements and situation-awareness.",
-            "WPML fields are context-scoped because the same element name can have different parent semantics.",
-            "MQTT topic placeholders and Method labels contain documented formatting inconsistencies.",
+            "WPML and MQTT property fields are context-scoped because repeated leaf names have different parent semantics.",
+            "VuePress property tables use dynamic VNodes and are reconstructed from their compiled table rows.",
         ],
         "notes": [
-            "Dock 1/Dock 2 and Pilot duplicates are merged by protocol operation ID; compatibility records preserve variants.",
+            "Product variants are isolated; entries merge only when operation, parameters, responses, and errors are identical.",
             "Build artifacts are derived from catalog and are not repository facts.",
             "validate_catalog.py is the sole writer of this report.",
+            "The official release history identifies v1.16.1 even though the navbar still displays v1.15.",
         ],
     }
     report["validation"] = {
@@ -294,7 +448,10 @@ def main() -> int:
         "source_derived_ids": len(expected_ids),
         "errors": errors,
     }
-    (ROOT / "coverage-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    write_text_lf(
+        ROOT / "coverage-report.json",
+        json.dumps(report, ensure_ascii=False, indent=2) + "\n",
+    )
     if errors:
         print("\n".join(errors), file=sys.stderr)
         return 1

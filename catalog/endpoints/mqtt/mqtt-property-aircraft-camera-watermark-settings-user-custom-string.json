@@ -1,0 +1,93 @@
+{
+  "id": "mqtt-property-aircraft-camera-watermark-settings-user-custom-string",
+  "name": "user_custom_string",
+  "purpose": "最多可显示 250 字节",
+  "protocol": "mqtt",
+  "module": "device-properties",
+  "operation": {
+    "action": "read_write",
+    "topic": "thing/product/{device_sn}/state",
+    "set_topic": "thing/product/{gateway_sn}/property/set",
+    "direction": "bidirectional",
+    "method": "property_report",
+    "property_path": "camera_watermark_settings.user_custom_string",
+    "access_mode": "rw",
+    "push_mode": "1"
+  },
+  "parameters": [
+    {
+      "name": "user_custom_string",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "最多可显示 250 字节",
+      "constraints": "",
+      "schema": "text"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "payload_field": "data.user_custom_string"
+    }
+  ],
+  "errors": [],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "user_custom_string": "<user_custom_string>"
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "aircraft"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/00.mqtt/100.others/10.aircraft/00.properties.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/mqtt/others/aircraft/properties.html",
+    "sha256": "3d8e828e817648223d3df6deb9974342f7f050c40618e3f115bec8313873f3dd",
+    "asset_sha256": "5c497d05f047aaa3eac582fbc3f8b8020d951653115f77e8559fd5b2195ac879",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

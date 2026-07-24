@@ -1,41 +1,51 @@
 {
-  "entry_count": 755,
+  "entry_count": 2488,
   "protocol_counts": {
-    "http": 16,
-    "mqtt": 426,
+    "http": 17,
+    "mqtt": 2284,
     "websocket": 8,
-    "jsbridge": 47,
-    "wpml": 258
+    "jsbridge": 49,
+    "wpml": 130
   },
-  "entries_with_examples": 498,
-  "entries_without_examples": 257,
-  "source_markdown_files": 75,
+  "entries_with_examples": 2284,
+  "entries_without_examples": 204,
+  "official_version": "1.16.1",
+  "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+  "official_api_reference_routes": 102,
+  "covered_api_reference_routes": 99,
+  "non_interface_route_exceptions": {
+    "/cn/api-reference/dji-wpml/overview.html": "WPML explanatory overview; contains no operation or element table.",
+    "/cn/api-reference/dock-to-cloud/mqtt/topic-definition.html": "MQTT topic convention reference; contains no method operation.",
+    "/cn/api-reference/pilot-to-cloud/mqtt/topic-definition.html": "MQTT topic convention reference; contains no method operation."
+  },
+  "source_markdown_files": 102,
   "source_candidates": {
     "http_operations": 16,
     "websocket_messages": 8,
-    "wpml_field_rows": 258,
-    "mqtt_method_identifiers": 155,
-    "mqtt_property_rows": 1031,
-    "jsbridge_signatures": 47
+    "wpml_field_rows": 130,
+    "mqtt_method_identifiers": 216,
+    "mqtt_property_rows": 1690,
+    "jsbridge_signatures": 49
   },
   "known_source_exceptions": [
-    "Several HTTP examples omit a comma after code; JSON repair is limited to this documented pattern.",
-    "The waypoint cancel document is duplicated and is deduplicated by stable operation ID.",
-    "HTTP anchors/opIds contain known copy-paste errors; method and path are authoritative.",
+    "Several official HTTP examples omit a comma after code; JSON repair is limited to this documented pattern.",
+    "The official waypoint cancel page duplicates the endpoint and is deduplicated by method/path.",
+    "HTTP anchors/opIds contain copy-paste inconsistencies; the displayed method and path are authoritative.",
     "WebSocket message heading depth differs between map-elements and situation-awareness.",
-    "WPML fields are context-scoped because the same element name can have different parent semantics.",
-    "MQTT topic placeholders and Method labels contain documented formatting inconsistencies."
+    "WPML and MQTT property fields are context-scoped because repeated leaf names have different parent semantics.",
+    "VuePress property tables use dynamic VNodes and are reconstructed from their compiled table rows."
   ],
   "notes": [
-    "Dock 1/Dock 2 and Pilot duplicates are merged by protocol operation ID; compatibility records preserve variants.",
+    "Product variants are isolated; entries merge only when operation, parameters, responses, and errors are identical.",
     "Build artifacts are derived from catalog and are not repository facts.",
-    "validate_catalog.py is the sole writer of this report."
+    "validate_catalog.py is the sole writer of this report.",
+    "The official release history identifies v1.16.1 even though the navbar still displays v1.15."
   ],
   "validation": {
     "status": "passed",
-    "catalog_files": 755,
-    "unique_ids": 755,
-    "source_derived_ids": 755,
+    "catalog_files": 2488,
+    "unique_ids": 2488,
+    "source_derived_ids": 2488,
     "errors": []
   }
 }

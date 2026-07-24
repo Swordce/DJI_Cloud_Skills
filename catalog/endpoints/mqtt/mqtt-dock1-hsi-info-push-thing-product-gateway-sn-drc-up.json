@@ -1,0 +1,290 @@
+{
+  "id": "mqtt-dock1-hsi-info-push-thing-product-gateway-sn-drc-up",
+  "name": "DRC-避障信息上报",
+  "purpose": "MQTT message: hsi_info_push",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/drc/up",
+    "direction": "up",
+    "method": "hsi_info_push",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "up_distance",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "上方的障碍物距离",
+      "constraints": "{\"unit_name\":\"毫米 / mm\"}",
+      "schema": "int"
+    },
+    {
+      "name": "down_distance",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "下方的障碍物距离",
+      "constraints": "{\"unit_name\":\"毫米 / mm\"}",
+      "schema": "int"
+    },
+    {
+      "name": "up_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "上视避障开关状态",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "up_work",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "上视避障工作状态",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "down_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "下视避障开关状态",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "down_work",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "下视避障工作状态",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "left_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "左视避障开关状态",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "left_work",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "左视避障工作状态",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "right_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "右视避障开关状态",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "right_work",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "右视避障工作状态",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "front_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "前视避障开关状态",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "front_work",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "前视避障工作状态",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "back_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "后视避障开关状态",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "back_work",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "后视避障工作状态",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "vertical_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "垂直避障开关状态",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "vertical_work",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "垂直避障工作状态",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "horizontal_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "水平避障开关状态",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "horizontal_work",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "水平避障工作状态",
+      "constraints": "",
+      "schema": "bool"
+    },
+    {
+      "name": "around_distances",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "水平方向观察点，分布在[0,360)的角度区间，0对应机头方向正前方，顺时针分布，例如0度为机头正前方，90度为飞行器正右方。每个数值表示该角度上障碍物与飞行器距离，60000 表示该角度没有障碍物。若上报空数组，意味任意角度都无障碍物。若上报 4 个数据的数组，意味该数据为 TOF 避障数据，在红外避障失效时上报，譬如夜晚场景。",
+      "constraints": "{\"size\": 360, \"item_type\": int}",
+      "schema": "array"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "method": "hsi_info_push",
+        "timestamp": 1670415891013,
+        "data": {
+          "up_distance": 10,
+          "down_distance": 10,
+          "around_distance": [
+            10,
+            8,
+            9,
+            16,
+            2
+          ],
+          "up_enable": true,
+          "up_work": true,
+          "down_enable": true,
+          "down_work": true,
+          "left_enable": true,
+          "left_work": true,
+          "right_enable": true,
+          "right_work": true,
+          "front_enable": true,
+          "front_work": true,
+          "back_enable": true,
+          "back_work": true,
+          "vertical_enable": true,
+          "vertical_work": true,
+          "horizontal_enable": true,
+          "horizontal_work": true
+        }
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/110.drc.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock1/drc.html",
+    "sha256": "3b13fef85c93deb5396c1406951bf5c09e32fe8a524e5b1ff74ff2a4e7f13a09",
+    "asset_sha256": "2f683a97003dcf261c809438eefdbf5a0d5085d41c55ea05e15e276f1d46d76f",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

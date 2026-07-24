@@ -18,7 +18,49 @@
       "required_status": "required",
       "description": "精简指纹数组",
       "constraints": "",
-      "schema": "array[string]"
+      "schema": "array[string]",
+      "fields": [
+        {
+          "name": "code",
+          "in": "body",
+          "type": "string",
+          "required": false,
+          "required_status": "optional",
+          "description": "错误码",
+          "constraints": "none",
+          "schema": "string"
+        },
+        {
+          "name": "message",
+          "in": "body",
+          "type": "string",
+          "required": false,
+          "required_status": "optional",
+          "description": "描述",
+          "constraints": "none",
+          "schema": "string"
+        },
+        {
+          "name": "data",
+          "in": "body",
+          "type": "string",
+          "required": false,
+          "required_status": "optional",
+          "description": "返回内容",
+          "constraints": "none",
+          "schema": "string"
+        },
+        {
+          "name": "tiny_fingerprints",
+          "in": "body",
+          "type": "array",
+          "required": false,
+          "required_status": "optional",
+          "description": "已经存在的精简指纹数组",
+          "constraints": "none",
+          "schema": "[string]"
+        }
+      ]
     },
     {
       "name": "workspace_id",
@@ -49,94 +91,37 @@
   "responses": [
     {
       "status": "200",
-      "description": "OK",
-      "schema": "media.GetTinyFingerprintsOutput",
-      "fields": [
-        {
-          "name": "code",
-          "in": "response",
-          "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "错误码",
-          "constraints": "none",
-          "schema": "string"
-        },
-        {
-          "name": "message",
-          "in": "response",
-          "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "描述",
-          "constraints": "none",
-          "schema": "string"
-        },
-        {
-          "name": "data",
-          "in": "response",
-          "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "返回内容",
-          "constraints": "none",
-          "schema": "string"
-        },
-        {
-          "name": "tiny_fingerprints",
-          "in": "response",
-          "type": "array",
-          "required": false,
-          "required_status": "optional",
-          "description": "已经存在的精简指纹数组",
-          "constraints": "none",
-          "schema": "[string]"
-        }
-      ]
+      "description": "错误码",
+      "schema": "",
+      "fields": []
+    },
+    {
+      "status": "200",
+      "description": "描述",
+      "schema": "",
+      "fields": []
+    },
+    {
+      "status": "200",
+      "description": "返回内容",
+      "schema": "",
+      "fields": []
+    },
+    {
+      "status": "200",
+      "description": "已经存在的精简指纹数组",
+      "schema": "",
+      "fields": []
     }
   ],
   "errors": [
     {
-      "code": "400",
-      "meaning": "invalid_request",
-      "retry": false
-    },
-    {
-      "code": "401",
-      "meaning": "token_expired_or_invalid",
-      "retry": false
-    },
-    {
-      "code": "403",
-      "meaning": "forbidden",
-      "retry": false
-    },
-    {
-      "code": "404",
-      "meaning": "resource_not_found",
-      "retry": false
-    },
-    {
-      "code": "5xx",
-      "meaning": "server_error",
+      "code": "code != 0",
+      "meaning": "Resolve the returned code through catalog/error-codes.json.",
       "retry": false
     }
   ],
   "examples": [
-    {
-      "kind": "response",
-      "format": "json",
-      "value": {
-        "code": 0,
-        "message": "success",
-        "data": {
-          "tiny_fingerprints": [
-            "string"
-          ]
-        }
-      },
-      "source": "official"
-    },
     {
       "kind": "request",
       "format": "json",
@@ -144,6 +129,16 @@
         "tiny_fingerprints": [],
         "workspace_id": "<workspace_id>",
         "x-auth-token": "<x-auth-token>"
+      },
+      "source": "generated_from_schema"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "code": 0,
+        "message": "success",
+        "data": {}
       },
       "source": "generated_from_schema"
     }
@@ -159,6 +154,10 @@
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/20.obtain-exited-tiny-fingerprint.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/20.obtain-exited-tiny-fingerprint.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/https/media-management/obtain-exited-tiny-fingerprint.html",
+    "sha256": "f347ed5f60ec087468a91fd9abf9273561280c611df2452227b8376b235c142d",
+    "asset_sha256": "77bedcab6888f94e1e6ed5f2261f22ea15589abd75656492b2fa291d3e9626cf",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

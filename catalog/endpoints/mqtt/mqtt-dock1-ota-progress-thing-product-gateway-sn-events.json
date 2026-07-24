@@ -1,0 +1,160 @@
+{
+  "id": "mqtt-dock1-ota-progress-thing-product-gateway-sn-events",
+  "name": "固件升级进度",
+  "purpose": "MQTT events: ota_progress",
+  "protocol": "mqtt",
+  "module": "firmware",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/events",
+    "direction": "up",
+    "method": "ota_progress",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "result",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "非 0 代表错误",
+      "constraints": "",
+      "schema": "int"
+    },
+    {
+      "name": "output",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "输出",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "status",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "任务状态",
+      "constraints": "{\"canceled\":\"取消或终止\",\"failed\":\"失败\",\"in_progress\":\"执行中\",\"ok\":\"执行成功\",\"paused\":\"暂停\",\"rejected\":\"拒绝\",\"sent\":\"已下发\",\"timeout\":\"超时\"}",
+      "schema": "enum_string",
+      "parent": "output"
+    },
+    {
+      "name": "progress",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "进度",
+      "constraints": "",
+      "schema": "struct",
+      "parent": "output"
+    },
+    {
+      "name": "percent",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "进度百分比",
+      "constraints": "{\"max\":\"100\",\"min\":\"0\",\"step\":\"1\",\"unit_name\":\"百分比 / %\"}",
+      "schema": "int",
+      "parent": "progress"
+    },
+    {
+      "name": "current_step",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当前步骤",
+      "constraints": "{\"download_firmware\":\"下载固件\",\"upgrade_firmware\":\"更新固件\"}",
+      "schema": "enum_string",
+      "parent": "progress"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "output": {
+            "progress": {
+              "percent": 10,
+              "current_step": "download_firmware"
+            },
+            "status": "in_progress"
+          },
+          "result": 0
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "ota_progress"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "ota_progress",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/80.firmware.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock1/firmware.html",
+    "sha256": "a6dd24db5c2eab2bddd1d3c09cefccc44805148effd79a3ffd5767165596dd8e",
+    "asset_sha256": "1d441f72fa3199f6cc3c33d313b11037e0c5c930c0690412e0e211322d013d2c",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

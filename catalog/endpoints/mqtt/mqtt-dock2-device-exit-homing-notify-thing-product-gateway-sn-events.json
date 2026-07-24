@@ -1,0 +1,125 @@
+{
+  "id": "mqtt-dock2-device-exit-homing-notify-thing-product-gateway-sn-events",
+  "name": "设备返航退出状态通知",
+  "purpose": "MQTT events: device_exit_homing_notify",
+  "protocol": "mqtt",
+  "module": "wayline",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/events",
+    "direction": "up",
+    "method": "device_exit_homing_notify",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "sn",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "机场 SN",
+      "constraints": "{}",
+      "schema": "text"
+    },
+    {
+      "name": "action",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "进入“返航退出状态”，指当机场处于返航模式时，由于 reason 字段中展示的原因，退出了返航过程。相似的，退出“返航退出状态”，指机场停止了退出返航这一过程。",
+      "constraints": "{\"0\":\"退出”返航退出状态“\",\"1\":\"进入”返航退出状态“\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "reason",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "退出返航原因",
+      "constraints": "{\"0\":\"操纵杆油门添加\",\"1\":\"操纵杆间距添加\",\"2\":\"行为树初始化失败\",\"3\":\"被障碍物包围\",\"4\":\"触发限飞限制\",\"5\":\"障碍物距离太近\",\"6\":\"无 GPS 信号\",\"7\":\"GPS 和 VIO 位置输出标志为 false\",\"8\":\"GPS 和 VIO 融合位置误差太大\",\"9\":\"短距离回溯\",\"10\":\"近距离触发返航\"}",
+      "schema": "enum_int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "action": 1,
+          "reason": "0",
+          "sn": "机场 SN"
+        },
+        "need_reply": 1,
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp:": 1654070968655,
+        "method": "device_exit_homing_notify"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "device_exit_homing_notify",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/50.wayline.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock2/wayline.html",
+    "sha256": "ab3084c76c8fa9d65f308da3a107b0090084cf7f05f79baa512c19c3b1afb112",
+    "asset_sha256": "9a61e8534085ecaaf89095935513edd842edcd66a075cb89b09255aa79407390",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

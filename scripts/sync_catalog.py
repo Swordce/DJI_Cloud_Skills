@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
-"""Generate a structured DJI Cloud API catalog and agent tool adapters."""
+"""Generate a structured DJI Cloud API catalog and agent tool adapters.
+
+Error-handling convention: parsers may degrade silently only for structures
+that are optional in the official documentation (a missing example, an absent
+table). Every tolerated absence must stay visible: required coverage is
+enforced fail-closed by validate_catalog.py (route/ID/field-completeness
+assertions), and any newly accepted gap must be recorded in the
+coverage-report known_source_exceptions. Unmapped classifications
+(e.g. an unknown JSBridge section heading) fail loudly instead of falling
+back to opaque hashes.
+"""
 
 from __future__ import annotations
 
@@ -11,12 +21,13 @@ import re
 import shutil
 import subprocess
 from datetime import datetime, timezone
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_SOURCE = ROOT / ".upstream"
+DEFAULT_SOURCE = ROOT / ".official-cache"
 CN_API = Path("docs/cn/60.api-reference")
 HTTP_RE = re.compile(r"`(GET|POST|PUT|DELETE)\s+([^`\s]+)`", re.I)
 TOPIC_RE = re.compile(r"\*\*Topic:\*\*\s*(.+)")
@@ -32,18 +43,71 @@ def clean(value: str) -> str:
     return re.sub(r"\s+", " ", html.unescape(value)).strip()
 
 
+def write_text_lf(path: Path, content: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        handle.write(content)
+
+
 def slug(value: str) -> str:
     value = value.lower().replace("_", "-").replace(".", "-")
     value = re.sub(r"[^a-z0-9-]+", "-", value)
     return re.sub(r"-+", "-", value).strip("-") or hashlib.sha1(value.encode()).hexdigest()[:12]
 
 
+@lru_cache(maxsize=4)
+def source_snapshot(source: Path) -> dict[str, Any]:
+    snapshot_path = source / "snapshot.json"
+    if not snapshot_path.exists():
+        raise RuntimeError(f"Official snapshot manifest is missing: {snapshot_path}")
+    return json.loads(snapshot_path.read_text(encoding="utf-8"))
+
+
 def source_ref(path: Path, source: Path) -> dict[str, str]:
     rel = path.relative_to(source).as_posix()
+    snapshot = source_snapshot(source)
+    page = next((item for item in snapshot["pages"] if item["file"] == rel), None)
+    if not page:
+        raise RuntimeError(f"Official snapshot does not contain source metadata for {rel}")
     return {
         "file": rel,
-        "url": f"https://github.com/dji-sdk/Cloud-API-Doc/blob/master/{rel}",
+        "url": page["source_url"],
+        "sha256": page["content_sha256"],
+        "asset_sha256": page["asset_sha256"],
+        "snapshot_sha256": snapshot["snapshot_sha256"],
+        "version": snapshot["version"],
     }
+
+
+def product_for_path(path: Path) -> str:
+    parts = [re.sub(r"^\d+\.", "", part.lower()) for part in path.parts]
+    stem = re.sub(r"^\d+\.", "", path.stem.lower())
+    for prefix, product in (
+        ("m30-properties", "m30-series"),
+        ("m3d-properties", "m3d-series"),
+        ("m4d-properties", "m4d-series"),
+    ):
+        if stem == prefix:
+            return product
+    candidates = (
+        "dock3",
+        "dock2",
+        "matrice-400",
+        "m4-series",
+        "dji-rc-plus-2",
+        "rc-pro",
+        "m3-series",
+        "aircraft",
+        "rc",
+    )
+    for candidate in candidates:
+        if candidate in parts:
+            return candidate
+    if "pilot-to-cloud" in parts:
+        return "pilot-generic"
+    if "dock-to-cloud" in parts:
+        return "dock1"
+    return "generic"
 
 
 def table_after(lines: list[str], start: int) -> list[dict[str, str]]:
@@ -76,17 +140,53 @@ def parse_jsonish(body: str) -> Any | None:
         return None
 
 
+def fields_from_value(value: Any, location: str = "response") -> list[dict[str, Any]]:
+    if not isinstance(value, dict):
+        return []
+    fields: list[dict[str, Any]] = []
+    for name, child in value.items():
+        raw_type = type(child).__name__
+        item = {
+            "name": str(name),
+            "in": location,
+            "type": normalize_type(raw_type),
+            "required": None,
+            "required_status": "not_specified_by_source",
+            "description": "Field present in the official example response.",
+            "constraints": "",
+            "schema": raw_type,
+        }
+        nested = fields_from_value(child, location)
+        if nested:
+            item["fields"] = nested
+        fields.append(item)
+    return fields
+
+
 def normalize_type(value: str) -> str:
     value = clean(value).lower()
-    if any(x in value for x in ("int", "number", "float", "double", "enum_int")):
-        return "number" if any(x in value for x in ("float", "double", "number")) else "integer"
-    if "bool" in value:
-        return "boolean"
-    if "array" in value or value.startswith("["):
+    if "array" in value or value.startswith("[") or "数组" in value:
         return "array"
-    if "object" in value or "json" in value:
+    if "struct" in value or "object" in value or "json" in value:
         return "object"
+    if any(x in value for x in ("int", "number", "float", "double", "enum_int", "整型", "整形", "浮点")):
+        return "number" if any(x in value for x in ("float", "double", "number", "浮点")) else "integer"
+    if "bool" in value or "布尔" in value:
+        return "boolean"
     return "string"
+
+
+def parse_required(value: str) -> bool | None:
+    """Map a source required-column cell to True/False, or None when the cell is empty."""
+    text = clean(str(value))
+    if not text:
+        return None
+    low = text.lower()
+    if "非必需" in text or "可选" in text or low in {"false", "no", "否", "optional", "-", "—"}:
+        return False
+    if low in {"true", "yes", "是", "required"} or "必需" in text:
+        return True
+    return False
 
 
 def parameter(row: dict[str, str], default_location: str = "payload") -> dict[str, Any]:
@@ -95,10 +195,16 @@ def parameter(row: dict[str, str], default_location: str = "payload") -> dict[st
     location = clean(row.get("in") or row.get("参数位置") or default_location).lower()
     if not name and location == "body":
         name = "body"
-    required_raw = row.get("required") or row.get("必填") or ""
-    required = required_raw.lower() in {"true", "yes", "是", "required"} if required_raw else None
-    constraint = row.get("constraint") or row.get("restrictions") or row.get("范围") or ""
-    description = row.get("description") or row.get("说明") or row.get("name") or ""
+    required_raw = clean(row.get("required") or row.get("必填") or row.get("是否必需（默认值）") or "")
+    required = parse_required(required_raw)
+    constraint = row.get("constraint") or row.get("restrictions") or row.get("范围") or row.get("取值与释义") or ""
+    default_match = re.search(r"默认值[:：]?\s*([^)）]+)", required_raw)
+    if default_match:
+        constraint = f"{constraint}；默认值:{default_match.group(1).strip()}" if constraint else f"默认值:{default_match.group(1).strip()}"
+    unit = clean(row.get("单位") or "")
+    if unit and unit != "-":
+        constraint = f"{constraint}；单位:{unit}" if constraint else f"单位:{unit}"
+    description = row.get("description") or row.get("说明") or row.get("name") or row.get("名称") or ""
     return {
         "name": name,
         "in": location,
@@ -111,13 +217,41 @@ def parameter(row: dict[str, str], default_location: str = "payload") -> dict[st
     }
 
 
+ROW_NAME_KEYS = ("column", "参数名", "元素", "name")
+
+
+def parameters_from_rows(rows: Iterable[dict[str, str]], default_location: str = "payload") -> list[dict[str, Any]]:
+    """Build parameters from a source table, preserving »/› parent-child hierarchy."""
+    params: list[dict[str, Any]] = []
+    hierarchy: list[str] = []
+    for row in rows:
+        raw = ""
+        for key in ROW_NAME_KEYS:
+            if row.get(key):
+                raw = clean(row[key])
+                break
+        if not raw or raw == "(root)":
+            continue
+        depth = len(raw) - len(raw.lstrip("»›"))
+        item = parameter(row, default_location)
+        if not item["name"]:
+            continue
+        hierarchy = hierarchy[:depth]
+        if depth > 0 and hierarchy:
+            item["parent"] = hierarchy[-1]
+        hierarchy.append(item["name"])
+        params.append(item)
+    return unique_parameters(params)
+
+
 def unique_parameters(items: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
     result: list[dict[str, Any]] = []
-    seen: set[str] = set()
+    seen: set[tuple[str, str]] = set()
     for item in items:
-        if not item["name"] or item["name"] in seen:
+        key = (item.get("parent") or "", item["name"])
+        if not item["name"] or key in seen:
             continue
-        seen.add(item["name"])
+        seen.add(key)
         result.append(item)
     return result
 
@@ -220,9 +354,13 @@ def parse_http(path: Path, source: Path) -> list[dict[str, Any]]:
     lines = text.splitlines()
     matches = list(HTTP_RE.finditer(text))
     entries: list[dict[str, Any]] = []
+    seen_operations: set[tuple[str, str]] = set()
     module = slug(path.parent.name.split(".", 1)[-1])
     for n, match in enumerate(matches):
         method, url_path = match.group(1).upper(), match.group(2)
+        if (method, url_path) in seen_operations:
+            continue
+        seen_operations.add((method, url_path))
         prefix = text[: match.start()].splitlines()
         headings = [clean(line.lstrip("# ")) for line in prefix if line.startswith("#")]
         name = headings[-1] if headings else path.stem
@@ -259,20 +397,29 @@ def parse_http(path: Path, source: Path) -> list[dict[str, Any]]:
             }
             for row in response_rows
         ]
-        blocks = code_blocks(text[match.start() : matches[n + 1].start() if n + 1 < len(matches) else len(text)])
+        operation_text = text[match.start() : matches[n + 1].start() if n + 1 < len(matches) else len(text)]
+        response_section = operation_text.split("# Schemas", 1)[0]
+        blocks = code_blocks(response_section)
         for lang, body in blocks:
             parsed = parse_jsonish(body) if lang.lower() in {"json", ""} else None
             if parsed is not None:
-                kind = "response" if isinstance(parsed, dict) and "code" in parsed else "request"
+                kind = "response" if isinstance(parsed, dict) and any(key in parsed for key in ("code", "data", "message")) else "request"
                 entry["examples"].append({"kind": kind, "format": "json", "value": parsed, "source": "official"})
-                if len(entry["examples"]) >= 2:
-                    break
+                if kind == "response" and not entry["responses"]:
+                    entry["responses"] = [
+                        {
+                            "status": "documented_example",
+                            "description": "Response structure shown by the official documentation.",
+                            "schema": "official_example",
+                            "fields": fields_from_value(parsed),
+                        }
+                    ]
         entry["errors"] = [
-            {"code": "400", "meaning": "invalid_request", "retry": False},
-            {"code": "401", "meaning": "token_expired_or_invalid", "retry": False},
-            {"code": "403", "meaning": "forbidden", "retry": False},
-            {"code": "404", "meaning": "resource_not_found", "retry": False},
-            {"code": "5xx", "meaning": "server_error", "retry": method in {"GET", "PUT", "DELETE"}},
+            {
+                "code": "code != 0",
+                "meaning": "Resolve the returned code through catalog/error-codes.json.",
+                "retry": False,
+            }
         ]
         entries.append(entry)
     return entries
@@ -288,7 +435,7 @@ def parse_mqtt(path: Path, source: Path) -> list[dict[str, Any]]:
     text = path.read_text(encoding="utf-8")
     lines = text.splitlines()
     module = slug(path.stem.split(".", 1)[-1])
-    device = "pilot" if "pilot-to-cloud" in path.as_posix() else ("dock2" if "dock2" in path.as_posix() else "dock1")
+    product = product_for_path(path)
     entries: list[dict[str, Any]] = []
     for title, start, end in section_chunks(lines):
         chunk_lines = lines[start:end]
@@ -301,7 +448,7 @@ def parse_mqtt(path: Path, source: Path) -> list[dict[str, Any]]:
         method = methods[0] if methods else ("property_set" if "property/set" in chunk else slug(title))
         topic = topics[0] if topics else ""
         category = next((x for x in ("services", "events", "requests", "property", "state", "osd") if x in topic), "message")
-        eid = f"mqtt-{slug(method)}"
+        eid = f"mqtt-{product}-{slug(method)}-{slug(topic)}"
         entry = base_entry(eid, "mqtt", module, title, f"MQTT {category}: {method}", source_ref(path, source))
         entry["operation"] = {
             "action": "publish" if (directions and directions[0].lower() == "down") else "subscribe",
@@ -313,14 +460,14 @@ def parse_mqtt(path: Path, source: Path) -> list[dict[str, Any]]:
         }
         data_pos = next((i for i, line in enumerate(chunk_lines) if line.strip().lower() in {"**data:**", "**data:** null"}), 0)
         rows = table_after(chunk_lines, data_pos)
-        entry["parameters"] = unique_parameters(parameter(row) for row in rows if row.get("column") or row.get("name"))
+        entry["parameters"] = parameters_from_rows(rows)
         blocks = code_blocks(chunk)
-        for lang, body in blocks[:2]:
+        for example_index, (lang, body) in enumerate(blocks[:2]):
             parsed = parse_jsonish(body)
             if parsed is not None:
                 entry["examples"].append(
                     {
-                        "kind": "reply" if isinstance(parsed, dict) and "_reply" in (topics[min(len(entry["examples"]), len(topics) - 1)] if topics else "") else "request",
+                        "kind": "reply" if example_index > 0 and len(topics) > 1 else "request",
                         "format": "json",
                         "value": parsed,
                         "source": "official",
@@ -328,7 +475,7 @@ def parse_mqtt(path: Path, source: Path) -> list[dict[str, Any]]:
                 )
         entry["responses"] = [{"transport": "mqtt", "topic": topics[1] if len(topics) > 1 else topic, "correlation": ["tid", "bid", "method"]}]
         entry["errors"] = [{"code": "data.result != 0", "meaning": "See catalog/error-codes.json", "retry": False}]
-        entry["compatibility"] = [device]
+        entry["compatibility"] = [product]
         entry["retry"] = retry_policy("mqtt", eid, "")
         entries.append(entry)
     return entries
@@ -339,7 +486,7 @@ def parse_mqtt_properties(path: Path, source: Path) -> list[dict[str, Any]]:
     lines = text.splitlines()
     if "properties" not in path.name:
         return []
-    device = "pilot" if "pilot-to-cloud" in path.as_posix() else ("dock2" if "dock2" in path.as_posix() else "dock1")
+    product = product_for_path(path)
     module = "device-properties"
     topics = [clean(x) for x in TOPIC_RE.findall(text)]
     table = []
@@ -350,25 +497,44 @@ def parse_mqtt_properties(path: Path, source: Path) -> list[dict[str, Any]]:
                 table.extend(table_after(lines, i))
     entries: list[dict[str, Any]] = []
     seen: set[str] = set()
+    hierarchy: list[str] = []
     for row in table:
-        prop = row.get("column") or row.get("property") or row.get("参数") or row.get("属性") or ""
-        prop = clean(prop)
-        if not prop or prop in seen or prop.lower() in {"column", "name"}:
+        raw_prop = clean(row.get("column") or row.get("property") or row.get("参数") or row.get("属性") or "")
+        depth = len(raw_prop) - len(raw_prop.lstrip("»›"))
+        prop = raw_prop.lstrip("»›>- ")
+        if not prop or prop.lower() in {"column", "name"}:
             continue
-        seen.add(prop)
-        eid = f"mqtt-property-{slug(prop)}"
+        hierarchy = hierarchy[:depth]
+        hierarchy.append(prop)
+        property_path = ".".join(hierarchy)
+        if property_path in seen:
+            continue
+        seen.add(property_path)
+        eid = f"mqtt-property-{product}-{slug(property_path)}"
         entry = base_entry(eid, "mqtt", module, prop, row.get("description") or row.get("name") or prop, source_ref(path, source))
         entry["operation"] = {
-            "action": "subscribe",
-            "topic": topics[0] if topics else "thing/product/{device_sn}/state|osd",
-            "direction": "up",
+            "action": "read_write" if row.get("accessmode", "").lower() == "rw" else "subscribe",
+            "topic": (
+                "thing/product/{device_sn}/state"
+                if row.get("pushmode") == "1"
+                else "thing/product/{device_sn}/osd"
+            ),
+            "set_topic": (
+                "thing/product/{gateway_sn}/property/set"
+                if row.get("accessmode", "").lower() == "rw"
+                else None
+            ),
+            "direction": "bidirectional" if row.get("accessmode", "").lower() == "rw" else "up",
             "method": "property_report",
+            "property_path": property_path,
+            "access_mode": row.get("accessmode") or None,
+            "push_mode": row.get("pushmode") or None,
         }
         p = parameter(row)
         p["name"] = prop
         entry["parameters"] = [p]
         entry["responses"] = [{"transport": "mqtt", "payload_field": f"data.{prop}"}]
-        entry["compatibility"] = [device]
+        entry["compatibility"] = [product]
         entries.append(entry)
     return entries
 
@@ -396,11 +562,7 @@ def parse_websocket(path: Path, source: Path) -> list[dict[str, Any]]:
         chunk_lines = chunk.splitlines()
         payload_index = next((i for i, line in enumerate(chunk_lines) if clean(line.lstrip("# ")).lower() == "payload"), 0)
         payload_rows = table_after(chunk_lines, payload_index)
-        entry["parameters"] = unique_parameters(
-            parameter(row, "message")
-            for row in payload_rows
-            if row.get("name") and row.get("name") != "(root)"
-        )
+        entry["parameters"] = parameters_from_rows(payload_rows, "message")
         if isinstance(parsed, dict):
             if not entry["parameters"]:
                 entry["parameters"] = [
@@ -422,52 +584,84 @@ def parse_websocket(path: Path, source: Path) -> list[dict[str, Any]]:
     return entries
 
 
+JSBRIDGE_MODULE_MAP = {
+    "设备上云": "thing",
+    "直播": "live",
+    "地图元素": "map",
+    "航线": "wayline",
+    "概述": "overview",
+}
+
+
 def parse_jsbridge(path: Path, source: Path) -> list[dict[str, Any]]:
     text = path.read_text(encoding="utf-8")
     lines = text.splitlines()
-    entries: list[dict[str, Any]] = []
+    sections: list[tuple[str, list[str]]] = []
     current_module = "core"
-    seen: set[str] = set()
-    for i, line in enumerate(lines):
+    current_lines: list[str] = []
+    for line in lines:
         if line.startswith("## "):
-            current_module = slug(clean(line[3:]).replace("模块", "")) or "core"
-        for match in JS_RE.finditer(line):
-            signature = clean(match.group(1))
-            method_match = re.search(r"window\.((?:(?:djiBridge|thing)\.)?[A-Za-z0-9_]+)", signature)
-            if not method_match:
-                continue
-            qualified_method = method_match.group(1)
-            method = qualified_method.rsplit(".", 1)[-1]
-            if qualified_method in seen:
-                continue
-            seen.add(qualified_method)
-            before = clean(line[: match.start()].strip("| -0123456789.：:"))
-            after = clean(line[match.end() :].strip("| -"))
-            eid = f"jsbridge-{slug(qualified_method)}"
-            entry = base_entry(eid, "jsbridge", current_module, before or method, after or before or method, source_ref(path, source))
-            entry["operation"] = {"method": f"window.{qualified_method}", "signature": signature}
-            args_match = re.search(r"\((.*?)\)", signature)
-            args = []
-            for raw_arg in (args_match.group(1).split(",") if args_match and args_match.group(1).strip() else []):
-                words = clean(raw_arg).replace(":", " ").split()
-                arg_name = words[-1] if words else "value"
-                arg_type = words[0] if len(words) > 1 else "string"
-                args.append(
-                    {
-                        "name": arg_name,
-                        "in": "argument",
-                        "type": normalize_type(arg_type),
-                        "required": True,
-                        "required_status": "required",
-                        "description": after,
-                        "constraints": "",
-                        "schema": arg_type,
-                    }
+            sections.append((current_module, current_lines))
+            key = clean(line[3:]).replace("模块", "").strip()
+            resolved = JSBRIDGE_MODULE_MAP.get(key) or slug(key)
+            if re.fullmatch(r"[a-f0-9]{12}", resolved or ""):
+                raise RuntimeError(
+                    f"Unmapped JSBridge section heading {key!r} in {path.name}; "
+                    "extend JSBRIDGE_MODULE_MAP instead of emitting a hash module"
                 )
-            entry["parameters"] = args
-            entry["responses"] = [{"type": "string", "description": "JSON string with code, message, and data; parse with JSON.parse when applicable."}]
-            entry["errors"] = [{"code": "code != 0", "meaning": "Bridge invocation failed; inspect message.", "retry": False}]
-            entries.append(entry)
+            current_module = resolved or "core"
+            current_lines = []
+        else:
+            current_lines.append(line)
+    sections.append((current_module, current_lines))
+    # The overview table summarizes every method; parse it last so semantic
+    # sections claim their methods first and the summary only adds the rest.
+    sections.sort(key=lambda section: section[0] == "overview")
+    entries: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for module, section_lines in sections:
+        for line in section_lines:
+            for match in JS_RE.finditer(line):
+                signature = clean(match.group(1))
+                method_match = re.search(r"window\.((?:(?:djiBridge|thing)\.)?[A-Za-z0-9_]+)", signature)
+                if not method_match:
+                    continue
+                qualified_method = method_match.group(1)
+                method = qualified_method.rsplit(".", 1)[-1]
+                if qualified_method in seen:
+                    continue
+                seen.add(qualified_method)
+                before = clean(line[: match.start()].strip("| -0123456789.：:"))
+                after = clean(line[match.end() :].strip("| -"))
+                eid = f"jsbridge-{slug(qualified_method)}"
+                entry = base_entry(eid, "jsbridge", module, before or method, after or before or method, source_ref(path, source))
+                entry["operation"] = {"method": f"window.{qualified_method}", "signature": signature}
+                args_match = re.search(r"\((.*?)\)", signature)
+                args = []
+                for raw_arg in (args_match.group(1).split(",") if args_match and args_match.group(1).strip() else []):
+                    cleaned_arg = clean(raw_arg)
+                    if ":" in cleaned_arg:
+                        arg_name, arg_type = (part.strip() for part in cleaned_arg.split(":", 1))
+                    else:
+                        words = cleaned_arg.split()
+                        arg_type = words[0] if len(words) > 1 else "string"
+                        arg_name = words[-1] if words else "value"
+                    args.append(
+                        {
+                            "name": arg_name,
+                            "in": "argument",
+                            "type": normalize_type(arg_type),
+                            "required": True,
+                            "required_status": "required",
+                            "description": after,
+                            "constraints": "",
+                            "schema": arg_type,
+                        }
+                    )
+                entry["parameters"] = args
+                entry["responses"] = [{"type": "string", "description": "JSON string with code, message, and data; parse with JSON.parse when applicable."}]
+                entry["errors"] = [{"code": "code != 0", "meaning": "Bridge invocation failed; inspect message.", "retry": False}]
+                entries.append(entry)
     return entries
 
 
@@ -492,9 +686,13 @@ def parse_wpml(path: Path, source: Path) -> list[dict[str, Any]]:
             base_id = f"wpml-{slug(path.stem.split('.', 1)[-1])}-{context}-{slug(name)}"
             id_counts[base_id] = id_counts.get(base_id, 0) + 1
             eid = base_id if id_counts[base_id] == 1 else f"{base_id}-{id_counts[base_id]}"
-            entry = base_entry(eid, "wpml", slug(path.stem.split(".", 1)[-1]), name, row.get("说明") or row.get("description") or current_heading, source_ref(path, source))
+            purpose = row.get("说明") or row.get("description") or row.get("名称") or current_heading
+            entry = base_entry(eid, "wpml", slug(path.stem.split(".", 1)[-1]), name, purpose, source_ref(path, source))
             entry["operation"] = {"action": "define_element", "element": name, "document": path.name, "context": current_heading}
             entry["parameters"] = [parameter(row, "xml_element")]
+            models = clean(row.get("支持机型") or row.get("适用机型") or "")
+            if models and models != "-":
+                entry["compatibility"] = [item.strip() for item in re.split(r"[,，、]", models) if item.strip() and item.strip() != "-"]
             entry["responses"] = [{"type": "validated_xml", "description": "A locally validated WPML/KML document."}]
             entry["errors"] = [{"code": "validation_error", "meaning": "Element violates required type, range, order, or compatibility constraint.", "retry": False}]
             entries.append(entry)
@@ -509,6 +707,21 @@ def deduplicate(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
             merged[key] = entry
             continue
         existing = merged[key]
+        semantic_fields = ("operation", "parameters", "responses", "errors")
+        if any(existing[field] != entry[field] for field in semantic_fields):
+            digest = hashlib.sha256(
+                json.dumps(
+                    {
+                        "source": entry["source"]["file"],
+                        **{field: entry[field] for field in semantic_fields},
+                    },
+                    ensure_ascii=False,
+                    sort_keys=True,
+                ).encode("utf-8")
+            ).hexdigest()[:8]
+            entry["id"] = f"{key}-{digest}"
+            merged[entry["id"]] = entry
+            continue
         existing["compatibility"] = sorted(set(existing["compatibility"] + entry["compatibility"]))
         existing.setdefault("alternate_sources", []).append(entry["source"])
         if not existing["examples"] and entry["examples"]:
@@ -616,10 +829,254 @@ def add_core_examples(entries: list[dict[str, Any]]) -> None:
             entry["examples"].append(generated[len(entry["examples"])])
 
 
-def write_outputs(entries: list[dict[str, Any]], source: Path, commit: str) -> None:
+def deep_changes(old: Any, new: Any, path: str = "") -> list[dict[str, Any]]:
+    if type(old) is not type(new):
+        return [{"field": path or "$", "old": old, "new": new}]
+    if isinstance(old, dict):
+        changes: list[dict[str, Any]] = []
+        for key in sorted(set(old) | set(new)):
+            child_path = f"{path}.{key}" if path else key
+            if key not in old:
+                changes.append({"field": child_path, "old": None, "new": new[key]})
+            elif key not in new:
+                changes.append({"field": child_path, "old": old[key], "new": None})
+            else:
+                changes.extend(deep_changes(old[key], new[key], child_path))
+        return changes
+    if isinstance(old, list):
+        changes = []
+        for index in range(max(len(old), len(new))):
+            child_path = f"{path}[{index}]"
+            if index >= len(old):
+                changes.append({"field": child_path, "old": None, "new": new[index]})
+            elif index >= len(new):
+                changes.append({"field": child_path, "old": old[index], "new": None})
+            else:
+                changes.extend(deep_changes(old[index], new[index], child_path))
+        return changes
+    return [] if old == new else [{"field": path or "$", "old": old, "new": new}]
+
+
+def operation_identity(entry: dict[str, Any]) -> str:
+    return json.dumps(
+        {
+            "protocol": entry["protocol"],
+            "operation": entry["operation"],
+        },
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+
+
+def build_change_report(
+    old_entries: list[dict[str, Any]],
+    entries: list[dict[str, Any]],
+    snapshot: dict[str, Any],
+) -> dict[str, Any]:
+    old_by_id = {entry["id"]: entry for entry in old_entries}
+    new_by_id = {entry["id"]: entry for entry in entries}
+    common = sorted(set(old_by_id) & set(new_by_id))
+    tracked_fields = (
+        "name",
+        "purpose",
+        "module",
+        "operation",
+        "parameters",
+        "responses",
+        "errors",
+        "authentication",
+        "compatibility",
+        "deprecated",
+    )
+    modified = []
+    for entry_id in common:
+        old = {field: old_by_id[entry_id].get(field) for field in tracked_fields}
+        new = {field: new_by_id[entry_id].get(field) for field in tracked_fields}
+        changes = deep_changes(old, new)
+        if changes:
+            modified.append(
+                {
+                    "id": entry_id,
+                    "changes": changes,
+                    "evidence": new_by_id[entry_id]["source"],
+                    "confidence": 1.0,
+                }
+            )
+
+    added_ids = set(new_by_id) - set(old_by_id)
+    removed_ids = set(old_by_id) - set(new_by_id)
+    old_operations: dict[str, list[str]] = {}
+    for entry_id in removed_ids:
+        old_operations.setdefault(operation_identity(old_by_id[entry_id]), []).append(entry_id)
+    renamed = []
+    for new_id in sorted(list(added_ids)):
+        candidates = old_operations.get(operation_identity(new_by_id[new_id]), [])
+        old_id = next((candidate for candidate in candidates if candidate in removed_ids), None)
+        if not old_id:
+            continue
+        renamed.append(
+            {
+                "old_id": old_id,
+                "new_id": new_id,
+                "changes": deep_changes(
+                    {field: old_by_id[old_id].get(field) for field in tracked_fields},
+                    {field: new_by_id[new_id].get(field) for field in tracked_fields},
+                ),
+                "evidence": new_by_id[new_id]["source"],
+                "confidence": 0.95,
+            }
+        )
+        added_ids.remove(new_id)
+        removed_ids.remove(old_id)
+
+    added = [
+        {"id": entry_id, "entry": new_by_id[entry_id], "evidence": new_by_id[entry_id]["source"], "confidence": 1.0}
+        for entry_id in sorted(added_ids)
+    ]
+    removed = [
+        {
+            "id": entry_id,
+            "entry": old_by_id[entry_id],
+            "reason": "Not present in the official v1.16.1 API Reference snapshot.",
+            "confidence": 1.0,
+        }
+        for entry_id in sorted(removed_ids)
+    ]
+    return {
+        "source_priority": "DJI official Cloud API tutorial",
+        "official_version": snapshot["version"],
+        "snapshot_sha256": snapshot["snapshot_sha256"],
+        "generated_at": snapshot["fetched_at"],
+        "baseline": {
+            "source": "existing catalog before official migration",
+            "entry_count": len(old_entries),
+            "ids": sorted(old_by_id),
+        },
+        "summary": {
+            "added": len(added),
+            "removed": len(removed),
+            "renamed": len(renamed),
+            "modified": len(modified),
+            "unchanged": len(common) - len(modified),
+        },
+        "added": added,
+        "removed": removed,
+        "renamed": renamed,
+        "modified": modified,
+    }
+
+
+def write_outputs(entries: list[dict[str, Any]], source: Path) -> None:
     add_core_examples(entries)
     catalog = ROOT / "catalog"
     endpoint_root = catalog / "endpoints"
+    old_entries = []
+    if endpoint_root.exists():
+        old_entries = [
+            json.loads(path.read_text(encoding="utf-8"))
+            for path in sorted(endpoint_root.rglob("*.json"))
+        ]
+    snapshot = source_snapshot(source)
+    report_path = catalog / "change-report.json"
+    existing_report = (
+        json.loads(report_path.read_text(encoding="utf-8"))
+        if report_path.exists()
+        else None
+    )
+    if (
+        existing_report
+        and existing_report.get("official_version") == snapshot["version"]
+        and existing_report.get("baseline", {}).get("source") == "existing catalog before official migration"
+    ):
+        existing_report["snapshot_sha256"] = snapshot["snapshot_sha256"]
+        existing_report["generated_at"] = snapshot["fetched_at"]
+        actual = {entry["id"]: entry for entry in entries}
+        baseline_ids = set(existing_report["baseline"].get("ids", []))
+        if not baseline_ids:
+            try:
+                baseline_index = json.loads(
+                    subprocess.check_output(
+                        ["git", "show", "HEAD:catalog/index.json"],
+                        cwd=ROOT,
+                        text=True,
+                        encoding="utf-8",
+                    )
+                )
+                baseline_ids = {item["id"] for item in baseline_index}
+            except Exception:
+                baseline_ids = {
+                    item["id"] for item in existing_report.get("removed", [])
+                } | {
+                    item["old_id"] for item in existing_report.get("renamed", [])
+                } | {
+                    item["id"] for item in existing_report.get("modified", [])
+                }
+            existing_report["baseline"]["ids"] = sorted(baseline_ids)
+        existing_report["renamed"] = [
+            {
+                **item,
+                "evidence": actual[item["new_id"]]["source"],
+            }
+            for item in existing_report["renamed"]
+            if (
+                item["new_id"] in actual
+                and item["new_id"] not in baseline_ids
+                and item["old_id"] not in actual
+            )
+        ]
+        renamed_new = {item["new_id"] for item in existing_report["renamed"]}
+        added_ids = set(actual) - baseline_ids - renamed_new
+        existing_report["added"] = [
+            {
+                "id": entry_id,
+                "entry": actual[entry_id],
+                "evidence": actual[entry_id]["source"],
+                "confidence": 1.0,
+            }
+            for entry_id in sorted(added_ids)
+        ]
+        existing_report["modified"] = [
+            {
+                **item,
+                "evidence": actual[item["id"]]["source"],
+            }
+            for item in existing_report["modified"]
+            if item["id"] in actual and item["id"] in baseline_ids
+        ]
+        renamed_old = {item["old_id"] for item in existing_report["renamed"]}
+        removed_ids = baseline_ids - set(actual) - renamed_old
+        previous_removed = {item["id"]: item for item in existing_report["removed"]}
+        existing_report["removed"] = [
+            previous_removed.get(
+                entry_id,
+                {
+                    "id": entry_id,
+                    "entry": {"id": entry_id},
+                    "reason": "Not present in the official v1.16.1 API Reference snapshot.",
+                    "confidence": 1.0,
+                },
+            )
+            for entry_id in sorted(removed_ids)
+        ]
+        summary = existing_report["summary"]
+        summary.update(
+            {
+                "added": len(existing_report["added"]),
+                "removed": len(existing_report["removed"]),
+                "renamed": len(existing_report["renamed"]),
+                "modified": len(existing_report["modified"]),
+            }
+        )
+        summary["unchanged"] = (
+            len(
+                (baseline_ids & set(actual))
+                - {item["id"] for item in existing_report["modified"]}
+            )
+        )
+        change_report = existing_report
+    else:
+        change_report = build_change_report(old_entries, entries, snapshot)
     if endpoint_root.exists():
         shutil.rmtree(endpoint_root)
     endpoint_root.mkdir(parents=True)
@@ -629,10 +1086,10 @@ def write_outputs(entries: list[dict[str, Any]], source: Path, commit: str) -> N
         folder = endpoint_root / entry["protocol"]
         folder.mkdir(parents=True, exist_ok=True)
         rel = Path("catalog/endpoints") / entry["protocol"] / f"{entry['id']}.json"
-        (ROOT / rel).write_text(json.dumps(entry, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        write_text_lf(ROOT / rel, json.dumps(entry, ensure_ascii=False, indent=2) + "\n")
         counts[entry["protocol"]] = counts.get(entry["protocol"], 0) + 1
         index.append({"id": entry["id"], "name": entry["name"], "protocol": entry["protocol"], "module": entry["module"], "file": rel.as_posix()})
-    (catalog / "index.json").write_text(json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    write_text_lf(catalog / "index.json", json.dumps(index, ensure_ascii=False, indent=2) + "\n")
 
     error_source = source / "docs/cn/71.error-code.md"
     error_text = error_source.read_text(encoding="utf-8")
@@ -646,14 +1103,29 @@ def write_outputs(entries: list[dict[str, Any]], source: Path, commit: str) -> N
         cells = [clean(re.sub(r"<[^>]+>", "", cell)) for cell in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", row, re.S | re.I)]
         if len(cells) >= 2 and re.fullmatch(r"\d{6}", cells[0]):
             errors.append({"code": cells[0], "description": cells[1], "source": source_ref(error_source, source)})
-    (catalog / "error-codes.json").write_text(json.dumps(errors, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    unique_errors = {
+        (item["code"], item["description"]): item
+        for item in errors
+    }
+    write_text_lf(
+        catalog / "error-codes.json",
+        json.dumps(list(unique_errors.values()), ensure_ascii=False, indent=2) + "\n",
+    )
+    write_text_lf(
+        report_path,
+        json.dumps(change_report, ensure_ascii=False, indent=2) + "\n",
+    )
 
     manifest = {
-        "source": "https://github.com/dji-sdk/Cloud-API-Doc",
-        "commit": commit,
-        "source_language": "docs/cn",
-        "fallback_language": "docs/en",
-        "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+        "source": snapshot["source"],
+        "official_version": snapshot["version"],
+        "version_evidence_url": snapshot["version_evidence_url"],
+        "snapshot_sha256": snapshot["snapshot_sha256"],
+        "app_hash": snapshot["app"]["hash"],
+        "runtime_hash": snapshot["runtime"]["hash"],
+        "api_reference_route_count": snapshot["route_count"],
+        "source_language": "cn",
+        "generated_at": snapshot["fetched_at"],
         "generator": "scripts/sync_catalog.py",
         "entry_count": len(entries),
         "protocol_counts": counts,
@@ -673,7 +1145,7 @@ def write_outputs(entries: list[dict[str, Any]], source: Path, commit: str) -> N
             },
         },
     }
-    (ROOT / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    write_text_lf(ROOT / "manifest.json", json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
 
 
 def collect(source: Path) -> list[dict[str, Any]]:
@@ -695,25 +1167,24 @@ def collect(source: Path) -> list[dict[str, Any]]:
     return deduplicate(entries)
 
 
-def git_commit(source: Path) -> str:
-    try:
-        return subprocess.check_output(["git", "-C", str(source), "rev-parse", "HEAD"], text=True).strip()
-    except Exception:
-        return "unknown"
-
-
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
     args = parser.parse_args()
     source = args.source.resolve()
-    if not (source / CN_API).exists():
-        raise SystemExit(f"DJI source docs not found under {source}")
+    if not (source / "snapshot.json").exists() or not (source / CN_API).exists():
+        raise SystemExit(
+            f"DJI official snapshot not found under {source}; "
+            "run scripts/fetch_official_docs.py first"
+        )
+    snapshot = source_snapshot(source)
+    if snapshot.get("version") != "1.16.1":
+        raise SystemExit(f"Expected DJI Cloud API v1.16.1, found v{snapshot.get('version', 'unknown')}")
     entries = collect(source)
     if not entries:
         raise SystemExit("No API entries parsed")
-    write_outputs(entries, source, git_commit(source))
-    print(f"Generated {len(entries)} entries")
+    write_outputs(entries, source)
+    print(f"Generated {len(entries)} entries from official v{snapshot['version']}")
     return 0
 
 

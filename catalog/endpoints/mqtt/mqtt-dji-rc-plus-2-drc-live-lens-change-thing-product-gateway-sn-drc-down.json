@@ -1,0 +1,109 @@
+{
+  "id": "mqtt-dji-rc-plus-2-drc-live-lens-change-thing-product-gateway-sn-drc-down",
+  "name": "设置直播镜头",
+  "purpose": "MQTT message: drc_live_lens_change",
+  "protocol": "mqtt",
+  "module": "live",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/drc/down",
+    "direction": "down",
+    "method": "drc_live_lens_change",
+    "reply_topic": "thing/product/{gateway_sn}/drc/up",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "video_type",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "直播视频流镜头类型",
+      "constraints": "{\"thermal\":\"红外\",\"wide\":\"广角\",\"zoom\":\"变焦\"}",
+      "schema": "enum_string"
+    },
+    {
+      "name": "payload_index",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相机枚举",
+      "constraints": "{\"length\":\"\"}",
+      "schema": "text"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "payload_index": "80-0-0",
+          "video_type": "zoom"
+        },
+        "timestamp:": 1654070968655,
+        "method": "drc_live_lens_change"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "data": {
+          "result": 0
+        },
+        "timestamp:": 1654070968655,
+        "method": "drc_live_lens_change"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dji-rc-plus-2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/00.mqtt/40.dji-rc-plus-2/20.live.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/mqtt/dji-rc-plus-2/live.html",
+    "sha256": "809205ae7ab359b57a9dcda3eab1752829812501e70257aff2f50e286e9a4f07",
+    "asset_sha256": "4ec0c2a5f898c5802a1f8c80db0b514f6acd4068b9e20b44a953d76d12d1f917",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

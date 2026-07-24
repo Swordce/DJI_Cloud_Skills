@@ -1,0 +1,231 @@
+{
+  "id": "mqtt-dock3-obstacle-avoidance-notify-thing-product-gateway-sn-events",
+  "name": "避障记录上报事件通知",
+  "purpose": "MQTT events: obstacle_avoidance_notify",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/events",
+    "direction": "up",
+    "method": "obstacle_avoidance_notify",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "wayline_uuid",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "航线任务 ID",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "flight_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "指令飞行 / 航线任务 ID",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "obstacles",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "避障事件记录列表",
+      "constraints": "{\"size\": -, \"item_type\": struct}",
+      "schema": "array"
+    },
+    {
+      "name": "id",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "在当架次中的唯一索引",
+      "constraints": "",
+      "schema": "int",
+      "parent": "obstacles"
+    },
+    {
+      "name": "type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "避障点类型",
+      "constraints": "{0:\"绕行开始（飞控映射到航线上）\",1:\"绕行结束（飞控映射到航线上）\",2:\"避障刹停（真实物理坐标）\"}",
+      "schema": "enum_int",
+      "parent": "obstacles"
+    },
+    {
+      "name": "timestamp",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "避障发生时间戳（ms）",
+      "constraints": "",
+      "schema": "int64",
+      "parent": "obstacles"
+    },
+    {
+      "name": "latitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "避障发生位置纬度",
+      "constraints": "{\"max\":90,\"min\":-90}",
+      "schema": "double",
+      "parent": "obstacles"
+    },
+    {
+      "name": "longitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "避障发生位置经度",
+      "constraints": "{\"max\":180,\"min\":-180}",
+      "schema": "double",
+      "parent": "obstacles"
+    },
+    {
+      "name": "height",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "避障发生位置 WGS84 椭球高",
+      "constraints": "{\"unit_name\":\"米 / m\"}",
+      "schema": "double",
+      "parent": "obstacles"
+    },
+    {
+      "name": "wayline_id",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "避障所在航段（多航线任务区分使用）",
+      "constraints": "",
+      "schema": "int",
+      "parent": "obstacles"
+    },
+    {
+      "name": "waypoint_index",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "避障所在航段航点索引（首航点所在航段为 0）",
+      "constraints": "",
+      "schema": "int",
+      "parent": "obstacles"
+    },
+    {
+      "name": "is_final_report",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "标识该条消息是否为当前避障记录组的最后一条消息。true 表示该避障事件组已上报完成。",
+      "constraints": "",
+      "schema": "boolean"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "need_reply": 1,
+        "data": {
+          "wayline_uuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+          "flight_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+          "obstacles": [
+            {
+              "id": 0,
+              "type": 0,
+              "timestamp": 1654070968655,
+              "latitude": 39.9042,
+              "longitude": 116.4074,
+              "height": 100,
+              "wayline_id": 0,
+              "waypoint_index": 1
+            },
+            {
+              "id": 1,
+              "type": 1,
+              "timestamp": 1654070968655,
+              "latitude": 39.9042,
+              "longitude": 116.4074,
+              "height": 100,
+              "wayline_id": 0,
+              "waypoint_index": 2
+            }
+          ],
+          "is_final_report": true
+        },
+        "method": "obstacle_avoidance_notify",
+        "timestamp": 1654070968655
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock3"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/20.dock3/110.drc.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock3/drc.html",
+    "sha256": "a7c097dfae7259a21d72664d1ca32f3e37a2569369666762c0d3816a6ed51d9c",
+    "asset_sha256": "0a6630ded545dc0b4034723d74858f6d9661194bf5ac63508dc1e6c8a34d8e64",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

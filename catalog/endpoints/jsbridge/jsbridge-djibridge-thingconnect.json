@@ -3,7 +3,7 @@
   "name": "启动连接",
   "purpose": "启动连接",
   "protocol": "jsbridge",
-  "module": "3bc15c8aae3e",
+  "module": "thing",
   "operation": {
     "method": "window.djiBridge.thingConnect",
     "signature": "window.djiBridge.thingConnect(String userName, String passwd, String callback)"
@@ -70,6 +70,10 @@
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/jsbridge.html",
+    "sha256": "b429410bb87f7ac2ddc62297f355b0a4b53794315ff66153d2b2551284be0b93",
+    "asset_sha256": "c6ce48a8eb49c52836e9a6448627374f2006544843f0c1dbb3f5858a7be3da18",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

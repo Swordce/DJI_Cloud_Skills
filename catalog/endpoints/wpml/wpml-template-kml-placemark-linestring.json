@@ -1,7 +1,7 @@
 {
   "id": "wpml-template-kml-placemark-linestring",
   "name": "LineString",
-  "purpose": "航带飞行模板元素（父元素：<Placemark>）",
+  "purpose": "航点信息 注：格式为 “<LineString> <coordinates> 经度,纬度,高度 经度,维度,高度 经度,纬度,高度 </coordinates> </LineString>”。其中高度值仅在 “wpml:stripUseTemplateAltitude” 开启时读取。",
   "protocol": "wpml",
   "module": "template-kml",
   "operation": {
@@ -15,10 +15,10 @@
       "name": "LineString",
       "in": "xml_element",
       "type": "string",
-      "required": null,
-      "required_status": "not_specified_by_source",
-      "description": "",
-      "constraints": "",
+      "required": false,
+      "required_status": "optional",
+      "description": "航点信息 注：格式为 “<LineString> <coordinates> 经度,纬度,高度 经度,维度,高度 经度,纬度,高度 </coordinates> </LineString>”。其中高度值仅在 “wpml:stripUseTemplateAltitude” 开启时读取。",
+      "constraints": "-",
       "schema": "-"
     }
   ],
@@ -48,10 +48,22 @@
     "retry_on": [],
     "notes": "Validate the WPML document locally; network retry is not applicable."
   },
-  "compatibility": [],
+  "compatibility": [
+    "M300 RTK",
+    "M350 RTK",
+    "M30/M30T",
+    "M3E/M3T/M3M",
+    "M3D/M3TD",
+    "M4D/M4TD",
+    "M4E/M4T"
+  ],
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/00.dji-wpml/20.template-kml.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/00.dji-wpml/20.template-kml.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dji-wpml/template-kml.html",
+    "sha256": "463b4376adcb7f5056c4ad00a0bae40c9db9dbd18a184c4f24d183863f8d9179",
+    "asset_sha256": "3a73d235dea35a753cda3b8e8272b333dbbdf2d56706c29c4beb10ce2f430379",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

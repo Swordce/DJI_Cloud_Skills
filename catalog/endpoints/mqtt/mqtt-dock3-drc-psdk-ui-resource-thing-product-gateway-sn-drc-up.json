@@ -1,0 +1,108 @@
+{
+  "id": "mqtt-dock3-drc-psdk-ui-resource-thing-product-gateway-sn-drc-up",
+  "name": "PSDK—UI资源包上传",
+  "purpose": "MQTT message: drc_psdk_ui_resource",
+  "protocol": "mqtt",
+  "module": "remote-control",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/drc/up",
+    "direction": "up",
+    "method": "drc_psdk_ui_resource",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "psdk_index",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "psdk 负载设备索引",
+      "constraints": "依据设备推送",
+      "schema": "int"
+    },
+    {
+      "name": "psdk_ready",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "是否准备就绪",
+      "constraints": "{\"0\":\"未就绪\",\"1\":\"就绪\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "object_key",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "oss 对象",
+      "constraints": "{\"length\":\"\"}",
+      "schema": "text"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "object_key": "b4cfaae6-bd9d-4cd0-8472-63b608c3c581/SN/psdk_config/0/2023_6_7_1103_XXXXXX.tar.gz",
+          "psdk_index": 0,
+          "psdk_ready": 1
+        },
+        "method": "drc_psdk_ui_resource",
+        "seq": 1
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock3"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/20.dock3/190.remote-control.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock3/remote-control.html",
+    "sha256": "32c7063215c1c5130cce2a2bffccb552084a00ae518739334c5a80d9e452ec64",
+    "asset_sha256": "26fc0533f2e2b55c8c36240e62cbc503f3c5c85f8d0be4dc8bdbf372fb894289",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

@@ -1,0 +1,248 @@
+{
+  "id": "mqtt-dock3-update-topo-sys-product-gateway-sn-status",
+  "name": "设备拓扑更新",
+  "purpose": "MQTT message: update_topo",
+  "protocol": "mqtt",
+  "module": "device",
+  "operation": {
+    "action": "subscribe",
+    "topic": "sys/product/{gateway_sn}/status",
+    "direction": "up",
+    "method": "update_topo",
+    "reply_topic": "sys/product/{gateway_sn}/status_reply",
+    "reply_direction": "down"
+  },
+  "parameters": [
+    {
+      "name": "device_secret",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "网关设备的密钥",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "nonce",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "nonce",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "thing_version",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "网关设备的物模型版本",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "sub_devices",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "子设备列表",
+      "constraints": "{\"size\": 1, \"item_type\": struct}",
+      "schema": "array"
+    },
+    {
+      "name": "sn",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "子设备序列号（SN）",
+      "constraints": "",
+      "schema": "text",
+      "parent": "sub_devices"
+    },
+    {
+      "name": "index",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "连接网关设备的通道索引",
+      "constraints": "",
+      "schema": "string",
+      "parent": "sub_devices"
+    },
+    {
+      "name": "device_secret",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "子设备的密钥",
+      "constraints": "",
+      "schema": "text",
+      "parent": "sub_devices"
+    },
+    {
+      "name": "nonce",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "nonce",
+      "constraints": "",
+      "schema": "text",
+      "parent": "sub_devices"
+    },
+    {
+      "name": "thing_version",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "子设备的物模型版本",
+      "constraints": "",
+      "schema": "text",
+      "parent": "sub_devices"
+    },
+    {
+      "name": "domain",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "网关设备的命名空间",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "网关设备的产品类型",
+      "constraints": "",
+      "schema": "int"
+    },
+    {
+      "name": "sub_type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "网关子设备的产品子类型",
+      "constraints": "",
+      "schema": "int"
+    },
+    {
+      "name": "domain",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "子设备的命名空间",
+      "constraints": "",
+      "schema": "string",
+      "parent": "sub_type"
+    },
+    {
+      "name": "type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "子设备的产品类型",
+      "constraints": "",
+      "schema": "int",
+      "parent": "sub_type"
+    },
+    {
+      "name": "sub_type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "子设备的产品子类型",
+      "constraints": "",
+      "schema": "int",
+      "parent": "sub_type"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "sys/product/{gateway_sn}/status_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "result": 0
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "update_topo"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {},
+        "method": "update_topo",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock3"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/20.dock3/10.device.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock3/device.html",
+    "sha256": "8e14f9b9d2f784b453848077225bdb7b573e87604eb09dec9918cb81f6a796e7",
+    "asset_sha256": "2752cd110e181bc93c762187e3b5db47a5b06ef9981be78b3349cf1def05c265",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

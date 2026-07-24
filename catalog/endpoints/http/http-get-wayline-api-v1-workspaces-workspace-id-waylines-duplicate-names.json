@@ -49,67 +49,28 @@
   "responses": [
     {
       "status": "200",
-      "description": "OK",
-      "schema": "wayline.GetDuplicateNamesOutput",
-      "fields": [
-        {
-          "name": "code",
-          "in": "response",
-          "type": "integer",
-          "required": false,
-          "required_status": "optional",
-          "description": "错误码",
-          "constraints": "none",
-          "schema": "integer"
-        },
-        {
-          "name": "data",
-          "in": "response",
-          "type": "array",
-          "required": false,
-          "required_status": "optional",
-          "description": "重复的文件名数组",
-          "constraints": "none",
-          "schema": "array[string]"
-        },
-        {
-          "name": "message",
-          "in": "response",
-          "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "错误描述",
-          "constraints": "none",
-          "schema": "string"
-        }
-      ]
+      "description": "错误码",
+      "schema": "",
+      "fields": []
+    },
+    {
+      "status": "200",
+      "description": "重复的文件名数组",
+      "schema": "",
+      "fields": []
+    },
+    {
+      "status": "200",
+      "description": "错误描述",
+      "schema": "",
+      "fields": []
     }
   ],
   "errors": [
     {
-      "code": "400",
-      "meaning": "invalid_request",
+      "code": "code != 0",
+      "meaning": "Resolve the returned code through catalog/error-codes.json.",
       "retry": false
-    },
-    {
-      "code": "401",
-      "meaning": "token_expired_or_invalid",
-      "retry": false
-    },
-    {
-      "code": "403",
-      "meaning": "forbidden",
-      "retry": false
-    },
-    {
-      "code": "404",
-      "meaning": "resource_not_found",
-      "retry": false
-    },
-    {
-      "code": "5xx",
-      "meaning": "server_error",
-      "retry": true
     }
   ],
   "examples": [
@@ -127,16 +88,14 @@
       "source": "official"
     },
     {
-      "kind": "response",
+      "kind": "request",
       "format": "json",
       "value": {
-        "code": 0,
-        "data": [
-          "string"
-        ],
-        "message": "string"
+        "workspace_id": "<workspace_id>",
+        "name": [],
+        "x-auth-token": "<x-auth-token>"
       },
-      "source": "official"
+      "source": "generated_from_schema"
     }
   ],
   "retry": {
@@ -157,6 +116,10 @@
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/40.get-duplicated-waypointfile-name.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/40.get-duplicated-waypointfile-name.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/https/waypoint-management/get-duplicated-waypointfile-name.html",
+    "sha256": "98acc1be1c33d63732cb0f9a716582456032c102d9691bd6e041bd5711bed084",
+    "asset_sha256": "bb4cbfb2400a0361761a8f178e7137638f109887c498c9a30085ddbe01b3f7da",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

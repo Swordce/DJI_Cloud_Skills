@@ -1,7 +1,7 @@
 {
   "id": "wpml-waylines-wpml-placemark-point",
   "name": "Point",
-  "purpose": "航点信息（<Placemark>）",
+  "purpose": "航点经纬度<经度,纬度>* 注：此处格式如“<Point> <coordinates> 经度,纬度 </coordinates> </Point>”",
   "protocol": "wpml",
   "module": "waylines-wpml",
   "operation": {
@@ -14,11 +14,11 @@
     {
       "name": "Point",
       "in": "xml_element",
-      "type": "string",
-      "required": null,
-      "required_status": "not_specified_by_source",
-      "description": "",
-      "constraints": "",
+      "type": "number",
+      "required": true,
+      "required_status": "required",
+      "description": "航点经纬度<经度,纬度>* 注：此处格式如“<Point> <coordinates> 经度,纬度 </coordinates> </Point>”",
+      "constraints": "[-180,180],[-90,90]；单位:°,°",
       "schema": "浮点型"
     }
   ],
@@ -45,7 +45,7 @@
       "kind": "request",
       "format": "json",
       "value": {
-        "Point": "<Point>"
+        "Point": 0.0
       },
       "source": "generated_from_schema"
     },
@@ -65,10 +65,22 @@
     "retry_on": [],
     "notes": "Validate the WPML document locally; network retry is not applicable."
   },
-  "compatibility": [],
+  "compatibility": [
+    "M300 RTK",
+    "M350 RTK",
+    "M30/M30T",
+    "M3E/M3T/M3M",
+    "M3D/M3TD",
+    "M4D/M4TD",
+    "M4E/M4T"
+  ],
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/00.dji-wpml/30.waylines-wpml.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/00.dji-wpml/30.waylines-wpml.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dji-wpml/waylines-wpml.html",
+    "sha256": "66f5c25923a35699242b9d64d35fc8b43ed7bddf3619c98eae0c386f95158427",
+    "asset_sha256": "5d0dbde8f8b9068be3cd03589156302516fd2cc3a7eb89e9802b01f5ce0e5fbb",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

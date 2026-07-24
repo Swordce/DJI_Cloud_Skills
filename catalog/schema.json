@@ -16,6 +16,8 @@
     "errors",
     "examples",
     "retry",
+    "compatibility",
+    "deprecated",
     "source"
   ],
   "properties": {
@@ -153,11 +155,24 @@
         "notes"
       ]
     },
+    "compatibility": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "deprecated": {
+      "type": "boolean"
+    },
     "source": {
       "type": "object",
       "required": [
         "file",
-        "url"
+        "url",
+        "sha256",
+        "asset_sha256",
+        "snapshot_sha256",
+        "version"
       ],
       "properties": {
         "file": {
@@ -167,6 +182,22 @@
         "url": {
           "type": "string",
           "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "asset_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "snapshot_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^1\\.16\\.1$"
         }
       }
     }

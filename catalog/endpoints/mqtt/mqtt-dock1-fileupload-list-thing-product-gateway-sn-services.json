@@ -1,0 +1,146 @@
+{
+  "id": "mqtt-dock1-fileupload-list-thing-product-gateway-sn-services",
+  "name": "获取设备可上传的文件列表",
+  "purpose": "MQTT services: fileupload_list",
+  "protocol": "mqtt",
+  "module": "log",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/services",
+    "direction": "down",
+    "method": "fileupload_list",
+    "reply_topic": "thing/product/{gateway_sn}/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "module_list",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "文件所属过滤列表",
+      "constraints": "{\"size\": -, \"item_type\": enum_int}",
+      "schema": "array"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "module_list": [
+            "0",
+            "3"
+          ]
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "fileupload_list"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "files": [
+            {
+              "device_sn": "xxxxxxxxx",
+              "list": [
+                {
+                  "boot_index": 1111,
+                  "end_time": 1659427398806,
+                  "size": 33789,
+                  "start_time": 1654070968655
+                },
+                {
+                  "boot_index": 22222,
+                  "end_ime": 1659427398806,
+                  "size": 33789,
+                  "start_time": 1659427398806
+                }
+              ],
+              "module": "0",
+              "result": 0
+            },
+            {
+              "device_sn": "device_sn",
+              "list": [
+                {
+                  "boot_index": 11111,
+                  "end_time": 1659427398806,
+                  "size": 36772,
+                  "start_time": 1659427398806
+                },
+                {
+                  "boot_index": 22222,
+                  "end_ime": 1659427398806,
+                  "size": 33789,
+                  "start_time": 1659427398806
+                }
+              ],
+              "module": "3",
+              "result": 0
+            }
+          ],
+          "result": 0
+        },
+        "gateway": "",
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "fileupload_list"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/90.log.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock1/log.html",
+    "sha256": "b414ced4a3fd2eef191da94f97572d63c15a93508a1f4bf25166ca496bb4d988",
+    "asset_sha256": "527be05ec4fb723d3d54a125e2e7290c3b9823ad92db4ca190297b4c23809047",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

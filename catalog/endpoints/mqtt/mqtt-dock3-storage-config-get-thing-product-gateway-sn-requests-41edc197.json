@@ -1,0 +1,115 @@
+{
+  "id": "mqtt-dock3-storage-config-get-thing-product-gateway-sn-requests-41edc197",
+  "name": "获取上传临时凭证",
+  "purpose": "MQTT requests: storage_config_get",
+  "protocol": "mqtt",
+  "module": "media",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/requests",
+    "direction": "up",
+    "method": "storage_config_get",
+    "reply_topic": "thing/product/{gateway_sn}/requests_reply",
+    "reply_direction": "down"
+  },
+  "parameters": [
+    {
+      "name": "module",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "模块枚举值",
+      "constraints": "{\"0\":\"媒体\"}",
+      "schema": "enum_int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/requests_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "module": 0
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp:": 1654070968655,
+        "method": "storage_config_get"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "output": {
+            "bucket": "bucket_name",
+            "credentials": {
+              "access_key_id": "access_key_id",
+              "access_key_secret": "access_key_secret",
+              "expire": 3600,
+              "security_token": "security_token"
+            },
+            "endpoint": "https://oss-cn-hangzhou.aliyuncs.com",
+            "object_key_prefix": "b4cfaae6-bd9d-4cd0-8472-63b608c3c581",
+            "provider": "ali",
+            "region": "hz"
+          },
+          "result": 0
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp:": 1654070968655,
+        "method": "storage_config_get"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock3"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/20.dock3/40.media.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock3/media.html",
+    "sha256": "889ca632d7e1cc6377dbb4d23ee6fd4f7e5816aae1bcce58a71cb8411d7785c0",
+    "asset_sha256": "e9df3cedb719120de3be2c16795ece0c38a4e5c8a683358b793071cbccab842a",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

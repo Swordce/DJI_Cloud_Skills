@@ -1,0 +1,127 @@
+{
+  "id": "mqtt-dock3-delay-info-push-thing-product-gateway-sn-drc-up",
+  "name": "DRC-图传链路延时信息上报",
+  "purpose": "MQTT message: delay_info_push",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/drc/up",
+    "direction": "up",
+    "method": "delay_info_push",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "sdr_cmd_delay",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "图传协议命令链路延时",
+      "constraints": "{\"unit_name\":\"毫秒 / ms\"}",
+      "schema": "int"
+    },
+    {
+      "name": "liveview_delay_list",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "图传视频码流延时，多路码流",
+      "constraints": "{\"size\": -, \"item_type\": struct}",
+      "schema": "array"
+    },
+    {
+      "name": "video_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "码流编号",
+      "constraints": "",
+      "schema": "text",
+      "parent": "liveview_delay_list"
+    },
+    {
+      "name": "liveview_delay_time",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "码流延时",
+      "constraints": "{\"unit_name\":\"毫秒 / ms\"}",
+      "schema": "int",
+      "parent": "liveview_delay_list"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "liveview_delay_list": [
+            {
+              "liveview_delay_time": 60,
+              "video_id": "1581BN210004555439234/52-0-0/normal-0"
+            },
+            {
+              "liveview_delay_time": 80,
+              "video_id": "1581BN210004555439234/53-0-0/normal-0"
+            }
+          ],
+          "sdr_cmd_delay": 10
+        },
+        "timestamp": 1670415891013
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock3"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/20.dock3/110.drc.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock3/drc.html",
+    "sha256": "a7c097dfae7259a21d72664d1ca32f3e37a2569369666762c0d3816a6ed51d9c",
+    "asset_sha256": "0a6630ded545dc0b4034723d74858f6d9661194bf5ac63508dc1e6c8a34d8e64",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

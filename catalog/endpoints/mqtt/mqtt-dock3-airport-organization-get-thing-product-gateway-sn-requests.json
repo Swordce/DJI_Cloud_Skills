@@ -1,0 +1,116 @@
+{
+  "id": "mqtt-dock3-airport-organization-get-thing-product-gateway-sn-requests",
+  "name": "查询设备绑定对应的组织信息",
+  "purpose": "MQTT requests: airport_organization_get",
+  "protocol": "mqtt",
+  "module": "organization",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/requests",
+    "direction": "up",
+    "method": "airport_organization_get",
+    "reply_topic": "thing/product/{gateway_sn}/requests_reply",
+    "reply_direction": "down"
+  },
+  "parameters": [
+    {
+      "name": "device_binding_code",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "设备绑定码",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "organization_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "组织 ID",
+      "constraints": "",
+      "schema": "text"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/requests_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "device_binding_code": "device_binding_code",
+          "organization_id": "organization_id"
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp:": 1654070968655,
+        "method": "airport_organization_get"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "output": {
+            "organization_name": "organization_name"
+          },
+          "result": 0
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp:": 1654070968655,
+        "method": "airport_organization_get"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock3"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/20.dock3/20.organization.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock3/organization.html",
+    "sha256": "0b1ed8a81fe1a425b67e9f857c79283ce9e9f226a1f04c8987042bad2955f52e",
+    "asset_sha256": "774466d9e30fcf12432806985ee17d136aef3a08de5a97c412a7b8076ef3edc5",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

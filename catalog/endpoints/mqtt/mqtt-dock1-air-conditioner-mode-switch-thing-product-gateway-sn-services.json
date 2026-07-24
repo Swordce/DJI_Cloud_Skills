@@ -1,0 +1,73 @@
+{
+  "id": "mqtt-dock1-air-conditioner-mode-switch-thing-product-gateway-sn-services",
+  "name": "机场空调工作模式切换",
+  "purpose": "MQTT services: air_conditioner_mode_switch",
+  "protocol": "mqtt",
+  "module": "cmd",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/services",
+    "direction": "down",
+    "method": "air_conditioner_mode_switch",
+    "reply_topic": "thing/product/{gateway_sn}/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "action",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "操作",
+      "constraints": "{\"0\":\"使机场空调进入空闲模式(关闭制冷、制热或除湿)\",\"1\":\"使机场空调进入制冷模式\",\"2\":\"使机场空调进入制热模式\",\"3\":\"使机场空调进入除湿模式(除湿包含制冷除湿及制热除湿，由设备端根据自身所处情况自动化处理，无需用户介入)\"}",
+      "schema": "enum_int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock1"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/00.dock1/70.cmd.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock1/cmd.html",
+    "sha256": "69eba492a44120f8a184bf679304d3a9551f93157cf86e66525debeecde68df1",
+    "asset_sha256": "ea8e83e69253f4eb781a776f07087577082223924bad90b281ea4b33c8e79942",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

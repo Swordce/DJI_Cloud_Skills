@@ -1,0 +1,258 @@
+{
+  "id": "mqtt-dock3-rtk-calibration-thing-product-gateway-sn-events",
+  "name": "一键标定结果",
+  "purpose": "MQTT events: rtk_calibration",
+  "protocol": "mqtt",
+  "module": "cmd",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/events",
+    "direction": "up",
+    "method": "rtk_calibration",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "output",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "标定执行输出信息",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "ext",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "附加信息",
+      "constraints": "",
+      "schema": "struct",
+      "parent": "output"
+    },
+    {
+      "name": "devices",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "标定设备结果列表",
+      "constraints": "",
+      "schema": "array",
+      "parent": "ext"
+    },
+    {
+      "name": "sn",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "设备序列号（SN）",
+      "constraints": "",
+      "schema": "string",
+      "parent": "devices"
+    },
+    {
+      "name": "type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "标定类型",
+      "constraints": "{1: 手动标定}",
+      "schema": "int",
+      "parent": "devices"
+    },
+    {
+      "name": "module",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "设备所属模块",
+      "constraints": "{ \"3\": 机场, \"6\": 中继 }",
+      "schema": "string",
+      "parent": "devices"
+    },
+    {
+      "name": "result",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "标定结果码（0 表示成功，非 0 表示错误）",
+      "constraints": "",
+      "schema": "int",
+      "parent": "devices"
+    },
+    {
+      "name": "status",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "设备标定状态（超时返回 \"failed\" 并提供错误码）",
+      "constraints": "{\"canceled\":\"取消或终止\",\"failed\":\"失败\",\"in_progress\":\"执行中\",\"ok\":\"执行成功\",\"paused\":\"暂停\",\"rejected\":\"拒绝\",\"sent\":\"已下发\",\"timeout\":\"超时\"}",
+      "schema": "string",
+      "parent": "devices"
+    },
+    {
+      "name": "version",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "标定版本号",
+      "constraints": "",
+      "schema": "int",
+      "parent": "ext"
+    },
+    {
+      "name": "progress",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "标定整体进度，设备仅在有结果时推送",
+      "constraints": "",
+      "schema": "struct",
+      "parent": "output"
+    },
+    {
+      "name": "percent",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "进度百分比，仅包含两个值，ok时为100，failed时为0）",
+      "constraints": "",
+      "schema": "int",
+      "parent": "progress"
+    },
+    {
+      "name": "current_step",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "固定值 1",
+      "constraints": "",
+      "schema": "int",
+      "parent": "progress"
+    },
+    {
+      "name": "status",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "所有设备都标定成功时返回ok,任一设备失败返回failed",
+      "constraints": "{failed\":\"失败\",\"ok\":\"执行成功\"}",
+      "schema": "enum_string",
+      "parent": "output"
+    },
+    {
+      "name": "result",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "固定为0，具体标定设备的错误码到标定结果列表中查看",
+      "constraints": "",
+      "schema": "int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/events",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "method": "rtk_calibration",
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1676948902792,
+        "need_reply": 1,
+        "data": {
+          "output": {
+            "ext": {
+              "devices": [
+                {
+                  "sn": "string",
+                  "type": 1,
+                  "module": "3",
+                  "result": 0,
+                  "status": "ok"
+                },
+                {
+                  "sn": "string",
+                  "type": 1,
+                  "module": "6",
+                  "result": 341010,
+                  "status": "failed"
+                }
+              ],
+              "version": 1
+            },
+            "progress": {
+              "percent": 0,
+              "current_step": 1
+            },
+            "status": "failed"
+          },
+          "result": 0
+        },
+        "gateway": "sn"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock3"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/20.dock3/70.cmd.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock3/cmd.html",
+    "sha256": "6b0224f38b262284ce92deaffe66a73678b629098acb2bd017840ff7a4d6c0e6",
+    "asset_sha256": "f686a93d92c4c31ccae86dfbf6817779c63bcbbe4ca915853fa893521d6a4b15",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

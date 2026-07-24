@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""Build portable skill bundles and platform tool adapters from catalog/."""
+"""Build portable skill bundles and platform tool adapters from catalog/.
+
+Publishing convention: the portable skill package (build/skills/dji-cloud-api)
+is the single canonical publisher of full tool files (assets/*.json); dist/
+carries only the module shards and their registry. The catalog-id to tool-name
+mapping is derivable via tool_name(entry_id) and is not serialized separately.
+"""
 
 from __future__ import annotations
 
@@ -45,7 +51,8 @@ def tool_input_schema(entry: dict[str, Any]) -> dict[str, Any]:
     properties: dict[str, Any] = {}
     required: list[str] = []
     for parameter in entry["parameters"]:
-        name = re.sub(r"[^A-Za-z0-9_]", "_", parameter["name"]).strip("_")
+        raw_name = f"{parameter['parent']}_{parameter['name']}" if parameter.get("parent") else parameter["name"]
+        name = re.sub(r"[^A-Za-z0-9_]", "_", raw_name).strip("_")
         if not name or name in properties:
             continue
         spec: dict[str, Any] = {
@@ -134,7 +141,6 @@ def build_skill(entries: list[dict[str, Any]], openai: list[dict[str, Any]], cla
                             "id": entry["id"],
                             "name": entry["name"],
                             "purpose": entry["purpose"],
-                            "operation": entry["operation"],
                         }
                         for entry in part_entries
                     ],
@@ -142,6 +148,20 @@ def build_skill(entries: list[dict[str, Any]], openai: list[dict[str, Any]], cla
             )
     write_json(PACKAGE / "references/index.json", reference_index, compact=True)
     shutil.copy2(CATALOG / "error-codes.json", PACKAGE / "references/error-codes.json")
+    manifest = json.loads((ROOT / "manifest.json").read_text(encoding="utf-8"))
+    change_report = json.loads((CATALOG / "change-report.json").read_text(encoding="utf-8"))
+    write_json(PACKAGE / "references/source-manifest.json", manifest, compact=True)
+    write_json(
+        PACKAGE / "references/change-report-summary.json",
+        {
+            "source_priority": change_report["source_priority"],
+            "official_version": change_report["official_version"],
+            "snapshot_sha256": change_report["snapshot_sha256"],
+            "baseline": change_report["baseline"],
+            "summary": change_report["summary"],
+        },
+        compact=True,
+    )
     write_json(PACKAGE / "assets/openai-tools.json", openai, compact=True)
     write_json(PACKAGE / "assets/claude-tools.json", claude, compact=True)
 
@@ -149,8 +169,6 @@ def build_skill(entries: list[dict[str, Any]], openai: list[dict[str, Any]], cla
 def build_dist(entries: list[dict[str, Any]], openai: list[dict[str, Any]], claude: list[dict[str, Any]]) -> None:
     if DIST.exists():
         shutil.rmtree(DIST)
-    write_json(DIST / "openai/tools.json", openai)
-    write_json(DIST / "claude/tools.json", claude)
     for platform, tools in (("openai", openai), ("claude", claude)):
         grouped: dict[str, list[dict[str, Any]]] = {}
         for entry, tool in zip(entries, tools):
@@ -164,10 +182,6 @@ def build_dist(entries: list[dict[str, Any]], openai: list[dict[str, Any]], clau
                 write_json(DIST / platform / "by-module" / filename, part_tools)
                 registry.append({"group": group, "file": f"by-module/{filename}", "tool_count": len(part_tools)})
         write_json(DIST / platform / "index.json", registry)
-    write_json(
-        DIST / "tool-map.json",
-        [{"catalog_id": entry["id"], "tool_name": tool_name(entry["id"])} for entry in entries],
-    )
 
 
 def main() -> int:

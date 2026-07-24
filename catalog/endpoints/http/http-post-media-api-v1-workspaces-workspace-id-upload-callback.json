@@ -116,7 +116,7 @@
           "type": "integer",
           "required": false,
           "required_status": "optional",
-          "description": "当文件为图片的时候生效 * 0 - 普通图片 * 1 - 全景图",
+          "description": "当文件为图片的时候生效* 0 - 普通图片* 1 - 全景图",
           "constraints": "none",
           "schema": "integer"
         }
@@ -130,67 +130,59 @@
   },
   "responses": [
     {
-      "status": "200",
-      "description": "OK",
-      "schema": "media.UploadCallbackOutput",
+      "status": "documented_example",
+      "description": "Response structure shown by the official documentation.",
+      "schema": "official_example",
       "fields": [
         {
           "name": "code",
           "in": "response",
           "type": "integer",
-          "required": false,
-          "required_status": "optional",
-          "description": "错误码",
-          "constraints": "none",
-          "schema": "integer"
-        },
-        {
-          "name": "data",
-          "in": "response",
-          "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "none",
-          "constraints": "none",
-          "schema": "media.UploadCallbackOutputData"
+          "required": null,
+          "required_status": "not_specified_by_source",
+          "description": "Field present in the official example response.",
+          "constraints": "",
+          "schema": "int"
         },
         {
           "name": "message",
           "in": "response",
           "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "错误描述",
-          "constraints": "none",
-          "schema": "string"
+          "required": null,
+          "required_status": "not_specified_by_source",
+          "description": "Field present in the official example response.",
+          "constraints": "",
+          "schema": "str"
+        },
+        {
+          "name": "data",
+          "in": "response",
+          "type": "string",
+          "required": null,
+          "required_status": "not_specified_by_source",
+          "description": "Field present in the official example response.",
+          "constraints": "",
+          "schema": "dict",
+          "fields": [
+            {
+              "name": "object_key",
+              "in": "response",
+              "type": "string",
+              "required": null,
+              "required_status": "not_specified_by_source",
+              "description": "Field present in the official example response.",
+              "constraints": "",
+              "schema": "str"
+            }
+          ]
         }
       ]
     }
   ],
   "errors": [
     {
-      "code": "400",
-      "meaning": "invalid_request",
-      "retry": false
-    },
-    {
-      "code": "401",
-      "meaning": "token_expired_or_invalid",
-      "retry": false
-    },
-    {
-      "code": "403",
-      "meaning": "forbidden",
-      "retry": false
-    },
-    {
-      "code": "404",
-      "meaning": "resource_not_found",
-      "retry": false
-    },
-    {
-      "code": "5xx",
-      "meaning": "server_error",
+      "code": "code != 0",
+      "meaning": "Resolve the returned code through catalog/error-codes.json.",
       "retry": false
     }
   ],
@@ -211,32 +203,11 @@
       "kind": "request",
       "format": "json",
       "value": {
-        "result": 0,
-        "ext": {
-          "file_group_id": "string",
-          "drone_model_key": "string",
-          "is_original": true,
-          "payload_model_key": "string",
-          "tinny_fingerprint": "string",
-          "sn": "string"
-        },
-        "fingerprint": "string",
-        "metadata": {
-          "absolute_altitude": 0,
-          "created_time": "string",
-          "gimbal_yaw_degree": 0,
-          "relative_altitude": 0,
-          "shoot_position": {
-            "lat": 0,
-            "lng": 0
-          }
-        },
-        "name": "string",
-        "object_key": "string",
-        "path": "string",
-        "sub_file_type": 0
+        "workspace_id": "<workspace_id>",
+        "x-auth-token": "<x-auth-token>",
+        "body": "<body>"
       },
-      "source": "official"
+      "source": "generated_from_schema"
     }
   ],
   "retry": {
@@ -250,6 +221,10 @@
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/40.mediafile-upload-result-report.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/40.mediafile-upload-result-report.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/https/media-management/mediafile-upload-result-report.html",
+    "sha256": "c98d20b0be5064f238d2a0082269169f939699d10719f501c6d83af5f50d02a7",
+    "asset_sha256": "422600063b62ae8b48a72b0d006ac12625f05d5e36e1ba0891ca0218b983c9ef",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

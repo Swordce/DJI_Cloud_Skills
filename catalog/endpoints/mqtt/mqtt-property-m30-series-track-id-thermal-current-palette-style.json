@@ -1,0 +1,93 @@
+{
+  "id": "mqtt-property-m30-series-track-id-thermal-current-palette-style",
+  "name": "thermal_current_palette_style",
+  "purpose": "红外相机提供多种调色样式，用户可根据不同的场景选择不同的色彩，便于更加清晰地查看目标",
+  "protocol": "mqtt",
+  "module": "device-properties",
+  "operation": {
+    "action": "read_write",
+    "topic": "thing/product/{device_sn}/osd",
+    "set_topic": "thing/product/{gateway_sn}/property/set",
+    "direction": "bidirectional",
+    "method": "property_report",
+    "property_path": "track_id.thermal_current_palette_style",
+    "access_mode": "rw",
+    "push_mode": "0"
+  },
+  "parameters": [
+    {
+      "name": "thermal_current_palette_style",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "红外相机提供多种调色样式，用户可根据不同的场景选择不同的色彩，便于更加清晰地查看目标",
+      "constraints": "{\"0\":\"白热\",\"1\":\"黑热\",\"2\":\"描红\",\"3\":\"医疗\",\"5\":\"彩虹 1\",\"6\":\"铁红\",\"8\":\"北极\",\"11\":\"熔岩\",\"12\":\"热铁\",\"13\":\"彩虹 2\"}",
+      "schema": "enum_int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "payload_field": "data.thermal_current_palette_style"
+    }
+  ],
+  "errors": [],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "thermal_current_palette_style": 0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "m30-series"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/10.aircraft/00.m30-properties.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/aircraft/m30-properties.html",
+    "sha256": "fb813a50caf5d4911bd978abd9ca2374605c8ea744d8f91c520e45eaec52a704",
+    "asset_sha256": "604dc444626b9ff2458e81e65e23228cf666eec85f15efac293eec230a605024",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

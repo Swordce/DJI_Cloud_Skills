@@ -1,0 +1,117 @@
+{
+  "id": "mqtt-dock2-stick-control-thing-product-gateway-sn-drc-down",
+  "name": "DRC-杆量控制",
+  "purpose": "MQTT message: stick_control",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/drc/down",
+    "direction": "down",
+    "method": "stick_control",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "roll",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "对应遥控器A通道，控制飞行器横滚（表现为左右平移）。杆量范围[1024±660]，1024为中值（无动作），数值增大表示向右倾斜，减小表示向左倾斜。",
+      "constraints": "{\"max\":\"1684\",\"min\":\"364\",\"unit_name\":\"\"}",
+      "schema": "int"
+    },
+    {
+      "name": "pitch",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "对应遥控器E通道，控制飞行器俯仰（表现为前后平移）。杆量范围[1024±660]，1024为中值（无动作），数值增大表示向前俯冲，减小表示向后抬头。",
+      "constraints": "{\"max\":\"1684\",\"min\":\"364\",\"unit_name\":\"\"}",
+      "schema": "int"
+    },
+    {
+      "name": "throttle",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "对应遥控器T通道，控制飞行器升降。杆量范围[1024±660]，1024为悬停状态，数值增大表示升高，减小表示降低。",
+      "constraints": "{\"max\":\"1684\",\"min\":\"364\",\"unit_name\":\"\"}",
+      "schema": "int"
+    },
+    {
+      "name": "yaw",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "对应遥控器R通道，控制飞行器偏航（表现为左右旋转）。杆量范围[1024±660]，1024为中值（无动作），数值增大表示顺时针旋转，减小表示逆时针旋转。",
+      "constraints": "{\"max\":\"1684\",\"min\":\"364\",\"unit_name\":\"\"}",
+      "schema": "int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/drc/down",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "seq": 1,
+        "method": "stick_control",
+        "data": {
+          "roll": 1024,
+          "pitch": 1024,
+          "throttle": 1024,
+          "yaw": 1024,
+          "gimbal_pitch": 1024
+        }
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/110.drc.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock2/drc.html",
+    "sha256": "5c2ce863e86aa46ba26c4e0f03532b4f73a8c9277b0c6809ed1c316f5abd2b4d",
+    "asset_sha256": "8c4032cb0d6748d7bae5f08bd7c1a3517edb8fbd665b43d9ff42ef33543c81aa",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

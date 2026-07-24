@@ -1,0 +1,227 @@
+{
+  "id": "mqtt-dock2-in-flight-wayline-deliver-thing-product-gateway-sn-services",
+  "name": "空中下发航线",
+  "purpose": "MQTT services: in_flight_wayline_deliver",
+  "protocol": "mqtt",
+  "module": "wayline",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/services",
+    "direction": "down",
+    "method": "in_flight_wayline_deliver",
+    "reply_topic": "thing/product/{gateway_sn}/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "bid",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "请求的唯一标识符",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "tid",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "任务的唯一标识符",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "timestamp",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "请求的时间戳",
+      "constraints": "",
+      "schema": "int64"
+    },
+    {
+      "name": "method",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "固定为 in_flight_wayline_deliver",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "data",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "下发航线的具体数据",
+      "constraints": "",
+      "schema": "object"
+    },
+    {
+      "name": "data.file",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "航线文件信息",
+      "constraints": "",
+      "schema": "object"
+    },
+    {
+      "name": "data.file.fingerprint",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "用于校验文件完整性",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "data.file.url",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "航线文件的下载地址",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "data.in_flight_wayline_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "空中航线任务的唯一标识符",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "data.out_of_control_action",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "遥控器失控时的动作",
+      "constraints": "{0: \"返航\", 1: \"悬停\", 2: \"降落\"}",
+      "schema": "int"
+    },
+    {
+      "name": "data.exit_wayline_when_rc_lost",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "航线失联时的动作",
+      "constraints": "{0: \"继续执行\", 1: \"执行飞控失控动作\"}",
+      "schema": "int"
+    },
+    {
+      "name": "data.rth_altitude",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "返航高度，单位：米",
+      "constraints": "{min: 20, max: 1500}",
+      "schema": "int"
+    },
+    {
+      "name": "data.rth_mode",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "返航高度模式",
+      "constraints": "{0: \"智能高度\", 1: \"设定高度\"}",
+      "schema": "int"
+    },
+    {
+      "name": "data.wayline_precision_type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "航线精度类型",
+      "constraints": "{0: \"GPS任务\", 1: \"高精度RTK任务\"}",
+      "schema": "int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {},
+        "method": "in_flight_wayline_deliver",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "in_flight_wayline_deliver",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/50.wayline.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock2/wayline.html",
+    "sha256": "ab3084c76c8fa9d65f308da3a107b0090084cf7f05f79baa512c19c3b1afb112",
+    "asset_sha256": "9a61e8534085ecaaf89095935513edd842edcd66a075cb89b09255aa79407390",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

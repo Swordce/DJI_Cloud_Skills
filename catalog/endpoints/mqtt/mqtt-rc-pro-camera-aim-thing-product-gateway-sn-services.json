@@ -1,0 +1,136 @@
+{
+  "id": "mqtt-rc-pro-camera-aim-thing-product-gateway-sn-services",
+  "name": "负载控制—双击成为 AIM",
+  "purpose": "MQTT services: camera_aim",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/services",
+    "direction": "down",
+    "method": "camera_aim",
+    "reply_topic": "thing/product/{gateway_sn}/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "camera_type",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相机类型枚举",
+      "constraints": "{\"ir\":\"红外\",\"wide\":\"广角\",\"zoom\":\"变焦\"}",
+      "schema": "enum_string"
+    },
+    {
+      "name": "locked",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "机头和云台的相对关系是否锁定",
+      "constraints": "{\"false\":\"仅云台转，机身不转\",\"true\":\"锁定机头，云台和机身一起转\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "x",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "目标坐标 x，以镜头的左上角为坐标中心点，水平方向为 x",
+      "constraints": "{\"max\":1,\"min\":0}",
+      "schema": "double"
+    },
+    {
+      "name": "y",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "目标坐标 y，以镜头的左上角为坐标中心点，竖直方向为 y",
+      "constraints": "{\"max\":1,\"min\":0}",
+      "schema": "double"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "camera_type": "zoom",
+          "locked": true,
+          "payload_index": "39-0-7",
+          "x": 0.5,
+          "y": 0.5
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "camera_aim"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "result": 0
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "camera_aim"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "rc-pro"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/00.mqtt/20.rc-pro/30.drc.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/mqtt/rc-pro/drc.html",
+    "sha256": "d790437b6837237d120c4dfda12f344ecbd543c83b2e4221ae79e6ddec1e1fbc",
+    "asset_sha256": "0576c1465474a500ddbae5c8635386c3043974d44ff1ae5da5914a8ca41924eb",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

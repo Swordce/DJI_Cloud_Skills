@@ -1,9 +1,9 @@
 {
   "id": "jsbridge-djibridge-platformsetinformation",
   "name": "platformSetInformation",
-  "purpose": "设置平台名称 | platformName: 平台名称 workspaceName: DJI Pilot 2上云入口显示工作空间名称 desc: DJI Pilot 2上云入口显示工作空间描述",
+  "purpose": "设置平台名称 | platformName: 平台名称workspaceName: DJI Pilot 2上云入口显示工作空间名称desc: DJI Pilot 2上云入口显示工作空间描述",
   "protocol": "jsbridge",
-  "module": "3bc15c8aae3e",
+  "module": "overview",
   "operation": {
     "method": "window.djiBridge.platformSetInformation",
     "signature": "window.djiBridge.platformSetInformation(String platformName, String workspaceName, String desc)"
@@ -15,7 +15,7 @@
       "type": "string",
       "required": true,
       "required_status": "required",
-      "description": "设置平台名称 | platformName: 平台名称 workspaceName: DJI Pilot 2上云入口显示工作空间名称 desc: DJI Pilot 2上云入口显示工作空间描述",
+      "description": "设置平台名称 | platformName: 平台名称workspaceName: DJI Pilot 2上云入口显示工作空间名称desc: DJI Pilot 2上云入口显示工作空间描述",
       "constraints": "",
       "schema": "String"
     },
@@ -25,7 +25,7 @@
       "type": "string",
       "required": true,
       "required_status": "required",
-      "description": "设置平台名称 | platformName: 平台名称 workspaceName: DJI Pilot 2上云入口显示工作空间名称 desc: DJI Pilot 2上云入口显示工作空间描述",
+      "description": "设置平台名称 | platformName: 平台名称workspaceName: DJI Pilot 2上云入口显示工作空间名称desc: DJI Pilot 2上云入口显示工作空间描述",
       "constraints": "",
       "schema": "String"
     },
@@ -35,7 +35,7 @@
       "type": "string",
       "required": true,
       "required_status": "required",
-      "description": "设置平台名称 | platformName: 平台名称 workspaceName: DJI Pilot 2上云入口显示工作空间名称 desc: DJI Pilot 2上云入口显示工作空间描述",
+      "description": "设置平台名称 | platformName: 平台名称workspaceName: DJI Pilot 2上云入口显示工作空间名称desc: DJI Pilot 2上云入口显示工作空间描述",
       "constraints": "",
       "schema": "String"
     }
@@ -70,6 +70,10 @@
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/30.jsbridge.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/jsbridge.html",
+    "sha256": "b429410bb87f7ac2ddc62297f355b0a4b53794315ff66153d2b2551284be0b93",
+    "asset_sha256": "c6ce48a8eb49c52836e9a6448627374f2006544843f0c1dbb3f5858a7be3da18",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

@@ -1,0 +1,272 @@
+{
+  "id": "mqtt-dock3-takeoff-to-point-thing-product-gateway-sn-services",
+  "name": "一键起飞",
+  "purpose": "MQTT services: takeoff_to_point",
+  "protocol": "mqtt",
+  "module": "drc",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/services",
+    "direction": "down",
+    "method": "takeoff_to_point",
+    "reply_topic": "thing/product/{gateway_sn}/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "target_latitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "目标点纬度，角度值，南纬是负，北纬是正，精度到小数点后6位",
+      "constraints": "{\"max\":90,\"min\":-90}",
+      "schema": "double"
+    },
+    {
+      "name": "target_longitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "目标点经度，角度值，东经是正，西经是负，精度到小数点后6位",
+      "constraints": "{\"max\":180,\"min\":-180}",
+      "schema": "double"
+    },
+    {
+      "name": "target_height",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "目标点高度（椭球高），使用 WGS84 模型，飞行器到点后默认行为：悬停",
+      "constraints": "{\"max\":1500,\"min\":2,\"step\":0.1,\"unit_name\":\"米 / m\"}",
+      "schema": "float"
+    },
+    {
+      "name": "security_takeoff_height",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相对(机场)起飞点的高度（ALT），飞行器先升到特定的高度，然后再飞向目标点。",
+      "constraints": "{\"max\":1500,\"min\":20,\"step\":0.1,\"unit_name\":\"米 / m\"}",
+      "schema": "float"
+    },
+    {
+      "name": "rth_mode",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "智能返航模式下，飞行器将自动规划最佳返航高度。大疆机场当前不支持设置返航高度模式，只能选择'设定高度'模式。当环境，光线不满足视觉系统要求时（譬如傍晚阳光直射、夜间弱光无光），飞行器将使用您设定的返航高度进行直线返航",
+      "constraints": "{\"0\":\"智能高度\",\"1\":\"设定高度\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "rth_altitude",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相对(机场)起飞点的高度，相对高 ALT",
+      "constraints": "{\"max\":1500,\"min\":2,\"step\":1,\"unit_name\":\"米 / m\"}",
+      "schema": "int"
+    },
+    {
+      "name": "rc_lost_action",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "遥控器失控动作",
+      "constraints": "{\"0\":\"悬停\",\"1\":\"着陆(降落)\",\"2\":\"返航\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "commander_mode_lost_action",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "【必填】指点飞行失控动作",
+      "constraints": "{\"0\":\"继续执行指点飞行任务\",\"1\":\"退出指点飞行任务，执行普通失控行为\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "commander_flight_mode",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "【必填】指点飞行模式设置值",
+      "constraints": "{\"0\":\"智能高度飞行\",\"1\":\"设定高度飞行\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "commander_flight_height",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相对(机场)起飞点的高度，相对高 ALT",
+      "constraints": "{\"max\":3000,\"min\":2,\"step\":0.1,\"unit_name\":\"米 / m\"}",
+      "schema": "float"
+    },
+    {
+      "name": "flight_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "任务 UUID，全局唯一，用于染色，云端区分该值是普通计划任务还是一键起飞任务",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "max_speed",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "一键起飞的飞行过程中能达到的最大速度",
+      "constraints": "{\"max\":15,\"min\":1,\"unit_name\":\"米每秒 / m/s\"}",
+      "schema": "int"
+    },
+    {
+      "name": "simulate_mission",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "可选字段，用于在室内进行模拟任务调试。注意：进行模拟飞行前，请务必取下桨叶，以防舱盖关闭时夹断桨叶。",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "is_enable",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "当次任务打开或关闭模拟器",
+      "constraints": "{\"0\":\"不开启\",\"1\":\"开启\"}",
+      "schema": "enum_int",
+      "parent": "simulate_mission"
+    },
+    {
+      "name": "latitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "纬度",
+      "constraints": "{\"max\":\"90.0\",\"min\":\"-90.0\"}",
+      "schema": "double",
+      "parent": "simulate_mission"
+    },
+    {
+      "name": "longitude",
+      "in": "payload",
+      "type": "number",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "经度",
+      "constraints": "{\"max\":\"180.0\",\"min\":\"-180.0\"}",
+      "schema": "double",
+      "parent": "simulate_mission"
+    },
+    {
+      "name": "flight_safety_advance_check",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "设置一键起飞和航线任务中的飞行安全是否预先检查。此字段为可选，默认为0，值为0表示关闭，1表示开启。飞行安全预先检查表示: 飞行器执行任务前，检查自身作业区文件是否与云端一致，如果不一致则拉取文件更新，如果一致则不处理",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "flight_id": "ABDEAC21DCADDA",
+          "max_speed": 12,
+          "rc_lost_action": 0,
+          "rth_altitude": 100,
+          "security_takeoff_height": 100,
+          "target_height": 100,
+          "target_latitude": 12.23,
+          "target_longitude": 12.32,
+          "commander_mode_lost_action": 1,
+          "commander_flight_height": 80,
+          "flight_safety_advance_check": 1
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "takeoff_to_point"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "result": 0
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "takeoff_to_point"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock3"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/20.dock3/110.drc.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock3/drc.html",
+    "sha256": "a7c097dfae7259a21d72664d1ca32f3e37a2569369666762c0d3816a6ed51d9c",
+    "asset_sha256": "0a6630ded545dc0b4034723d74858f6d9661194bf5ac63508dc1e6c8a34d8e64",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

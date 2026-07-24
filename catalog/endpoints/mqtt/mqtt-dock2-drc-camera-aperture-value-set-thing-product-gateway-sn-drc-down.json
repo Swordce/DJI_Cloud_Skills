@@ -1,0 +1,110 @@
+{
+  "id": "mqtt-dock2-drc-camera-aperture-value-set-thing-product-gateway-sn-drc-down",
+  "name": "负载控制—相机光圈",
+  "purpose": "MQTT message: drc_camera_aperture_value_set",
+  "protocol": "mqtt",
+  "module": "remote-control",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/drc/down",
+    "direction": "down",
+    "method": "drc_camera_aperture_value_set",
+    "reply_topic": "thing/product/{gateway_sn}/drc/up",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "camera_type",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相机类型枚举",
+      "constraints": "{\"wide\":\"广角\",\"zoom\":\"变焦\"}",
+      "schema": "enum_string"
+    },
+    {
+      "name": "aperture_value",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "根据不同机型，范围不一致",
+      "constraints": "{\"0\":\"F_AUTO\",\"50\":\"F0_5\",\"70\":\"F0_7\",\"80\":\"F0_8\",\"90\":\"F0_9\",\"95\":\"F0_95\",\"100\":\"F1_0\",\"110\":\"F1_1\",\"120\":\"F1_2\",\"140\":\"F1_4\",\"160\":\"F1_6\",\"170\":\"F1_7\",\"180\":\"F1_8\",\"200\":\"F2\",\"220\":\"F2_2\",\"240\":\"F2_4\",\"250\":\"F2_5\",\"280\":\"F2_8\",\"320\":\"F3_2\",\"330\":\"F3_3\",\"340\":\"F3_4\",\"350\":\"F3_5\",\"400\":\"F4\",\"440\":\"F4_4\",\"450\":\"F4_5\",\"480\":\"F4_8\",\"500\":\"F5\",\"560\":\"F5_6\",\"630\":\"F6_3\",\"670\":\"F6_7\",\"680\":\"F6_8\",\"710\":\"F7_1\",\"800\":\"F8\",\"900\":\"F9\",\"950\":\"F9_5\",\"960\":\"F9_6\",\"1000\":\"F10\",\"1100\":\"F11\",\"1300\":\"F13\",\"1400\":\"F14\",\"1600\":\"F16\",\"1800\":\"F18\",\"1900\":\"F19\",\"2000\":\"F20\",\"2200\":\"F22\",\"2500\":\"F25\",\"2700\":\"F27\",\"2900\":\"F29\",\"3200\":\"F32\",\"3600\":\"F36\",\"3800\":\"F38\",\"4000\":\"F40\",\"4500\":\"F45\",\"5100\":\"F51\",\"5400\":\"F54\",\"5700\":\"F57\",\"6400\":\"F64\",\"7200\":\"F72\",\"7600\":\"F76\",\"8000\":\"F80\",\"9000\":\"F90\",\"10700\":\"F107\",\"12800\":\"F128\",\"18000\":\"F180\",\"25600\":\"F256\"}",
+      "schema": "enum_int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "aperture_value": 5,
+          "camera_type": "zoom",
+          "payload_index": "39-0-7"
+        },
+        "method": "drc_camera_aperture_value_set",
+        "seq": 1
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "data": {
+          "result": 0
+        },
+        "method": "drc_camera_aperture_value_set",
+        "seq": 1
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/180.remote-control.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock2/remote-control.html",
+    "sha256": "9b3ac6af4b4015f1ff1f931ce26a6203cb1cc9298288cb3df32b3601bb3997ba",
+    "asset_sha256": "97223848e4c88ff9e9e1da250c50f8f698afcfa134eb4b5b74a24bcd7cbc4f04",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

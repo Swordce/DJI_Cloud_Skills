@@ -63,7 +63,7 @@
     {
       "name": "template_type",
       "in": "query",
-      "type": "integer",
+      "type": "array",
       "required": false,
       "required_status": "optional",
       "description": "航线模版类型",
@@ -118,58 +118,102 @@
   },
   "responses": [
     {
-      "status": "200",
-      "description": "OK",
-      "schema": "wayline.GetWaylinesOutput",
+      "status": "documented_example",
+      "description": "Response structure shown by the official documentation.",
+      "schema": "official_example",
       "fields": [
         {
-          "name": "list",
+          "name": "code",
           "in": "response",
-          "type": "array",
-          "required": false,
-          "required_status": "optional",
-          "description": "none",
-          "constraints": "none",
-          "schema": "[wayline.AppFileItem]"
+          "type": "integer",
+          "required": null,
+          "required_status": "not_specified_by_source",
+          "description": "Field present in the official example response.",
+          "constraints": "",
+          "schema": "int"
         },
         {
-          "name": "pagination",
+          "name": "message",
           "in": "response",
           "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "none",
-          "constraints": "none",
-          "schema": "api_render.PagyInfo"
+          "required": null,
+          "required_status": "not_specified_by_source",
+          "description": "Field present in the official example response.",
+          "constraints": "",
+          "schema": "str"
+        },
+        {
+          "name": "data",
+          "in": "response",
+          "type": "string",
+          "required": null,
+          "required_status": "not_specified_by_source",
+          "description": "Field present in the official example response.",
+          "constraints": "",
+          "schema": "dict",
+          "fields": [
+            {
+              "name": "list",
+              "in": "response",
+              "type": "string",
+              "required": null,
+              "required_status": "not_specified_by_source",
+              "description": "Field present in the official example response.",
+              "constraints": "",
+              "schema": "list"
+            },
+            {
+              "name": "pagination",
+              "in": "response",
+              "type": "string",
+              "required": null,
+              "required_status": "not_specified_by_source",
+              "description": "Field present in the official example response.",
+              "constraints": "",
+              "schema": "dict",
+              "fields": [
+                {
+                  "name": "page",
+                  "in": "response",
+                  "type": "integer",
+                  "required": null,
+                  "required_status": "not_specified_by_source",
+                  "description": "Field present in the official example response.",
+                  "constraints": "",
+                  "schema": "int"
+                },
+                {
+                  "name": "page_size",
+                  "in": "response",
+                  "type": "integer",
+                  "required": null,
+                  "required_status": "not_specified_by_source",
+                  "description": "Field present in the official example response.",
+                  "constraints": "",
+                  "schema": "int"
+                },
+                {
+                  "name": "total",
+                  "in": "response",
+                  "type": "integer",
+                  "required": null,
+                  "required_status": "not_specified_by_source",
+                  "description": "Field present in the official example response.",
+                  "constraints": "",
+                  "schema": "int"
+                }
+              ]
+            }
+          ]
         }
       ]
     }
   ],
   "errors": [
     {
-      "code": "400",
-      "meaning": "invalid_request",
+      "code": "code != 0",
+      "meaning": "Resolve the returned code through catalog/error-codes.json.",
       "retry": false
-    },
-    {
-      "code": "401",
-      "meaning": "token_expired_or_invalid",
-      "retry": false
-    },
-    {
-      "code": "403",
-      "meaning": "forbidden",
-      "retry": false
-    },
-    {
-      "code": "404",
-      "meaning": "resource_not_found",
-      "retry": false
-    },
-    {
-      "code": "5xx",
-      "meaning": "server_error",
-      "retry": true
     }
   ],
   "examples": [
@@ -211,41 +255,13 @@
       "source": "official"
     },
     {
-      "kind": "response",
+      "kind": "request",
       "format": "json",
       "value": {
-        "code": 0,
-        "data": {
-          "list": [
-            {
-              "drone_model_key": "string",
-              "favorited": true,
-              "id": "string",
-              "name": "string",
-              "payload_model_keys": [
-                "string"
-              ],
-              "template_types": [
-                0
-              ],
-              "action_type": 0,
-              "update_time": 0,
-              "user_name": "string",
-              "start_wayline_point": {
-                "start_latitude": 22.5799601837589,
-                "start_lontitude": 113.942744030171
-              }
-            }
-          ],
-          "pagination": {
-            "page": 0,
-            "page_size": 0,
-            "total": 0
-          }
-        },
-        "message": "string"
+        "workspace_id": "<workspace_id>",
+        "x-auth-token": "<x-auth-token>"
       },
-      "source": "official"
+      "source": "generated_from_schema"
     }
   ],
   "retry": {
@@ -266,6 +282,10 @@
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/10.obtain-waypointfile-list.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/10.obtain-waypointfile-list.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/https/waypoint-management/obtain-waypointfile-list.html",
+    "sha256": "b29a87bd1ff39640a7fac94c714169d58457f4fde40bb6a8c2e0f2d762b8ad3c",
+    "asset_sha256": "74c6da82ab971dd4b3bfe277fa396ec2b784b1fac793809e42a1c6a2c450ec31",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

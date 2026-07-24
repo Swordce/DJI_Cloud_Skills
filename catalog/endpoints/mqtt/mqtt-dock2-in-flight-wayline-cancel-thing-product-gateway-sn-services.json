@@ -1,0 +1,131 @@
+{
+  "id": "mqtt-dock2-in-flight-wayline-cancel-thing-product-gateway-sn-services",
+  "name": "取消空中航线",
+  "purpose": "MQTT services: in_flight_wayline_cancel",
+  "protocol": "mqtt",
+  "module": "wayline",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/services",
+    "direction": "down",
+    "method": "in_flight_wayline_cancel",
+    "reply_topic": "thing/product/{gateway_sn}/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "bid",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "请求的唯一标识符",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "tid",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "任务的唯一标识符",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "timestamp",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "请求的时间戳",
+      "constraints": "",
+      "schema": "int64"
+    },
+    {
+      "name": "method",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "固定为 in_flight_wayline_cancel",
+      "constraints": "",
+      "schema": "string"
+    },
+    {
+      "name": "data",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "取消航线的具体数据",
+      "constraints": "",
+      "schema": "object"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "8fd307b9-6a70-465c-aeb7-5edac860017b",
+        "tid": "b3a76306-2576-4bc5-9a55-77e4f8f3b17c",
+        "timestamp": 1731136244583,
+        "method": "in_flight_wayline_cancel",
+        "data": {}
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "result": 0
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "exponential_jitter",
+    "retry_on": [],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/50.wayline.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock2/wayline.html",
+    "sha256": "ab3084c76c8fa9d65f308da3a107b0090084cf7f05f79baa512c19c3b1afb112",
+    "asset_sha256": "9a61e8534085ecaaf89095935513edd842edcd66a075cb89b09255aa79407390",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

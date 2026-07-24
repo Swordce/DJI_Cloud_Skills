@@ -1,0 +1,135 @@
+{
+  "id": "mqtt-rc-live-start-push-thing-product-gateway-sn-services",
+  "name": "开始直播",
+  "purpose": "MQTT services: live_start_push",
+  "protocol": "mqtt",
+  "module": "live",
+  "operation": {
+    "action": "publish",
+    "topic": "thing/product/{gateway_sn}/services",
+    "direction": "down",
+    "method": "live_start_push",
+    "reply_topic": "thing/product/{gateway_sn}/services_reply",
+    "reply_direction": "up"
+  },
+  "parameters": [
+    {
+      "name": "url_type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "直播协议类型",
+      "constraints": "{\"0\":\"声网 Agora\",\"1\":\"RTMP\",\"3\":\"GB28181\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "url",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "RTMP：（rtmp://xxxxxxx，示例：rtmp://192.168.1.1:8080/live），GB28181：（serverIP&serverPort&serverID&agentID&agentPassword&localPort&channel，示例： serverIP=192.168.1.1&serverPort=8080&serverID=34000000000000000000&agentID=300000000010000000000&agentPassword=0000000&localPort=7060&channel=340000000000000000000），声网Agora：（channel&sn&token&uid，示例： channel=1ZNDH360010162_39-0-7&sn=1ZNDH360010162&token=006dca67721582a48768ec4d817b7b25a86IAB4cw2JgN6iX8BpTPdc3e4S1Iendz94IFJ56aSXKvzAJei27MqF2zyCIgCLIIoBt41+YAQAAQC3jX5gAgC3jX5gAwC3jX5gBAC3jX5g&uid=50000）。注意：声网生成的token可能带有如 '+' 的特殊字符，需要做一次 url encode，不然 Pilot 端会出现解析错误的情况。",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "video_id",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "某路在推视频码流的标识符，格式为 {sn}/{camera_index}/{video_index}。其中 {sn} 为视频源设备序列号。{camera_index} 为相机索引，使用 {type-subtype-gimbalindex} 的格式。{video_index} 为该相机级别的视频源可以选择的码流索引。",
+      "constraints": "",
+      "schema": "text"
+    },
+    {
+      "name": "video_quality",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "不同清晰度的分辨率与码率分别为，流畅：960 * 540、512Kbps，标清：1280 * 720、1Mbps，高清：1280 * 720、1.5Mbps，超清：1920 * 1080、3Mbps",
+      "constraints": "{\"0\":\"自适应\",\"1\":\"流畅\",\"2\":\"标清\",\"3\":\"高清\",\"4\":\"超清\"}",
+      "schema": "enum_int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/services_reply",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "url": "channel=1ZNDH1D0010098_39-0-7&sn=1ZNDH1D0010098&token=006dca67721582a48768ec4d817b7b25a86IADk%2Fcm%2Fdv%2BHY6qT%2FAKM6y7TcUe4lXNvZpycH7vUMAlM6pFALUKF2zyCIgA82pQE8cCoYAQAAQDxwKhgAgDxwKhgAwDxwKhgBADxwKhg&uid=50000",
+          "url_type": 0,
+          "video_id": "1ZNDH1D0010098/39-0-7/normal-0",
+          "video_quality": 0
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "live_start_push"
+      },
+      "source": "official"
+    },
+    {
+      "kind": "reply",
+      "format": "json",
+      "value": {
+        "bid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "data": {
+          "result": 0
+        },
+        "tid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+        "timestamp": 1654070968655,
+        "method": "live_start_push"
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "rc"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/10.pilot-to-cloud/00.mqtt/100.others/20.rc/20.live.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/mqtt/others/rc/live.html",
+    "sha256": "08838a811571e8c19442900d2e39aae8a4906eeaaba063f0dca854861f655768",
+    "asset_sha256": "b9513ef33f031f8ca277660ecfee1d87dfa274bfc068263d88e175aac6147644",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

@@ -101,6 +101,10 @@
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/10.pilot-to-cloud/20.websocket/20.situation-awareness/10.message-push.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/20.websocket/20.situation-awareness/10.message-push.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/websocket/situation-awareness/message-push.html",
+    "sha256": "b245731ff21802ed4c5abe3feb90e293707fd6037a1fabd255c34050bda776c1",
+    "asset_sha256": "6a93e1159329b3d9c5131509466e0176f0c94fa9b920b3cc93d1be2eb7b13d52",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

@@ -49,66 +49,27 @@
   "responses": [
     {
       "status": "200",
-      "description": "OK",
-      "schema": "wayline.CreateFavoriteOutput",
-      "fields": [
-        {
-          "name": "code",
-          "in": "response",
-          "type": "integer",
-          "required": false,
-          "required_status": "optional",
-          "description": "错误码",
-          "constraints": "none",
-          "schema": "integer"
-        },
-        {
-          "name": "data",
-          "in": "response",
-          "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "none",
-          "constraints": "none",
-          "schema": "wayline.CreateFavoriteInput"
-        },
-        {
-          "name": "message",
-          "in": "response",
-          "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "错误描述",
-          "constraints": "none",
-          "schema": "string"
-        }
-      ]
+      "description": "错误码",
+      "schema": "",
+      "fields": []
+    },
+    {
+      "status": "200",
+      "description": "none",
+      "schema": "",
+      "fields": []
+    },
+    {
+      "status": "200",
+      "description": "错误描述",
+      "schema": "",
+      "fields": []
     }
   ],
   "errors": [
     {
-      "code": "400",
-      "meaning": "invalid_request",
-      "retry": false
-    },
-    {
-      "code": "401",
-      "meaning": "token_expired_or_invalid",
-      "retry": false
-    },
-    {
-      "code": "403",
-      "meaning": "forbidden",
-      "retry": false
-    },
-    {
-      "code": "404",
-      "meaning": "resource_not_found",
-      "retry": false
-    },
-    {
-      "code": "5xx",
-      "meaning": "server_error",
+      "code": "code != 0",
+      "meaning": "Resolve the returned code through catalog/error-codes.json.",
       "retry": false
     }
   ],
@@ -124,18 +85,14 @@
       "source": "official"
     },
     {
-      "kind": "response",
+      "kind": "request",
       "format": "json",
       "value": {
-        "code": 0,
-        "data": {
-          "id": [
-            "string"
-          ]
-        },
-        "message": "string"
+        "workspace_id": "<workspace_id>",
+        "x-auth-token": "<x-auth-token>",
+        "id": []
       },
-      "source": "official"
+      "source": "generated_from_schema"
     }
   ],
   "retry": {
@@ -149,6 +106,10 @@
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/60.collect-waypointfile-in-batch.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/20.waypoint-management/60.collect-waypointfile-in-batch.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/https/waypoint-management/collect-waypointfile-in-batch.html",
+    "sha256": "d22b831b9d3c6ab10c472a98524047a63a958219b8c037e160ea87b7e0c4d795",
+    "asset_sha256": "e4b7897f052380bd10ed2bde365e382a700cd5cef8deac56f4dd3699c89e3ba2",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

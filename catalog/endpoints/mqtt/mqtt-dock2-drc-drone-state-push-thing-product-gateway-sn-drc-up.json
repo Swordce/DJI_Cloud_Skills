@@ -1,0 +1,130 @@
+{
+  "id": "mqtt-dock2-drc-drone-state-push-thing-product-gateway-sn-drc-up",
+  "name": "飞行器状态信息上报",
+  "purpose": "MQTT message: drc_drone_state_push",
+  "protocol": "mqtt",
+  "module": "remote-control",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/drc/up",
+    "direction": "up",
+    "method": "drc_drone_state_push",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "stealth_state",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "隐蔽模式状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "night_lights_state",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "夜航灯状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool"
+    },
+    {
+      "name": "mode_code",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "飞行器状态",
+      "constraints": "{\"0\":\"待机\",\"1\":\"起飞准备\",\"2\":\"起飞准备完毕\",\"3\":\"手动飞行\",\"4\":\"自动起飞\",\"5\":\"航线飞行\",\"6\":\"全景拍照\",\"7\":\"智能跟随\",\"8\":\"ADS-B 躲避\",\"9\":\"自动返航\",\"10\":\"自动降落\",\"11\":\"强制降落\",\"12\":\"三桨叶降落\",\"13\":\"升级中\",\"14\":\"未连接\",\"15\":\"APAS\",\"16\":\"虚拟摇杆状态\",\"17\":\"指令飞行\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "landing_type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "降落类型",
+      "constraints": "{\"0\":\"未降落\",\"1\":\"机场内降落\",\"2\":\"备降点降落\",\"3\":\"用户主动触发降落\",\"4\":\"飞行器自身触发降落\"}",
+      "schema": "enum_int"
+    },
+    {
+      "name": "landing_protection_type",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "开启避障情况下紧急降落，飞行器会开启降落检测",
+      "constraints": "{\"0\":\"未开启检测\",\"1\":\"检测到地面不平或者下方是水面，不适合降落，降落任务退出\",\"2\":\"没有检测出地面情况，降落任务退出\",\"3\":\"机场内降落检测\"}",
+      "schema": "enum_int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "landing_protection_type": 0,
+          "landing_type": 1,
+          "mode_code": 0,
+          "night_lights_state": 0,
+          "stealth_state": 0
+        },
+        "method": "drc_drone_state_push",
+        "seq": 1
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/180.remote-control.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock2/remote-control.html",
+    "sha256": "9b3ac6af4b4015f1ff1f931ce26a6203cb1cc9298288cb3df32b3601bb3997ba",
+    "asset_sha256": "97223848e4c88ff9e9e1da250c50f8f698afcfa134eb4b5b74a24bcd7cbc4f04",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

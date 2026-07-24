@@ -81,66 +81,27 @@
   "responses": [
     {
       "status": "200",
-      "description": "OK",
-      "schema": "storage.FolderUploadCallbackOutput",
-      "fields": [
-        {
-          "name": "file_group_id",
-          "in": "response",
-          "type": "string",
-          "required": false,
-          "required_status": "optional",
-          "description": "文件组id，在一次航线任务中产生的媒体文件组 ID 相同",
-          "constraints": "none",
-          "schema": "string"
-        },
-        {
-          "name": "file_count",
-          "in": "response",
-          "type": "integer",
-          "required": true,
-          "required_status": "required",
-          "description": "指定文件组的媒体文件总数",
-          "constraints": "none",
-          "schema": "int"
-        },
-        {
-          "name": "file_uploaded_count",
-          "in": "response",
-          "type": "integer",
-          "required": true,
-          "required_status": "required",
-          "description": "文件组中已经成功上传的媒体文件总数",
-          "constraints": "none",
-          "schema": "int"
-        }
-      ]
+      "description": "文件组id，在一次航线任务中产生的媒体文件组 ID 相同",
+      "schema": "",
+      "fields": []
+    },
+    {
+      "status": "200",
+      "description": "指定文件组的媒体文件总数",
+      "schema": "",
+      "fields": []
+    },
+    {
+      "status": "200",
+      "description": "文件组中已经成功上传的媒体文件总数",
+      "schema": "",
+      "fields": []
     }
   ],
   "errors": [
     {
-      "code": "400",
-      "meaning": "invalid_request",
-      "retry": false
-    },
-    {
-      "code": "401",
-      "meaning": "token_expired_or_invalid",
-      "retry": false
-    },
-    {
-      "code": "403",
-      "meaning": "forbidden",
-      "retry": false
-    },
-    {
-      "code": "404",
-      "meaning": "resource_not_found",
-      "retry": false
-    },
-    {
-      "code": "5xx",
-      "meaning": "server_error",
+      "code": "code != 0",
+      "meaning": "Resolve the returned code through catalog/error-codes.json.",
       "retry": false
     }
   ],
@@ -159,11 +120,11 @@
       "kind": "request",
       "format": "json",
       "value": {
-        "file_group_id": "xxx",
-        "file_count": 0,
-        "file_uploaded_count": 0
+        "workspace_id": "<workspace_id>",
+        "x-auth-token": "<x-auth-token>",
+        "body": "<body>"
       },
-      "source": "official"
+      "source": "generated_from_schema"
     }
   ],
   "retry": {
@@ -177,6 +138,10 @@
   "deprecated": false,
   "source": {
     "file": "docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/50.group-upload-callback.md",
-    "url": "https://github.com/dji-sdk/Cloud-API-Doc/blob/master/docs/cn/60.api-reference/10.pilot-to-cloud/10.https/30.media-management/50.group-upload-callback.md"
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/https/media-management/group-upload-callback.html",
+    "sha256": "a82283ae44d40d883d63cedde358eba3d3156d8f139c3aef32ffead85b2d4dd6",
+    "asset_sha256": "dbb70dcb08431213b2e0a9fb20fbab28129f077aa321a6c7f59681ddc0f25353",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
   }
 }

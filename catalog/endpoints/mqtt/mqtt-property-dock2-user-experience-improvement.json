@@ -1,0 +1,93 @@
+{
+  "id": "mqtt-property-dock2-user-experience-improvement",
+  "name": "user_experience_improvement",
+  "purpose": "用户体验改善计划",
+  "protocol": "mqtt",
+  "module": "device-properties",
+  "operation": {
+    "action": "read_write",
+    "topic": "thing/product/{device_sn}/state",
+    "set_topic": "thing/product/{gateway_sn}/property/set",
+    "direction": "bidirectional",
+    "method": "property_report",
+    "property_path": "user_experience_improvement",
+    "access_mode": "rw",
+    "push_mode": "1"
+  },
+  "parameters": [
+    {
+      "name": "user_experience_improvement",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "用户体验改善计划",
+      "constraints": "{\"0\":\"初始状态\",\"1\":\"拒绝加入用户体验改善计划\",\"2\":\"同意加入用户体验改善计划\"}",
+      "schema": "enum_int"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "payload_field": "data.user_experience_improvement"
+    }
+  ],
+  "errors": [],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "user_experience_improvement": 0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    },
+    {
+      "kind": "response",
+      "format": "json",
+      "value": {
+        "bid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+          "result": 0
+        },
+        "method": "property_report",
+        "tid": "00000000-0000-0000-0000-000000000000",
+        "timestamp": 0
+      },
+      "source": "generated_from_schema"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock2"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/10.dock2/00.properties.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock2/properties.html",
+    "sha256": "6438619f984afacc4920f6bc99e28c07c86bb6b23dd5078b89fb0be115f808a3",
+    "asset_sha256": "bfe9c86dbfe3516aa3a898fa597e265acf1a7e10429ca058d3dd0031dd7b3682",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

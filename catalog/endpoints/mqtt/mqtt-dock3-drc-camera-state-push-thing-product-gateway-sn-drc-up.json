@@ -1,0 +1,346 @@
+{
+  "id": "mqtt-dock3-drc-camera-state-push-thing-product-gateway-sn-drc-up",
+  "name": "相机状态上报",
+  "purpose": "MQTT message: drc_camera_state_push",
+  "protocol": "mqtt",
+  "module": "remote-control",
+  "operation": {
+    "action": "subscribe",
+    "topic": "thing/product/{gateway_sn}/drc/up",
+    "direction": "up",
+    "method": "drc_camera_state_push",
+    "reply_topic": null,
+    "reply_direction": null
+  },
+  "parameters": [
+    {
+      "name": "camera_state",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相机状态信息",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "camera_mode",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "相机状态",
+      "constraints": "{\"0\":\"拍照\",\"1\":\"录像\",\"2\":\"智能低光\",\"3\":\"全景拍照\",\"4\":\"定时拍照\"}",
+      "schema": "enum_int",
+      "parent": "camera_state"
+    },
+    {
+      "name": "interval_photo_interval",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "定时拍照间隔",
+      "constraints": "{\"max\":\"\",\"min\":\"\",\"step\":\"\",\"unit_name\":\"秒 / s\"}",
+      "schema": "int",
+      "parent": "camera_state"
+    },
+    {
+      "name": "video_resolution",
+      "in": "payload",
+      "type": "string",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "视频分辨率大小",
+      "constraints": "{\"0\":\"19202160\"}",
+      "schema": "enum_string",
+      "parent": "camera_state"
+    },
+    {
+      "name": "linkage_zoom_state",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "联动变焦状态",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\"}",
+      "schema": "bool",
+      "parent": "camera_state"
+    },
+    {
+      "name": "photo_size",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "照片大小",
+      "constraints": "{\"0\":\"默认大小\",\"1\":\"特小\",\"2\":\"小\",\"3\":\"中\",\"4\":\"大\",\"5\":\"特大\"}",
+      "schema": "enum_int",
+      "parent": "camera_state"
+    },
+    {
+      "name": "photo_format",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "照片格式",
+      "constraints": "{\"7\":\"RJPEG\",\"16\":\"DLT664\"}",
+      "schema": "enum_int",
+      "parent": "camera_state"
+    },
+    {
+      "name": "record_time",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "视频录制时长",
+      "constraints": "{\"max\":\"\",\"min\":\"\",\"step\":\"\",\"unit_name\":\"秒 / s\"}",
+      "schema": "int",
+      "parent": "camera_state"
+    },
+    {
+      "name": "recording_state",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "录像状态",
+      "constraints": "{\"0\":\"空闲\",\"1\":\"录像中\"}",
+      "schema": "enum_int",
+      "parent": "camera_state"
+    },
+    {
+      "name": "photo_state",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "拍照状态",
+      "constraints": "{\"0\":\"空闲\",\"1\":\"拍照中\"}",
+      "schema": "enum_int",
+      "parent": "camera_state"
+    },
+    {
+      "name": "remain_photo_num",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "剩余拍照张数",
+      "constraints": "",
+      "schema": "int",
+      "parent": "camera_state"
+    },
+    {
+      "name": "remain_record_duration",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "剩余录像时间",
+      "constraints": "{\"max\":\"\",\"min\":\"\",\"step\":\"\",\"unit_name\":\"秒 / s\"}",
+      "schema": "int",
+      "parent": "camera_state"
+    },
+    {
+      "name": "night_mode_settings",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "夜景模式设置",
+      "constraints": "",
+      "schema": "struct",
+      "parent": "camera_state"
+    },
+    {
+      "name": "night_mode",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "自动模式根据环境光线自动切换",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"开启\",\"2\":\"自动\"}",
+      "schema": "enum_int",
+      "parent": "night_mode_settings"
+    },
+    {
+      "name": "denoise_level",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "增强降噪会影响帧率",
+      "constraints": "{\"0\":\"关闭\",\"1\":\"标准降噪\",\"2\":\"增强降噪\",\"3\":\"超强降噪\"}",
+      "schema": "enum_int",
+      "parent": "night_mode_settings"
+    },
+    {
+      "name": "night_vision_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "仅变焦7x以上生效",
+      "constraints": "{\"false\":\"关闭\",\"true\":\"开启\"}",
+      "schema": "bool",
+      "parent": "night_mode_settings"
+    },
+    {
+      "name": "infrared_fill_light_enable",
+      "in": "payload",
+      "type": "boolean",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "仅变焦7x以上生效",
+      "constraints": "{\"false\":\"关闭\",\"true\":\"开启\"}",
+      "schema": "bool",
+      "parent": "night_mode_settings"
+    },
+    {
+      "name": "night_scene_mode_suggestion",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "根据环境光线给出的建议",
+      "constraints": "{\"0\":\"无建议\",\"1\":\"建议开启夜景模式\"}",
+      "schema": "enum_int",
+      "parent": "night_mode_settings"
+    },
+    {
+      "name": "is_working",
+      "in": "payload",
+      "type": "integer",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "实际工作状态",
+      "constraints": "{\"0\":\"未生效\",\"1\":\"生效中\"}",
+      "schema": "enum_int",
+      "parent": "night_mode_settings"
+    },
+    {
+      "name": "media_storage",
+      "in": "payload",
+      "type": "object",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "媒体存储信息",
+      "constraints": "",
+      "schema": "struct"
+    },
+    {
+      "name": "photo_storage_settings",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "拍照存储类型{current, vision, ir}，根据机型可多选",
+      "constraints": "{\"size\": -, \"item_type\": text}",
+      "schema": "array",
+      "parent": "media_storage"
+    },
+    {
+      "name": "video_storage_settings",
+      "in": "payload",
+      "type": "array",
+      "required": null,
+      "required_status": "not_specified_by_source",
+      "description": "视频存储类型{current, vision, ir}，根据机型可多选",
+      "constraints": "{\"size\": -, \"item_type\": text}",
+      "schema": "array",
+      "parent": "media_storage"
+    }
+  ],
+  "authentication": {
+    "type": "broker_credentials",
+    "location": "connection",
+    "name": "username/password"
+  },
+  "responses": [
+    {
+      "transport": "mqtt",
+      "topic": "thing/product/{gateway_sn}/drc/up",
+      "correlation": [
+        "tid",
+        "bid",
+        "method"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": "data.result != 0",
+      "meaning": "See catalog/error-codes.json",
+      "retry": false
+    }
+  ],
+  "examples": [
+    {
+      "kind": "request",
+      "format": "json",
+      "value": {
+        "data": {
+          "camera_state": {
+            "camera_mode": 0,
+            "interval_photo_interval": 2.5,
+            "linkage_zoom_state": 0,
+            "photo_size": 1,
+            "photo_state": 0,
+            "record_time": 0,
+            "recording_state": 0,
+            "remain_photo_num": 6727,
+            "remain_record_duration": 0,
+            "video_resolution": 0,
+            "night_mode_settings": {
+              "night_mode": 0,
+              "denoise_level": 1,
+              "night_vision_enable": true,
+              "infrared_fill_light_enable": true,
+              "night_scene_mode_suggestion": 1,
+              "is_working": 1
+            }
+          },
+          "media_storage": {
+            "photo_storage_settings": [
+              "current",
+              "ir"
+            ],
+            "video_storage_settings": [
+              "current",
+              "ir"
+            ]
+          },
+          "payload_index": "81-0-0"
+        },
+        "method": "drc_camera_state_push",
+        "seq": 1
+      },
+      "source": "official"
+    }
+  ],
+  "retry": {
+    "automatic": true,
+    "max_attempts": 2,
+    "backoff": "exponential_jitter",
+    "retry_on": [
+      "reply_timeout",
+      "broker_disconnect"
+    ],
+    "notes": "Reuse tid/bid for correlation and deduplicate replies; never blindly replay flight, control, or upgrade commands."
+  },
+  "compatibility": [
+    "dock3"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/20.dock-to-cloud/00.mqtt/20.dock/20.dock3/190.remote-control.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock3/remote-control.html",
+    "sha256": "32c7063215c1c5130cce2a2bffccb552084a00ae518739334c5a80d9e452ec64",
+    "asset_sha256": "26fc0533f2e2b55c8c36240e62cbc503f3c5c85f8d0be4dc8bdbf372fb894289",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

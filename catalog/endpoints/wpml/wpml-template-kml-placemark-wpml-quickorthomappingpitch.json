@@ -1,0 +1,63 @@
+{
+  "id": "wpml-template-kml-placemark-wpml-quickorthomappingpitch",
+  "name": "wpml:quickOrthoMappingPitch",
+  "purpose": "正射智能摆拍角度",
+  "protocol": "wpml",
+  "module": "template-kml",
+  "operation": {
+    "action": "define_element",
+    "element": "wpml:quickOrthoMappingPitch",
+    "document": "20.template-kml.md",
+    "context": "建图航拍模板元素（父元素：<Placemark>）"
+  },
+  "parameters": [
+    {
+      "name": "wpml:quickOrthoMappingPitch",
+      "in": "xml_element",
+      "type": "string",
+      "required": true,
+      "required_status": "required",
+      "description": "正射智能摆拍角度",
+      "constraints": "[10, 30]",
+      "schema": "°"
+    }
+  ],
+  "authentication": {
+    "type": "none",
+    "location": "local_document",
+    "name": null
+  },
+  "responses": [
+    {
+      "type": "validated_xml",
+      "description": "A locally validated WPML/KML document."
+    }
+  ],
+  "errors": [
+    {
+      "code": "validation_error",
+      "meaning": "Element violates required type, range, order, or compatibility constraint.",
+      "retry": false
+    }
+  ],
+  "examples": [],
+  "retry": {
+    "automatic": false,
+    "max_attempts": 1,
+    "backoff": "none",
+    "retry_on": [],
+    "notes": "Validate the WPML document locally; network retry is not applicable."
+  },
+  "compatibility": [
+    "M4E"
+  ],
+  "deprecated": false,
+  "source": {
+    "file": "docs/cn/60.api-reference/00.dji-wpml/20.template-kml.md",
+    "url": "https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dji-wpml/template-kml.html",
+    "sha256": "463b4376adcb7f5056c4ad00a0bae40c9db9dbd18a184c4f24d183863f8d9179",
+    "asset_sha256": "3a73d235dea35a753cda3b8e8272b333dbbdf2d56706c29c4beb10ce2f430379",
+    "snapshot_sha256": "7f856e08f7f48e10f75fe491ffdcc94af4f54b8ee03ac2fce2d66739e41fe598",
+    "version": "1.16.1"
+  }
+}

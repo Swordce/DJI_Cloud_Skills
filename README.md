@@ -4,9 +4,10 @@
 
 ## 简体中文
 
-本项目从完整的中文
-[DJI 上云 API 文档](https://github.com/dji-sdk/Cloud-API-Doc)
-生成结构化、面向智能体的接口定义。
+本项目从 DJI 官方中文
+[上云 API v1.16.1 教程](https://developer.dji.com/doc/cloud-api-tutorial/cn/)
+生成结构化、面向智能体的接口定义。官网 API Reference 页面和错误码页
+是唯一协议来源。
 
 目录覆盖 HTTP、MQTT 服务/事件/属性、WebSocket 消息、DJI Pilot 2
 JSBridge 方法及 WPML 元素，包括设备管理与绑定、直播、航线任务、媒体、
@@ -19,13 +20,13 @@ JSBridge 方法及 WPML 元素，包括设备管理与绑定、直播、航线�
 - `catalog/index.json` — 可搜索的接口索引
 - `catalog/endpoints/<protocol>/*.json` — 每个接口对应一个结构化条目
 - `catalog/error-codes.json` — DJI 错误码映射
+- `catalog/change-report.json` — 旧目录到官网 v1.16.1 的字段级变更
 - `catalog/schema.json` — 目录条目的权威 JSON Schema
 - `.cursorrules` — 兼容旧版 Cursor Rules
 - `build/skills/dji-cloud-api/` — 生成的可安装 Skill 包
-- `build/dist/openai/` — 生成的 OpenAI function tools
-- `build/dist/claude/` — 生成的 Claude tools
-- `build/dist/<platform>/by-module/` — 按模块拆分的工具定义
-- `manifest.json` — 固定的上游版本和条目数量
+- `build/skills/dji-cloud-api/assets/` — 完整 OpenAI / Claude 工具文件的唯一权威副本
+- `build/dist/<platform>/` — 按模块拆分的工具分片与注册表（不再含全量工具文件）
+- `manifest.json` — 固定的官网版本、页面快照哈希和条目数量
 - `coverage-report.json` — 生成与校验覆盖率
 
 只有 `catalog/` 是协议事实源。`build/`、各平台安装副本、references、
@@ -80,10 +81,10 @@ Codex 推荐使用 `.agents/skills`；`.codex/skills` 是旧版目录。安装�
 
 ### 更新接口目录
 
-将上游文档克隆到 `.upstream`：
+抓取官网 VuePress 路由和页面 chunk，并固定 v1.16.1 快照：
 
 ```bash
-git clone --depth 1 https://github.com/dji-sdk/Cloud-API-Doc.git .upstream
+python scripts/fetch_official_docs.py
 ```
 
 生成并校验：
@@ -94,14 +95,17 @@ python scripts/build_artifacts.py
 python scripts/validate_catalog.py --check-determinism
 ```
 
-使用其他位置的上游源码：
+使用其他位置的官网快照缓存：
 
 ```bash
-python scripts/sync_catalog.py --source /path/to/Cloud-API-Doc
-python scripts/validate_catalog.py --source /path/to/Cloud-API-Doc
+python scripts/fetch_official_docs.py --output /path/to/official-cache
+python scripts/sync_catalog.py --source /path/to/official-cache
+python scripts/validate_catalog.py --source /path/to/official-cache
 ```
 
-生成器和校验器仅使用 Python 标准库。
+抓取器、生成器和校验器仅使用 Python 标准库。若官网路由异常减少、
+页面 chunk 缺失、内容为空或发布记录不是 v1.16.1，抓取会失败且不会
+回退到 GitHub 旧文档。
 
 ### 目录条目
 
@@ -130,13 +134,15 @@ MQTT/WPML 表格没有说明字段是否必选，则 `required` 为 `null`，
 
 ### 来源与归属
 
-`manifest.json` 固定生成时使用的上游 commit，每个条目均链接到原始文档。
-上游协议文档由 DJI 所有并维护；重新分发生成内容前请确认其适用条款。
+`manifest.json` 固定官网版本、VuePress app/runtime hash、102 个动态发现的 API
+Reference 路由和内容快照 hash。每个条目均链接到官网页面并记录页面 hash。
+官网导航栏仍可能显示旧版本；版本判定以官网发布记录为证据。协议文档由
+DJI 所有并维护；重新分发生成内容前请确认其适用条款。
 
 ## English
 
-Structured, agent-ready definitions generated from the complete Chinese
-[DJI Cloud API documentation](https://github.com/dji-sdk/Cloud-API-Doc).
+Structured, agent-ready definitions generated exclusively from the official
+Chinese [DJI Cloud API v1.16.1 tutorial](https://developer.dji.com/doc/cloud-api-tutorial/cn/).
 
 The catalog covers HTTP, MQTT services/events/properties, WebSocket messages,
 DJI Pilot 2 JSBridge methods, and WPML elements. It includes device management
@@ -150,13 +156,13 @@ telemetry, remote operations, and protocol error codes.
 - `catalog/index.json` — searchable operation index
 - `catalog/endpoints/<protocol>/*.json` — one structured entry per operation
 - `catalog/error-codes.json` — DJI result-code mapping
+- `catalog/change-report.json` — field-level legacy-to-v1.16.1 changes
 - `catalog/schema.json` — authoritative catalog entry JSON Schema
 - `.cursorrules` — legacy Cursor Rules compatibility
 - `build/skills/dji-cloud-api/` — generated installable Skill package
-- `build/dist/openai/` — generated OpenAI function tools
-- `build/dist/claude/` — generated Claude tools
-- `build/dist/<platform>/by-module/` — generated module-level tool shards
-- `manifest.json` — pinned upstream revision and entry counts
+- `build/skills/dji-cloud-api/assets/` — canonical full OpenAI / Claude tool files
+- `build/dist/<platform>/` — module-level tool shards and their registry (no full tool files)
+- `manifest.json` — pinned official version, snapshot hash, and entry counts
 - `coverage-report.json` — generation and validation coverage
 
 Only `catalog/` is the protocol fact source. `build/`, platform installation
@@ -213,10 +219,10 @@ installation.
 
 ### Refresh
 
-Clone the upstream documentation into `.upstream`:
+Fetch the official VuePress routes and pin the v1.16.1 page snapshot:
 
 ```bash
-git clone --depth 1 https://github.com/dji-sdk/Cloud-API-Doc.git .upstream
+python scripts/fetch_official_docs.py
 ```
 
 Generate and validate:
@@ -227,14 +233,18 @@ python scripts/build_artifacts.py
 python scripts/validate_catalog.py --check-determinism
 ```
 
-To use a source checkout elsewhere:
+To use an official snapshot cache elsewhere:
 
 ```bash
-python scripts/sync_catalog.py --source /path/to/Cloud-API-Doc
-python scripts/validate_catalog.py --source /path/to/Cloud-API-Doc
+python scripts/fetch_official_docs.py --output /path/to/official-cache
+python scripts/sync_catalog.py --source /path/to/official-cache
+python scripts/validate_catalog.py --source /path/to/official-cache
 ```
 
-The generators and validators use only the Python standard library.
+The fetcher, generators, and validators use only the Python standard library.
+Fetching fails closed if routes disappear, chunks are missing, pages are empty,
+or the release record is not v1.16.1; it never falls back to the legacy GitHub
+documentation.
 
 ### Catalog entry
 
@@ -269,7 +279,9 @@ generator does not silently reinterpret an undocumented field as optional.
 
 ### Source and attribution
 
-`manifest.json` pins the exact upstream commit used for generation. Each entry
-links back to its source file. DJI owns and maintains the upstream protocol
-documentation; review its applicable terms before redistributing generated
-documentation content.
+`manifest.json` pins the official release, VuePress app/runtime hashes, 102 dynamically
+discovered API Reference routes, and the content snapshot hash. Every entry
+links to its official page and records page hashes. The navbar may lag the
+release record; the official release history is the version evidence. DJI owns
+and maintains the protocol documentation; review its applicable terms before
+redistributing generated content.
